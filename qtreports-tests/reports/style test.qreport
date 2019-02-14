@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<report name="sample_report">
+  <style name="Arial_Normal" isDefault="true" fontName="Arial"
+     fontColor = "red" fontSize="12" pdfFontName="c:\tahoma.ttf" pdfEncoding="Cp1251" isBold="true" isItalic="true"
+    isPdfEmbedded="true" />
+
+  <detail>
+    <band height="400">  
+
+    </band>
+  </detail>
+
+</report>

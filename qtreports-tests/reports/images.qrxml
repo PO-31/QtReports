@@ -1,0 +1,70 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<report name="sample_report" orientation="Landscape">
+  <style name="Arial_Normal" isDefault="true" fontName="Arial"
+    fontSize="12" pdfFontName="c:\tahoma.ttf" pdfEncoding="Cp1251"
+    isPdfEmbedded="false" />
+
+  <queryString>
+    <![CDATA[ select idImg, nameImg, image from images; ]]>
+  </queryString>
+
+  <field name="idImg" class="QString" />
+  <field name="nameImg" class="QString" />
+  <field name="image" class="QString" />
+
+  <group name="nameImg">
+    <groupExpression>
+      <![CDATA[$F{nameImg}]]>
+    </groupExpression>
+    <groupHeader>
+      <band height="40">
+        <textField>
+          <reportElement x="0" y="10" width="50" height="30"/>
+          <textFieldExpression class="QImage"><![CDATA[$F{nameImg}]]></textFieldExpression>
+        </textField>
+      </band>
+    </groupHeader>
+    <groupFooter>
+      <band height="10">
+      </band>
+    </groupFooter>
+  </group>
+  
+  <title>
+    <band height="35">
+      <staticText>
+        <reportElement x="10" y="10" width="150" height="20" />
+        <text><![CDATA[$P{title}]]></text>
+      </staticText>
+      <ellipse>
+        <reportElement x="0" y="0" width="535" height="35" />
+      </ellipse>
+    </band>
+  </title>
+  <detail>
+    <band height="200">
+      <rect>
+        <reportElement x="0" y="0" width="535" height="200" />
+      </rect>
+      <textField>
+        <reportElement x="5" y="0" width="20" height="200" />
+        <textFieldExpression class="QString"><![CDATA[$F{idImg}]]></textFieldExpression>
+      </textField>
+      <line>
+        <reportElement x="25" y="0" width="1" height="200" />
+      </line>
+      <textField>
+        <reportElement x="30" y="0" width="140" height="200" />
+        <textFieldExpression class="QString"><![CDATA[$F{nameImg}]]></textFieldExpression>
+      </textField>
+      <line>
+        <reportElement x="170" y="0" width="1" height="200" />
+      </line>
+      <image>
+        <reportElement x="170" y="0" width="425" height="200" />
+        <imageExpression class="QString"><![CDATA[$F{image}]]></imageExpression>
+      </image>
+    </band>
+  </detail>
+
+</report>

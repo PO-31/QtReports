@@ -1,0 +1,22 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<report name="sample_report">
+  <style name="Arial_Normal" isDefault="true" fontName="Arial"
+    fontSize="12" pdfFontName="c:\tahoma.ttf" pdfEncoding="Cp1251"
+    isPdfEmbedded="false" />
+
+  <detail>
+    <band height="400">
+      <staticText>
+        <reportElement x="380" y="0" width="200" height="20" />
+        <text><![CDATA[Тест !!]]></text>
+      </staticText>
+      <textField>
+        <reportElement x="220" y="20" width="100" height="200" />
+        <textFieldExpression class="QString">
+          <![CDATA[$P{title}]]>
+        </textFieldExpression>
+      </textField>
+    </band>
+  </detail>
+
+</report>

@@ -1,0 +1,2 @@
+select stud_name, group_name, dep_name from students_t, groups_t, departments_t where students_t.group_id = groups_t.group_id and groups_t.dep_id = departments_t.dep_id;
+

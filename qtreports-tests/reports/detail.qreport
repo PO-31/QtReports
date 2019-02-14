@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<report   xmlns="http://jasperreports.sourceforge.net/jasperreports"
+                xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd"
+                name="VESTI"
+                columnCount="3" columnWidth="178" columnSpacing="5"
+                leftMargin="20" rightMargin="20" topMargin="10" bottomMargin="10">
+
+  <style name="Basic" isDefault="true" fontName="FuturisC" fontSize="9"
+        isBold="false" isItalic="false" isUnderline="false" isStrikeThrough="false"
+        isPdfEmbedded ="true"/>
+  <style name="Header" isDefault="false" fontName="HeliosCond" fontSize="15"
+        isBold="false" isItalic="false" isUnderline="false" isStrikeThrough="false"
+        isPdfEmbedded ="true" bottomBorder="Thin"/>
+
+  <queryString language="xPath"><![CDATA[/rss/channel/item]]></queryString>
+
+  <field name="Title" class="QString">
+    <fieldDescription><![CDATA[title]]></fieldDescription>
+  </field>
+  <field name="Link" class="QString">
+    <fieldDescription><![CDATA[link]]></fieldDescription>
+  </field>
+  <field name="Description" class="QString">
+    <fieldDescription><![CDATA[description]]></fieldDescription>
+  </field>
+  <field name="Category" class="QString">
+    <fieldDescription><![CDATA[category]]></fieldDescription>
+  </field>
+
+  <title>
+    <band height="30">
+      <staticText>
+        <reportElement x="0" y="0" width="575" height="20" style="Header"/>
+        <textElement textAlignment="Left">
+          <font isBold="true"/>
+        </textElement>
+        <text><![CDATA[ВЕСТИ]]></text>
+      </staticText>
+      <staticText>
+        <reportElement x="45" y="3" width="300" height="10" style="Basic"/>
+        <textElement textAlignment="Left"/>
+        <text><![CDATA[Интернет-газета]]></text>
+      </staticText>
+    </band>
+  </title>
+
+<detail>
+  <band height="150">
+    <textField>
+      <reportElement x="0" y="0" width="178" height="25" style="Basic"/>
+      <textElement textAlignment="Center">
+        <font isBold="true"/>
+      </textElement>
+      <textFieldExpression class="QString"><![CDATA[$F{Title}]]></textFieldExpression>
+    </textField>
+
+    <textField>
+      <reportElement x="0" y="30" width="178" height="15" style="Basic"/>
+      <textFieldExpression class="QString"><![CDATA[$F{Link}]]></textFieldExpression>
+    </textField>
+
+    <textField>
+      <reportElement x="0" y="45" width="178" height="100" style="Basic"/>
+      <textFieldExpression class="QString"><![CDATA[$F{Description}]]></textFieldExpression>
+    </textField>
+
+    <textField>
+      <reportElement x="0" y="130" width="178" height="15" style="Basic"/>
+      <textFieldExpression class="QString"><![CDATA[$F{Category}]]></textFieldExpression>
+    </textField>
+  </band>
+</detail>
+
+</report>

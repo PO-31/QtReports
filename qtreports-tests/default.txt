@@ -1,0 +1,14 @@
+Sample_report
+Styles
+Arial_Normal
+/Styles
+Detail
+Band
+TextField
+TextField
+TextField
+TextField
+StaticText
+/Band
+/Detail
+/Report

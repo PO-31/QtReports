@@ -67,7 +67,7 @@ HEADERS += \
 
 QMAKE_CXXFLAGS += -std=c++11
 
-DESTDIR = $$PWD/build/
+DESTDIR = $$PWD/../build/qtreports-lib/
 
 unix {
     target.path = /usr/lib

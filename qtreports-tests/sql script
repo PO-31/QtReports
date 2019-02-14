@@ -1,0 +1,7 @@
+CREATE TABLE departments_t ( dep_id INTEGER PRIMARY KEY, dep_name VARCHAR(200) UNIQUE);
+
+CREATE TABLE groups_t ( group_id INTEGER PRIMARY KEY, group_name VARCHAR(30), dep_id INTEGER REFERENCES departments_t ON UPDATE CASCADE 
+				ON DELETE RESTRICT );
+
+CREATE TABLE students_t ( stud_id INTEGER PRIMARY KEY, stud_name VARCHAR(90), group_id INTEGER REFERENCES groups_t ON UPDATE CASCADE 
+				ON DELETE RESTRICT );

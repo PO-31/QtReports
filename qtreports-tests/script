@@ -1,0 +1,20 @@
+INSERT INTO departments_t VALUES (1, 'Программная инженерия');
+INSERT INTO departments_t VALUES (2, 'Прикладная математика');
+
+INSERT INTO groups_t VALUES (1, 'ПО-21', 1);
+INSERT INTO groups_t VALUES (2, 'ПО-31', 1);
+
+INSERT INTO groups_t VALUES (3, 'ПМ-21', 2);
+INSERT INTO groups_t VALUES (4, 'ПМ-31', 2);
+
+INSERT INTO students_t VALUES (1, 'Фомин В. Я.', 1);
+INSERT INTO students_t VALUES (2, 'Степанов Д. И.', 1);
+
+INSERT INTO students_t VALUES (3, 'Рыбин В. В.', 2);
+INSERT INTO students_t VALUES (4, 'Невский И. П.', 2);
+
+INSERT INTO students_t VALUES (5, 'Курицин М. В.', 3);
+INSERT INTO students_t VALUES (6, 'Огурцов А. Я.', 3);
+
+INSERT INTO students_t VALUES (7, 'Демченко Г. С.', 4);
+INSERT INTO students_t VALUES (8, 'Фомин П. Я.', 4);
