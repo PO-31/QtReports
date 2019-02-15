@@ -11,16 +11,16 @@ compiler:
 env:
   - BUILD_TYPE=release
 
-matrix:
-  include:
-   - os: linux
-     compiler: gcc
-     env: BUILD_TYPE=coverage
-     services:
-        - xvfb
-   - os: linux
-     compiler: gcc
-     env: BUILD_TYPE=doxygen
+#matrix:
+#  include:
+#   - os: linux
+#     compiler: gcc
+#     env: BUILD_TYPE=coverage
+#     services:
+#        - xvfb
+#   - os: linux
+#     compiler: gcc
+#     env: BUILD_TYPE=doxygen
      
 cache:
   apt: true
