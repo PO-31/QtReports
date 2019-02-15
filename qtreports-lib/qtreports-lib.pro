@@ -8,9 +8,9 @@ QT       += sql sql printsupport widgets
 
 TARGET = qtreports-lib
 TEMPLATE = lib
-VERSION = 0.3.0-pre
+# VERSION = 0.3.0.1
 CONFIG += c++11
-DEFINES += QTREPORTSLIB
+DEFINES += QTREPORTS_LIB
 INCLUDEPATH += $$PWD/src/
 
 SOURCES += \
@@ -78,10 +78,8 @@ unix {
 }
 
 win32 {
-    CONFIG += build_all
-    CONFIG += staticlib
-    VERSION = 1.0.0
-    TARGET = $$qtLibraryTarget(qtreportslib)
+    CONFIG += build_all dll static
+    TARGET = $$qtLibraryTarget(qtreports-lib)
 }
 
 linux-clang {
