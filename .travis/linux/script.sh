@@ -16,8 +16,9 @@ if [ "$BUILD_TYPE" = "doxygen" ]; then
 
 	git commit -am "Update doc from Travis CI"
 	git config --global push.default simple
+	
+	#change to drclaws' github_api_key
 	git push -f -q https://LancerX0:$GITHUB_API_KEY@github.com/PO-31/PO-31.github.io > /dev/null
-	# cd "$TRAVIS_BUILD_DIR"
 	exit
 fi
 
