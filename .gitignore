@@ -37,6 +37,7 @@ build
 
 # Qt Project templates
 *.pro.user
+*.pro.autosave
 
 # Visual Studio Stuff
 # (If someone tries to done with it)

@@ -71,10 +71,8 @@ DESTDIR = $$PWD/../build/qtreports/
 
 unix {
     target.path = /usr/lib
-    headers.files = \
-        include/*.hpp \
-        include/*.h
-    headers.path = /usr/include/qtreports/
+    headers.files = include/*
+    headers.path = /usr/include
     INSTALLS += headers target
 }
 

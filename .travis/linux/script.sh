@@ -1,3 +1,10 @@
+# ATTENTION
+# Если ты не drclaws и ошибка при push Travis'ом
+# ПОМЕНЯЙ GITHUB_API_KEY в Travis на свой,
+# так как возможно, что я, drclaws, удалю его у себя
+
+# Exit if any command returns fail (non-zero)
+set -e
 
 # Auto documentation generation
 if [ "$BUILD_TYPE" = "doxygen" ]; then
@@ -17,7 +24,6 @@ if [ "$BUILD_TYPE" = "doxygen" ]; then
 	git commit -am "Update doc from Travis CI"
 	git config --global push.default simple
 	
-	#change to drclaws' github_api_key
 	git push -f -q https://drclaws:$GITHUB_API_KEY@github.com/PO-31/PO-31.github.io > /dev/null
 	exit
 fi
@@ -28,10 +34,7 @@ make -j $(nproc)
 sudo make install
 
 
-if [ "$BUILD_TYPE" = "coverage" ]; then
-	# old autotest program
-	# replaced by qtreportsviewer (manual test program)
-	
+if [ "$BUILD_TYPE" = "coverage" ]; then	
 	cd "$TRAVIS_BUILD_DIR/qtreports-tests"
 	qmake -spec ${USING_QT_MKSPEC} "CONFIG+= ${BUILD_TYPE}" qtreports-tests.pro
 	make
