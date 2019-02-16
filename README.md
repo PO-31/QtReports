@@ -1,3 +1,4 @@
+[![Codacy Badge](https://api.codacy.com/project/badge/Grade/66384da3ffdf4999966ad204266fc090)](https://app.codacy.com/app/drclaws/QtReports?utm_source=github.com&utm_medium=referral&utm_content=PO-31/QtReports&utm_campaign=Badge_Grade_Dashboard)
 # QtReports [![Language](https://img.shields.io/badge/language-C++14-blue.svg)](https://github.com/PO-31/QtReports/search?l=cpp) [![License](https://img.shields.io/badge/license-MIT-blue.svg)](https://github.com/PO-31/QtReports/blob/master/LICENSE) [![Requirements](https://img.shields.io/badge/requirements-Qt5-red.svg)](https://github.com/PO-31/QtReports/blob/master/QtReports.pro)
 Reimplementation of JasperReports in Qt
 
