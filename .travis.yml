@@ -18,10 +18,10 @@ matrix:
      env: BUILD_TYPE=coverage
      services:
         - xvfb
-#   - os: linux
-#     compiler: gcc
-#     env: BUILD_TYPE=doxygen
-#
+   - os: linux
+     compiler: gcc
+     env: BUILD_TYPE=doxygen
+
 
 cache:
   apt: true
