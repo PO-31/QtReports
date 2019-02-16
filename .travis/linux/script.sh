@@ -30,12 +30,18 @@ fi
 cd "$TRAVIS_BUILD_DIR/qtreports"
 qmake -spec ${USING_QT_MKSPEC} "CONFIG+=${BUILD_TYPE}" qtreports.pro
 make -j $(nproc)
+if ![$? -eq 0]; then
+	exit 1
+fi
 sudo make install
 
 if [ "$BUILD_TYPE" = "coverage" ]; then	
 	cd "$TRAVIS_BUILD_DIR/qtreports-tests"
 	qmake -spec ${USING_QT_MKSPEC} "CONFIG+=${BUILD_TYPE}" qtreports-tests.pro
 	make -j $(nproc)
+	if ![$? -eq 0]; then
+		exit 1
+	fi
 	./qtreports-tests
 
 	cd "$TRAVIS_BUILD_DIR"

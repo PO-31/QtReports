@@ -53,8 +53,11 @@ namespace qtreports
             Возвращает содержимое <field>. Шаблонный вариант.
             @param[in] row Номер строки
             */
-            template< typename T1 >
-            const T1        getData( int row );
+            template < typename T1 >
+            const T1 getData( int row )
+            {
+                return m_data.value( row ).value< T1 >();
+            }
 
             const QVariant getDataVar(int row);
 
