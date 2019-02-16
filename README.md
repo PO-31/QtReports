@@ -2,7 +2,7 @@
 Reimplementation of JasperReports in Qt
 
 ### Current project status ###
-[![Build Status](https://api.travis-ci.org/PO-31/QtReports.svg?branch=master)](https://travis-ci.org/PO-31/QtReports) [Current coverage](http://po-31.github.io/QtReports/master/)
+[![Build Status](https://api.travis-ci.org/PO-31/QtReports.svg?branch=master)](https://travis-ci.org/PO-31/QtReports)   [Current coverage](http://po-31.github.io/QtReports/master/)
 
 ### Requirements ###
 + Qt 5.0+
@@ -15,8 +15,8 @@ Take a look into the ADD_LINK. Our build system is Qmake, so it wouldn't be a pr
 [QtReports-View](https://github.com/PO-31/QtReports-View/) is a .jasper reports viewer based on QtReports.
 
 ### Repository structure ###
-		.travis/				Scripts of Travis CI testings
-		qtreports/				QtReports Library sources
+		.travis/			Scripts of Travis CI testings
+		qtreports/			QtReports Library sources
 		qtreports/include/		Public header C and C++ header files of QtReports
 		qtreports-tests/		Test complex
 
