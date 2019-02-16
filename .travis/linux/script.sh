@@ -38,8 +38,7 @@ if [ "$BUILD_TYPE" = "coverage" ]; then
 	cd "$TRAVIS_BUILD_DIR/qtreports-tests"
 	qmake -spec ${USING_QT_MKSPEC} "CONFIG+= ${BUILD_TYPE}" qtreports-tests.pro
 	make
-	sudo make install
-	qtreports-tests
+	"$TRAVIS_BUILD_DIR/build/qtreports-tests/qtreports-tests
 
 	cd "$TRAVIS_BUILD_DIR"
 	git clone https://github.com/linux-test-project/lcov
