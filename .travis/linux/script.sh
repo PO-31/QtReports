@@ -22,7 +22,7 @@ if [ "$BUILD_TYPE" = "doxygen" ]; then
 	exit
 fi
 
-cd qtreports
+cd "$TRAVIS_BUILD_DIR/qtreports"
 qmake -spec ${USING_QT_MKSPEC} "CONFIG+= ${BUILD_TYPE}" qtreports.pro
 make -j $(nproc)
 sudo make install
@@ -32,10 +32,11 @@ if [ "$BUILD_TYPE" = "coverage" ]; then
 	# old autotest program
 	# replaced by qtreportsviewer (manual test program)
 	
-	cd ../qtreports-tests
+	cd "$TRAVIS_BUILD_DIR/qtreports-tests"
 	qmake -spec ${USING_QT_MKSPEC} "CONFIG+= ${BUILD_TYPE}" qtreports-tests.pro
 	make
-	./qtreports-tests
+	sudo make install
+	qtreports-tests
 
 	cd "$TRAVIS_BUILD_DIR"
 	git clone https://github.com/linux-test-project/lcov
@@ -43,7 +44,7 @@ if [ "$BUILD_TYPE" = "coverage" ]; then
 	sudo make install
 	cd ..
 	lcov --version
-	lcov --capture --directory $TRAVIS_BUILD_DIR/qtreportslib --output-file coverage.info
+	lcov --capture --directory "$TRAVIS_BUILD_DIR/qtreports" --output-file coverage.info
 	lcov --remove coverage.info --output-file coverage.info "*moc_*.cpp"
 	lcov --remove coverage.info --output-file coverage.info "*/usr/*"
 	cd "$TRAVIS_BUILD_DIR"
@@ -56,5 +57,5 @@ if [ "$BUILD_TYPE" = "coverage" ]; then
 	git add -A
 	git commit -a -m "Update coverage from Travis CI"
 	git config --global push.default simple
-    git push -f -q https://LancerX0:$GITHUB_API_KEY@github.com/PO-31/QtReports HEAD:gh-pages > /dev/null
+    git push -f -q https://drclaws:$GITHUB_API_KEY@github.com/PO-31/QtReports HEAD:gh-pages > /dev/null
 fi
