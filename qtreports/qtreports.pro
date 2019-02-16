@@ -8,8 +8,10 @@ QT       += core sql printsupport widgets
 
 TARGET = qtreports
 TEMPLATE = lib
-CONFIG += c++14
+CONFIG += c++14 skip_target_version_ext
 DEFINES += QTREPORTS
+
+VERSION = 0.3.0
 
 INCLUDEPATH += include/
 
