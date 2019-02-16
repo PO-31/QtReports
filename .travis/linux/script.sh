@@ -4,7 +4,6 @@
 # так как возможно, что я, drclaws, удалю его у себя
 
 # Exit if any command returns fail (non-zero)
-set -e
 
 # Auto documentation generation
 if [ "$BUILD_TYPE" = "doxygen" ]; then
@@ -33,11 +32,10 @@ qmake -spec ${USING_QT_MKSPEC} "CONFIG+= ${BUILD_TYPE}" qtreports.pro
 make -j $(nproc)
 sudo make install
 
-
 if [ "$BUILD_TYPE" = "coverage" ]; then	
 	cd "$TRAVIS_BUILD_DIR/qtreports-tests"
 	qmake -spec ${USING_QT_MKSPEC} "CONFIG+= ${BUILD_TYPE}" qtreports-tests.pro
-	make
+	make -j $(nproc)
 	"$TRAVIS_BUILD_DIR/build/qtreports-tests/qtreports-tests"
 
 	cd "$TRAVIS_BUILD_DIR"
