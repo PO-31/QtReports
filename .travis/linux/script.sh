@@ -28,15 +28,15 @@ if [ "$BUILD_TYPE" = "doxygen" ]; then
 fi
 
 cd "$TRAVIS_BUILD_DIR/qtreports"
-qmake -spec ${USING_QT_MKSPEC} "CONFIG+= ${BUILD_TYPE}" qtreports.pro
+qmake -spec ${USING_QT_MKSPEC} "CONFIG+=${BUILD_TYPE}" qtreports.pro
 make -j $(nproc)
 sudo make install
 
 if [ "$BUILD_TYPE" = "coverage" ]; then	
 	cd "$TRAVIS_BUILD_DIR/qtreports-tests"
-	qmake -spec ${USING_QT_MKSPEC} "CONFIG+= ${BUILD_TYPE}" qtreports-tests.pro
+	qmake -spec ${USING_QT_MKSPEC} "CONFIG+=${BUILD_TYPE}" qtreports-tests.pro
 	make -j $(nproc)
-	"$TRAVIS_BUILD_DIR/build/qtreports-tests/qtreports-tests"
+	./qtreports-tests
 
 	cd "$TRAVIS_BUILD_DIR"
 	git clone https://github.com/linux-test-project/lcov

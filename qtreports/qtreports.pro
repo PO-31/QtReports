@@ -8,7 +8,7 @@ QT       += core sql printsupport widgets
 
 TARGET = qtreports
 TEMPLATE = lib
-CONFIG += c++11
+CONFIG += c++14
 DEFINES += QTREPORTS
 
 INCLUDEPATH += include/
@@ -65,9 +65,9 @@ HEADERS += \
     include/qtreports/tags/widget.hpp \
     include/qtreports/engine.hpp
 
-QMAKE_CXXFLAGS += -std=c++11
+QMAKE_CXXFLAGS += -std=c++14
 
-DESTDIR = $$PWD/../build/qtreports/
+DESTDIR = $$PWD/../build/
 
 unix {
     target.path = /usr/lib
@@ -77,12 +77,17 @@ unix {
 }
 
 win32 {
-    CONFIG += build_all dll static
+    CONFIG += dll static
     TARGET = $$qtLibraryTarget(qtreports)
 }
 
 linux-clang {
     QMAKE_CXXFLAGS += -Wdocumentation
+}
+
+build_coverage = $$(BUILD_COVERAGE)
+equals(build_coverage, "TRUE") {
+    CONFIG += coverage
 }
 
 coverage {
@@ -95,6 +100,7 @@ coverage {
 }
 QMAKE_EXTRA_TARGETS += coverage
 
+message("Target: $$TARGET")
 message("Using config: $$CONFIG")
 message("Using spec: $$QMAKESPEC")
 message("Compiler: $$QMAKE_CXX")

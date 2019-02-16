@@ -2,13 +2,13 @@ QT += core gui sql widgets printsupport testlib
 
 TARGET = qtreports-tests
 TEMPLATE = app
-CONFIG += release c++11
+CONFIG += c++14 release
 
 INCLUDEPATH += $$PWD/../qtreports/include/
-win32: LIBS   += -L "$$PWD"/../build/qtreports/
-LIBS   += -lqtreports
 
-DESTDIR = $$PWD/../build/qtreports-tests/
+LIBS += -L"$$PWD"/../build/ -lqtreports
+
+DESTDIR = $$PWD
 
 DISTFILES += \
     DB/images.db \
@@ -52,8 +52,10 @@ SOURCES += \
     src/test_groups.cpp \
     src/test_parser.cpp
 
-QMAKE_CXXFLAGS += -std=c++11
+QMAKE_CXXFLAGS += -std=c++14
 
+message("Target: $$TARGET")
+message("Using config: $$CONFIG")
 message("Using spec: $$QMAKESPEC")
 message("Compiler: $$QMAKE_CXX")
 

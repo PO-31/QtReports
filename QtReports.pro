@@ -1,7 +1,5 @@
-TEMPLATE = subdirs lib
+TEMPLATE = subdirs
 
-SUBDIRS += \
-    qtreports \
-    qtreports-tests
+SUBDIRS += qtreports qtreports-tests
 
 qtreports-tests.depends = qtreports
