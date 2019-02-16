@@ -37,5 +37,20 @@ namespace qtreports
             return m_data.size();
         }
 
+        template< typename T1 >
+        const T1 Field::getData( int row )
+        {
+            return m_data.value( row ).value< T1 >();
+        }
+
+        const QVariant Field::getDataVar(int row)
+        {
+            return m_data[row];
+        }
+
+        void Field::setDataVar(int row, const QVariant & value) {
+            m_data[row] = value;
+        }
+
     }
 }

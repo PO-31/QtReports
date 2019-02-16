@@ -54,19 +54,11 @@ namespace qtreports
             @param[in] row Номер строки
             */
             template< typename T1 >
-            const T1        getData( int row )
-            {
-                return m_data.value( row ).value< T1 >();
-            }
+            const T1        getData( int row );
 
-            const QVariant getDataVar(int row)
-            {
-                return m_data[row];
-            }
+            const QVariant getDataVar(int row);
 
-            void setDataVar(int row, const QVariant & value) {
-                m_data[row] = value;
-            }
+            void setDataVar(int row, const QVariant & value);
 
             /*! @~russian
             Получить количество строк в <field>
