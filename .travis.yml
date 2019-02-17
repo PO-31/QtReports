@@ -16,7 +16,8 @@ jobs:
         os: linux
         dist: xenial
         sudo: required
-        env: BUILD_TYPE=release
+        env:
+          - BUILD_TYPE=release
         script:
           - source .travis/${TRAVIS_OS_NAME}/building.sh
         cache:
@@ -26,11 +27,8 @@ jobs:
               - $HOME/.cache/http
               - /home/travis/.cache/pip
               - /home/travis/.cache/pip/http
-        compiler:
-          - clang
-      -
-        compiler:        
-          - gcc
+        compiler: clang
+      - compiler: gcc
           
       - stage: "Post-Build"
         os: linux
@@ -38,8 +36,7 @@ jobs:
         sudo: required
         compiler: gcc
         env: BUILD_TYPE=coverage
-        services:
-          - xvfb
+        services: xvfb
         script:
           - source .travis/${TRAVIS_OS_NAME}/building.sh
           - source .travis/${TRAVIS_OS_NAME}/coverage.sh        
