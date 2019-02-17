@@ -36,10 +36,13 @@ branches:
     - master
 
 before_install:
-  - source .travis/${TRAVIS_OS_NAME}/before_install.sh
+  - chmod +x .travis/${TRAVIS_OS_NAME}/before_install.sh
+  - ./.travis/${TRAVIS_OS_NAME}/before_install.sh
  
 install:
-  - source .travis/${TRAVIS_OS_NAME}/install.sh
+  - chmod +x .travis/${TRAVIS_OS_NAME}/install.sh
+  - ./.travis/${TRAVIS_OS_NAME}/install.sh
    
 script:
-  - source .travis/${TRAVIS_OS_NAME}/script.sh
+  - chmod +x .travis/${TRAVIS_OS_NAME}/script.sh
+  - ./.travis/${TRAVIS_OS_NAME}/script.sh

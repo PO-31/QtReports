@@ -2,20 +2,21 @@
 Reimplementation of JasperReports in Qt
 
 ### Current project status ###
-[![Build Status](https://api.travis-ci.org/PO-31/QtReports.svg?branch=master)](https://travis-ci.org/PO-31/QtReports)   [Current coverage](http://po-31.github.io/QtReports/master/)
+[![Build Status](https://api.travis-ci.org/PO-31/QtReports.svg?branch=master)](https://travis-ci.org/PO-31/QtReports) [![Codacy Badge](https://api.codacy.com/project/badge/Grade/592ade065f16400586bd20717d7ac8ee)](https://www.codacy.com/app/drclaws/QtReports?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=PO-31/QtReports&amp;utm_campaign=Badge_Grade)
+[Current coverage](http://po-31.github.io/QtReports/master/)
 
 ### Requirements ###
 + Qt 5.0+
 + gcc-5+/clang-3.4+/msvc14+
 
 ### Building ###
-Take a look into the ADD_LINK. Our build system is Qmake, so it wouldn't be a problem if you worked with Qt before.
+Take a look into the [wiki](../../wiki/Building). Our build system is Qmake, so it wouldn't be a problem if you worked with Qt before.
 
 ### Other tools ###
 [QtReports-View](https://github.com/PO-31/QtReports-View/) is a .jasper reports viewer based on QtReports.
 
 ### Repository structure ###
-		.travis/			Scripts of Travis CI testings
+		.travis/			Scripts for Travis CI
 		qtreports/			QtReports Library sources
 		qtreports/include/		Public header C and C++ header files of QtReports
 		qtreports-tests/		Test complex

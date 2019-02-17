@@ -36,6 +36,7 @@ fi
 sudo make install
 
 if [ "$BUILD_TYPE" = "coverage" ]; then	
+	source "$TRAVIS_BUILD_DIR/.travis/linux/badge.sh"
 	cd "$TRAVIS_BUILD_DIR/qtreports-tests"
 	qmake -spec ${USING_QT_MKSPEC} "CONFIG+=${BUILD_TYPE}" qtreports-tests.pro
 	make -j $(nproc)
@@ -56,6 +57,8 @@ if [ "$BUILD_TYPE" = "coverage" ]; then
 	cd "$TRAVIS_BUILD_DIR"
 	git clone  -b gh-pages https://github.com/PO-31/QtReports ../gh_pages
 	rm -r ../gh_pages/${TRAVIS_BRANCH}
+	echo "Coverage.info file"
+	cat coverage.info
 	genhtml coverage.info --output-directory ../gh_pages/${TRAVIS_BRANCH}
 	cd ../gh_pages
 	git config --global user.name "travis"
