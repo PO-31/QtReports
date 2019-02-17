@@ -14,7 +14,10 @@ before_install:
 
 install:
   - source .travis/${TRAVIS_OS_NAME}/install.sh
-    
+
+before_script:
+  - source version.sh
+
 script:
   - source .travis/${TRAVIS_OS_NAME}/building.sh
   

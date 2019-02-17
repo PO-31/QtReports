@@ -1,6 +1,6 @@
 #!/bin/bash
 
-source "$TRAVIS_BUILD_DIR/version.sh"
+echo "Version: $QTREPORTS_VERSION"
 
 echo
 echo "Clone repository and update doc"
