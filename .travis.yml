@@ -4,36 +4,50 @@ branches:
   only:
     - master
 
-matrix:
+before_install:
+    - source .travis/${TRAVIS_OS_NAME}/before_install.sh
+
+install:
+    - source .travis/${TRAVIS_OS_NAME}/install.sh
+
+jobs:
   include:
-   - os: linux
+    - stage: "Build"
+      os: linux
+      dist: xenial
+      sudo: required
+      env: BUILD_TYPE=release
+      script:
+        - source .travis/${TRAVIS_OS_NAME}/building.sh
+      compiler:
+        - clang
+        - gcc
+      cache:
+          apt: true
+          directories:
+            - $HOME/.cache/pip
+            - $HOME/.cache/http
+            - /home/travis/.cache/pip
+            - /home/travis/.cache/pip/http
+ 
+ 
+jobs:
+    include:
+      - stage: "Deploy"
+        os: linux
         dist: xenial
         sudo: required
-        before_install:
-            - source .travis/${TRAVIS_OS_NAME}/before_install.sh
-        install:
-            - source .travis/${TRAVIS_OS_NAME}/install.sh
-        cache:
-            apt: true
-            directories:
-                - $HOME/.cache/pip
-                - $HOME/.cache/http
-                - /home/travis/.cache/pip
-                - /home/travis/.cache/pip/http
-      - compiler: clang
-          - env: BUILD_TYPE=release
-            script:
-                - source .travis/${TRAVIS_OS_NAME}/building.sh
-      - compiler: gcc
-          - env: BUILD_TYPE=release
-                script:
-                    - source .travis/${TRAVIS_OS_NAME}/building.sh
-          - env: BUILD_TYPE=coverage
-                services:
-                    - xvfb
-                script:
-                    - source .travis/${TRAVIS_OS_NAME}/building.sh
-                    - source .travis/${TRAVIS_OS_NAME}/coverage.sh
-          - env: BUILD_TYPE=doxygen
-                script:
-                    - source .travis/${TRAVIS_OS_NAME}/doxygen.sh
+        compiler: gcc
+        env: BUILD_TYPE=coverage
+        services:
+          - xvfb
+        script:
+          - source .travis/${TRAVIS_OS_NAME}/building.sh
+          - source .travis/${TRAVIS_OS_NAME}/coverage.sh        
+      - env: BUILD_TYPE=doxygen
+        branches:
+            only:
+              - master
+        script:
+          - source .travis/${TRAVIS_OS_NAME}/doxygen.sh
+          
