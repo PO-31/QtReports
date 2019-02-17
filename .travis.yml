@@ -28,7 +28,7 @@ matrix:
               - /home/travis/.cache/pip/http
         compiler:
           - clang
-      - compiler:        
+        compiler:        
           - gcc
       - stage: "Deploy"
         os: linux
