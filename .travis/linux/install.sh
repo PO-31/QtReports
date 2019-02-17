@@ -5,7 +5,7 @@ packages_list='qt512-meta-minimal qt512tools libgles2-mesa-dev libgl1-mesa-dev'
 if [ "$BUILD_TYPE" = "doxygen" ]; then 
 	packages_list+=' doxygen'
 elif [ "$BUILD_TYPE" = "coverage" ]; then
-	# packages_list+=' libqt5sql5-sqlite'
+	packages_list+=' ' #' libqt5sql5-sqlite'
 fi
 sudo apt-get install -y $packages_list
 
