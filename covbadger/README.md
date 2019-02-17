@@ -1,0 +1,2 @@
+There is copy of covbadger originally created by [imsky](https://github.com/imsky) and changed by [drclaws](https://github.com/drclaws).
+The copy is kept here in case of deleting [original](https://github.com/imsky/covbadger) and/or [forked](https://github.com/drclaws/covbadger) repos for futher operation.
