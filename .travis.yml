@@ -1,32 +1,33 @@
 language: cpp
 
-branches:
-  only:
-    - master
+sudo: required
 
+branches:
+    only:
+      - master
+
+env:
+  - BUILD_TYPE=release
+
+cache:
+    apt: true
+    directories:
+      - /opt/qt512/
+              
 before_install:
-    - source .travis/${TRAVIS_OS_NAME}/before_install.sh
+  - source .travis/${TRAVIS_OS_NAME}/before_install.sh
 
 install:
-    - source .travis/${TRAVIS_OS_NAME}/install.sh
-
+  - source .travis/${TRAVIS_OS_NAME}/install.sh
+    
+script:
+  - source .travis/${TRAVIS_OS_NAME}/building.sh
+  
 jobs:
     include:
       - stage: "Build"
         os: linux
         dist: xenial
-        sudo: required
-        env:
-          - BUILD_TYPE=release
-        script:
-          - source .travis/${TRAVIS_OS_NAME}/building.sh
-        cache:
-            apt: true
-            directories:
-              - $HOME/.cache/pip
-              - $HOME/.cache/http
-              - /home/travis/.cache/pip
-              - /home/travis/.cache/pip/http
         compiler: clang
       - compiler: gcc
           
