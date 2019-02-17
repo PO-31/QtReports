@@ -2,7 +2,7 @@
 
 packages_list=''
 if [ "${CC}" = "clang" ]; then
-	packages_list='qt512-meta-minimal qt512tools'
+	packages_list='qt512-meta-minimal qt512tools libgles2-mesa libgles2-mesa-dev'
 else
 	packages_list='qt5-default qttools5-dev-tools'
 fi
