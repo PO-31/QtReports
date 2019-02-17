@@ -29,19 +29,22 @@ jobs:
         os: linux
         dist: xenial
         compiler: clang
-      - compiler: gcc
+      - os: linux
+        dist: xenial 
+        compiler: gcc
           
       - stage: "Post-Build"
         os: linux
         dist: xenial
-        sudo: required
         compiler: gcc
         env: BUILD_TYPE=coverage
         services: xvfb
         script:
           - source .travis/${TRAVIS_OS_NAME}/building.sh
           - source .travis/${TRAVIS_OS_NAME}/coverage.sh        
-      - env: BUILD_TYPE=doxygen
+      - os: linux
+        dist: xenial
+        env: BUILD_TYPE=doxygen
         services:
         branches:
             only:
