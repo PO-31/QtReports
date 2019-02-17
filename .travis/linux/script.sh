@@ -58,7 +58,7 @@ if [ "$BUILD_TYPE" = "coverage" ]; then
 	git clone  -b gh-pages https://github.com/PO-31/QtReports ../gh_pages
 	rm -r ../gh_pages/${TRAVIS_BRANCH}
 	echo "Coverage.info file"
-	cat coverage.info
+	lcov --summary coverage.info
 	genhtml coverage.info --output-directory ../gh_pages/${TRAVIS_BRANCH}
 	cd ../gh_pages
 	git config --global user.name "travis"
