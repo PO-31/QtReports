@@ -1,0 +1,393 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+
+<html lang="en">
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <title>LCOV - coverage.info - /opt/qt512/include/QtGui/qcolor.h</title>
+  <link rel="stylesheet" type="text/css" href="../../../../gcov.css">
+</head>
+
+<body>
+
+  <table width="100%" border=0 cellspacing=0 cellpadding=0>
+    <tr><td class="title">LCOV - code coverage report</td></tr>
+    <tr><td class="ruler"><img src="../../../../glass.png" width=3 height=3 alt=""></td></tr>
+
+    <tr>
+      <td width="100%">
+        <table cellpadding=1 border=0 width="100%">
+          <tr>
+            <td width="10%" class="headerItem">Current view:</td>
+            <td width="35%" class="headerValue"><a href="../../../../index.html">top level</a> - <a href="index.html">opt/qt512/include/QtGui</a> - qcolor.h<span style="font-size: 80%;"> (source / <a href="qcolor.h.func-sort-c.html">functions</a>)</span></td>
+            <td width="5%"></td>
+            <td width="15%"></td>
+            <td width="10%" class="headerCovTableHead">Hit</td>
+            <td width="10%" class="headerCovTableHead">Total</td>
+            <td width="15%" class="headerCovTableHead">Coverage</td>
+          </tr>
+          <tr>
+            <td class="headerItem">Test:</td>
+            <td class="headerValue">coverage.info</td>
+            <td></td>
+            <td class="headerItem">Lines:</td>
+            <td class="headerCovTableEntry">7</td>
+            <td class="headerCovTableEntry">7</td>
+            <td class="headerCovTableEntryHi">100.0 %</td>
+          </tr>
+          <tr>
+            <td class="headerItem">Date:</td>
+            <td class="headerValue">2019-02-17 07:51:23</td>
+            <td></td>
+            <td class="headerItem">Functions:</td>
+            <td class="headerCovTableEntry">3</td>
+            <td class="headerCovTableEntry">3</td>
+            <td class="headerCovTableEntryHi">100.0 %</td>
+          </tr>
+          <tr><td><img src="../../../../glass.png" width=3 height=3 alt=""></td></tr>
+        </table>
+      </td>
+    </tr>
+
+    <tr><td class="ruler"><img src="../../../../glass.png" width=3 height=3 alt=""></td></tr>
+  </table>
+
+  <table cellpadding=0 cellspacing=0 border=0>
+    <tr>
+      <td><br></td>
+    </tr>
+    <tr>
+      <td>
+<pre class="sourceHeading">          Line data    Source code</pre>
+<pre class="source">
+<a name="1"><span class="lineNum">       1 </span>            : /****************************************************************************</a>
+<a name="2"><span class="lineNum">       2 </span>            : **</a>
+<a name="3"><span class="lineNum">       3 </span>            : ** Copyright (C) 2016 The Qt Company Ltd.</a>
+<a name="4"><span class="lineNum">       4 </span>            : ** Contact: https://www.qt.io/licensing/</a>
+<a name="5"><span class="lineNum">       5 </span>            : **</a>
+<a name="6"><span class="lineNum">       6 </span>            : ** This file is part of the QtGui module of the Qt Toolkit.</a>
+<a name="7"><span class="lineNum">       7 </span>            : **</a>
+<a name="8"><span class="lineNum">       8 </span>            : ** $QT_BEGIN_LICENSE:LGPL$</a>
+<a name="9"><span class="lineNum">       9 </span>            : ** Commercial License Usage</a>
+<a name="10"><span class="lineNum">      10 </span>            : ** Licensees holding valid commercial Qt licenses may use this file in</a>
+<a name="11"><span class="lineNum">      11 </span>            : ** accordance with the commercial license agreement provided with the</a>
+<a name="12"><span class="lineNum">      12 </span>            : ** Software or, alternatively, in accordance with the terms contained in</a>
+<a name="13"><span class="lineNum">      13 </span>            : ** a written agreement between you and The Qt Company. For licensing terms</a>
+<a name="14"><span class="lineNum">      14 </span>            : ** and conditions see https://www.qt.io/terms-conditions. For further</a>
+<a name="15"><span class="lineNum">      15 </span>            : ** information use the contact form at https://www.qt.io/contact-us.</a>
+<a name="16"><span class="lineNum">      16 </span>            : **</a>
+<a name="17"><span class="lineNum">      17 </span>            : ** GNU Lesser General Public License Usage</a>
+<a name="18"><span class="lineNum">      18 </span>            : ** Alternatively, this file may be used under the terms of the GNU Lesser</a>
+<a name="19"><span class="lineNum">      19 </span>            : ** General Public License version 3 as published by the Free Software</a>
+<a name="20"><span class="lineNum">      20 </span>            : ** Foundation and appearing in the file LICENSE.LGPL3 included in the</a>
+<a name="21"><span class="lineNum">      21 </span>            : ** packaging of this file. Please review the following information to</a>
+<a name="22"><span class="lineNum">      22 </span>            : ** ensure the GNU Lesser General Public License version 3 requirements</a>
+<a name="23"><span class="lineNum">      23 </span>            : ** will be met: https://www.gnu.org/licenses/lgpl-3.0.html.</a>
+<a name="24"><span class="lineNum">      24 </span>            : **</a>
+<a name="25"><span class="lineNum">      25 </span>            : ** GNU General Public License Usage</a>
+<a name="26"><span class="lineNum">      26 </span>            : ** Alternatively, this file may be used under the terms of the GNU</a>
+<a name="27"><span class="lineNum">      27 </span>            : ** General Public License version 2.0 or (at your option) the GNU General</a>
+<a name="28"><span class="lineNum">      28 </span>            : ** Public license version 3 or any later version approved by the KDE Free</a>
+<a name="29"><span class="lineNum">      29 </span>            : ** Qt Foundation. The licenses are as published by the Free Software</a>
+<a name="30"><span class="lineNum">      30 </span>            : ** Foundation and appearing in the file LICENSE.GPL2 and LICENSE.GPL3</a>
+<a name="31"><span class="lineNum">      31 </span>            : ** included in the packaging of this file. Please review the following</a>
+<a name="32"><span class="lineNum">      32 </span>            : ** information to ensure the GNU General Public License requirements will</a>
+<a name="33"><span class="lineNum">      33 </span>            : ** be met: https://www.gnu.org/licenses/gpl-2.0.html and</a>
+<a name="34"><span class="lineNum">      34 </span>            : ** https://www.gnu.org/licenses/gpl-3.0.html.</a>
+<a name="35"><span class="lineNum">      35 </span>            : **</a>
+<a name="36"><span class="lineNum">      36 </span>            : ** $QT_END_LICENSE$</a>
+<a name="37"><span class="lineNum">      37 </span>            : **</a>
+<a name="38"><span class="lineNum">      38 </span>            : ****************************************************************************/</a>
+<a name="39"><span class="lineNum">      39 </span>            : </a>
+<a name="40"><span class="lineNum">      40 </span>            : #ifndef QCOLOR_H</a>
+<a name="41"><span class="lineNum">      41 </span>            : #define QCOLOR_H</a>
+<a name="42"><span class="lineNum">      42 </span>            : </a>
+<a name="43"><span class="lineNum">      43 </span>            : #include &lt;QtGui/qtguiglobal.h&gt;</a>
+<a name="44"><span class="lineNum">      44 </span>            : #include &lt;QtGui/qrgb.h&gt;</a>
+<a name="45"><span class="lineNum">      45 </span>            : #include &lt;QtCore/qnamespace.h&gt;</a>
+<a name="46"><span class="lineNum">      46 </span>            : #include &lt;QtCore/qstringlist.h&gt;</a>
+<a name="47"><span class="lineNum">      47 </span>            : #include &lt;QtGui/qrgba64.h&gt;</a>
+<a name="48"><span class="lineNum">      48 </span>            : </a>
+<a name="49"><span class="lineNum">      49 </span>            : QT_BEGIN_NAMESPACE</a>
+<a name="50"><span class="lineNum">      50 </span>            : </a>
+<a name="51"><span class="lineNum">      51 </span>            : </a>
+<a name="52"><span class="lineNum">      52 </span>            : class QColor;</a>
+<a name="53"><span class="lineNum">      53 </span>            : class QColormap;</a>
+<a name="54"><span class="lineNum">      54 </span>            : class QVariant;</a>
+<a name="55"><span class="lineNum">      55 </span>            : </a>
+<a name="56"><span class="lineNum">      56 </span>            : #ifndef QT_NO_DEBUG_STREAM</a>
+<a name="57"><span class="lineNum">      57 </span>            : Q_GUI_EXPORT QDebug operator&lt;&lt;(QDebug, const QColor &amp;);</a>
+<a name="58"><span class="lineNum">      58 </span>            : #endif</a>
+<a name="59"><span class="lineNum">      59 </span>            : #ifndef QT_NO_DATASTREAM</a>
+<a name="60"><span class="lineNum">      60 </span>            : Q_GUI_EXPORT QDataStream &amp;operator&lt;&lt;(QDataStream &amp;, const QColor &amp;);</a>
+<a name="61"><span class="lineNum">      61 </span>            : Q_GUI_EXPORT QDataStream &amp;operator&gt;&gt;(QDataStream &amp;, QColor &amp;);</a>
+<a name="62"><span class="lineNum">      62 </span>            : #endif</a>
+<a name="63"><span class="lineNum">      63 </span>            : </a>
+<a name="64"><span class="lineNum">      64 </span>            : class Q_GUI_EXPORT QColor</a>
+<a name="65"><span class="lineNum">      65 </span>            : {</a>
+<a name="66"><span class="lineNum">      66 </span>            : public:</a>
+<a name="67"><span class="lineNum">      67 </span>            :     enum Spec { Invalid, Rgb, Hsv, Cmyk, Hsl };</a>
+<a name="68"><span class="lineNum">      68 </span>            :     enum NameFormat { HexRgb, HexArgb };</a>
+<a name="69"><span class="lineNum">      69 </span>            : </a>
+<a name="70"><span class="lineNum">      70 </span>            :     inline QColor() Q_DECL_NOTHROW;</a>
+<a name="71"><span class="lineNum">      71 </span>            :     QColor(Qt::GlobalColor color) Q_DECL_NOTHROW;</a>
+<a name="72"><span class="lineNum">      72 </span>            :     inline QColor(int r, int g, int b, int a = 255);</a>
+<a name="73"><span class="lineNum">      73 </span>            :     QColor(QRgb rgb) Q_DECL_NOTHROW;</a>
+<a name="74"><span class="lineNum">      74 </span>            :     QColor(QRgba64 rgba64) Q_DECL_NOTHROW;</a>
+<a name="75"><span class="lineNum">      75 </span>            : #if QT_STRINGVIEW_LEVEL &lt; 2</a>
+<a name="76"><span class="lineNum">      76 </span>            :     inline QColor(const QString&amp; name);</a>
+<a name="77"><span class="lineNum">      77 </span>            : #endif</a>
+<a name="78"><span class="lineNum">      78 </span>            :     explicit inline QColor(QStringView name);</a>
+<a name="79"><span class="lineNum">      79 </span>            :     inline QColor(const char *aname) : QColor(QLatin1String(aname)) {}</a>
+<a name="80"><span class="lineNum">      80 </span>            :     inline QColor(QLatin1String name);</a>
+<a name="81"><span class="lineNum">      81 </span>            :     QColor(Spec spec) Q_DECL_NOTHROW;</a>
+<a name="82"><span class="lineNum">      82 </span>            : </a>
+<a name="83"><span class="lineNum">      83 </span>            : #if QT_VERSION &lt; QT_VERSION_CHECK(6,0,0)</a>
+<a name="84"><span class="lineNum">      84 </span>            :     inline QColor(const QColor &amp;color) Q_DECL_NOTHROW; // ### Qt 6: remove all of these, the trivial ones are fine.</a>
+<a name="85"><span class="lineNum">      85 </span>            : # ifdef Q_COMPILER_RVALUE_REFS</a>
+<a name="86"><span class="lineNum">      86 </span>            :     QColor(QColor &amp;&amp;other) Q_DECL_NOTHROW : cspec(other.cspec), ct(other.ct) {}</a>
+<a name="87"><span class="lineNum">      87 </span>            :     QColor &amp;operator=(QColor &amp;&amp;other) Q_DECL_NOTHROW</a>
+<a name="88"><span class="lineNum">      88 </span>            :     { cspec = other.cspec; ct = other.ct; return *this; }</a>
+<a name="89"><span class="lineNum">      89 </span>            : # endif</a>
+<a name="90"><span class="lineNum">      90 </span>            :     QColor &amp;operator=(const QColor &amp;) Q_DECL_NOTHROW;</a>
+<a name="91"><span class="lineNum">      91 </span>            : #endif // Qt &lt; 6</a>
+<a name="92"><span class="lineNum">      92 </span>            : </a>
+<a name="93"><span class="lineNum">      93 </span>            :     QColor &amp;operator=(Qt::GlobalColor color) Q_DECL_NOTHROW;</a>
+<a name="94"><span class="lineNum">      94 </span>            : </a>
+<a name="95"><span class="lineNum">      95 </span>            :     bool isValid() const Q_DECL_NOTHROW;</a>
+<a name="96"><span class="lineNum">      96 </span>            : </a>
+<a name="97"><span class="lineNum">      97 </span>            :     // ### Qt 6: merge overloads</a>
+<a name="98"><span class="lineNum">      98 </span>            :     QString name() const;</a>
+<a name="99"><span class="lineNum">      99 </span>            :     QString name(NameFormat format) const;</a>
+<a name="100"><span class="lineNum">     100 </span>            : </a>
+<a name="101"><span class="lineNum">     101 </span>            : #if QT_STRINGVIEW_LEVEL &lt; 2</a>
+<a name="102"><span class="lineNum">     102 </span>            :     void setNamedColor(const QString&amp; name);</a>
+<a name="103"><span class="lineNum">     103 </span>            : #endif</a>
+<a name="104"><span class="lineNum">     104 </span>            :     void setNamedColor(QStringView name);</a>
+<a name="105"><span class="lineNum">     105 </span>            :     void setNamedColor(QLatin1String name);</a>
+<a name="106"><span class="lineNum">     106 </span>            : </a>
+<a name="107"><span class="lineNum">     107 </span>            :     static QStringList colorNames();</a>
+<a name="108"><span class="lineNum">     108 </span>            : </a>
+<a name="109"><span class="lineNum">     109 </span>            :     inline Spec spec() const Q_DECL_NOTHROW</a>
+<a name="110"><span class="lineNum">     110 </span>            :     { return cspec; }</a>
+<a name="111"><span class="lineNum">     111 </span>            : </a>
+<a name="112"><span class="lineNum">     112 </span>            :     int alpha() const Q_DECL_NOTHROW;</a>
+<a name="113"><span class="lineNum">     113 </span>            :     void setAlpha(int alpha);</a>
+<a name="114"><span class="lineNum">     114 </span>            : </a>
+<a name="115"><span class="lineNum">     115 </span>            :     qreal alphaF() const Q_DECL_NOTHROW;</a>
+<a name="116"><span class="lineNum">     116 </span>            :     void setAlphaF(qreal alpha);</a>
+<a name="117"><span class="lineNum">     117 </span>            : </a>
+<a name="118"><span class="lineNum">     118 </span>            :     int red() const Q_DECL_NOTHROW;</a>
+<a name="119"><span class="lineNum">     119 </span>            :     int green() const Q_DECL_NOTHROW;</a>
+<a name="120"><span class="lineNum">     120 </span>            :     int blue() const Q_DECL_NOTHROW;</a>
+<a name="121"><span class="lineNum">     121 </span>            :     void setRed(int red);</a>
+<a name="122"><span class="lineNum">     122 </span>            :     void setGreen(int green);</a>
+<a name="123"><span class="lineNum">     123 </span>            :     void setBlue(int blue);</a>
+<a name="124"><span class="lineNum">     124 </span>            : </a>
+<a name="125"><span class="lineNum">     125 </span>            :     qreal redF() const Q_DECL_NOTHROW;</a>
+<a name="126"><span class="lineNum">     126 </span>            :     qreal greenF() const Q_DECL_NOTHROW;</a>
+<a name="127"><span class="lineNum">     127 </span>            :     qreal blueF() const Q_DECL_NOTHROW;</a>
+<a name="128"><span class="lineNum">     128 </span>            :     void setRedF(qreal red);</a>
+<a name="129"><span class="lineNum">     129 </span>            :     void setGreenF(qreal green);</a>
+<a name="130"><span class="lineNum">     130 </span>            :     void setBlueF(qreal blue);</a>
+<a name="131"><span class="lineNum">     131 </span>            : </a>
+<a name="132"><span class="lineNum">     132 </span>            :     void getRgb(int *r, int *g, int *b, int *a = nullptr) const;</a>
+<a name="133"><span class="lineNum">     133 </span>            :     void setRgb(int r, int g, int b, int a = 255);</a>
+<a name="134"><span class="lineNum">     134 </span>            : </a>
+<a name="135"><span class="lineNum">     135 </span>            :     void getRgbF(qreal *r, qreal *g, qreal *b, qreal *a = nullptr) const;</a>
+<a name="136"><span class="lineNum">     136 </span>            :     void setRgbF(qreal r, qreal g, qreal b, qreal a = 1.0);</a>
+<a name="137"><span class="lineNum">     137 </span>            : </a>
+<a name="138"><span class="lineNum">     138 </span>            :     QRgba64 rgba64() const Q_DECL_NOTHROW;</a>
+<a name="139"><span class="lineNum">     139 </span>            :     void setRgba64(QRgba64 rgba) Q_DECL_NOTHROW;</a>
+<a name="140"><span class="lineNum">     140 </span>            : </a>
+<a name="141"><span class="lineNum">     141 </span>            :     QRgb rgba() const Q_DECL_NOTHROW;</a>
+<a name="142"><span class="lineNum">     142 </span>            :     void setRgba(QRgb rgba) Q_DECL_NOTHROW;</a>
+<a name="143"><span class="lineNum">     143 </span>            : </a>
+<a name="144"><span class="lineNum">     144 </span>            :     QRgb rgb() const Q_DECL_NOTHROW;</a>
+<a name="145"><span class="lineNum">     145 </span>            :     void setRgb(QRgb rgb) Q_DECL_NOTHROW;</a>
+<a name="146"><span class="lineNum">     146 </span>            : </a>
+<a name="147"><span class="lineNum">     147 </span>            :     int hue() const Q_DECL_NOTHROW; // 0 &lt;= hue &lt; 360</a>
+<a name="148"><span class="lineNum">     148 </span>            :     int saturation() const Q_DECL_NOTHROW;</a>
+<a name="149"><span class="lineNum">     149 </span>            :     int hsvHue() const Q_DECL_NOTHROW; // 0 &lt;= hue &lt; 360</a>
+<a name="150"><span class="lineNum">     150 </span>            :     int hsvSaturation() const Q_DECL_NOTHROW;</a>
+<a name="151"><span class="lineNum">     151 </span>            :     int value() const Q_DECL_NOTHROW;</a>
+<a name="152"><span class="lineNum">     152 </span>            : </a>
+<a name="153"><span class="lineNum">     153 </span>            :     qreal hueF() const Q_DECL_NOTHROW; // 0.0 &lt;= hueF &lt; 360.0</a>
+<a name="154"><span class="lineNum">     154 </span>            :     qreal saturationF() const Q_DECL_NOTHROW;</a>
+<a name="155"><span class="lineNum">     155 </span>            :     qreal hsvHueF() const Q_DECL_NOTHROW; // 0.0 &lt;= hueF &lt; 360.0</a>
+<a name="156"><span class="lineNum">     156 </span>            :     qreal hsvSaturationF() const Q_DECL_NOTHROW;</a>
+<a name="157"><span class="lineNum">     157 </span>            :     qreal valueF() const Q_DECL_NOTHROW;</a>
+<a name="158"><span class="lineNum">     158 </span>            : </a>
+<a name="159"><span class="lineNum">     159 </span>            :     void getHsv(int *h, int *s, int *v, int *a = nullptr) const;</a>
+<a name="160"><span class="lineNum">     160 </span>            :     void setHsv(int h, int s, int v, int a = 255);</a>
+<a name="161"><span class="lineNum">     161 </span>            : </a>
+<a name="162"><span class="lineNum">     162 </span>            :     void getHsvF(qreal *h, qreal *s, qreal *v, qreal *a = nullptr) const;</a>
+<a name="163"><span class="lineNum">     163 </span>            :     void setHsvF(qreal h, qreal s, qreal v, qreal a = 1.0);</a>
+<a name="164"><span class="lineNum">     164 </span>            : </a>
+<a name="165"><span class="lineNum">     165 </span>            :     int cyan() const Q_DECL_NOTHROW;</a>
+<a name="166"><span class="lineNum">     166 </span>            :     int magenta() const Q_DECL_NOTHROW;</a>
+<a name="167"><span class="lineNum">     167 </span>            :     int yellow() const Q_DECL_NOTHROW;</a>
+<a name="168"><span class="lineNum">     168 </span>            :     int black() const Q_DECL_NOTHROW;</a>
+<a name="169"><span class="lineNum">     169 </span>            : </a>
+<a name="170"><span class="lineNum">     170 </span>            :     qreal cyanF() const Q_DECL_NOTHROW;</a>
+<a name="171"><span class="lineNum">     171 </span>            :     qreal magentaF() const Q_DECL_NOTHROW;</a>
+<a name="172"><span class="lineNum">     172 </span>            :     qreal yellowF() const Q_DECL_NOTHROW;</a>
+<a name="173"><span class="lineNum">     173 </span>            :     qreal blackF() const Q_DECL_NOTHROW;</a>
+<a name="174"><span class="lineNum">     174 </span>            : </a>
+<a name="175"><span class="lineNum">     175 </span>            :     void getCmyk(int *c, int *m, int *y, int *k, int *a = nullptr);</a>
+<a name="176"><span class="lineNum">     176 </span>            :     void setCmyk(int c, int m, int y, int k, int a = 255);</a>
+<a name="177"><span class="lineNum">     177 </span>            : </a>
+<a name="178"><span class="lineNum">     178 </span>            :     void getCmykF(qreal *c, qreal *m, qreal *y, qreal *k, qreal *a = nullptr);</a>
+<a name="179"><span class="lineNum">     179 </span>            :     void setCmykF(qreal c, qreal m, qreal y, qreal k, qreal a = 1.0);</a>
+<a name="180"><span class="lineNum">     180 </span>            : </a>
+<a name="181"><span class="lineNum">     181 </span>            :     int hslHue() const Q_DECL_NOTHROW; // 0 &lt;= hue &lt; 360</a>
+<a name="182"><span class="lineNum">     182 </span>            :     int hslSaturation() const Q_DECL_NOTHROW;</a>
+<a name="183"><span class="lineNum">     183 </span>            :     int lightness() const Q_DECL_NOTHROW;</a>
+<a name="184"><span class="lineNum">     184 </span>            : </a>
+<a name="185"><span class="lineNum">     185 </span>            :     qreal hslHueF() const Q_DECL_NOTHROW; // 0.0 &lt;= hueF &lt; 360.0</a>
+<a name="186"><span class="lineNum">     186 </span>            :     qreal hslSaturationF() const Q_DECL_NOTHROW;</a>
+<a name="187"><span class="lineNum">     187 </span>            :     qreal lightnessF() const Q_DECL_NOTHROW;</a>
+<a name="188"><span class="lineNum">     188 </span>            : </a>
+<a name="189"><span class="lineNum">     189 </span>            :     void getHsl(int *h, int *s, int *l, int *a = nullptr) const;</a>
+<a name="190"><span class="lineNum">     190 </span>            :     void setHsl(int h, int s, int l, int a = 255);</a>
+<a name="191"><span class="lineNum">     191 </span>            : </a>
+<a name="192"><span class="lineNum">     192 </span>            :     void getHslF(qreal *h, qreal *s, qreal *l, qreal *a = nullptr) const;</a>
+<a name="193"><span class="lineNum">     193 </span>            :     void setHslF(qreal h, qreal s, qreal l, qreal a = 1.0);</a>
+<a name="194"><span class="lineNum">     194 </span>            : </a>
+<a name="195"><span class="lineNum">     195 </span>            :     QColor toRgb() const Q_DECL_NOTHROW;</a>
+<a name="196"><span class="lineNum">     196 </span>            :     QColor toHsv() const Q_DECL_NOTHROW;</a>
+<a name="197"><span class="lineNum">     197 </span>            :     QColor toCmyk() const Q_DECL_NOTHROW;</a>
+<a name="198"><span class="lineNum">     198 </span>            :     QColor toHsl() const Q_DECL_NOTHROW;</a>
+<a name="199"><span class="lineNum">     199 </span>            : </a>
+<a name="200"><span class="lineNum">     200 </span>            :     Q_REQUIRED_RESULT QColor convertTo(Spec colorSpec) const Q_DECL_NOTHROW;</a>
+<a name="201"><span class="lineNum">     201 </span>            : </a>
+<a name="202"><span class="lineNum">     202 </span>            :     static QColor fromRgb(QRgb rgb) Q_DECL_NOTHROW;</a>
+<a name="203"><span class="lineNum">     203 </span>            :     static QColor fromRgba(QRgb rgba) Q_DECL_NOTHROW;</a>
+<a name="204"><span class="lineNum">     204 </span>            : </a>
+<a name="205"><span class="lineNum">     205 </span>            :     static QColor fromRgb(int r, int g, int b, int a = 255);</a>
+<a name="206"><span class="lineNum">     206 </span>            :     static QColor fromRgbF(qreal r, qreal g, qreal b, qreal a = 1.0);</a>
+<a name="207"><span class="lineNum">     207 </span>            : </a>
+<a name="208"><span class="lineNum">     208 </span>            :     static QColor fromRgba64(ushort r, ushort g, ushort b, ushort a = USHRT_MAX) Q_DECL_NOTHROW;</a>
+<a name="209"><span class="lineNum">     209 </span>            :     static QColor fromRgba64(QRgba64 rgba) Q_DECL_NOTHROW;</a>
+<a name="210"><span class="lineNum">     210 </span>            : </a>
+<a name="211"><span class="lineNum">     211 </span>            :     static QColor fromHsv(int h, int s, int v, int a = 255);</a>
+<a name="212"><span class="lineNum">     212 </span>            :     static QColor fromHsvF(qreal h, qreal s, qreal v, qreal a = 1.0);</a>
+<a name="213"><span class="lineNum">     213 </span>            : </a>
+<a name="214"><span class="lineNum">     214 </span>            :     static QColor fromCmyk(int c, int m, int y, int k, int a = 255);</a>
+<a name="215"><span class="lineNum">     215 </span>            :     static QColor fromCmykF(qreal c, qreal m, qreal y, qreal k, qreal a = 1.0);</a>
+<a name="216"><span class="lineNum">     216 </span>            : </a>
+<a name="217"><span class="lineNum">     217 </span>            :     static QColor fromHsl(int h, int s, int l, int a = 255);</a>
+<a name="218"><span class="lineNum">     218 </span>            :     static QColor fromHslF(qreal h, qreal s, qreal l, qreal a = 1.0);</a>
+<a name="219"><span class="lineNum">     219 </span>            : </a>
+<a name="220"><span class="lineNum">     220 </span>            :     Q_REQUIRED_RESULT QColor light(int f = 150) const Q_DECL_NOTHROW;</a>
+<a name="221"><span class="lineNum">     221 </span>            :     Q_REQUIRED_RESULT QColor lighter(int f = 150) const Q_DECL_NOTHROW;</a>
+<a name="222"><span class="lineNum">     222 </span>            :     Q_REQUIRED_RESULT QColor dark(int f = 200) const Q_DECL_NOTHROW;</a>
+<a name="223"><span class="lineNum">     223 </span>            :     Q_REQUIRED_RESULT QColor darker(int f = 200) const Q_DECL_NOTHROW;</a>
+<a name="224"><span class="lineNum">     224 </span>            : </a>
+<a name="225"><span class="lineNum">     225 </span>            :     bool operator==(const QColor &amp;c) const Q_DECL_NOTHROW;</a>
+<a name="226"><span class="lineNum">     226 </span>            :     bool operator!=(const QColor &amp;c) const Q_DECL_NOTHROW;</a>
+<a name="227"><span class="lineNum">     227 </span>            : </a>
+<a name="228"><span class="lineNum">     228 </span>            :     operator QVariant() const;</a>
+<a name="229"><span class="lineNum">     229 </span>            : </a>
+<a name="230"><span class="lineNum">     230 </span>            : #if QT_STRINGVIEW_LEVEL &lt; 2</a>
+<a name="231"><span class="lineNum">     231 </span>            :     static bool isValidColor(const QString &amp;name);</a>
+<a name="232"><span class="lineNum">     232 </span>            : #endif</a>
+<a name="233"><span class="lineNum">     233 </span>            :     static bool isValidColor(QStringView) Q_DECL_NOTHROW;</a>
+<a name="234"><span class="lineNum">     234 </span>            :     static bool isValidColor(QLatin1String) Q_DECL_NOTHROW;</a>
+<a name="235"><span class="lineNum">     235 </span>            : </a>
+<a name="236"><span class="lineNum">     236 </span>            : private:</a>
+<a name="237"><span class="lineNum">     237 </span>            : </a>
+<a name="238"><span class="lineNum">     238 </span>            :     void invalidate() Q_DECL_NOTHROW;</a>
+<a name="239"><span class="lineNum">     239 </span>            :     template &lt;typename String&gt;</a>
+<a name="240"><span class="lineNum">     240 </span>            :     bool setColorFromString(String name);</a>
+<a name="241"><span class="lineNum">     241 </span>            : </a>
+<a name="242"><span class="lineNum">     242 </span>            :     Spec cspec;</a>
+<a name="243"><span class="lineNum">     243 </span>            :     union {</a>
+<a name="244"><span class="lineNum">     244 </span>            :         struct {</a>
+<a name="245"><span class="lineNum">     245 </span>            :             ushort alpha;</a>
+<a name="246"><span class="lineNum">     246 </span>            :             ushort red;</a>
+<a name="247"><span class="lineNum">     247 </span>            :             ushort green;</a>
+<a name="248"><span class="lineNum">     248 </span>            :             ushort blue;</a>
+<a name="249"><span class="lineNum">     249 </span>            :             ushort pad;</a>
+<a name="250"><span class="lineNum">     250 </span>            :         } argb;</a>
+<a name="251"><span class="lineNum">     251 </span>            :         struct {</a>
+<a name="252"><span class="lineNum">     252 </span>            :             ushort alpha;</a>
+<a name="253"><span class="lineNum">     253 </span>            :             ushort hue;</a>
+<a name="254"><span class="lineNum">     254 </span>            :             ushort saturation;</a>
+<a name="255"><span class="lineNum">     255 </span>            :             ushort value;</a>
+<a name="256"><span class="lineNum">     256 </span>            :             ushort pad;</a>
+<a name="257"><span class="lineNum">     257 </span>            :         } ahsv;</a>
+<a name="258"><span class="lineNum">     258 </span>            :         struct {</a>
+<a name="259"><span class="lineNum">     259 </span>            :             ushort alpha;</a>
+<a name="260"><span class="lineNum">     260 </span>            :             ushort cyan;</a>
+<a name="261"><span class="lineNum">     261 </span>            :             ushort magenta;</a>
+<a name="262"><span class="lineNum">     262 </span>            :             ushort yellow;</a>
+<a name="263"><span class="lineNum">     263 </span>            :             ushort black;</a>
+<a name="264"><span class="lineNum">     264 </span>            :         } acmyk;</a>
+<a name="265"><span class="lineNum">     265 </span>            :         struct {</a>
+<a name="266"><span class="lineNum">     266 </span>            :             ushort alpha;</a>
+<a name="267"><span class="lineNum">     267 </span>            :             ushort hue;</a>
+<a name="268"><span class="lineNum">     268 </span>            :             ushort saturation;</a>
+<a name="269"><span class="lineNum">     269 </span>            :             ushort lightness;</a>
+<a name="270"><span class="lineNum">     270 </span>            :             ushort pad;</a>
+<a name="271"><span class="lineNum">     271 </span>            :         } ahsl;</a>
+<a name="272"><span class="lineNum">     272 </span>            :         ushort array[5];</a>
+<a name="273"><span class="lineNum">     273 </span>            :     } ct;</a>
+<a name="274"><span class="lineNum">     274 </span>            : </a>
+<a name="275"><span class="lineNum">     275 </span>            :     friend class QColormap;</a>
+<a name="276"><span class="lineNum">     276 </span>            : #ifndef QT_NO_DATASTREAM</a>
+<a name="277"><span class="lineNum">     277 </span>            :     friend Q_GUI_EXPORT QDataStream &amp;operator&lt;&lt;(QDataStream &amp;, const QColor &amp;);</a>
+<a name="278"><span class="lineNum">     278 </span>            :     friend Q_GUI_EXPORT QDataStream &amp;operator&gt;&gt;(QDataStream &amp;, QColor &amp;);</a>
+<a name="279"><span class="lineNum">     279 </span>            : #endif</a>
+<a name="280"><span class="lineNum">     280 </span>            : };</a>
+<a name="281"><span class="lineNum">     281 </span>            : Q_DECLARE_TYPEINFO(QColor, QT_VERSION &gt;= QT_VERSION_CHECK(6,0,0) ? Q_MOVABLE_TYPE : Q_RELOCATABLE_TYPE);</a>
+<a name="282"><span class="lineNum">     282 </span>            : </a>
+<a name="283"><span class="lineNum">     283 </span><span class="lineCov">         28 : inline QColor::QColor() Q_DECL_NOTHROW</span></a>
+<a name="284"><span class="lineNum">     284 </span><span class="lineCov">         28 : { invalidate(); }</span></a>
+<a name="285"><span class="lineNum">     285 </span>            : </a>
+<a name="286"><span class="lineNum">     286 </span>            : inline QColor::QColor(int r, int g, int b, int a)</a>
+<a name="287"><span class="lineNum">     287 </span>            : { setRgb(r, g, b, a); }</a>
+<a name="288"><span class="lineNum">     288 </span>            : </a>
+<a name="289"><span class="lineNum">     289 </span>            : inline QColor::QColor(QLatin1String aname)</a>
+<a name="290"><span class="lineNum">     290 </span>            : { setNamedColor(aname); }</a>
+<a name="291"><span class="lineNum">     291 </span>            : </a>
+<a name="292"><span class="lineNum">     292 </span>            : inline QColor::QColor(QStringView aname)</a>
+<a name="293"><span class="lineNum">     293 </span>            : { setNamedColor(aname); }</a>
+<a name="294"><span class="lineNum">     294 </span>            : </a>
+<a name="295"><span class="lineNum">     295 </span>            : #if QT_STRINGVIEW_LEVEL &lt; 2</a>
+<a name="296"><span class="lineNum">     296 </span><span class="lineCov">          7 : inline QColor::QColor(const QString&amp; aname)</span></a>
+<a name="297"><span class="lineNum">     297 </span><span class="lineCov">          7 : { setNamedColor(aname); }</span></a>
+<a name="298"><span class="lineNum">     298 </span>            : #endif</a>
+<a name="299"><span class="lineNum">     299 </span>            : </a>
+<a name="300"><span class="lineNum">     300 </span>            : #if QT_VERSION &lt; QT_VERSION_CHECK(6,0,0)</a>
+<a name="301"><span class="lineNum">     301 </span><span class="lineCov">          2 : inline QColor::QColor(const QColor &amp;acolor) Q_DECL_NOTHROW</span></a>
+<a name="302"><span class="lineNum">     302 </span><span class="lineCov">          2 :     : cspec(acolor.cspec)</span></a>
+<a name="303"><span class="lineNum">     303 </span><span class="lineCov">          2 : { ct.argb = acolor.ct.argb; }</span></a>
+<a name="304"><span class="lineNum">     304 </span>            : #endif</a>
+<a name="305"><span class="lineNum">     305 </span>            : </a>
+<a name="306"><span class="lineNum">     306 </span>            : inline bool QColor::isValid() const Q_DECL_NOTHROW</a>
+<a name="307"><span class="lineNum">     307 </span>            : { return cspec != Invalid; }</a>
+<a name="308"><span class="lineNum">     308 </span>            : </a>
+<a name="309"><span class="lineNum">     309 </span>            : inline QColor QColor::lighter(int f) const Q_DECL_NOTHROW</a>
+<a name="310"><span class="lineNum">     310 </span>            : { return light(f); }</a>
+<a name="311"><span class="lineNum">     311 </span>            : </a>
+<a name="312"><span class="lineNum">     312 </span>            : inline QColor QColor::darker(int f) const Q_DECL_NOTHROW</a>
+<a name="313"><span class="lineNum">     313 </span>            : { return dark(f); }</a>
+<a name="314"><span class="lineNum">     314 </span>            : </a>
+<a name="315"><span class="lineNum">     315 </span>            : QT_END_NAMESPACE</a>
+<a name="316"><span class="lineNum">     316 </span>            : </a>
+<a name="317"><span class="lineNum">     317 </span>            : #endif // QCOLOR_H</a>
+</pre>
+      </td>
+    </tr>
+  </table>
+  <br>
+
+  <table width="100%" border=0 cellspacing=0 cellpadding=0>
+    <tr><td class="ruler"><img src="../../../../glass.png" width=3 height=3 alt=""></td></tr>
+    <tr><td class="versionInfo">Generated by: <a href="http://ltp.sourceforge.net/coverage/lcov.php" target="_parent">LCOV version 1.13-24-g0433563</a></td></tr>
+  </table>
+  <br>
+
+</body>
+</html>
