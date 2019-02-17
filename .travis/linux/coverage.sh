@@ -1,6 +1,7 @@
 #!/bin/bash
 
-echo "\nBuild and run tests"
+echo
+echo "Build and run tests"
 cd "$TRAVIS_BUILD_DIR/qtreports-tests"
 qmake -spec ${USING_QT_MKSPEC} "CONFIG+=${BUILD_TYPE}" qtreports-tests.pro
 make -j$(nproc)
@@ -9,7 +10,8 @@ if [[ $? -ne 0 ]]; then
 fi
 ./qtreports-tests
 
-echo "\nCollect coverage data"
+echo
+echo "Collect coverage data"
 cd "$TRAVIS_BUILD_DIR"
 git clone https://github.com/linux-test-project/lcov
 cd lcov
@@ -20,7 +22,8 @@ lcov --capture --directory "$TRAVIS_BUILD_DIR/qtreports" --output-file coverage.
 lcov --remove coverage.info --output-file coverage.info "*moc_*.cpp"
 lcov --remove coverage.info --output-file coverage.info "*/usr/*"
 
-echo "\nGenerating html view of coverage data"
+echo
+echo "Generating html view of coverage data"
 cd "$TRAVIS_BUILD_DIR"
 git clone  -b gh-pages https://github.com/PO-31/QtReports ../gh_pages
 rm -r ../gh_pages/${TRAVIS_BRANCH}
@@ -30,7 +33,8 @@ genhtml coverage.info --output-directory ../gh_pages/${TRAVIS_BRANCH}
 # coverage_percent=$(lcov --summary coverage.info)
 # ./../gh_pages/covbadger/covbadger-linux coverage_percent >> ../gh_pages/${TRAVIS_BRANCH}/badge.svg
 
-echo "\nPushing to gh-pages"
+echo
+echo "Pushing to gh-pages"
 cd ../gh_pages
 git config --global user.name "travis"
 git config --global user.email "travis@travis.org"

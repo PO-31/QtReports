@@ -1,16 +1,11 @@
 #!/bin/bash
 
-packages_list=''
-if [ "${CC}" = "clang" ]; then
-	packages_list='qt512-meta-minimal qt512tools libgles2-mesa-dev libgl1-mesa-dev'
-else
-	packages_list='qt5-default qttools5-dev-tools'
-fi
+packages_list='qt512-meta-minimal qt512tools libgles2-mesa-dev libgl1-mesa-dev'
 
 if [ "$BUILD_TYPE" = "doxygen" ]; then 
 	packages_list+=' doxygen'
 elif [ "$BUILD_TYPE" = "coverage" ]; then
-	packages_list+=' libqt5sql5-sqlite'
+	# packages_list+=' libqt5sql5-sqlite'
 fi
 sudo apt-get install -y $packages_list
 
@@ -20,10 +15,11 @@ if [ "$BUILD_TYPE" = "coverage" ]; then
 fi
 
 
+source /opt/qt512/bin/qt512-env.sh
+	
 if [ "$CC" = "gcc" ]; then
 	export USING_QT_MKSPEC="linux-g++-64"
 elif [ "$CC" = "clang" ]; then
-	source /opt/qt512/bin/qt512-env.sh
 	export USING_QT_MKSPEC="linux-clang"
 else
 	echo "Detected using unsupported compiler"

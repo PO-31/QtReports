@@ -8,11 +8,6 @@ branches:
 
 env:
   - BUILD_TYPE=release
-
-cache:
-    apt: true
-    directories:
-      - /opt/qt512/
               
 before_install:
   - source .travis/${TRAVIS_OS_NAME}/before_install.sh
@@ -45,7 +40,6 @@ jobs:
       - os: linux
         dist: xenial
         env: BUILD_TYPE=doxygen
-        services:
         branches:
             only:
               - master
