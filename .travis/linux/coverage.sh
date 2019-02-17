@@ -38,3 +38,5 @@ git add -A
 git commit -a -m "Update coverage from Travis CI"
 git config --global push.default simple
 git push -f -q https://drclaws:$GITHUB_API_KEY@github.com/PO-31/QtReports HEAD:gh-pages > /dev/null
+
+cd "$TRAVIS_BUILD_DIR"

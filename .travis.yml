@@ -10,29 +10,26 @@ before_install:
 install:
     - source .travis/${TRAVIS_OS_NAME}/install.sh
 
-jobs:
-  include:
-    - stage: "Build"
-      os: linux
-      dist: xenial
-      sudo: required
-      env: BUILD_TYPE=release
-      script:
-        - source .travis/${TRAVIS_OS_NAME}/building.sh
-      compiler:
-        - clang
-        - gcc
-      cache:
-          apt: true
-          directories:
-            - $HOME/.cache/pip
-            - $HOME/.cache/http
-            - /home/travis/.cache/pip
-            - /home/travis/.cache/pip/http
- 
- 
-jobs:
+matrix:
     include:
+      - stage: "Build"
+        os: linux
+        dist: xenial
+        sudo: required
+        env: BUILD_TYPE=release
+        script:
+          - source .travis/${TRAVIS_OS_NAME}/building.sh
+        compiler:
+          - clang
+          - gcc
+        cache:
+            apt: true
+            directories:
+              - $HOME/.cache/pip
+              - $HOME/.cache/http
+              - /home/travis/.cache/pip
+              - /home/travis/.cache/pip/http
+              
       - stage: "Deploy"
         os: linux
         dist: xenial
@@ -45,6 +42,7 @@ jobs:
           - source .travis/${TRAVIS_OS_NAME}/building.sh
           - source .travis/${TRAVIS_OS_NAME}/coverage.sh        
       - env: BUILD_TYPE=doxygen
+        services:
         branches:
             only:
               - master

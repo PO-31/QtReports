@@ -1,6 +1,5 @@
 #!/bin/bash
 
-cd "$TRAVIS_BUILD_DIR"
 cd ..
 echo "\nClone repository and update doc"
 git clone https://github.com/PO-31/PO-31.github.io 
