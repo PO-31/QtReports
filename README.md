@@ -2,11 +2,10 @@
 Reimplementation of JasperReports in Qt
 
 ### Current project status ###
-[![Build Status](https://api.travis-ci.org/PO-31/QtReports.svg?branch=master)](https://travis-ci.org/PO-31/QtReports) [![Codacy Badge](https://api.codacy.com/project/badge/Grade/592ade065f16400586bd20717d7ac8ee)](https://www.codacy.com/app/drclaws/QtReports?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=PO-31/QtReports&amp;utm_campaign=Badge_Grade)
-[Current coverage](http://po-31.github.io/QtReports/master/)
+[![Build Status](https://api.travis-ci.org/PO-31/QtReports.svg?branch=master)](https://travis-ci.org/PO-31/QtReports) [![Coverage Badge](https://po-31.github.io/QtReports/master/badge.svg)](http://po-31.github.io/QtReports/master/) [![Codacy Badge](https://api.codacy.com/project/badge/Grade/592ade065f16400586bd20717d7ac8ee)](https://www.codacy.com/app/drclaws/QtReports?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=PO-31/QtReports&amp;utm_campaign=Badge_Grade)
 
 ### Requirements ###
-+ Qt 5.0+
++ Qt 5+
 + gcc-5+/clang-3.4+/msvc14+
 
 ### Building ###
