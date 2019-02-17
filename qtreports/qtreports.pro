@@ -11,7 +11,12 @@ TEMPLATE = lib
 CONFIG += c++14 skip_target_version_ext
 DEFINES += QTREPORTS
 
-VERSION = 0.3.0
+qtreports_version=$$(QTREPORTS_VERSION)
+isEmpty(qtreports_version) {
+    VERSION = 0.0.0
+} else {
+    VERSION = $$qtreports_version
+}
 
 INCLUDEPATH += include/
 
@@ -103,6 +108,7 @@ coverage {
 QMAKE_EXTRA_TARGETS += coverage
 
 message("Target: $$TARGET")
+message("Version $$VERSION")
 message("Using config: $$CONFIG")
 message("Using spec: $$QMAKESPEC")
 message("Compiler: $$QMAKE_CXX")
