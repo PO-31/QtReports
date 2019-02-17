@@ -10,7 +10,7 @@ before_install:
 install:
     - source .travis/${TRAVIS_OS_NAME}/install.sh
 
-jobs:
+matrix:
     include:
       - stage: "Build"
         os: linux
@@ -28,6 +28,7 @@ jobs:
               - /home/travis/.cache/pip/http
         compiler:
           - clang
+      - compiler:        
           - gcc
       - stage: "Deploy"
         os: linux
