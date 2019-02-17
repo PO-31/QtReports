@@ -10,7 +10,7 @@ before_install:
 install:
     - source .travis/${TRAVIS_OS_NAME}/install.sh
 
-matrix:
+jobs:
     include:
       - stage: "Build"
         os: linux
