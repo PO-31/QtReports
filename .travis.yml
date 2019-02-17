@@ -10,7 +10,7 @@ before_install:
 install:
     - source .travis/${TRAVIS_OS_NAME}/install.sh
 
-matrix:
+jobs:
     include:
       - stage: "Build"
         os: linux
@@ -19,9 +19,6 @@ matrix:
         env: BUILD_TYPE=release
         script:
           - source .travis/${TRAVIS_OS_NAME}/building.sh
-        compiler:
-          - clang
-          - gcc
         cache:
             apt: true
             directories:
@@ -29,7 +26,9 @@ matrix:
               - $HOME/.cache/http
               - /home/travis/.cache/pip
               - /home/travis/.cache/pip/http
-              
+        compiler:
+          - clang
+          - gcc
       - stage: "Deploy"
         os: linux
         dist: xenial
