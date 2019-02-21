@@ -48,4 +48,11 @@ jobs:
               - master
         script:
           - source .travis/${TRAVIS_OS_NAME}/doxygen.sh
+      - os: linux
+        dist: xenial
+        compiler: clang
+        script:
+            - source .travis/${TRAVIS_OS_NAME}/building.sh
+            - source .travis/${TRAVIS_OS_NAME}/viewer_build.sh
+        
           
