@@ -1,5 +1,5 @@
 cd "$TRAVIS_BUILD_DIR/qtreports-viewer"
-qmake qtreports-viewer.pro
+qmake -spec ${USING_QT_MKSPEC} "CONFIG+=${BUILD_TYPE}" qtreports-viewer.pro
 make -j$(nproc)
 if [[ $? -ne 0 ]]; then
 	exit 1
