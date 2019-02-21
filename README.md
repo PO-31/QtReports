@@ -12,7 +12,7 @@ Reimplementation of JasperReports in Qt
 Take a look into the [wiki](../../wiki/Building). Our build system is Qmake, so it wouldn't be a problem if you worked with Qt before.
 
 ### Other tools ###
-[QtReports-View](https://github.com/PO-31/QtReports-View/) is a .jasper reports viewer based on QtReports.
+[QtReports-View](./qtreports-viewer/) is a .jasper reports viewer based on QtReports.
 
 ### Repository structure ###
 		.travis/			Scripts for Travis CI

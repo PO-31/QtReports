@@ -6,7 +6,8 @@ CONFIG += c++14 release
 
 INCLUDEPATH += $$PWD/../qtreports/include
 
-LIBS += -L"$$PWD"/../build -lqtreports
+LIBS += -L"$$PWD"/../build/lib/
+LIBS += -lqtreports
 
 DESTDIR = $$PWD
 

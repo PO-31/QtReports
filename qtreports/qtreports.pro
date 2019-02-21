@@ -74,7 +74,7 @@ HEADERS += \
 
 QMAKE_CXXFLAGS += -std=c++14
 
-DESTDIR = $$PWD/../build/
+DESTDIR = $$PWD/../build/lib/
 
 unix {
     target.path = /usr/lib
