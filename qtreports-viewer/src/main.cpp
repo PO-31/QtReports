@@ -56,7 +56,7 @@ int main( int argc, char *argv[] ) {
 
     auto db = QSqlDatabase::addDatabase( "QSQLITE" );
 	db.setDatabaseName(QFileDialog::getOpenFileName( &window,
-													 QObject::tr( "Open QReport" ),
+                                                     QObject::tr( "Open DataBase" ),
 													 QString(),
                                                      QObject::tr( "DataBase files (*.db);;All Files (*.*)" ) ));
     if( !db.open() ) {
@@ -131,9 +131,9 @@ int main( int argc, char *argv[] ) {
     selectDB.setStatusTip( QObject::tr( "Select database file" ) );
     QObject::connect( &selectDB, &QAction::triggered, [ & ]() {
         auto file = QFileDialog::getOpenFileName( &window,
-            QObject::tr( "Open DB" ),
+            QObject::tr( "Open DataBase" ),
             QString(),
-            QObject::tr( "All Files (*.*)" ) );
+            QObject::tr( "DataBase files (*.db);;All Files (*.*)" ) );
         if( file.isEmpty() )
         {
             return;
@@ -206,9 +206,9 @@ int main( int argc, char *argv[] ) {
 
 		//new code
 		file = QFileDialog::getOpenFileName(&window,
-			QObject::tr("Open DB"),
+            QObject::tr("Open DataBase"),
 			QString(),
-			QObject::tr("All Files (*.*)"));
+            QObject::tr("DataBase files (*.db);;All Files (*.*)"));
 		if (file.isEmpty())
 		{
 			return;
