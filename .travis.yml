@@ -24,14 +24,17 @@ script:
 jobs:
     include:
       - stage: "Build"
+        name: "Linux build with Clang"
         os: linux
         dist: xenial
         compiler: clang
-      - os: linux
+      - name: "Linux build with GCC"
+        os: linux
         dist: xenial 
         compiler: gcc
           
       - stage: "Post-Build"
+        name: "Coverage tests"
         os: linux
         dist: xenial
         compiler: gcc
@@ -40,7 +43,8 @@ jobs:
         script:
           - source .travis/${TRAVIS_OS_NAME}/building.sh
           - source .travis/${TRAVIS_OS_NAME}/coverage.sh        
-      - os: linux
+      - name: "Docs generation"
+        os: linux
         dist: xenial
         env: BUILD_TYPE=doxygen
         branches:
@@ -48,7 +52,8 @@ jobs:
               - master
         script:
           - source .travis/${TRAVIS_OS_NAME}/doxygen.sh
-      - os: linux
+      - name: "Viewer Linux build"
+        os: linux
         dist: xenial
         compiler: clang
         script:

@@ -22,46 +22,45 @@
 @section intro_sec Введение
 Эта документация предназначена для того, чтобы помочь в использовании проекта. 
 
-@section install_sec Установка с помощью CMAKE
+@section install_sec Инструкция по сборке проекта
 
-@subsection step1 Шаг 1: Распаковка проекта.
+@subsection step1 Шаг 1: Распаковка.
 
-Скачать проект по ссылке https://github.com/PO-31/QtReports/archive/master.zip.
+Клонировать проект или скачать релиз из репозитория https://github.com/PO-31/QtReports/.
 
 Распаковать архив в папку QtReports. 
 
-(Полный путь к папке QtReports не должен содержать кириллицы) 
+(Рекомендуется, чтобы полный путь к папке QtReports содержал только латиницу)
 
-@subsection step2 Шаг 2: Генерация CMakeLists.
+@subsection step2 Шаг 2: Сборка.
 
-В корневой папке QtReports, где расположен CMakeLists.txt в командной строке запустить команду: 
+Собрать проект можно несколькими способами, но если необходимо указать версию собираемой библиотеки, то необходимо задать переменную среды QTREPORTS_VERSION
 
-Для Windows:
+@subsubsection step2_1 Способ 1. При помощи QtCreator:
 
-cmake [CMAKE_PREFIX_PATH="путь к qt"]  -G "MinGW Makefiles" -B./bin -H./
+Используя программу, в корневой папке QtReports необходимо открыть файл проекта "QtReports.pro".
 
-Примечание:
+Для сборки со статистикой для Coverage установить значение переменной среды BUILD_COVERAGE на "TRUE".
 
-При возникновении ошибки "By not providing "FindQt5Widgets.cmake" in CMAKE_MODULE_PATH this project
+Далее нажать кнопку "Собрать" (кнопка Молоток) для сборки всего проекта.
 
-has asked CMake to find a package configuration file provided by
+Если необходимо собрать только определенный компонент, то нужно нажать ПКМ по проекту компонента в обозревателе проектов и выбрать "Собрать Название_Модуля"
 
-"Qt5Widgets", but CMake did not find one." необходимо добавить в команду блок [CMAKE_PREFIX_PATH="путь к qt"].
+@subsubsection step2_1 Способ 2. При помощи Qmake:
 
-Пример для Windows:
-cmake [CMAKE_PREFIX_PATH="C:/Qt/5.5/mingw492_32"]  -G "MinGW Makefiles" -B./bin -H./
+Запускаем консоль/терминал и переходим в каталог необходимого нам модуля
 
-@subsection step3 Шаг 3: Компиляция проекта.
+Набираем
+qmake [-spec "Используемый_Компилятор"] "CONFIG += Необходимые_Типы_Сборки_(release,debug,coverage,etc.)" Имя_Проекта_Модуля.pro
 
-Windows:
-
-Запустить команду: mingw32-make -C./bin
-
-Exe-файл будет расположен в папке qtreportsviewer
+После генерации Makefile вызываем
+make [-jКоличествоПотоков]
 
 @section use_sec Использование
-Подключите библиотеку к проекту с помощью
--lqtreportslib -I/usr/include/qtreportslib
+
+После сборки файл библиотеки можно будет найти в папке "build/lib", а заголовочные файлы - "qtreports/include"
+
+Для подключения собранной библиотеки к Qmake проекту необходимо в файле проекта указать "LIB += -lqtreports" и, если необходимо, "LIB += Путь_До_Библиотеки", "INCLUDEPATH += Путь_До_Заголовочных_Файлов"
 */
 
 namespace qtreports {
