@@ -85,7 +85,6 @@ unix {
 
 win32 {
     CONFIG += dll static
-    TARGET = $$qtLibraryTarget(qtreports)
 }
 
 linux-clang {
@@ -102,6 +101,9 @@ coverage {
     QMAKE_CLEAN += $$OBJECTS_DIR/*.gcda $$OBJECTS_DIR/*.gcno
     QMAKE_CXXFLAGS += -c -g -Wall -fprofile-arcs -ftest-coverage -O0
     LIBS += -lgcov
+
+    CONFIG -= debug release
+    CONFIG += release
 
     message(Code coverage collection enabled)
 }

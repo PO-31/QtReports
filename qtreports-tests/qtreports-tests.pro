@@ -2,7 +2,7 @@ QT += core gui sql widgets printsupport testlib
 
 TARGET = qtreports-tests
 TEMPLATE = app
-CONFIG += c++14 release
+CONFIG += c++14
 
 INCLUDEPATH += $$PWD/../qtreports/include
 
@@ -55,6 +55,10 @@ SOURCES += \
 
 QMAKE_CXXFLAGS += -std=c++14
 
+coverage {
+    CONFIG -= release debug
+    CONFIG += release
+}
 message("Target: $$TARGET")
 message("Using config: $$CONFIG")
 message("Using spec: $$QMAKESPEC")

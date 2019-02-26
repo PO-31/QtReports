@@ -2,7 +2,7 @@ QT += core gui sql widgets printsupport
 
 TARGET = qtreports-viewer
 TEMPLATE = app
-CONFIG += release c++14
+CONFIG += c++14
 INCLUDEPATH += ../qtreports/include/
 LIBS   += -L"$$PWD"/../build/lib/
 LIBS   += -lqtreports
