@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<report name="sample_report" orientation="Landscape">
+<style name="Arial_Normal" isDefault="true" fontName="Arial"
+	fontSize="16" pdfFontName="c:\tahoma.ttf" pdfEncoding="Cp1251"
+	isPdfEmbedded="false" />
+
+<queryString>
+	<![CDATA[ select NLab, NDiscip from Laboratory natural join Discipline ORDER BY NDiscip]]>
+</queryString>
+
+<field name="NLab" class="QString" />
+<field name="NDiscip" class="QString" />
+
+<variable name="sumAbsenceByDiscipline" class="Integer" resetType="Group" resetGroup="Discipline" calculation="Count">
+	<variableExpression><![CDATA[$F{NDiscip)}]]></variableExpression>
+	<initialValueExpression><![CDATA[0]]></initialValueExpression>
+</variable>
+
+<group name="NDiscip">
+    <groupExpression class="QString"><![CDATA[$F{NDiscip}]]></groupExpression>
+	<groupHeader>
+		<band height="40">
+			<textField>
+				<reportElement x="0" y="0" width="180" height="40" />
+				<textFieldExpression class="QString"><![CDATA[$F{NDiscip}]]></textFieldExpression>
+			</textField>
+		</band>
+	</groupHeader> 
+	<groupFooter>
+		<band height="40">
+			<textField>
+				<reportElement x="0" y="0" width="180" height="40" />
+				<textFieldExpression class="QString"><![CDATA[$F{NDiscip}]]></textFieldExpression>
+			</textField>
+		</band>
+	</groupFooter> 
+</group>
+
+<detail>
+    <band height="40">
+		<textField>
+			<reportElement x="0" y="0" width="180" height="40"/>
+			<textFieldExpression class="QString"><![CDATA[$F{NDiscip}]]></textFieldExpression>
+		</textField>
+		<textField>
+			<reportElement x="200" y="0" width="400" height="40"/>
+			<textFieldExpression class="QString"><![CDATA[$F{NLab}]]></textFieldExpression>
+		</textField>
+		<textField>
+			<reportElement x="620" y="0" width="500" height="40"/>
+			<textFieldExpression class="Integer"><![CDATA[$V{sumAbsenceByDiscipline}]]></textFieldExpression>
+		</textField>
+    </band>
+</detail>
+</report>

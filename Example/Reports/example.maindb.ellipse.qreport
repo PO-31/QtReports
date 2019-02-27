@@ -1,0 +1,37 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<report name="sample_report" orientation="Landscape">
+	<style name="Arial_Normal" isDefault="true" fontName="Arial"
+    fontSize="12" pdfFontName="c:\tahoma.ttf" pdfEncoding="Cp1251"
+    isPdfEmbedded="false" />
+
+  <queryString>
+    <![CDATA[ select NManual, Year from Manual; ]]>
+  </queryString>
+
+  <field name="NManual" class="QString" />
+  <field name="Year" class="Integer" />
+
+<detail>
+    <band height="100">
+		<ellipse>
+			<reportElement x="280" y="0" height="20" width="20"/>
+		</ellipse>
+		<ellipse>
+			<reportElement x="280" y="20" height="50" width="20"/>
+		</ellipse>
+		<ellipse>
+			<reportElement x="275" y="60" height="40" width="10"/>
+		</ellipse>
+		<ellipse>
+			<reportElement x="295" y="60" height="40" width="10"/>
+		</ellipse>
+		<ellipse>
+			<reportElement x="297" y="25" height="10" width="30"/>
+		</ellipse>
+		<ellipse>
+			<reportElement x="253" y="25" height="10" width="30"/>
+		</ellipse>
+	</band>
+</detail>
+
+</report>
