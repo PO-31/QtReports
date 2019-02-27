@@ -1,0 +1,63 @@
+language: cpp
+
+sudo: required
+
+branches:
+    only:
+      - master
+
+env:
+  - BUILD_TYPE=release
+              
+before_install:
+  - source .travis/${TRAVIS_OS_NAME}/before_install.sh
+
+install:
+  - source .travis/${TRAVIS_OS_NAME}/install.sh
+
+before_script:
+  - source version.sh
+
+script:
+  - source .travis/${TRAVIS_OS_NAME}/building.sh
+  
+jobs:
+    include:
+      - stage: "Build"
+        name: "Linux build with Clang"
+        os: linux
+        dist: xenial
+        compiler: clang
+      - name: "Linux build with GCC"
+        os: linux
+        dist: xenial 
+        compiler: gcc
+          
+      - stage: "Post-Build"
+        name: "Coverage tests"
+        os: linux
+        dist: xenial
+        compiler: gcc
+        env: BUILD_TYPE=coverage
+        services: xvfb
+        script:
+          - source .travis/${TRAVIS_OS_NAME}/building.sh
+          - source .travis/${TRAVIS_OS_NAME}/coverage.sh        
+      - name: "Docs generation"
+        os: linux
+        dist: xenial
+        env: BUILD_TYPE=doxygen
+        branches:
+            only:
+              - master
+        script:
+          - source .travis/${TRAVIS_OS_NAME}/doxygen.sh
+      - name: "Viewer Linux build"
+        os: linux
+        dist: xenial
+        compiler: clang
+        script:
+            - source .travis/${TRAVIS_OS_NAME}/building.sh
+            - source .travis/${TRAVIS_OS_NAME}/viewer_build.sh
+        
+          

@@ -1,9 +1,6 @@
-TEMPLATE = subdirs lib
+TEMPLATE = subdirs
 
-DESTDIR = $$PWD/build/
+SUBDIRS += qtreports qtreports-tests qtreports-viewer
 
-SUBDIRS += \
-    qtreports-lib \
-    qtreports-tests
-
-qtreports-tests.depends = qtreports-lib
+qtreports-tests.depends = qtreports
+qtreports-viewer.depends = qtreports

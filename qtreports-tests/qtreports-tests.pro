@@ -2,13 +2,14 @@ QT += core gui sql widgets printsupport testlib
 
 TARGET = qtreports-tests
 TEMPLATE = app
-CONFIG += release c++11
-INCLUDEPATH += ../qtreports-lib/src/
-win32: LIBS   += -L "$$PWD"/../build/qtreports-lib/
-message(Lib path: "$$PWD"/../build/qtreports-lib/)
-LIBS   += -lqtreports-lib
+CONFIG += c++14
 
-DESTDIR = $$PWD/../build/qtreports-tests/
+INCLUDEPATH += $$PWD/../qtreports/include
+
+LIBS += -L"$$PWD"/../build/lib/
+LIBS += -lqtreports
+
+DESTDIR = $$PWD
 
 DISTFILES += \
     DB/images.db \
@@ -34,26 +35,32 @@ DISTFILES += \
     sql script
 
 HEADERS += \
-    test_convertertohtml.hpp \
-    test_convertertopdf.hpp \
-    test_convertertoqwidget.hpp \
-    test_engine.hpp \
-    test_field.hpp \
-    test_groups.hpp \
-    test_parser.hpp
+    src/test_convertertohtml.hpp \
+    src/test_convertertopdf.hpp \
+    src/test_convertertoqwidget.hpp \
+    src/test_engine.hpp \
+    src/test_field.hpp \
+    src/test_groups.hpp \
+    src/test_parser.hpp
 
 SOURCES += \
-    main.cpp \
-    test_convertertohtml.cpp \
-    test_convertertopdf.cpp \
-    test_convertertoqwidget.cpp \
-    test_engine.cpp \
-    test_field.cpp \
-    test_groups.cpp \
-    test_parser.cpp
+    src/main.cpp \
+    src/test_convertertohtml.cpp \
+    src/test_convertertopdf.cpp \
+    src/test_convertertoqwidget.cpp \
+    src/test_engine.cpp \
+    src/test_field.cpp \
+    src/test_groups.cpp \
+    src/test_parser.cpp
 
-QMAKE_CXXFLAGS += -std=c++11
+QMAKE_CXXFLAGS += -std=c++14
 
+coverage {
+    CONFIG -= release debug
+    CONFIG += release
+}
+message("Target: $$TARGET")
+message("Using config: $$CONFIG")
 message("Using spec: $$QMAKESPEC")
 message("Compiler: $$QMAKE_CXX")
 
