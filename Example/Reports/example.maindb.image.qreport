@@ -1,0 +1,67 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<report name="sample_report" orientation="Landscape">
+	<style name="Arial_Normal" isDefault="true" fontName="Arial"
+    fontSize="12" pdfFontName="c:\tahoma.ttf" pdfEncoding="Cp1251"
+    isPdfEmbedded="false" />
+
+  <queryString>
+    <![CDATA[ select NManual, Year from Manual; ]]>
+  </queryString>
+
+  <field name="NManual" class="QString" />
+  <field name="Year" class="Integer" />
+
+<title>
+    <band height="35">
+		<textElement textAlignment="Center" textVAlignment="Middle">
+			<staticText>
+				<reportElement x="10" y="10" width="150" height="20" />
+				<text><![CDATA[$P{title}]]></text>
+			</staticText>
+		</textElement>
+		<rect>
+			<reportElement x="0" y="0" width="480" height="30" />
+		</rect>
+	</band>
+	<band height="200">
+		<image>
+			<reportElement x="0" y="0" width="300" height="200" />
+			<imageExpression class="QString"><![CDATA[$F{"img00.jpg"}]]></imageExpression>
+		</image>
+	</band>
+</title>
+<detail>
+    <band height="40">
+		<line>
+			<reportElement x="0" y="0" width="1" height="40" />
+		</line>
+		<line pen="Dotted">
+			<reportElement x="0" y="39" width="480" height="1" />
+		</line>
+		<textField>
+			<reportElement x="5" y="0" width="300" height="40" />
+			<textFieldExpression class="QString"><![CDATA[$F{NManual}]]></textFieldExpression>
+		</textField>
+		<line>
+			<reportElement x="305" y="0" width="1" height="40" />
+		</line>
+		<textField>
+			<textElement textAlignment="Center" textVAlignment="Bottom">
+			<reportElement x="310" y="0" width="140" height="40" />
+			<textFieldExpression class="QString"><![CDATA[$F{Year}]]></textFieldExpression>
+			</textElement>
+		</textField>
+		<line>
+			<reportElement x="450" y="0" width="1" height="40" />
+		</line>
+		<ellipse>
+			<reportElement x="460" y="10" width="15" height="15" />
+		</ellipse>
+		<line>
+			<reportElement x="480" y="0" width="1" height="40" />
+		</line>
+    </band>
+</detail>
+
+
+</report>
