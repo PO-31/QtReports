@@ -1,0 +1,40 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<report name="sample_report">
+	<style name="Arial_Normal" isDefault="true" fontName="Arial"
+    fontSize="12" pdfFontName="c:\tahoma.ttf" pdfEncoding="Cp1251"
+    isPdfEmbedded="false" />
+
+  <queryString>
+    <![CDATA[ select filename, imagedata from imgTable; ]]>
+  </queryString>
+
+  <field name="imagedata" class="QImage" />
+  <field name="filename" class="QString" />
+
+<title>
+    <band height="35">
+		<textElement textAlignment="Center" textVAlignment="Middle">
+			<staticText>
+				<reportElement x="10" y="10" width="150" height="20" />
+				<text><![CDATA[$P{title}]]></text>
+			</staticText>
+		</textElement>
+		<rect>
+			<reportElement x="0" y="0" width="480" height="30" />
+		</rect>
+	</band>
+</title>
+
+<detail>
+	<band height="200">
+		<textField>
+			<reportElement x="0" y="0" width="300" height="40" />
+			<textFieldExpression class="QString"><![CDATA[$F{filename}]]></textFieldExpression>
+		</textField>
+		<image>
+			<reportElement x="300" y="0" width="160" height="160" />
+			<imageExpression class="QImage"><![CDATA[$F{imagedata}]]></imageExpression>
+		</image>
+	</band>
+</detail>
+</report>
