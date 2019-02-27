@@ -31,13 +31,13 @@
             <td class="headerValue">coverage.info</td>
             <td></td>
             <td class="headerItem">Lines:</td>
-            <td class="headerCovTableEntry">189</td>
-            <td class="headerCovTableEntry">217</td>
-            <td class="headerCovTableEntryMed">87.1 %</td>
+            <td class="headerCovTableEntry">190</td>
+            <td class="headerCovTableEntry">218</td>
+            <td class="headerCovTableEntryMed">87.2 %</td>
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2019-02-27 05:21:02</td>
+            <td class="headerValue">2019-02-27 05:33:23</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntry">8</td>
@@ -424,19 +424,19 @@
 <a name="362"><span class="lineNum">     362 </span>            : </a>
 <a name="363"><span class="lineNum">     363 </span><span class="lineCov">         90 :             for (auto &amp;&amp; image : band-&gt;getImages())</span></a>
 <a name="364"><span class="lineNum">     364 </span>            :             {</a>
-<a name="365"><span class="lineNum">     365 </span><span class="lineCov">         48 :                 QImage img = image-&gt;getImage();</span></a>
-<a name="366"><span class="lineNum">     366 </span><span class="lineCov">         24 :                 img.save(&quot;img&quot; + QString::number(index) + QString::number(imgCount) + &quot;.jpg&quot;);</span></a>
-<a name="367"><span class="lineNum">     367 </span>            : </a>
-<a name="368"><span class="lineNum">     368 </span>            :                 elementStr += QString(&quot;     &lt;div class='shape' &quot;</a>
-<a name="369"><span class="lineNum">     369 </span>            :                     &quot;style='left: %1px; top: %2px; &quot;</a>
-<a name="370"><span class="lineNum">     370 </span>            :                     &quot;width: %3px; height: %4px'&gt;\n&quot;</a>
-<a name="371"><span class="lineNum">     371 </span>            :                     &quot;      &lt;img src='img%5%6.jpg' alt='img%5%6'&gt;\n     &lt;/div&gt;\n&quot;)</a>
-<a name="372"><span class="lineNum">     372 </span><span class="lineCov">         48 :                     .arg(image-&gt;getX())</span></a>
-<a name="373"><span class="lineNum">     373 </span><span class="lineCov">         96 :                     .arg(image-&gt;getY())</span></a>
-<a name="374"><span class="lineNum">     374 </span><span class="lineCov">         96 :                     .arg(image-&gt;getWidth())</span></a>
-<a name="375"><span class="lineNum">     375 </span><span class="lineCov">         96 :                     .arg(image-&gt;getHeight())</span></a>
-<a name="376"><span class="lineNum">     376 </span><span class="lineCov">         96 :                     .arg(index)</span></a>
-<a name="377"><span class="lineNum">     377 </span><span class="lineCov">         72 :                     .arg(imgCount);</span></a>
+<a name="365"><span class="lineNum">     365 </span><span class="lineCov">         48 :                QImage img = image-&gt;getImage();</span></a>
+<a name="366"><span class="lineNum">     366 </span><span class="lineCov">         48 :                 QBuffer imageBuffer;     //Создаём буффер для перевода картинки в QByteArray</span></a>
+<a name="367"><span class="lineNum">     367 </span><span class="lineCov">         24 :                 img.save(&amp;imageBuffer, &quot;png&quot;);  </span></a>
+<a name="368"><span class="lineNum">     368 </span><span class="lineCov">         48 :                 QString base64Img = &quot;data:image/png;base64,&quot; + imageBuffer.data().toBase64(); //Преобразовываем картинку в текст</span></a>
+<a name="369"><span class="lineNum">     369 </span>            : </a>
+<a name="370"><span class="lineNum">     370 </span>            :                 elementStr += QString(&quot;     &lt;div class='shape' &quot;</a>
+<a name="371"><span class="lineNum">     371 </span>            :                     &quot;style='left: %1px; top: %2px; &quot;</a>
+<a name="372"><span class="lineNum">     372 </span>            :                     &quot;width: %3px; height: %4px'&gt;\n&quot;</a>
+<a name="373"><span class="lineNum">     373 </span><span class="lineCov">         48 :                     &quot;      &lt;img src='&quot; + base64Img + &quot;' alt='image_not_found'&gt;\n     &lt;/div&gt;\n&quot;)</span></a>
+<a name="374"><span class="lineNum">     374 </span><span class="lineCov">         96 :                     .arg(image-&gt;getX())</span></a>
+<a name="375"><span class="lineNum">     375 </span><span class="lineCov">         96 :                     .arg(image-&gt;getY())</span></a>
+<a name="376"><span class="lineNum">     376 </span><span class="lineCov">         96 :                     .arg(image-&gt;getWidth())</span></a>
+<a name="377"><span class="lineNum">     377 </span><span class="lineCov">         72 :                     .arg(image-&gt;getHeight());</span></a>
 <a name="378"><span class="lineNum">     378 </span>            : </a>
 <a name="379"><span class="lineNum">     379 </span><span class="lineCov">         24 :                 ++imgCount;</span></a>
 <a name="380"><span class="lineNum">     380 </span>            :             }</a>
