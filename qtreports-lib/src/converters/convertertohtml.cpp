@@ -361,19 +361,19 @@ namespace qtreports {
 
             for (auto && image : band->getImages())
             {
-                QImage img = image->getImage();
-                img.save("img" + QString::number(index) + QString::number(imgCount) + ".jpg");
+               QImage img = image->getImage();
+                QBuffer imageBuffer;     //Создаём буффер для перевода картинки в QByteArray
+                img.save(&imageBuffer, "png");  
+                QString base64Img = "data:image/png;base64," + imageBuffer.data().toBase64(); //Преобразовываем картинку в текст
 
                 elementStr += QString("     <div class='shape' "
                     "style='left: %1px; top: %2px; "
                     "width: %3px; height: %4px'>\n"
-                    "      <img src='img%5%6.jpg' alt='img%5%6'>\n     </div>\n")
+                    "      <img src='" + base64Img + "' alt='image_not_found'>\n     </div>\n")
                     .arg(image->getX())
                     .arg(image->getY())
                     .arg(image->getWidth())
-                    .arg(image->getHeight())
-                    .arg(index)
-                    .arg(imgCount);
+                    .arg(image->getHeight());
 
                 ++imgCount;
             }
