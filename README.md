@@ -24,5 +24,5 @@ Take a look into the doxygen's [main page](http://po-31.github.io/html/). Our bu
 
 
 ### Documentation ###
-* [Doxygen](http://po-31.github.io/)
-* [Wiki](https://github.com/PO-31/QtReports/wiki)
++ [Doxygen](http://po-31.github.io/)
++ [Wiki](https://github.com/PO-31/QtReports/wiki)
