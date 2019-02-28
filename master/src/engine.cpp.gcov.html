@@ -37,7 +37,7 @@
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2019-02-28 12:11:33</td>
+            <td class="headerValue">2019-02-28 15:00:34</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntry">22</td>
@@ -96,17 +96,17 @@
 <a name="34"><span class="lineNum">      34 </span><span class="lineCov">         48 :         detail::ParserFromXML parser;</span></a>
 <a name="35"><span class="lineNum">      35 </span><span class="lineCov">         24 :         if( !parser.parse( path ) )</span></a>
 <a name="36"><span class="lineNum">      36 </span>            :         {</a>
-<a name="37"><span class="lineNum">      37 </span><span class="lineCov">          3 :             m_lastError = &quot;Parsing error: &quot; + parser.getLastError();</span></a>
-<a name="38"><span class="lineNum">      38 </span><span class="lineCov">          3 :             return false;</span></a>
+<a name="37"><span class="lineNum">      37 </span><span class="lineCov">          4 :             m_lastError = &quot;Parsing error: &quot; + parser.getLastError();</span></a>
+<a name="38"><span class="lineNum">      38 </span><span class="lineCov">          4 :             return false;</span></a>
 <a name="39"><span class="lineNum">      39 </span>            :         }</a>
 <a name="40"><span class="lineNum">      40 </span>            : </a>
-<a name="41"><span class="lineNum">      41 </span><span class="lineCov">         21 :         m_isOpened = true;</span></a>
-<a name="42"><span class="lineNum">      42 </span><span class="lineCov">         21 :         m_compiledPath = path;</span></a>
-<a name="43"><span class="lineNum">      43 </span><span class="lineCov">         21 :         m_report = parser.getReport();</span></a>
+<a name="41"><span class="lineNum">      41 </span><span class="lineCov">         20 :         m_isOpened = true;</span></a>
+<a name="42"><span class="lineNum">      42 </span><span class="lineCov">         20 :         m_compiledPath = path;</span></a>
+<a name="43"><span class="lineNum">      43 </span><span class="lineCov">         20 :         m_report = parser.getReport();</span></a>
 <a name="44"><span class="lineNum">      44 </span>            : </a>
 <a name="45"><span class="lineNum">      45 </span>            :         //fillColumnsFromReport(); //MB as ProcessedDB::createColumns( ReportPtr )</a>
 <a name="46"><span class="lineNum">      46 </span>            : </a>
-<a name="47"><span class="lineNum">      47 </span><span class="lineCov">         21 :         return true;</span></a>
+<a name="47"><span class="lineNum">      47 </span><span class="lineCov">         20 :         return true;</span></a>
 <a name="48"><span class="lineNum">      48 </span>            :     }</a>
 <a name="49"><span class="lineNum">      49 </span>            : </a>
 <a name="50"><span class="lineNum">      50 </span><span class="lineCov">          3 :     void    Engine::close()</span></a>
