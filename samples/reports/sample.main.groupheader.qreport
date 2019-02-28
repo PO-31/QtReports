@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<report name="sample_report" orientation="Landscape">
+<style name="Arial_Normal" isDefault="true" fontName="Arial"
+	fontSize="16" pdfFontName="c:\tahoma.ttf" pdfEncoding="Cp1251"
+	isPdfEmbedded="false" />
+
+<queryString>
+	<![CDATA[ select NLab, NDiscip from Laboratory natural join Discipline ORDER BY NLab]]>
+</queryString>
+
+<field name="NLab" class="QString" />
+<field name="NDiscip" class="QString" />
+
+<group name="NDiscip">
+    <groupExpression class="QString"><![CDATA[$F{NDiscip}]]></groupExpression>
+	<groupHeader>
+		<band height="40">
+			<textField>
+				<reportElement x="0" y="0" width="380" height="40" />
+				<textFieldExpression class="QString"><![CDATA[$F{NDiscip}]]></textFieldExpression>
+			</textField>
+		</band>
+	</groupHeader> 
+</group>
+
+<detail>
+    <band height="40">
+		<textField>
+			<reportElement x="50" y="0" width="800" height="40" />
+			<textFieldExpression class="QString"><![CDATA[$F{NLab}]]></textFieldExpression>
+		</textField>
+    </band>
+</detail>
+</report>
