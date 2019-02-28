@@ -9,10 +9,10 @@ Reimplementation of JasperReports in Qt
 + gcc-5+/clang-3.4+/msvc14+
 
 ### Building ###
-Take a look into the [wiki](../../wiki/Building). Our build system is Qmake, so it wouldn't be a problem if you worked with Qt before.
+Take a look into the doxygen's [main page](http://po-31.github.io/html/). Our build system is Qmake, so it wouldn't be a problem if you worked with Qt before.
 
 ### Other tools ###
-[QtReports-View](./qtreports-viewer/) is a .jasper reports viewer based on QtReports.
+[QtReports-View](./qtreports-viewer/) is a viewer of reports created for QtReports.
 
 ### Repository structure ###
 		.travis/			Scripts for Travis CI
