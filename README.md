@@ -19,6 +19,8 @@ Take a look into the [wiki](../../wiki/Building). Our build system is Qmake, so 
 		qtreports/			QtReports Library sources
 		qtreports/include/		Public header C and C++ header files of QtReports
 		qtreports-tests/		Test complex
+		qtreports-viewer/		QtReports-View project's directory
+		samples/			Reports' samples and databases for them 
 
 
 ### Documentation ###

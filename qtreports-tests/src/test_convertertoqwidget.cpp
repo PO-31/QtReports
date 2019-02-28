@@ -13,7 +13,7 @@ Test_ConverterToQWidget::Test_ConverterToQWidget( QObject * parent ) :
 Test_ConverterToQWidget::~Test_ConverterToQWidget() {}
 
 void    Test_ConverterToQWidget::convert() {
-    QString reportPath = QFINDTESTDATA( "reports/full.qrxml" );
+    QString reportPath = QFINDTESTDATA( "../samples/reports/test.tests-images.full.qrxml" );
     qDebug() << endl << "Used report: " << reportPath;
 
     qtreports::Engine engine;
@@ -24,7 +24,7 @@ void    Test_ConverterToQWidget::convert() {
     qDebug() << endl << "Used map: " << map;
     QVERIFY2( engine.setParameters( map ), engine.getLastError().toStdString().c_str() );
 
-    QString dbPath = QFINDTESTDATA( "DB/images.db" );
+    QString dbPath = QFINDTESTDATA( "../samples/databases/tests-images.db" );
     qDebug() << endl << "Used db: " << dbPath;
     QSqlDatabase::removeDatabase( QSqlDatabase::defaultConnection );
     auto db = QSqlDatabase::addDatabase( "QSQLITE" );
