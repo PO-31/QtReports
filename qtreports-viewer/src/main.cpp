@@ -14,243 +14,224 @@
 #include <Windows.h>
 #endif
 
-void    showError( const QString & text )
+static QMainWindow* mainWindow = nullptr;
+static QMenuBar* menuBar = nullptr;
+static QMenu* fileMenu = nullptr;
+static QMenu* convertMenu = nullptr;
+
+static QAction* printAction = nullptr;
+static QAction* createPdfAction = nullptr;
+static QAction* createHtmlAction = nullptr;
+static QAction* selectDatabaseAction = nullptr;
+static QAction* closeAction = nullptr;
+static QAction* openAction = nullptr;
+static QAction* exitAction = nullptr;
+
+static QSharedPointer<QWidget> layout;
+
+static qtreports::Engine* engine = nullptr;
+
+void showError(const QString& text);
+void closeReport();
+void openReport(const QString& reportPath);
+void openReport();
+void openDatabase(const QString& dbPath);
+void openDatabase();
+
+void showError(const QString& text)
 {
-    QMessageBox::warning( 0, "Error: ", text );
+    QMessageBox::warning(nullptr, "Error: ", text);
 }
 
-int main( int argc, char *argv[] ) {
-    QApplication a( argc, argv );
-    //Need initialize before of engine widget( for not stack memory problem );
-    QMainWindow window;
-    QMenuBar bar( &window );
-    QMenu file( "File", &bar );
-    QMenu convert( "Convert", &bar );
+void closeReport()
+{
+    engine->close();
+    layout.clear();
+    if (mainWindow->centralWidget() != nullptr) {
+        delete mainWindow->centralWidget();
+    }
+    convertMenu->setEnabled(false);
+    printAction->setEnabled(false);
+    closeAction->setEnabled(false);
+    selectDatabaseAction->setEnabled(false);
+    mainWindow->setWindowTitle("QtReports viewer");
+}
+
+void openReport(const QString& reportPath)
+{
+    closeReport();
+
+    bool result = engine->open(reportPath);
+    closeAction->setEnabled(result);
+    selectDatabaseAction->setEnabled(result);
+    if (!result) {
+        showError(engine->getLastError());
+        return;
+    }
+    QFileInfo fileInfo(reportPath);
+    mainWindow->setWindowTitle("QtReports viewer - " + fileInfo.fileName());
+    layout = engine->createLayout();
+    if (layout.isNull()) {
+        showError("Widget is empty");
+        engine->close();
+        return;
+    }
+    mainWindow->setCentralWidget(layout.data());
+    mainWindow->resize(layout->size());
+}
+
+void openReport()
+{
+    auto reportPath = QFileDialog::getOpenFileName(
+        mainWindow,
+        QObject::tr("Open QReport"),
+        QString(),
+        QObject::tr("QReport Files (*.qreport *.qrxml);;All Files (*.*)")
+    );
+    if (reportPath.isEmpty()) {
+        return;
+    }
+    openReport(reportPath);
+}
+
+void openDatabase(const QString& dbPath)
+{
+    auto db = QSqlDatabase::addDatabase("QSQLITE");
+    db.setDatabaseName(dbPath);
+    if (!db.open()) {
+        showError("Can not open database. Database error: " + db.lastError().text());
+        return;
+    }
+    bool result = engine->setConnection(db);
+    convertMenu->setEnabled(result);
+    printAction->setEnabled(result);
+    if (!result) {
+        showError(engine->getLastError());
+        return;
+    }
+
+    //setting report parameters
+    QMap <QString, QVariant> map;
+    map["title"] = "GRISHA RULIT";
+    map["idPlan"] = "2";
+
+    if (!engine->setParameters(map)) {
+        showError(engine->getLastError());
+    }
+}
+
+void openDatabase()
+{
+    auto dbPath = QFileDialog::getOpenFileName(
+        mainWindow,
+        QObject::tr("Open DataBase"),
+        QString(),
+        QObject::tr("DataBase files (*.db);;All Files (*.*)")
+    );
+    if (dbPath.isEmpty()) {
+        return;
+    }
+    openDatabase(dbPath);
+}
+
+int main(int argc, char *argv[]) {
+    QApplication a(argc,argv);
+
+    mainWindow = new QMainWindow();
+    mainWindow->setWindowTitle("QtReports viewer");
+    mainWindow->resize(800, 600);
+    menuBar = new QMenuBar(mainWindow);
+    fileMenu = new QMenu("File", menuBar);
+    convertMenu = new QMenu("Convert", menuBar);
 
 //For Debug in Windows
 #ifdef WIN32
     AllocConsole();
-    freopen( "CONOUT$", "w", stdout );
-    freopen( "CONOUT$", "w", stderr );
+    freopen("CONOUT$", "w", stdout);
+    freopen("CONOUT$", "w", stderr);
 #endif
 
-	QString path = argc > 1 ? argv[ 1 ] : QFileDialog::getOpenFileName( &window,
-																		QObject::tr( "Open QReport" ),
-																		QString(),
-																		QObject::tr( "QReport Files (*.qreport);;QReport Files (*.qrxml);;All Files (*.*)" ) );
-    qtreports::Engine engine( path );
-    if( !engine.isOpened() ) {
-        showError( engine.getLastError() );
-		return -1;
-    }
-
-    QMap < QString, QVariant > map;
-    map[ "title" ] = "GRISHA RULIT";
-    map[ "idPlan" ] = "2";
-	
-    bool result = engine.setParameters( map );//{ { "title", "Best Title in World" } }
-    if( !result ) {
-        showError( engine.getLastError() );
-		return -1;
-    }
-
-    auto db = QSqlDatabase::addDatabase( "QSQLITE" );
-	db.setDatabaseName(QFileDialog::getOpenFileName( &window,
-                                                     QObject::tr( "Open DataBase" ),
-													 QString(),
-                                                     QObject::tr( "DataBase files (*.db);;All Files (*.*)" ) ));
-    if( !db.open() ) {
-        showError( "Can not open database. Database error: " + db.lastError().text() );
-		return -1;
-    }
-
-    result = engine.setConnection( db );
-    if( !result ) {
-        showError( engine.getLastError() );
-		return -1;
-    }
-
-    auto layout = engine.createLayout();
-    if( layout.isNull() ) {
-        showError( "Layout is empty. Error: " + engine.getLastError() );
-        return -1;
-    }
-
-    window.setCentralWidget( layout.data() );
-    window.resize( layout->size() );
-    window.show();
-
-    QAction print( QObject::tr( "&Print..." ), &window );
-    print.setShortcuts( QKeySequence::Print );
-    print.setStatusTip( QObject::tr( "Print current report" ) );
-    QObject::connect( &print, &QAction::triggered, [ & ]() {
-		bool result = engine.print();
-        if( !result ) {
-            showError( engine.getLastError() );
-            return;
+    printAction = new QAction(QObject::tr("&Print..."), mainWindow);
+    printAction->setShortcuts(QKeySequence::Print);
+    printAction->setStatusTip(QObject::tr("Print current report"));
+    QObject::connect(printAction, &QAction::triggered, [&]() {
+        if (!engine->print()) {
+            showError(engine->getLastError());
         }
-    } );
+    });
 
-    QAction createPDF( QObject::tr( "&Create PDF..." ), &window );
-    createPDF.setStatusTip( QObject::tr( "Create PDF from current report" ) );
-    QObject::connect( &createPDF, &QAction::triggered, [ & ]() {
-        auto file = QFileDialog::getSaveFileName( &window,
-            QObject::tr( "Save as PDF" ),
+    createPdfAction = new QAction(QObject::tr("&Create PDF..."), mainWindow);
+    createPdfAction->setStatusTip(QObject::tr("Create PDF from current report"));
+    QObject::connect(createPdfAction, &QAction::triggered, [&]() {
+        auto file = QFileDialog::getSaveFileName(
+            mainWindow,
+            QObject::tr("Save as PDF"),
             QString(),
-            QObject::tr( "PDF Files (*.pdf)" ) );
-        if( file.isEmpty() ) {
+            QObject::tr("PDF Files (*.pdf)")
+        );
+        if (file.isEmpty()) {
             return;
         }
-
-        bool result = engine.createPDF( file );
-        if( !result ) {
-            showError( engine.getLastError() );
+        if (engine->createPDF(file)) {
+            showError(engine->getLastError());
             return;
         }
-    } );
+    });
 
-    QAction createHTML( QObject::tr( "&Create HTML..." ), &window );
-    createHTML.setStatusTip( QObject::tr( "Create HTML from current report" ) );
-    QObject::connect( &createHTML, &QAction::triggered, [ & ]() {
-        auto file = QFileDialog::getSaveFileName( &window,
-            QObject::tr( "Save as HTML" ),
+    createHtmlAction = new QAction(QObject::tr("&Create HTML..."), mainWindow);
+    createHtmlAction->setStatusTip( QObject::tr("Create HTML from current report"));
+    QObject::connect(createHtmlAction, &QAction::triggered, [&]() {
+        auto file = QFileDialog::getSaveFileName(
+            mainWindow,
+            QObject::tr("Save as HTML"),
             QString(),
-            QObject::tr( "HTML Files (*.html *.htm)" ) );
-        if( file.isEmpty() ) {
+            QObject::tr("HTML Files (*.html *.htm)")
+        );
+        if (file.isEmpty()) {
             return;
         }
 
-        bool result = engine.createHTML( file );
-        if( !result ) {
-            showError( engine.getLastError() );
+        bool result = engine->createHTML(file);
+        if (!result) {
+            showError(engine->getLastError());
             return;
         }
-    } );
+    });
 
-    QAction selectDB( QObject::tr( "&Select DB..." ), &window );
-    selectDB.setStatusTip( QObject::tr( "Select database file" ) );
-    QObject::connect( &selectDB, &QAction::triggered, [ & ]() {
-        auto file = QFileDialog::getOpenFileName( &window,
-            QObject::tr( "Open DataBase" ),
-            QString(),
-            QObject::tr( "DataBase files (*.db);;All Files (*.*)" ) );
-        if( file.isEmpty() )
-        {
-            return;
-        }
+    selectDatabaseAction = new QAction(QObject::tr("&Select database..."), mainWindow);
+    selectDatabaseAction->setStatusTip(QObject::tr("Select database file"));
+    QObject::connect(selectDatabaseAction, &QAction::triggered, [&]() { openDatabase(); });
 
-        auto db = QSqlDatabase::addDatabase( "QSQLITE" );
-        db.setDatabaseName( file );
-        if( !db.open() )
-        {
-            showError( "Can not open database. Database error: " + db.lastError().text() );
-            return;
-        }
+    closeAction = new QAction(QObject::tr("&Close report"), mainWindow);
+    closeAction->setShortcuts(QKeySequence::Close);
+    closeAction->setStatusTip(QObject::tr("Close current report"));
+    QObject::connect(closeAction, &QAction::triggered, [&]() { closeReport(); });
 
-        if( !engine.setConnection( db ) )
-        {
-            showError( engine.getLastError() );
-            return;
-        }
-    } );
+    openAction = new QAction(QObject::tr("&Open report..."), mainWindow);
+    openAction->setShortcuts(QKeySequence::Open);
+    openAction->setStatusTip(QObject::tr( "Open an existing report file"));
+    QObject::connect(openAction, &QAction::triggered, [ & ]() { openReport(); });
 
-    QAction close( QObject::tr( "&Close..." ), &window );
-    close.setShortcuts( QKeySequence::Close );
-    close.setStatusTip( QObject::tr( "Close current report" ) );
-    QObject::connect( &close, &QAction::triggered, [ & ]() {
-        if( window.centralWidget() != nullptr ) {
-#if ( QT_VERSION >= QT_VERSION_CHECK( 5, 2, 0 ) )
-            window.takeCentralWidget();
-#endif
-        }
+    exitAction = new QAction(QObject::tr("&Exit"), mainWindow);
+    exitAction->setShortcuts( QKeySequence::Quit );
+    QObject::connect(exitAction, &QAction::triggered, mainWindow, &QMainWindow::close);
 
-        print.setEnabled( false );
-        convert.setEnabled( false );
-        close.setEnabled( false );
-        selectDB.setEnabled( false );
-    } );
+    fileMenu->addActions({ openAction, selectDatabaseAction, printAction, closeAction, exitAction });
+    convertMenu->addActions({ createPdfAction, createHtmlAction });
+    menuBar->addMenu(fileMenu);
+    menuBar->addMenu(convertMenu);
+    mainWindow->setMenuBar(menuBar);
 
-    QAction open( QObject::tr( "&Open..." ), &window );
-    open.setShortcuts( QKeySequence::Open );
-    open.setStatusTip( QObject::tr( "Open an existing file" ) );
-    QObject::connect( &open, &QAction::triggered, [ & ]() {
-        auto file = QFileDialog::getOpenFileName( &window,
-            QObject::tr( "Open QReport" ),
-            QString(),
-            QObject::tr( "QReport Files (*.qreport);;QReport Files (*.qrxml);;All Files (*.*)" ) );
-        if( file.isEmpty() ) {
-            return;
-        }
-        
-        if( window.centralWidget() != nullptr ) {
-        #if ( QT_VERSION >= QT_VERSION_CHECK( 5, 2, 0 ) )
-            window.takeCentralWidget();
-        #endif
-        }
+    engine = new qtreports::Engine();
+    closeReport();
 
-        bool result = engine.open( file );
-        print.setEnabled( result );
-        convert.setEnabled( result );
-        close.setEnabled( result );
-        selectDB.setEnabled( result );
-        if( !result ) {
-            showError( engine.getLastError() );
-            return;
-        }
-
-        layout = engine.createLayout();
-        if( layout.isNull() ) {
-            showError( "Widget is empty" );
-            return;
-        }
-
-		//new code
-		file = QFileDialog::getOpenFileName(&window,
-            QObject::tr("Open DataBase"),
-			QString(),
-            QObject::tr("DataBase files (*.db);;All Files (*.*)"));
-		if (file.isEmpty())
-		{
-			return;
-		}
-
-		auto db = QSqlDatabase::addDatabase("QSQLITE");
-		db.setDatabaseName(file);
-		if (!db.open())
-		{
-			showError("Can not open database. Database error: " + db.lastError().text());
-			return;
-		}
-
-		if (!engine.setConnection(db))
-		{
-			showError(engine.getLastError());
-			return;
-		}
-
-        window.setCentralWidget( layout.data() );
-        window.resize( layout->size() );
-    } );
-
-    QAction exit( QObject::tr( "&Exit..." ), &window );
-    exit.setShortcuts( QKeySequence::Quit );
-    QObject::connect( &exit, &QAction::triggered, &window, &QMainWindow::close );
-
-    print.setEnabled( engine.isOpened() );
-    convert.setEnabled( engine.isOpened() );
-
-    file.addAction( &open );
-    file.addAction( &selectDB );
-    file.addAction( &print );
-    file.addAction( &close );
-    file.addAction( &exit );
-    convert.addAction( &createPDF );
-    convert.addAction( &createHTML );
-    bar.addMenu( &file );
-    bar.addMenu( &convert );
-    window.setMenuBar( &bar );
-    //engine.createPDF( "test.pdf" );
-    //engine.createHTML( "C:/Users/haven/Desktop/test.html" );
+    if (argc > 1) {
+        openReport(argv[1]);
+    }
+    if (argc > 2) {
+        openDatabase(argv[2]);
+    }
+    mainWindow->show();
 
     return a.exec();
 }
