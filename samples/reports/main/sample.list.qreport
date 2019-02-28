@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<report name="sample_report" orientation="Landscape">
+<style name="Arial_Normal" isDefault="true" fontName="Arial"
+	fontSize="16" pdfFontName="c:\tahoma.ttf" pdfEncoding="Cp1251"
+	isPdfEmbedded="false" />
+
+<queryString>
+	<![CDATA[ select NLab, NDiscip, NDep from Laboratory natural join Discipline natural join Department]]>
+</queryString>
+
+<field name="NLab" class="QString" />
+<field name="NDiscip" class="QString" />
+<field name="NDep" class="QString" />
+
+<detail>
+    <band height="40">
+		<textField>
+			<reportElement x="0" y="0" width="300" height="40" />
+			<textFieldExpression class="QString"><![CDATA[$F{NDiscip}]]></textFieldExpression>
+		</textField>
+		<textField>
+			<reportElement x="300" y="0" width="300" height="40" />
+			<textFieldExpression class="QString"><![CDATA[$F{NLab}]]></textFieldExpression>
+		</textField>
+		<textField>
+			<reportElement x="600" y="0" width="300" height="40" />
+			<textFieldExpression class="QString"><![CDATA[$F{NDep}]]></textFieldExpression>
+		</textField>
+    </band>
+</detail>
+</report>

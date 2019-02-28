@@ -16,7 +16,7 @@ Test_ConverterToHTML::~Test_ConverterToHTML() {}
 
 void    Test_ConverterToHTML::convert()
 {
-    QString reportPath = QFINDTESTDATA( "../samples/reports/test.tests-images.full.qrxml" );
+    QString reportPath = QFINDTESTDATA( "../samples/reports/tests-images/test.full.qrxml" );
     qDebug() << endl << "Used report: " << reportPath;
 
     qtreports::Engine engine;
