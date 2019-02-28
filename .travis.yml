@@ -5,6 +5,7 @@ sudo: required
 branches:
     only:
       - master
+      - travis-windows-tests
 
 env:
   - BUILD_TYPE=release
