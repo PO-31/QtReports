@@ -9,6 +9,4 @@ cd "$HOME"
 
 export PATH="$HOME/qtbase-build/bin:$PATH"
 
-ls "$HOME"
-
 cd "$TRAVIS_BUILD_DIR"
