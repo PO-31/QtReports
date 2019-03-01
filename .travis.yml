@@ -32,14 +32,3 @@ jobs:
         name: "Windows build with Mingw-w64"
         os: windows
         compiler: gcc
-          
-      - stage: "Post-Build"
-        name: "Coverage tests"
-        os: linux
-        dist: xenial
-        compiler: gcc
-        env: BUILD_TYPE=coverage
-        services: xvfb
-        script:
-          - source .travis/${TRAVIS_OS_NAME}/building.sh
-          - source .travis/${TRAVIS_OS_NAME}/coverage.sh
