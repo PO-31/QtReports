@@ -403,23 +403,67 @@ namespace qtreports {
                 ++imgCount;
             }
 
+            // Получаем количество линий
+            int amountLines = band->getLines().size();
+            int counterLines = 0;
+            // Получаем количество не граничных линий
+            int amountNotBorderLines = amountLines - 3;
+
             for( auto && line : band->getLines() )
             {
+                bool isBorderLeft = false;
                 float angleRad = atan2(line->getHeight(), line->getWidth());
+                if(angleRad == 1.5208379f)
+                    isBorderLeft = true;
                 float lineWidth = sqrt(pow(line->getWidth(), 2) + pow(line->getHeight(), 2));
 
-                elementStr += QString("     <div class='shape' "
-                    "style='left: %1px; top: %2px; "
-                    "width: %3px; height: %4px; "
-                    "overflow: visible'>\n"
-                    "      <div style='border-top: 1px solid black; height: 1px; width: %5px; "
-                    "transform-origin: 0 0 0; transform: rotate(%6rad)'></div>\n     </div>\n")
-                    .arg(line->getX())
-                    .arg(line->getY())
-                    .arg(line->getWidth())
-                    .arg(line->getHeight())
-                    .arg(lineWidth)
-                    .arg(angleRad);
+                if(isBorderLeft) { // Если линия вертикальная
+                    if(counterLines != amountLines - 2) { // Если линия не последняя
+                        elementStr += QString("     <div class='shape' "
+                            "style='left: %1px; top: %2px; "
+                            "width: %3px; height: %4px; "
+                            "overflow: visible'>\n"
+                            "      <div style='border-left: 1px solid black; height: %5px; width: 1px; "
+                            "'></div>\n     </div>\n")
+                            .arg(line->getX()) // устанавливаем координату X без изменений
+                            .arg(line->getY())
+                            .arg(line->getWidth())
+                            .arg(line->getHeight())
+                            .arg(lineWidth);
+                        counterLines++;
+                    }
+                    else { // Если линия последняя
+                        elementStr += QString("     <div class='shape' "
+                            "style='left: %1px; top: %2px; "
+                            "width: %3px; height: %4px; "
+                            "overflow: visible'>\n"
+                            "      <div style='border-left: 1px solid black; height: %5px; width: 1px; "
+                            "'></div>\n     </div>\n")
+                            // Смещаем координату X вправо на положение, равное amountNotBorderLines,
+                            // умноженное на ширину линии. (Здесь ширина линии 1px, и нет возможности(пока что)
+                            //                              получать ее из репорта).
+                            .arg(line->getX() + amountNotBorderLines)
+                            .arg(line->getY())
+                            .arg(line->getWidth())
+                            .arg(line->getHeight())
+                            .arg(lineWidth)
+                            ;
+                        counterLines = 0;
+                    }
+                } else { // Если линия не вертикальная
+                    elementStr += QString("     <div class='shape' "
+                        "style='left: %1px; top: %2px; "
+                        "width: %3px; height: %4px; "
+                        "overflow: visible'>\n"
+                        "      <div style='border-top: 1px solid black; height: 1px; width: %5px; "
+                        "'></div>\n     </div>\n")
+                        .arg(line->getX())
+                        .arg(line->getY())
+                        .arg(line->getWidth())
+                        .arg(line->getHeight())
+                        .arg(lineWidth)
+                        ;
+                }
             }
 
             for( auto && rect : band->getRects() )
