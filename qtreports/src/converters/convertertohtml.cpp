@@ -52,6 +52,8 @@ namespace qtreports {
             int pageWidth = m_report->getWidth();
             int freePageSpace = pageHeight;
 
+            auto& styles = m_report->getStyles();
+
             m_html += QString("<!DOCTYPE html>\n"
                       "<html>\n"
                       " <head>\n"
@@ -77,9 +79,33 @@ namespace qtreports {
                       "   .statictext, .textfield, .shape{\n"
                       "   position: absolute;\n"
                       "   background-color: transparent;\n"
-                      "   }\n"
+                      "   }\n")
+                    .arg(pageWidth).arg(pageHeight);
 
-                      "   .statictext {\n"
+            for (auto i = styles.begin(); i != styles.end(); ++i) {
+                auto* style = (*i).data();
+                m_html += QString(
+                    "   .%1 {\n"
+                    "   font-family: %2 !important;\n"
+                    "   font-size: %3pt !important;\n"
+                    "   color: %4 !important;\n"
+                    "   font-style: %5 !important;\n"
+                    "   font-weight: %6 !important;\n"
+                    "   text-decoration: %7 %8 !important;\n"
+                    "   }\n"
+                )
+                .arg("style-" + style->getName())                       // 1 name
+                .arg(style->getFontName())                              // 2 font-family
+                .arg(style->getFontSize())                              // 3 font-size
+                .arg(style->getFontColor().name())                      // 4 color
+                .arg(style->isItalic() ? "italic" : "")                 // 5 font-style
+                .arg(style->isBold() ? "800" : "300")                   // 6 font-weight
+                .arg(style->isUnderline() ? "underline" : "")           // 7 text-docration
+                .arg(style->isStrikeThrough() ? "line-through" : "");   // 8 text-decoration
+            }
+            QString defaultStyleName = m_report->getDefaultStyle().isNull() ? "" : "style-" + m_report->getDefaultStyle()->getName();
+            qDebug() << defaultStyleName;
+            m_html += QString("   .statictext {\n"
                       "   font-family: %3;\n"
                       "   font-size: %4pt;\n"
                       "   color: %5;\n"
@@ -98,14 +124,12 @@ namespace qtreports {
                       "  </style>\n"
                       " </head>\n"
                       " <body>\n")
-                    .arg(pageWidth).arg(pageHeight)
                     .arg("Verdana").arg("12").arg("black").arg("normal").arg("normal")
                     .arg("Verdana").arg("12").arg("black").arg("normal").arg("normal");
 
             m_html += "  <div class='page'>\n";
 
             auto title = m_report->getTitle();
-
             if(!title.isNull())
             {
                 m_html += "   <div class='title'>\n";
@@ -146,7 +170,7 @@ namespace qtreports {
                             //if ((textField->getAlignment() & Qt::AlignBaseline) == Qt::AlignBaseline)
                             //    verticalAlignment = "baseline";
 
-                            elementStr += QString("     <div class='textfield' "
+                            elementStr += QString("     <div class='textfield " + defaultStyleName + "' "
                                "style='left: %1px; top: %2px; "
                                "width: %3px; height: %4px; "
                                "text-align: %5; vertical-align: %6'>%7</div>\n")
@@ -186,7 +210,7 @@ namespace qtreports {
                             //    verticalAlignment = "baseline";
 
 
-                            elementStr += QString("     <div class='statictext' "
+                            elementStr += QString("     <div class='statictext " + defaultStyleName + "' "
                                 "style='left: %1px; top: %2px; "
                                 "width: %3px; height: %4px; "
                                 "text-align: %5; vertical-align: %6'>%7</div>\n")
@@ -266,7 +290,7 @@ namespace qtreports {
                             //    verticalAlignment = "baseline";
 
 
-                            elementStr += QString("     <div class='textfield' "
+                            elementStr += QString("     <div class='textfield " + defaultStyleName + "' "
                                "style='left: %1px; top: %2px; "
                                "width: %3px; height: %4px; "
                                "text-align: %5; vertical-align: %6'>%7</div>\n")
@@ -309,7 +333,7 @@ namespace qtreports {
                                 //if ((staticText->getAlignment() & Qt::AlignBaseline) == Qt::AlignBaseline)
                                 //    verticalAlignment = "baseline";
 
-                                elementStr += QString("     <div class='statictext' "
+                                elementStr += QString("     <div class='statictext " + defaultStyleName + "' "
                                     "style='left: %1px; top: %2px; "
                                     "width: %3px; height: %4px; "
                                     "text-align: %5; vertical-align: %6'>%7</div>\n")
