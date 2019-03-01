@@ -2,7 +2,6 @@
 #include <QTextStream>
 #include <qtreports/converters/utils/replacer.hpp>
 #include <qtreports/converters/convertertohtml.hpp>
-//#include "cmath"
 #include <cmath>
 
 namespace qtreports {
@@ -415,7 +414,7 @@ namespace qtreports {
                 float angleRad = atan2(line->getHeight(), line->getWidth());
                 if(angleRad == 1.5208379f)
                     isBorderLeft = true;
-                float lineWidth = sqrt(pow(line->getWidth(), 2) + pow(line->getHeight(), 2));
+                float lineHeight = sqrt(pow(line->getWidth(), 2) + pow(line->getHeight(), 2));
 
                 if(isBorderLeft) { // Если линия вертикальная
                     if(counterLines != amountLines - 2) { // Если линия не последняя
@@ -429,7 +428,7 @@ namespace qtreports {
                             .arg(line->getY())
                             .arg(line->getWidth())
                             .arg(line->getHeight())
-                            .arg(lineWidth);
+                            .arg(lineHeight);
                         counterLines++;
                     }
                     else { // Если линия последняя
@@ -440,13 +439,12 @@ namespace qtreports {
                             "      <div style='border-left: 1px solid black; height: %5px; width: 1px; "
                             "'></div>\n     </div>\n")
                             // Смещаем координату X вправо на положение, равное amountNotBorderLines,
-                            // умноженное на ширину линии. (Здесь ширина линии 1px, и нет возможности(пока что)
-                            //                              получать ее из репорта).
+                            // умноженное на ширину линии. (width: 1px)
                             .arg(line->getX() + amountNotBorderLines)
                             .arg(line->getY())
                             .arg(line->getWidth())
                             .arg(line->getHeight())
-                            .arg(lineWidth)
+                            .arg(lineHeight)
                             ;
                         counterLines = 0;
                     }
@@ -461,7 +459,7 @@ namespace qtreports {
                         .arg(line->getY())
                         .arg(line->getWidth())
                         .arg(line->getHeight())
-                        .arg(lineWidth)
+                        .arg(lineHeight)
                         ;
                 }
             }
