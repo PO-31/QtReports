@@ -7,6 +7,7 @@ if [[ $? -ne 0 ]]; then
 	exit 1
 fi
 
-export PATH="$HOME/qtbase-build/bin:$PATH"
+export QTDIR="$HOME/qtbase-build"
+export PATH="$QTDIR/bin:$PATH"
 
 cd "$TRAVIS_BUILD_DIR"
