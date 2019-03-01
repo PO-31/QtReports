@@ -9,4 +9,6 @@ else
 	git clone https://github.com/PO-31/packages/ "$HOME/packages/"
 fi
 
+ls "$HOME/packages"
+
 cd "$TRAVIS_BUILD_DIR"
