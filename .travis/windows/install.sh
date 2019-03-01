@@ -10,5 +10,3 @@ fi
 ls "$HOME/qtbase-build/"
 
 export PATH=$HOME/qtbase-build/bin:$PATH
-
-cd "$TRAVIS_BUILD_DIR"
