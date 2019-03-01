@@ -8,7 +8,8 @@ branches:
       - travis-windows-tests
 
 cache:
-  - $HOME/packages
+    directories:
+      - $HOME/packages
 
 env:
   - BUILD_TYPE=release
