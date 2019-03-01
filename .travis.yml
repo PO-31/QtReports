@@ -28,3 +28,11 @@ jobs:
         name: "Windows build with GCC"
         os: windows
         compiler: gcc
+      - name: "Linux build with Clang"
+        os: linux
+        dist: xenial
+        compiler: clang
+      - name: "Linux build with GCC"
+        os: linux
+        dist: xenial 
+        compiler: gcc
