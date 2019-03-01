@@ -33,7 +33,7 @@ namespace qtreports
             return m_styles.value( name );
         }
 
-        const QMap< QString, StylePtr >     Report::getStyles() const
+        const QMap< QString, StylePtr >&     Report::getStyles() const
         {
             return m_styles;
         }

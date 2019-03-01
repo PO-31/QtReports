@@ -57,7 +57,7 @@ namespace qtreports {
             /*! @~russian
             Возвращает карту указателей на <style>
             */
-            const QMap< QString, StylePtr >     getStyles() const;
+            const QMap<QString, StylePtr>& getStyles() const;
 
             /*! @~russian
             Добавляет <group> в <report>
