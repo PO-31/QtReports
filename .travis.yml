@@ -24,15 +24,11 @@ script:
   
 jobs:
     include:
-      - stage: "Build"
-        name: "Linux build with Clang"
-        os: linux
-        dist: xenial
-        compiler: clang
-      - name: "Linux build with GCC"
-        os: linux
-        dist: xenial 
-        compiler: gcc
+      # - stage: "Build"
+        # name: "Windows build with Mingw-w64"
+        # os: linux
+        # dist: xenial
+        # compiler: gcc
           
       - stage: "Post-Build"
         name: "Coverage tests"
@@ -43,22 +39,4 @@ jobs:
         services: xvfb
         script:
           - source .travis/${TRAVIS_OS_NAME}/building.sh
-          - source .travis/${TRAVIS_OS_NAME}/coverage.sh        
-      - name: "Docs generation"
-        os: linux
-        dist: xenial
-        env: BUILD_TYPE=doxygen
-        branches:
-            only:
-              - master
-        script:
-          - source .travis/${TRAVIS_OS_NAME}/doxygen.sh
-      - name: "Viewer Linux build"
-        os: linux
-        dist: xenial
-        compiler: clang
-        script:
-            - source .travis/${TRAVIS_OS_NAME}/building.sh
-            - source .travis/${TRAVIS_OS_NAME}/viewer_build.sh
-        
-          
+          - source .travis/${TRAVIS_OS_NAME}/coverage.sh
