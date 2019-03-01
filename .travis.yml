@@ -7,10 +7,6 @@ branches:
       - master
       - travis-windows-tests
 
-cache:
-    directories:
-      - $HOME/packages
-
 env:
   - BUILD_TYPE=release
               
@@ -25,10 +21,10 @@ before_script:
 
 script:
   - source .travis/${TRAVIS_OS_NAME}/building.sh
-  
+
 jobs:
     include:
       - stage: "Build"
-        name: "Windows build with Mingw-w64"
+        name: "Windows build with GCC"
         os: windows
         compiler: gcc

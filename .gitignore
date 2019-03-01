@@ -41,8 +41,8 @@ build
 
 # Qt Project files and templates
 *.pro.user
-*.pro.autosave
-*moc_*
+moc_*
+*/moc_*
 *.qmake.stash
 *.Debug
 *.Release
@@ -54,6 +54,7 @@ build
 *.vcxproj
 
 # Visual Studio Code Stuff
+# (If someone tries to done with it)
 *.vscode
 
 # Coveralls possible files
