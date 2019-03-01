@@ -104,7 +104,7 @@ namespace qtreports {
                 .arg(style->isStrikeThrough() ? "line-through" : "");   // 8 text-decoration
             }
             QString defaultStyleName = m_report->getDefaultStyle().isNull() ? "" : "style-" + m_report->getDefaultStyle()->getName();
-            qDebug() << defaultStyleName;
+
             m_html += QString("   .statictext {\n"
                       "   font-family: %3;\n"
                       "   font-size: %4pt;\n"
