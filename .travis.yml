@@ -21,6 +21,9 @@ before_script:
 
 script:
   - source .travis/${TRAVIS_OS_NAME}/building.sh
+
+cache:
+  - $HOME/packages
   
 jobs:
     include:
