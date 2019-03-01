@@ -1,5 +1,7 @@
 #!/bin/bash
 
+ls "$HOME/packages" -a
+
 if [ -d "$HOME/packages/.git" ]; then
 	cd "$HOME/packages"
 	git pull
