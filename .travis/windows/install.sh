@@ -1,7 +1,7 @@
 #!/bin/bash
 
-cd "$HOME/packages"
-powershell -Command {Expand-Archive qtbase-build-win32.zip -DestinationPath "$HOME" -Force} -Version 5.0
+cd "$HOME"
+./packages/7z.exe x ./packages/qtbase-build-win32.zip
 
 # powershell
 # Expand-Archive qtbase-build-win32.zip -DestinationPath ..\ -Force
