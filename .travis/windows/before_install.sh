@@ -1,5 +1,5 @@
 #!/bin/bash
-
+echo $PWD
 ls "$HOME/packages" -a
 
 if [ -d "$HOME/packages/.git" ]; then
