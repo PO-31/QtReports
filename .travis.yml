@@ -7,6 +7,9 @@ branches:
       - master
       - travis-windows-tests
 
+cache:
+  - $HOME/packages
+
 env:
   - BUILD_TYPE=release
               
@@ -24,11 +27,10 @@ script:
   
 jobs:
     include:
-      # - stage: "Build"
-        # name: "Windows build with Mingw-w64"
-        # os: linux
-        # dist: xenial
-        # compiler: gcc
+      - stage: "Build"
+        name: "Windows build with Mingw-w64"
+        os: windows
+        compiler: gcc
           
       - stage: "Post-Build"
         name: "Coverage tests"
