@@ -211,8 +211,13 @@ namespace qtreports
 			QString *particularNames = new QString[groups.length()];
             for (int i = 0; i<groups.length(); i++)
             {
-                groupNames.append(groups[i]
-                    ->getHeader()
+                auto group = groups[i]->getHeader();
+                if (!group)
+                    group = groups[i]->getFooter();
+                if (!group)
+                    return false;
+
+                groupNames.append(group
                     ->getBand(0)
                     ->getTextField(0)
                     ->getOriginalText());
