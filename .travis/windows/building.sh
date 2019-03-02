@@ -22,6 +22,7 @@ fi
 echo
 echo "Library has built"
 
+mkdir ../../build/
 cp ../build/lib/* ../../build/
 export PATH="$TRAVIS_BUILD_DIR/../build:$PATH"
 
