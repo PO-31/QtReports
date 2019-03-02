@@ -8,9 +8,9 @@ branches:
       - travis-windows-tests
 
 stages:
-  - build
-    name: "Building"
+  - name: "Building"
   - post-build
+    if: branch = master
 
 env:
   - BUILD_TYPE=release
@@ -31,7 +31,7 @@ script:
 
 jobs:
     include:
-      - stage: build
+      - stage: "Building"
         name: "Windows build with GCC"
         os: windows
         compiler: gcc
