@@ -20,11 +20,15 @@ if [[ $? -ne 0 ]]; then
 fi
 
 echo
-echo "Library has built"
+echo "Library has been built"
 
-mkdir ../../build/
-cp ../build/lib/* ../../build/
-export PATH="$TRAVIS_BUILD_DIR/../build:$PATH"
+
+export REPORT_LIB="/c/qtreports"
+
+mkdir "$REPORT_LIB"
+cp ../build/lib/* "$REPORT_LIB"
+export PATH="$REPORT_LIB:$PATH"
+ls "$REPORT_LIB"
 
 cd "$TRAVIS_BUILD_DIR"
 

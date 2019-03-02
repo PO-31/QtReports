@@ -13,7 +13,7 @@ if [[ $? -ne 0 ]]; then
 fi
 
 echo
-echo "Tests program has built"
+echo "Tests program has been built"
 
 ./qtreports-tests
 
