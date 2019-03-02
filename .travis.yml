@@ -7,12 +7,16 @@ branches:
       - master
       - travis-windows-tests
 
+stages:
+  - build
+    name: "Building"
+  - post-build
+
 env:
   - BUILD_TYPE=release
               
 before_install:
   - source .travis/${TRAVIS_OS_NAME}/before_install.sh
-  - export "PATH=$TRAVIS_BUILD_DIR/build/lib:$PATH"
 
 install:
   - source .travis/${TRAVIS_OS_NAME}/install.sh
@@ -27,7 +31,7 @@ script:
 
 jobs:
     include:
-      - stage: "Build"
+      - stage: build
         name: "Windows build with GCC"
         os: windows
         compiler: gcc
