@@ -8,8 +8,8 @@ branches:
       - travis-windows-tests
 
 stages:
-  - name: "Building"
-  - post-build
+  - "Building"
+  - name: post-build
     if: branch = master
 
 env:
