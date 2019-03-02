@@ -1,19 +1,8 @@
 #!/bin/bash
 
 echo
-echo "Build and run tests"
-
-cd "$TRAVIS_BUILD_DIR/qtreports-tests"
-qmake -spec ${USING_QT_MKSPEC} "CONFIG+=${BUILD_TYPE}" qtreports-tests.pro
-make -j$(nproc)
-if [[ $? -ne 0 ]]; then
-	exit 1
-fi
-./qtreports-tests
-
-echo
 echo "Collect coverage data"
-cd "$TRAVIS_BUILD_DIR"
+
 git clone https://github.com/linux-test-project/lcov
 cd lcov
 sudo make install

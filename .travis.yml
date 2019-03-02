@@ -9,7 +9,7 @@ branches:
 
 stages:
   - "Building"
-  - name: post-build
+  - name: "Deployment"
     if: branch = master
 
 env:
@@ -32,6 +32,30 @@ script:
 jobs:
     include:
       - stage: "Building"
-        name: "Windows build with GCC"
+        name: "Windows build with MingW-W64"
         os: windows
         compiler: gcc
+      - name: "Linux build with GCC"
+        os: linux
+        dist: xenial
+        compiler: gcc
+      - name: "Linux build with Clang"
+        os: linux
+        dist: xenial
+        compiler: clang
+      - stage: "Deployment"
+        name: "Coverage statistic collect"
+        os: linux
+        dist: xenial
+        compiler: gcc
+        env: "BUILD_TYPE=coverage"
+        script:
+          - source .travis/${TRAVIS_OS_NAME}/building.sh
+          - source .travis/${TRAVIS_OS_NAME}/testing.sh
+          - source .travis/${TRAVIS_OS_NAME}/coverage.sh
+      - name: "Doxygen documentation generation"
+        os: linux
+        dist: xenial
+        env: "BUILD_TYPE=None"
+        script:
+          - source .travis/${TRAVIS_OS_NAME}/doxygen.sh
