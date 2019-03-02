@@ -32,27 +32,37 @@ script:
 jobs:
     include:
       - stage: "Building"
+      
         name: "Windows build with MingW-W64"
         os: windows
         compiler: gcc
+        
       - name: "Linux build with GCC"
         os: linux
         dist: xenial
+        services: xvfb
         compiler: gcc
+        
       - name: "Linux build with Clang"
         os: linux
         dist: xenial
         compiler: clang
+        services: xvfb 
+        
+        
       - stage: "Deployment"
+      
         name: "Coverage statistic collect"
         os: linux
         dist: xenial
         compiler: gcc
+        services: xvfb 
         env: "BUILD_TYPE=coverage"
         script:
           - source .travis/${TRAVIS_OS_NAME}/building.sh
           - source .travis/${TRAVIS_OS_NAME}/testing.sh
           - source .travis/${TRAVIS_OS_NAME}/coverage.sh
+
       - name: "Doxygen documentation generation"
         os: linux
         dist: xenial
