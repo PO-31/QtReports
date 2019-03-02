@@ -12,6 +12,7 @@ env:
               
 before_install:
   - source .travis/${TRAVIS_OS_NAME}/before_install.sh
+  - export "PATH=$TRAVIS_BUILD_DIR/build/lib:$PATH"
 
 install:
   - source .travis/${TRAVIS_OS_NAME}/install.sh
@@ -30,6 +31,3 @@ jobs:
         name: "Windows build with GCC"
         os: windows
         compiler: gcc
-        env:
-          - BUILD_TYPE=release
-          - PATH="$PATH:$TRAVIS_BUILD_DIR/build/lib"

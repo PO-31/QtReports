@@ -22,7 +22,7 @@ fi
 echo
 echo "Library has built"
 
-export PATH="$TRAVIS_BUILD_DIR/build/lib:$PATH"
+# export PATH="$TRAVIS_BUILD_DIR/build/lib:$PATH"
 
 cd "$TRAVIS_BUILD_DIR"
 
