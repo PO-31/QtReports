@@ -15,7 +15,7 @@ fi
 echo
 echo "Tests program has built"
 
-qtreports-tests
+./qtreports-tests
 
 if [[ $? -ne 0 ]]; then
 	echo "Some of the tests FAILED"
