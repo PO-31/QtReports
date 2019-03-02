@@ -22,13 +22,5 @@ fi
 echo
 echo "Library has been built"
 
-
-export REPORT_LIB="/c/qtreports"
-
-mkdir "$REPORT_LIB"
-cp ../build/lib/* "$REPORT_LIB"
-export PATH="$REPORT_LIB:$PATH"
-ls "$REPORT_LIB"
-
 cd "$TRAVIS_BUILD_DIR"
 
