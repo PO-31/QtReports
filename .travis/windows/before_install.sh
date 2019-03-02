@@ -1,3 +1,7 @@
 #!/bin/bash
 
-source "$TRAVIS_BUILD_DIR/.travis/before_install.sh"
+git clone -b windows https://github.com/PO-31/packages/ "$HOME/packages/"
+
+if [[ $? -ne 0 ]]; then
+	exit 1
+fi

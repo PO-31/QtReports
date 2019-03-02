@@ -21,18 +21,12 @@ before_script:
 
 script:
   - source .travis/${TRAVIS_OS_NAME}/building.sh
+  - source .travis/${TRAVIS_OS_NAME}/testing.sh
+  - source .travis/${TRAVIS_OS_NAME}/viewer_building.sh
 
 jobs:
     include:
       - stage: "Build"
         name: "Windows build with GCC"
         os: windows
-        compiler: gcc
-      - name: "Linux build with Clang"
-        os: linux
-        dist: xenial
-        compiler: clang
-      - name: "Linux build with GCC"
-        os: linux
-        dist: xenial 
         compiler: gcc

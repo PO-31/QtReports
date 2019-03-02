@@ -2,6 +2,7 @@
 
 echo
 echo "Build and run tests"
+
 cd "$TRAVIS_BUILD_DIR/qtreports-tests"
 qmake -spec ${USING_QT_MKSPEC} "CONFIG+=${BUILD_TYPE}" qtreports-tests.pro
 make -j$(nproc)
