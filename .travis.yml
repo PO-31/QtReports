@@ -30,3 +30,6 @@ jobs:
         name: "Windows build with GCC"
         os: windows
         compiler: gcc
+        env:
+          - BUILD_TYPE=release
+          - PATH="$PATH:$TRAVIS_BUILD_DIR/build/lib"
