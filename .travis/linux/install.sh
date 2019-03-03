@@ -35,7 +35,7 @@ if [ "$BUILD_TYPE" = "coverage" ]; then
 	cd "$TRAVIS_BUILD_DIR"
 fi
 
-sudo tar -xf "$HOME/packages/qtbase-build.tar.gz" "/opt/"
+sudo tar -xf "$HOME/packages/qtbase-build.tar.gz" -C "/opt/"
 source /opt/qtbase-build/bin/qtbase-env.sh
 
 
