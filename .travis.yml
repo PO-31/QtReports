@@ -6,6 +6,14 @@ branches:
     only:
       - master
       - travis-windows-tests
+<<<<<<< HEAD
+=======
+
+stages:
+  - "Building"
+  - name: "Deployment"
+    if: branch = master
+>>>>>>> origin/travis-windows-tests
 
 env:
   - BUILD_TYPE=release
@@ -21,48 +29,54 @@ before_script:
 
 script:
   - source .travis/${TRAVIS_OS_NAME}/building.sh
+<<<<<<< HEAD
 
 cache:
     directories:
       - $HOME/packages
   
+=======
+  - source .travis/${TRAVIS_OS_NAME}/testing.sh
+  - source .travis/${TRAVIS_OS_NAME}/viewer_building.sh
+
+>>>>>>> origin/travis-windows-tests
 jobs:
     include:
-      - stage: "Build"
-        name: "Linux build with Clang"
-        os: linux
-        dist: xenial
-        compiler: clang
+      - stage: "Building"
+      
+        name: "Windows build with MingW-W64"
+        os: windows
+        compiler: gcc
+        
       - name: "Linux build with GCC"
         os: linux
-        dist: xenial 
-        compiler: gcc
-          
-      - stage: "Post-Build"
-        name: "Coverage tests"
-        os: linux
         dist: xenial
-        compiler: gcc
-        env: BUILD_TYPE=coverage
         services: xvfb
-        script:
-          - source .travis/${TRAVIS_OS_NAME}/building.sh
-          - source .travis/${TRAVIS_OS_NAME}/coverage.sh        
-      - name: "Docs generation"
-        os: linux
-        dist: xenial
-        env: BUILD_TYPE=doxygen
-        branches:
-            only:
-              - master
-        script:
-          - source .travis/${TRAVIS_OS_NAME}/doxygen.sh
-      - name: "Viewer Linux build"
+        compiler: gcc
+        
+      - name: "Linux build with Clang"
         os: linux
         dist: xenial
         compiler: clang
-        script:
-            - source .travis/${TRAVIS_OS_NAME}/building.sh
-            - source .travis/${TRAVIS_OS_NAME}/viewer_build.sh
+        services: xvfb 
         
-          
+        
+      - stage: "Deployment"
+      
+        name: "Coverage statistic collect"
+        os: linux
+        dist: xenial
+        compiler: gcc
+        services: xvfb 
+        env: "BUILD_TYPE=coverage"
+        script:
+          - source .travis/${TRAVIS_OS_NAME}/building.sh
+          - source .travis/${TRAVIS_OS_NAME}/testing.sh
+          - source .travis/${TRAVIS_OS_NAME}/coverage.sh
+
+      - name: "Doxygen documentation generation"
+        os: linux
+        dist: xenial
+        env: "BUILD_TYPE=None"
+        script:
+          - source .travis/${TRAVIS_OS_NAME}/doxygen.sh
