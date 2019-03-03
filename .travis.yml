@@ -5,15 +5,11 @@ sudo: required
 branches:
     only:
       - master
-      - travis-windows-tests
-<<<<<<< HEAD
-=======
 
 stages:
   - "Building"
   - name: "Deployment"
     if: branch = master
->>>>>>> origin/travis-windows-tests
 
 env:
   - BUILD_TYPE=release
@@ -29,17 +25,9 @@ before_script:
 
 script:
   - source .travis/${TRAVIS_OS_NAME}/building.sh
-<<<<<<< HEAD
-
-cache:
-    directories:
-      - $HOME/packages
-  
-=======
   - source .travis/${TRAVIS_OS_NAME}/testing.sh
   - source .travis/${TRAVIS_OS_NAME}/viewer_building.sh
 
->>>>>>> origin/travis-windows-tests
 jobs:
     include:
       - stage: "Building"
