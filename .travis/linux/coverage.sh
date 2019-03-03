@@ -3,10 +3,6 @@
 echo
 echo "Collect coverage data"
 
-git clone https://github.com/linux-test-project/lcov
-cd lcov
-sudo make install
-cd ..
 lcov --version
 lcov --capture --directory "$TRAVIS_BUILD_DIR/qtreports" --output-file coverage.info
 lcov --remove coverage.info --output-file coverage.info "*moc_*.cpp"
