@@ -8,9 +8,6 @@ qmake -spec ${USING_QT_MKSPEC} "CONFIG+=${BUILD_TYPE}" qtreports.pro
 
 if [ "$CC" = "gcc" ]; then
 	mingw32-make.exe -j$(nproc)
-else
-	echo "Detected using unsupported compiler"
-	exit 1
 fi
 
 if [[ $? -ne 0 ]]; then

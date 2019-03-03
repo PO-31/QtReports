@@ -10,9 +10,6 @@ if [ "$CC" = "gcc" ]; then
 
 	export QTDIR="/c/qtbase-mingw"
 	export USING_QT_MKSPEC="win32-g++"
-else
-	echo "Detected using unsupported compiler"
-	exit 1
 fi
 
 export PATH="$QTDIR/bin:$PATH"

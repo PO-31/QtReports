@@ -65,6 +65,6 @@ jobs:
       - name: "Doxygen documentation generation"
         os: linux
         dist: xenial
-        env: "BUILD_TYPE=None"
+        env: "BUILD_TYPE=doxygen"
         script:
           - source .travis/${TRAVIS_OS_NAME}/doxygen.sh
