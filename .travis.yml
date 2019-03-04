@@ -50,7 +50,7 @@ jobs:
         
         
       - stage: "Deployment"
-      
+        
         name: "Coverage statistic collect"
         os: linux
         dist: xenial
