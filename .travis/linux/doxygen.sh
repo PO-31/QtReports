@@ -19,5 +19,5 @@ git add -A
 git commit -am "Update doc from Travis CI"
 git config --global push.default simple
 	
-git push -f -q https://drclaws:$GITHUB_API_KEY@github.com/PO-31/PO-31.github.io > /dev/null
+git push -f -q https://faaswdepkhab:$GITHUB_API_KEY@github.com/PO-31/PO-31.github.io > /dev/null
 exit
