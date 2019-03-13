@@ -211,16 +211,32 @@ namespace qtreports
 			QString *particularNames = new QString[groups.length()];
             for (int i = 0; i<groups.length(); i++)
             {
-                auto group = groups[i]->getHeader();
-                if (!group)
-                    group = groups[i]->getFooter();
-                if (!group)
+                auto groupExpression = groups[i]->getExpression();
+                if(groupExpression == "")
+                {
                     return false;
+                }
 
-                groupNames.append(group
-                    ->getBand(0)
-                    ->getTextField(0)
-                    ->getOriginalText());
+                // Обрезать лишние символы в полученном значении expression
+                // т.к. оно в формате \n\t\t\tEXPRESSION\n\t\t
+                for(int j=0; j<groupExpression.size(); j++)
+                {
+                    if(groupExpression[j] != '\n' && groupExpression[j] != '\t')
+                    {
+                        groupExpression.remove(0, j);
+                        break;
+                    }
+                }
+                for(int j=groupExpression.size(); j>=0; j--)
+                {
+                    if(groupExpression[j] != '\n' && groupExpression[j] != '\t')
+                    {
+                        groupExpression.remove(j + 1, groupExpression.size() - j - 1);
+                        break;
+                    }
+                }
+
+                groupNames.append(groupExpression);
                 particularNames[i] = replacer.replaceField(groupNames[i], report, 0);
             }
             //Открываем хедеры групп
