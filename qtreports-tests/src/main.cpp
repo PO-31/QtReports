@@ -5,6 +5,7 @@
 #include "test_convertertoqwidget.hpp"
 #include "test_convertertopdf.hpp"
 #include "test_convertertohtml.hpp"
+#include "test_convertertohtmlSetParameter.hpp"
 #include "test_field.hpp"
 #include "test_groups.hpp"
 
@@ -16,6 +17,7 @@ int main( int argc, char *argv[] ) {
     result |= QTest::qExec( new Test_ConverterToQWidget, argc, argv );
     result |= QTest::qExec( new Test_ConverterToPDF, argc, argv );
     result |= QTest::qExec( new Test_ConverterToHTML, argc, argv );
+	result |= QTest::qExec( new Test_ConverterToHTMLSetParameter, argc, argv );
     result |= QTest::qExec( new Test_Field, argc, argv);
     result |= QTest::qExec( new Test_Groups, argc, argv);
 
