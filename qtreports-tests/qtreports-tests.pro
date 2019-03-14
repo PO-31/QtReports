@@ -36,7 +36,6 @@ DISTFILES += \
 
 HEADERS += \
     src/test_convertertohtml.hpp \
-    src/test_convertertohtmlSetParameter.hpp \
     src/test_convertertopdf.hpp \
     src/test_convertertoqwidget.hpp \
     src/test_engine.hpp \
@@ -47,7 +46,6 @@ HEADERS += \
 SOURCES += \
     src/main.cpp \
     src/test_convertertohtml.cpp \
-    src/test_convertertohtmlSetParameter.cpp \
     src/test_convertertopdf.cpp \
     src/test_convertertoqwidget.cpp \
     src/test_engine.cpp \
