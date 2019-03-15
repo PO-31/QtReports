@@ -20,7 +20,8 @@ Take a look into the doxygen's [main page](http://po-31.github.io/html/). Our bu
 		qtreports/include/		Public header C and C++ header files of QtReports
 		qtreports-tests/		Test complex
 		qtreports-viewer/		QtReports-View project's directory
-		samples/			Reports' samples and databases for them 
+		samples/			Reports' samples and databases for them
+		docs/				Documents related to QtReports
 
 ## Documentation
 + [Doxygen](http://po-31.github.io/)
