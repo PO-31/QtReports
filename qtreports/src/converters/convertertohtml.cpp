@@ -441,7 +441,7 @@ namespace qtreports {
             {
                 bool isBorderLeft = false;
                 float angleRad = atan2(line->getHeight(), line->getWidth());
-                if(angleRad == 1.5208379f)
+                if(angleRad >= 1.52 && angleRad <= 1.53)
                     isBorderLeft = true;
                 float lineHeight = sqrt(pow(line->getWidth(), 2) + pow(line->getHeight(), 2));
 
