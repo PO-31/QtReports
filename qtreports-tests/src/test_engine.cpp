@@ -1,12 +1,14 @@
-﻿#include <QTest>
+﻿#include "test_engine.hpp"
+
+#include <QTest>
 #include <QSqlQuery>
 #include <QSqlError>
 #include <QSqlDatabase>
 #include <QRegularExpression>
 #include <QFileSystemModel>
-#include <qtreports/engine.hpp>
-#include "test_engine.hpp"
 #include <QDebug>
+
+#include <qtreports/engine.hpp>
 
 Test_Engine::Test_Engine( QObject * parent ) :
     QObject( parent ) {}

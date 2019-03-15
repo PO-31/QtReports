@@ -7,7 +7,8 @@
 #include <QBoxLayout>
 #include <QVBoxLayout>
 #include <QHBoxLayout>
-#include <qtreports/tags/report.hpp>
+
+#include "../tags/report.hpp"
 
 namespace qtreports {
     typedef QSharedPointer< QWidget > QWidgetPtr;

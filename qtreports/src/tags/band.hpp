@@ -3,13 +3,14 @@
 #define BAND_HPP
 #include <QVector>
 #include <QSharedPointer>
-#include <qtreports/tags/statictext.hpp>
-#include <qtreports/tags/textfield.hpp>
-#include <qtreports/tags/line.hpp>
-#include <qtreports/tags/rect.hpp>
-#include <qtreports/tags/ellipse.hpp>
-#include <qtreports/tags/image.hpp>
-#include <qtreports/tags/widget.hpp>
+
+#include "statictext.hpp"
+#include "textfield.hpp"
+#include "line.hpp"
+#include "rect.hpp"
+#include "ellipse.hpp"
+#include "image.hpp"
+#include "widget.hpp"
 
 namespace qtreports
 {

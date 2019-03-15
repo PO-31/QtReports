@@ -1,4 +1,4 @@
-#include <qtreports/tags/band.hpp>
+#include "band.hpp"
 
 namespace qtreports {
     namespace detail {

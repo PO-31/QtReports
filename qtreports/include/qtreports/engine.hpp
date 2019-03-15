@@ -12,8 +12,8 @@
 #include <QPrinter>
 #include <QAbstractItemModel>
 //#include "processeddb.hpp"
-#include <qtreports/tags/report.hpp>
-#include <qtreports/converters/convertertoqwidget.hpp>
+//#include <qtreports/tags/report.hpp>
+//#include <qtreports/converters/convertertoqwidget.hpp>
 
 /*! @~russian
 @mainpage QtReports
@@ -64,6 +64,14 @@ make [-jКоличествоПотоков]
 */
 
 namespace qtreports {
+
+    typedef QSharedPointer< QWidget > QWidgetPtr;
+
+    namespace detail {
+        class Report;
+        typedef QSharedPointer< Report > ReportPtr;
+    }
+
     class Engine : public QObject {
         Q_OBJECT
 

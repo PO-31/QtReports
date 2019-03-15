@@ -3,7 +3,8 @@
 #define TEXTFIELD_HPP
 #include <QString>
 #include <QSharedPointer>
-#include <qtreports/tags/textwidget.hpp>
+
+#include "textwidget.hpp"
 
 namespace qtreports
 {

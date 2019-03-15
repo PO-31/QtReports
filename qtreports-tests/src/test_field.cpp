@@ -1,12 +1,14 @@
 #include "test_field.hpp"
+
 #include <QTest>
 #include <QSqlQuery>
 #include <QSqlError>
 #include <QSqlDatabase>
 #include <QRegularExpression>
 #include <QFileSystemModel>
-#include <qtreports/engine.hpp>
 #include <QDebug>
+
+#include <qtreports/../../src/tags/field.hpp>
 
 Test_Field::Test_Field(QObject *parent): QObject(parent)
 {

@@ -1,4 +1,4 @@
-#include <qtreports/tags/textfield.hpp>
+#include "textfield.hpp"
 
 namespace qtreports
 {

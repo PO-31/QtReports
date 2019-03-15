@@ -1,12 +1,14 @@
-﻿#include <QTest>
+﻿#include "test_convertertohtml.hpp"
+
+#include <QTest>
 #include <QMap>
 #include <QSqlDatabase>
 #include <QSqlError>
 #include <QFile>
-#include <qtreports/engine.hpp>
-#include <qtreports/converters/convertertohtml.hpp>
-#include "test_convertertohtml.hpp"
 #include <QDebug>
+
+#include <qtreports/engine.hpp>
+#include <qtreports/../../src/converters/convertertohtml.hpp>
 
 Test_ConverterToHTML::Test_ConverterToHTML( QObject * parent ) :
     QObject( parent )

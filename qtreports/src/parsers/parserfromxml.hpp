@@ -6,19 +6,20 @@
 #include <QXmlStreamReader>
 #include <QMap>
 #include <QTextStream>
-#include <qtreports/tags/report.hpp>
-#include <qtreports/tags/style.hpp>
-#include <qtreports/tags/field.hpp>
-#include <qtreports/tags/group.hpp>
-#include <qtreports/tags/title.hpp>
-#include <qtreports/tags/detail.hpp>
-#include <qtreports/tags/band.hpp>
-#include <qtreports/tags/statictext.hpp>
-#include <qtreports/tags/textfield.hpp>
-#include <qtreports/tags/line.hpp>
-#include <qtreports/tags/rect.hpp>
-#include <qtreports/tags/ellipse.hpp>
-#include <qtreports/tags/image.hpp>
+
+#include "../tags/report.hpp"
+#include "../tags/style.hpp"
+#include "../tags/field.hpp"
+#include "../tags/group.hpp"
+#include "../tags/title.hpp"
+#include "../tags/detail.hpp"
+#include "../tags/band.hpp"
+#include "../tags/statictext.hpp"
+#include "../tags/textfield.hpp"
+#include "../tags/line.hpp"
+#include "../tags/rect.hpp"
+#include "../tags/ellipse.hpp"
+#include "../tags/image.hpp"
 
 namespace qtreports {
     namespace detail {

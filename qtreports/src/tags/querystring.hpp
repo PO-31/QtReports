@@ -2,7 +2,8 @@
 #ifndef QUERYSTRING_HPP
 #define QUERYSTRING_HPP
 #include <QSharedPointer>
-#include <qtreports/tags/object.hpp>
+
+#include "object.hpp"
 
 namespace qtreports
 {

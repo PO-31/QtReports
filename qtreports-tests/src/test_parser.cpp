@@ -1,9 +1,11 @@
+#include "test_parser.hpp"
+
 #include <QRegularExpression>
 #include <QTest>
 #include <QSize>
-#include <qtreports/parsers/parserfromxml.hpp>
-#include "test_parser.hpp"
 #include <QDebug>
+
+#include <qtreports/../../src/parsers/parserfromxml.hpp>
 
 Test_Parser::Test_Parser( QObject *parent ) :
     QObject( parent ) {}

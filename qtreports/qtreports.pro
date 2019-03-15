@@ -47,29 +47,29 @@ SOURCES += \
     src/engine.cpp
 
 HEADERS += \
-    include/qtreports/converters/utils/replacer.hpp \
-    include/qtreports/converters/convertertohtml.hpp \
-    include/qtreports/converters/convertertopdf.hpp \
-    include/qtreports/converters/convertertoqwidget.hpp \
-    include/qtreports/parsers/parserfromxml.hpp \
-    include/qtreports/tags/band.hpp \
-    include/qtreports/tags/detail.hpp \
-    include/qtreports/tags/ellipse.hpp \
-    include/qtreports/tags/field.hpp \
-    include/qtreports/tags/group.hpp \
-    include/qtreports/tags/image.hpp \
-    include/qtreports/tags/line.hpp \
-    include/qtreports/tags/object.hpp \
-    include/qtreports/tags/querystring.hpp \
-    include/qtreports/tags/rect.hpp \
-    include/qtreports/tags/report.hpp \
-    include/qtreports/tags/section.hpp \
-    include/qtreports/tags/statictext.hpp \
-    include/qtreports/tags/style.hpp \
-    include/qtreports/tags/textfield.hpp \
-    include/qtreports/tags/textwidget.hpp \
-    include/qtreports/tags/title.hpp \
-    include/qtreports/tags/widget.hpp \
+    src/converters/utils/replacer.hpp \
+    src/converters/convertertohtml.hpp \
+    src/converters/convertertopdf.hpp \
+    src/converters/convertertoqwidget.hpp \
+    src/parsers/parserfromxml.hpp \
+    src/tags/band.hpp \
+    src/tags/detail.hpp \
+    src/tags/ellipse.hpp \
+    src/tags/field.hpp \
+    src/tags/group.hpp \
+    src/tags/image.hpp \
+    src/tags/line.hpp \
+    src/tags/object.hpp \
+    src/tags/querystring.hpp \
+    src/tags/rect.hpp \
+    src/tags/report.hpp \
+    src/tags/section.hpp \
+    src/tags/statictext.hpp \
+    src/tags/style.hpp \
+    src/tags/textfield.hpp \
+    src/tags/textwidget.hpp \
+    src/tags/title.hpp \
+    src/tags/widget.hpp \
     include/qtreports/engine.hpp
 
 QMAKE_CXXFLAGS += -std=c++14

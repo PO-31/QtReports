@@ -1,4 +1,4 @@
-#include <qtreports/tags/ellipse.hpp>
+#include "ellipse.hpp"
 
 namespace qtreports
 {

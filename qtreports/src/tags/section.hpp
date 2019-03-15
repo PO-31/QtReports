@@ -3,8 +3,9 @@
 #define SECTION_HPP
 #include <QVector>
 #include <QSharedPointer>
-#include <qtreports/tags/object.hpp>
-#include <qtreports/tags/band.hpp>
+
+#include "object.hpp"
+#include "band.hpp"
 
 namespace qtreports
 {

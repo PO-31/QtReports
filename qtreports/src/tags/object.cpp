@@ -1,4 +1,4 @@
-#include <qtreports/tags/object.hpp>
+#include "object.hpp"
 
 namespace qtreports {
     namespace detail {

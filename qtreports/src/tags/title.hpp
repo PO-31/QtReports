@@ -2,7 +2,8 @@
 #ifndef TITLE_HPP
 #define TITLE_HPP
 #include <QSharedPointer>
-#include <qtreports/tags/section.hpp>
+
+#include "section.hpp"
 
 namespace qtreports
 {

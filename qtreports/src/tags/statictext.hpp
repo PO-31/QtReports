@@ -2,7 +2,8 @@
 #ifndef STATICTEXT_HPP
 #define STATICTEXT_HPP
 #include <QSharedPointer>
-#include <qtreports/tags/textwidget.hpp>
+
+#include "textwidget.hpp"
 
 namespace qtreports
 {

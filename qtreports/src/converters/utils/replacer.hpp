@@ -2,8 +2,9 @@
 #ifndef REPLACER_HPP
 #define REPLACER_HPP
 #include <QString>
-#include <qtreports/tags/textwidget.hpp>
-#include <qtreports/tags/report.hpp>
+
+#include "../../tags/textwidget.hpp"
+#include "../../tags/report.hpp"
 
 namespace qtreports
 {

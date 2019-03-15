@@ -1,7 +1,9 @@
+#include "convertertopdf.hpp"
+
 #include <QPdfWriter>
 #include <QPainter>
-#include <qtreports/converters/convertertoqwidget.hpp>
-#include <qtreports/converters/convertertopdf.hpp>
+
+#include "convertertoqwidget.hpp"
 
 namespace qtreports {
     namespace detail {

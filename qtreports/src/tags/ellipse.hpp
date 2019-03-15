@@ -2,7 +2,8 @@
 #ifndef ELLIPSE_HPP
 #define ELLIPSE_HPP
 #include <QSharedPointer>
-#include <qtreports/tags/widget.hpp>
+
+#include "widget.hpp"
 
 namespace qtreports
 {

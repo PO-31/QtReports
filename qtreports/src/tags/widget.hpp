@@ -8,8 +8,8 @@
 #include <QRect>
 #include <QSharedPointer>
 
-#include <qtreports/tags/style.hpp>
-#include <qtreports/tags/object.hpp>
+#include "style.hpp"
+#include "object.hpp"
 
 namespace qtreports
 {
