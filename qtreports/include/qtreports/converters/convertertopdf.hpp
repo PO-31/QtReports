@@ -53,6 +53,7 @@ namespace qtreports {
             int         m_dpi;
 
             bool        create( const QString & path );
+            void        createBand(QSharedPointer< Band > band, QPainter &painter);
 
         };
 
