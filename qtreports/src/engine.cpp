@@ -42,6 +42,8 @@ namespace qtreports
         m_compiledPath = path;
         m_report = parser.getReport();
 
+        qDebug() << parser.getLog();
+
         //fillColumnsFromReport(); //MB as ProcessedDB::createColumns( ReportPtr )
 
         return true;

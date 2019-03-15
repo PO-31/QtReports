@@ -7,7 +7,13 @@ namespace qtreports {
 
         Band::~Band() {}
 
-        void    Band::addStaticText( const StaticTextPtr & staticText ) {
+
+        void Band::addCrosstab( const CrosstabPtr & crosstab )
+        {
+            m_crosstabs.append(crosstab);
+        }
+
+        void Band::addStaticText( const StaticTextPtr & staticText ) {
             m_staticTexts.append( staticText );
             m_textWidgets.append( staticText );
         }

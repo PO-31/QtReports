@@ -14,6 +14,7 @@
 //#include "processeddb.hpp"
 #include <qtreports/tags/report.hpp>
 #include <qtreports/converters/convertertoqwidget.hpp>
+#include <QDebug>
 
 /*! @~russian
 @mainpage QtReports

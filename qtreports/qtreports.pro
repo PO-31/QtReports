@@ -44,7 +44,8 @@ SOURCES += \
     src/tags/textwidget.cpp \
     src/tags/title.cpp \
     src/tags/widget.cpp \
-    src/engine.cpp
+    src/engine.cpp \
+    src/tags/crosstab.cpp
 
 HEADERS += \
     include/qtreports/converters/utils/replacer.hpp \
@@ -70,7 +71,8 @@ HEADERS += \
     include/qtreports/tags/textwidget.hpp \
     include/qtreports/tags/title.hpp \
     include/qtreports/tags/widget.hpp \
-    include/qtreports/engine.hpp
+    include/qtreports/engine.hpp \
+    include/qtreports/tags/crosstab.hpp
 
 QMAKE_CXXFLAGS += -std=c++14
 
