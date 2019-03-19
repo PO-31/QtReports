@@ -6,7 +6,7 @@
 #include <QColor>
 #include <QSharedPointer>
 
-#include <qtreports/tags/object.hpp>
+#include "object.hpp"
 
 namespace qtreports
 {

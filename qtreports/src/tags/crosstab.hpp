@@ -1,7 +1,7 @@
 #ifndef CROSSTAB_H
 #define CROSSTAB_H
 //убрать позже
-#include <qtreports/tags/widget.hpp>
+#include "widget.hpp"
 
 namespace qtreports
 {

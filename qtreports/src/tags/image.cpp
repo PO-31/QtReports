@@ -1,4 +1,4 @@
-#include <qtreports/tags/image.hpp>
+#include "image.hpp"
 
 namespace qtreports
 {

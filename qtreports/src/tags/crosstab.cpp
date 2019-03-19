@@ -1,4 +1,5 @@
-#include <qtreports/tags/crosstab.hpp>
+#include "crosstab.hpp"
+
 namespace qtreports
 {
     namespace detail

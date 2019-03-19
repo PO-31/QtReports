@@ -1,7 +1,8 @@
+#include "parserfromxml.hpp"
+
 #include <QFile>
 #include <QMessageBox>
 #include <QDebug>
-#include <qtreports/parsers/parserfromxml.hpp>
 
 namespace qtreports
 {

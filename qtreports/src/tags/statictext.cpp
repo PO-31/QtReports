@@ -1,4 +1,4 @@
-#include <qtreports/tags/statictext.hpp>
+#include "statictext.hpp"
 
 namespace qtreports
 {

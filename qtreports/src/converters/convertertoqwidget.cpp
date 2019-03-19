@@ -1,9 +1,11 @@
+#include "convertertoqwidget.hpp"
+
 #include <QFrame>
 #include <QLabel>
 #include <QPainter>
-#include <qtreports/converters/utils/replacer.hpp>
-#include <qtreports/converters/convertertoqwidget.hpp>
 #include <QDebug>
+
+#include "utils/replacer.hpp"
 
 namespace qtreports
 {

@@ -10,12 +10,13 @@
 #include <QMargins>
 #include <QPrinter>
 #include <QRegularExpression>
-#include <qtreports/tags/object.hpp>
-#include <qtreports/tags/field.hpp>
-#include <qtreports/tags/style.hpp>
-#include <qtreports/tags/group.hpp>
-#include <qtreports/tags/title.hpp>
-#include <qtreports/tags/detail.hpp>
+
+#include "object.hpp"
+#include "field.hpp"
+#include "style.hpp"
+#include "group.hpp"
+#include "title.hpp"
+#include "detail.hpp"
 
 namespace qtreports {
     namespace detail {

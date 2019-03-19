@@ -11,9 +11,7 @@
 #include <QSqlField>
 #include <QPrinter>
 #include <QAbstractItemModel>
-//#include "processeddb.hpp"
-#include <qtreports/tags/report.hpp>
-#include <qtreports/converters/convertertoqwidget.hpp>
+
 #include <QDebug>
 
 /*! @~russian
@@ -21,7 +19,7 @@
 Добро пожаловать в документацию проекта QtReports.
 
 @section intro_sec Введение
-Эта документация предназначена для того, чтобы помочь в использовании проекта. 
+Эта документация предназначена для того, чтобы помочь в использовании проекта.
 
 @section install_sec Инструкция по сборке проекта
 
@@ -65,6 +63,14 @@ make [-jКоличествоПотоков]
 */
 
 namespace qtreports {
+
+    typedef QSharedPointer< QWidget > QWidgetPtr;
+
+    namespace detail {
+        class Report;
+        typedef QSharedPointer< Report > ReportPtr;
+    }
+
     class Engine : public QObject {
         Q_OBJECT
 

@@ -2,8 +2,9 @@
 #ifndef CONVERTERTOHTML_HPP
 #define CONVERTERTOHTML_HPP
 #include <QString>
-#include <qtreports/tags/report.hpp>
 #include <QBuffer>
+
+#include "../tags/report.hpp"
 
 namespace qtreports {
     namespace detail {

@@ -1,16 +1,20 @@
+#include <qtreports/engine.hpp>
+
 #include <QPainter>
 #include <QPrintDialog>
 #include <QPrintPreviewWidget>
 #include <QPrintPreviewDialog>
-#include <qtreports/parsers/parserfromxml.hpp>
-#include <qtreports/converters/convertertopdf.hpp>
-#include <qtreports/converters/convertertohtml.hpp>
-#include <qtreports/engine.hpp>
 #include <QDebug>
+
+#include "parsers/parserfromxml.hpp"
+#include "converters/convertertopdf.hpp"
+#include "converters/convertertohtml.hpp"
+
+#include "tags/report.hpp"
+#include "converters/convertertoqwidget.hpp"
 
 namespace qtreports
 {
-
     Engine::Engine( QObject * parent ) :
         QObject( parent ),
         m_isOpened( false )

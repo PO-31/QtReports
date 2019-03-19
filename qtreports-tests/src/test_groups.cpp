@@ -1,12 +1,14 @@
+#include "test_groups.hpp"
+
 #include <QTest>
 #include <QSqlQuery>
 #include <QSqlError>
 #include <QSqlDatabase>
 #include <QRegularExpression>
 #include <QFileSystemModel>
-#include <qtreports/engine.hpp>
-#include "test_groups.hpp"
 #include <QDebug>
+
+#include <qtreports/engine.hpp>
 
 Test_Groups::Test_Groups( QObject * parent ) :
     QObject( parent ) {}

@@ -1,11 +1,13 @@
-﻿#include <QTest>
+﻿#include "test_convertertoqwidget.hpp"
+
+#include <QTest>
 #include <QMap>
 #include <QSqlDatabase>
 #include <QSqlError>
-#include <qtreports/engine.hpp>
-#include <qtreports/converters/convertertoqwidget.hpp>
-#include "test_convertertoqwidget.hpp"
 #include <QDebug>
+
+#include <qtreports/engine.hpp>
+#include <qtreports/../../src/converters/convertertoqwidget.hpp>
 
 Test_ConverterToQWidget::Test_ConverterToQWidget( QObject * parent ) :
     QObject( parent ) {}

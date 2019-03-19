@@ -1,4 +1,4 @@
-#include <qtreports/tags/querystring.hpp>
+#include "querystring.hpp"
 
 namespace qtreports {
     namespace detail {

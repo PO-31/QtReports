@@ -2,7 +2,8 @@
 #ifndef CONVERTERTOPDF_HPP
 #define CONVERTERTOPDF_HPP
 #include <QString>
-#include <qtreports/tags/report.hpp>
+
+#include "../tags/report.hpp"
 
 namespace qtreports {
     namespace detail {

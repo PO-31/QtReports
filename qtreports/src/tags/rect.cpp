@@ -1,4 +1,4 @@
-#include <qtreports/tags/rect.hpp>
+#include "rect.hpp"
 
 namespace qtreports
 {

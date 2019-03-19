@@ -1,4 +1,4 @@
-#include <qtreports/tags/widget.hpp>
+#include "widget.hpp"
 
 namespace qtreports {
     namespace detail {

@@ -3,7 +3,8 @@
 #define IMAGE_HPP
 #include <QImage>
 #include <QSharedPointer>
-#include <qtreports/tags/textwidget.hpp>
+
+#include "textwidget.hpp"
 
 namespace qtreports
 {

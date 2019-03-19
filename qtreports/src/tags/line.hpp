@@ -2,7 +2,8 @@
 #ifndef LINE_HPP
 #define LINE_HPP
 #include <QSharedPointer>
-#include <qtreports/tags/widget.hpp>
+
+#include "widget.hpp"
 
 namespace qtreports
 {

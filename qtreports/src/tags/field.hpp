@@ -8,7 +8,7 @@
 #include <QVector>
 #include <QImage>
 
-#include <qtreports/tags/object.hpp>
+#include "object.hpp"
 
 namespace qtreports
 {

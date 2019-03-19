@@ -1,4 +1,4 @@
-#include <qtreports/tags/textwidget.hpp>
+#include "textwidget.hpp"
 
 namespace qtreports
 {

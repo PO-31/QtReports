@@ -4,7 +4,7 @@ TARGET = qtreports-tests
 TEMPLATE = app
 CONFIG += c++14
 
-INCLUDEPATH += $$PWD/../qtreports/include
+INCLUDEPATH += "$$PWD"/../qtreports/include/
 
 LIBS += -L"$$PWD"/../build/lib/
 LIBS += -lqtreports

@@ -1,4 +1,4 @@
-#include <qtreports/tags/field.hpp>
+#include "field.hpp"
 
 namespace qtreports
 {

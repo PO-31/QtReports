@@ -1,4 +1,5 @@
-#include <qtreports/converters/utils/replacer.hpp>
+#include "replacer.hpp"
+
 #include <QRegularExpression>
 #include <QImage>
 #include <QByteArray>

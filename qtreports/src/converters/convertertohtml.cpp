@@ -1,8 +1,10 @@
+#include "convertertohtml.hpp"
+
 #include <QFile>
 #include <QTextStream>
-#include <qtreports/converters/utils/replacer.hpp>
-#include <qtreports/converters/convertertohtml.hpp>
 #include <cmath>
+
+#include "utils/replacer.hpp"
 
 namespace qtreports {
     namespace detail {

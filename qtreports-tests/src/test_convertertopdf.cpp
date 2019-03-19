@@ -1,12 +1,14 @@
-﻿#include <QTest>
+﻿#include "test_convertertopdf.hpp"
+
+#include <QTest>
 #include <QMap>
 #include <QSqlDatabase>
 #include <QSqlError>
 #include <QFile>
-#include <qtreports/engine.hpp>
-#include <qtreports/converters/convertertopdf.hpp>
-#include "test_convertertopdf.hpp"
 #include <QDebug>
+
+#include <qtreports/engine.hpp>
+#include <qtreports/../../src/converters/convertertopdf.hpp>
 
 Test_ConverterToPDF::Test_ConverterToPDF( QObject * parent ) :
     QObject( parent )
