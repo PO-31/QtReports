@@ -5,7 +5,6 @@ sudo: required
 branches:
     only:
       - master
-      - develop
 
 stages:
   - "Building"
