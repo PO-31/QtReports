@@ -11,6 +11,7 @@
 #include "ellipse.hpp"
 #include "image.hpp"
 #include "widget.hpp"
+#include "crosstab.hpp"
 
 namespace qtreports
 {
@@ -27,6 +28,12 @@ namespace qtreports
         public:
             Band();
             ~Band();
+
+            /*! @~russian
+            Добавляет <crosstab> в <band>
+            @param[in] crosstab Указатель на <crosstab>
+            */
+            void                            addCrosstab( const CrosstabPtr & crosstab );
 
             /*! @~russian
             Добавляет <staticText> в <band>
@@ -178,6 +185,7 @@ namespace qtreports
             QVector< RectPtr >          m_rects;
             QVector< EllipsePtr >       m_ellipses;
             QVector< ImagePtr >         m_images;
+            QVector< CrosstabPtr >         m_crosstabs;
 
         };
         typedef QSharedPointer< Band > BandPtr;

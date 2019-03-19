@@ -44,7 +44,8 @@ SOURCES += \
     src/tags/textwidget.cpp \
     src/tags/title.cpp \
     src/tags/widget.cpp \
-    src/engine.cpp
+    src/engine.cpp \
+    src/tags/crosstab.cpp
 
 HEADERS += \
     src/converters/utils/replacer.hpp \
@@ -53,6 +54,7 @@ HEADERS += \
     src/converters/convertertoqwidget.hpp \
     src/parsers/parserfromxml.hpp \
     src/tags/band.hpp \
+    src/tags/crosstab.hpp \
     src/tags/detail.hpp \
     src/tags/ellipse.hpp \
     src/tags/field.hpp \

@@ -20,6 +20,7 @@
 #include "../tags/rect.hpp"
 #include "../tags/ellipse.hpp"
 #include "../tags/image.hpp"
+#include "../tags/crosstab.hpp"
 
 namespace qtreports {
     namespace detail {
@@ -111,7 +112,7 @@ namespace qtreports {
             */
             bool    goToElementEnd( QXmlStreamReader & reader );
             /*! @~russian
-            Парсерит дочерние тэги объекта object
+            Парсит дочерние тэги объекта object
             @param[in] object родительский объект отчета
             */
             bool    parseChilds( QXmlStreamReader & reader, const ObjectPtr & object );
@@ -122,117 +123,122 @@ namespace qtreports {
             */
             bool    parseDocument( const QString & text );
             /*! @~russian
-            Парсерит тэг report
+            Парсит тэг report
             @param[in] report указатель на объект отчета
             */
             bool    parseReport( QXmlStreamReader & reader, const ReportPtr & report );
             /*! @~russian
-            Парсерит тэг style
+            Парсит тэг style
             @param[in] report указатель на объект отчета
             */
             bool    parseStyle( QXmlStreamReader & reader, const ReportPtr & report );
             /*! @~russian
-            Парсерит запросы
+            Парсит запросы
             @param[in] report указатель на объект отчета
             */
             bool    parseQueryString( QXmlStreamReader & reader, const ReportPtr & report );
             /*! @~russian
-            Парсерит тэг Field
+            Парсит тэг Field
             @param[in] report указатель на объект отчета
             */
             bool    parseField( QXmlStreamReader & reader, const ReportPtr & report );
             /*! @~russian
-            Парсерит тэг group
+            Парсит тэг group
             @param[in] report указатель на объект отчета
             */
             bool    parseGroup( QXmlStreamReader & reader, const ReportPtr & report );
             /*! @~russian
-            Парсерит тэг groupExpression
+            Парсит тэг groupExpression
             @param[in] group указатель на группу, которой принадлежит groupExpression
             */
             bool    parseGroupExpression( QXmlStreamReader & reader, const GroupPtr & group );
             /*! @~russian
-            Парсерит тэг groupHeader
+            Парсит тэг groupHeader
             @param[in] group указатель на группу, которой принадлежит groupHeader
             */
             bool    parseGroupHeader( QXmlStreamReader & reader, const GroupPtr & group );
             /*! @~russian
-            Парсерит тэг groupFooter
+            Парсит тэг groupFooter
             @param[in] group указатель на группу, которой принадлежит groupFooter
             */
             bool    parseGroupFooter( QXmlStreamReader & reader, const GroupPtr & group );
             /*! @~russian
-            Парсерит тэг Title
+            Парсит тэг Title
             @param[in] report указатель на объект отчета
             */
             bool    parseTitle( QXmlStreamReader & reader, const ReportPtr & report );
             /*! @~russian
-            Парсерит тэг Detail
+            Парсит тэг Detail
             @param[in] report указатель на объект отчета
             */
             bool    parseDetail( QXmlStreamReader & reader, const ReportPtr & report );
             /*! @~russian
-            Парсерит тэг Band
+            Парсит тэг Band
             @param[in] section секция (объект, содержащий Band(ы), Detail, Title, groupHeader и т.д.), которой принадлежит Band
             */
             bool    parseBand( QXmlStreamReader & reader, const SectionPtr & section );
             /*! @~russian
-            Парсерит тэг StaticText
+            Парсит Crosstab элемент
+            @param[in] band Строка, которой принадлежит объект
+            */
+            bool parseCrosstab(QXmlStreamReader & reader, const BandPtr & band );
+            /*! @~russian
+            Парсит тэг StaticText
             @param[in] band Строка, которой принадлежит объект
             */
             bool    parseStaticText( QXmlStreamReader & reader, const BandPtr & band );
             /*! @~russian
-            Парсерит тэг TextField
+            Парсит тэг TextField
             @param[in] band Строка, которой принадлежит объект
             */
             bool    parseTextField( QXmlStreamReader & reader, const BandPtr & band );
             /*! @~russian
-            Парсерит тэг Line
+            Парсит тэг Line
             @param[in] band Строка, которой принадлежит объект
             */
             bool    parseLine( QXmlStreamReader & reader, const BandPtr & band );
             /*! @~russian
-            Парсерит тэг Rect
+            Парсит тэг Rect
             @param[in] band Строка, которой принадлежит объект
             */
             bool    parseRect( QXmlStreamReader & reader, const BandPtr & band );
             /*! @~russian
-            Парсерит тэг Ellipse
+            Парсит тэг Ellipse
             @param[in] band Строка, которой принадлежит объект
             */
             bool    parseEllipse( QXmlStreamReader & reader, const BandPtr & band );
             /*! @~russian
-            Парсерит тэг Image
+            Парсит тэг Image
             @param[in] band Строка, которой принадлежит объект
             */
             bool    parseImage( QXmlStreamReader & reader, const BandPtr & band );
             /*! @~russian
-            Парсерит тэг ReportElement - общие данные о элементе отчета (положение, размеры и пр.)
+            Парсит тэг ReportElement - общие данные о элементе отчета (положение, размеры и пр.)
             @param[in] widget общий класс для объектов, подлежащих отображению. Для него загружается текущий reportElement
             */
             bool    parseReportElement( QXmlStreamReader & reader, const WidgetPtr & widget );
             /*! @~russian
-            Парсерит тэг TextElement - общие данные о текстовом элементе (выравнивание текста и пр.)
+            Парсит тэг TextElement - общие данные о текстовом элементе (выравнивание текста и пр.)
             @param[in] widget общий класс для объектов, подлежащих отображению. Для него загружается текущий textElement
             */
             bool	parseTextElement( QXmlStreamReader & reader, const WidgetPtr & widget );
             /*! @~russian
-            Парсерит font - данные о шрифте текста
+            Парсит font - данные о шрифте текста
             @param[in] widget общий класс для объектов, подлежащих отображению. Для него загружается текущий font
             */
             bool	parseFont( QXmlStreamReader & reader, const WidgetPtr & widget );
             /*! @~russian
-            Парсерит текст для staticText
+            Парсит текст для staticText
             @param[in] text staticText, текущий объект
             */
             bool    parseText( QXmlStreamReader & reader, const StaticTextPtr & text );
             /*! @~russian
-            Парсерит текст для textField
+            Парсит текст для textField
             @param[in] text textField, текущий объект
             */
             bool    parseTextFieldExpression( QXmlStreamReader & reader, const TextFieldPtr & text );
             /*! @~russian
-            Парсерит текст (imageExpression) для image
+            Парсит текст (imageExpression) для image
             @param[in] image тэг image, текущий объект
             */
             bool    parseImageExpression( QXmlStreamReader & reader, const ImagePtr & image );

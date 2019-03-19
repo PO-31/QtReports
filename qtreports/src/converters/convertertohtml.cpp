@@ -83,8 +83,10 @@ namespace qtreports {
                       "   }\n")
                     .arg(pageWidth).arg(pageHeight);
 
+			Style *mainStyle = nullptr;
             for (auto i = styles.begin(); i != styles.end(); ++i) {
                 auto* style = (*i).data();
+				mainStyle = style;
                 m_html += QString(
                     "   .%1 {\n"
                     "   font-family: %2 !important;\n"
@@ -106,27 +108,54 @@ namespace qtreports {
             }
             QString defaultStyleName = m_report->getDefaultStyle().isNull() ? "" : "style-" + m_report->getDefaultStyle()->getName();
 
-            m_html += QString("   .statictext {\n"
-                      "   font-family: %3;\n"
-                      "   font-size: %4pt;\n"
-                      "   color: %5;\n"
-                      "   font-style: %6;\n"
-                      "   font-weight: %7;\n"
-                      "   }\n"
+            if(mainStyle == nullptr) {
+                m_html += QString("   .statictext {\n"
+                          "   font-family: %3;\n"
+                          "   font-size: %4pt;\n"
+                          "   color: %5;\n"
+                          "   font-style: %6;\n"
+                          "   font-weight: %7;\n"
+                          "   }\n"
 
-                      "   .textfield {\n"
-                      "   font-family: %8;\n"
-                      "   font-size: %9pt;\n"
-                      "   color: %10;\n"
-                      "   font-style: %11;\n"
-                      "   font-weight: %12;\n"
-                      "   }\n"
+                          "   .textfield {\n"
+                          "   font-family: %8;\n"
+                          "   font-size: %9pt;\n"
+                          "   color: %10;\n"
+                          "   font-style: %11;\n"
+                          "   font-weight: %12;\n"
+                          "   }\n"
 
-                      "  </style>\n"
-                      " </head>\n"
-                      " <body>\n")
-                    .arg("Verdana").arg("12").arg("black").arg("normal").arg("normal")
-                    .arg("Verdana").arg("12").arg("black").arg("normal").arg("normal");
+                          "  </style>\n"
+                          " </head>\n"
+                          " <body>\n")
+                        .arg("Verdana").arg("12").arg("black").arg("normal").arg("normal")
+                        .arg("Verdana").arg("12").arg("black").arg("normal").arg("normal");
+            }
+            else {
+                m_html += QString("   .statictext {\n"
+                          "   font-family: %3;\n"
+                          "   font-size: %4pt;\n"
+                          "   color: %5;\n"
+                          "   font-style: %6;\n"
+                          "   font-weight: %7;\n"
+                          "   }\n"
+
+                          "   .textfield {\n"
+                          "   font-family: %8;\n"
+                          "   font-size: %9pt;\n"
+                          "   color: %10;\n"
+                          "   font-style: %11;\n"
+                          "   font-weight: %12;\n"
+                          "   }\n"
+
+                          "  </style>\n"
+                          " </head>\n"
+                          " <body>\n")
+                        .arg("'" + mainStyle->getFontName() + "'").arg(mainStyle->getFontSize()).arg(mainStyle->getFontColor().name())
+                        .arg(mainStyle->isItalic() ? "italic" : "normal").arg(mainStyle->isBold() ? "800" : "300")
+                        .arg(mainStyle->getFontName()).arg(mainStyle->getFontSize()).arg(mainStyle->getFontColor().name())
+                        .arg(mainStyle->isItalic() ? "italic" : "normal").arg(mainStyle->isBold() ? "800" : "300");
+            }
 
             m_html += "  <div class='page'>\n";
 
@@ -414,7 +443,7 @@ namespace qtreports {
             {
                 bool isBorderLeft = false;
                 float angleRad = atan2(line->getHeight(), line->getWidth());
-                if(angleRad == 1.5208379f)
+                if(angleRad >= 1.52 && angleRad <= 1.53)
                     isBorderLeft = true;
                 float lineHeight = sqrt(pow(line->getWidth(), 2) + pow(line->getHeight(), 2));
 

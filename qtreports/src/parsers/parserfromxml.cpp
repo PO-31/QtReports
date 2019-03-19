@@ -54,6 +54,7 @@ namespace qtreports
             m_functions[ "font" ] = toParseFunc( this, &ParserFromXML::parseFont );
             m_functions[ "text" ] = toParseFunc( this, &ParserFromXML::parseText );
             m_functions[ "textFieldExpression" ] = toParseFunc( this, &ParserFromXML::parseTextFieldExpression );
+            m_functions[ "crosstab" ] = toParseFunc( this, &ParserFromXML::parseCrosstab );
         }
 
         ParserFromXML::~ParserFromXML() {}
@@ -636,6 +637,20 @@ namespace qtreports
             return !reader.hasError();
         }
 
+        bool    ParserFromXML::parseCrosstab( QXmlStreamReader & reader, const BandPtr & band )
+        {
+            CrosstabPtr crosstab( new Crosstab() );
+            if( !parseChilds( reader, crosstab ) )
+            {
+                return false;
+            }
+
+            crosstab->setTagName( "crosstab" );
+            band->addCrosstab( crosstab );
+
+            return !reader.hasError();
+        }
+
         bool	ParserFromXML::parseStaticText( QXmlStreamReader & reader, const BandPtr & band )
         {
             StaticTextPtr staticText( new StaticText() );
@@ -900,6 +915,7 @@ namespace qtreports
 
             return !reader.hasError();
         }
+
 
         bool	ParserFromXML::parseQueryString( QXmlStreamReader & reader, const ReportPtr & report )
         {

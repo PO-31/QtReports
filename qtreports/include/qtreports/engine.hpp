@@ -11,16 +11,15 @@
 #include <QSqlField>
 #include <QPrinter>
 #include <QAbstractItemModel>
-//#include "processeddb.hpp"
-//#include <qtreports/tags/report.hpp>
-//#include <qtreports/converters/convertertoqwidget.hpp>
+
+#include <QDebug>
 
 /*! @~russian
 @mainpage QtReports
 Добро пожаловать в документацию проекта QtReports.
 
 @section intro_sec Введение
-Эта документация предназначена для того, чтобы помочь в использовании проекта. 
+Эта документация предназначена для того, чтобы помочь в использовании проекта.
 
 @section install_sec Инструкция по сборке проекта
 
