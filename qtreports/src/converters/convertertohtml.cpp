@@ -336,6 +336,48 @@ namespace qtreports {
                         }
                     }
 
+                    for(auto && crosstab : band->getCrosstabs())
+                    {
+                        //if (textField->getText() != "")
+                        //{
+                            QString textAlignment = "left";
+                            QString verticalAlignment = "middle";
+
+                            if ((crosstab->getAlignment() & Qt::AlignLeft) == Qt::AlignLeft)
+                                textAlignment = "left";
+                            if ((crosstab->getAlignment() & Qt::AlignRight) == Qt::AlignRight)
+                                textAlignment = "right";
+                            if ((crosstab->getAlignment() & Qt::AlignHCenter) == Qt::AlignHCenter)
+                                textAlignment = "center";
+                            if ((crosstab->getAlignment() & Qt::AlignJustify) == Qt::AlignJustify)
+                                textAlignment = "justify";
+
+                            if ((crosstab->getAlignment() & Qt::AlignTop) == Qt::AlignTop)
+                                verticalAlignment = "top";
+                            if ((crosstab->getAlignment() & Qt::AlignBottom) == Qt::AlignBottom)
+                                verticalAlignment = "bottom";
+                            if ((crosstab->getAlignment() & Qt::AlignVCenter) == Qt::AlignVCenter)
+                                verticalAlignment = "middle";
+                            //if ((textField->getAlignment() & Qt::AlignBaseline) == Qt::AlignBaseline)
+                            //    verticalAlignment = "baseline";
+
+
+                            elementStr += QString("     <div class='textfield " + defaultStyleName + "' "
+                               "style='left: %1px; top: %2px; "
+                               "width: %3px; height: %4px; "
+                               "text-align: %5; vertical-align: %6'>%7</div>\n")
+                               .arg(crosstab->getX())
+                               .arg(crosstab->getY())
+                               .arg(200)
+                               .arg(100)
+                               .arg(textAlignment)
+                               .arg(verticalAlignment)
+                               .arg("<<<ЭТО КРОССТАБ>>>");
+
+                            isBandEmpty = false;
+                        //}
+                    }
+
                     if (!isBandEmpty)
                     {                        
                         for(auto && staticText : band->getStaticTexts())
