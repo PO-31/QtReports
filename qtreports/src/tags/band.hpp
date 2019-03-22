@@ -41,6 +41,18 @@ namespace qtreports
             */
             void                            addStaticText( const StaticTextPtr & staticText );
 
+
+            /*! @~russian
+            Возвращает вектор указателей на <crosstab>
+            */
+            const QVector< CrosstabPtr >  getCrosstabs() const;
+
+            /*! @~russian
+            Возвращает указатель на <crosstab> по индексу
+            @param[in] index Индекс
+            */
+            const CrosstabPtr             getCrosstab( int index ) const;
+
             /*! @~russian
             Возвращает вектор указателей на <staticText>
             */

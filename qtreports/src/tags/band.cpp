@@ -13,6 +13,15 @@ namespace qtreports {
             m_crosstabs.append(crosstab);
         }
 
+        const QVector< CrosstabPtr >    Band::getCrosstabs() const
+        {
+            return m_crosstabs;
+        }
+
+        const CrosstabPtr  Band::getCrosstab( int index ) const {
+            return m_crosstabs.value( index );
+        }
+
         void Band::addStaticText( const StaticTextPtr & staticText ) {
             m_staticTexts.append( staticText );
             m_textWidgets.append( staticText );
@@ -22,6 +31,7 @@ namespace qtreports {
         {
             return m_staticTexts;
         }
+
 
         const StaticTextPtr  Band::getStaticText( int index ) const {
             return m_staticTexts.value( index );
