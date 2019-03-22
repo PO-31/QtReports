@@ -29,9 +29,9 @@ namespace qtreports {
             QString     m_defaultStyleName;
 
             bool        createHTML();
-            bool        addGroups(QSharedPointer<Detail> detail, int &pageCount);
-            bool        addSection(QSharedPointer<Section> detail, int detailIndex, int &pageCount);
-            void        drawShapes(QSharedPointer< Band > band, QString &elementStr, int index);
+            bool        addGroups(QSharedPointer<Detail> detail);
+            bool        addSection(QSharedPointer<Section> detail, int detailIndex);
+            void        drawShapes(QSharedPointer< Band > band, QString &elementStr);
         };
 
     }

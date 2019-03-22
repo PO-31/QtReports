@@ -161,8 +161,11 @@ namespace qtreports {
                         .arg(mainStyle->isItalic() ? "italic" : "normal").arg(mainStyle->isBold() ? "800" : "300");
             }
 
+            // Start of <div class='page'>
             m_html += "  <div class='page'>\n";
 
+
+            // Start of <div class='title'>
             auto title = m_report->getTitle();
             if(!title.isNull())
             {
@@ -258,7 +261,7 @@ namespace qtreports {
                         }
                     }
 
-                    drawShapes(band, elementStr, 0);
+                    drawShapes(band, elementStr);
 
                     freePageSpace -= band->getSize().height();
 
@@ -269,7 +272,7 @@ namespace qtreports {
             	}
 
             	m_html += "   </div>\n";
-            }
+            } // End of <div class = 'title'>
 
             auto detail = m_report->getDetail();
             if(detail.isNull())
@@ -278,16 +281,22 @@ namespace qtreports {
                 return false;
             }
 
-            int pageCount = 0;
-            addGroups(detail, pageCount);
-            ++pageCount;
+            // Start of <div class='detail'>
+            m_html += QString("   <div class='detail'>\n");
+
+            addGroups(detail); // Adding all <div class='band'> inside detail
+
+            // End of <div class='detail'>
+            m_html += QString("   </div>\n");
+
 
             //Колонтитул
+            // End of <div class='page'>
             m_html += "  </div>\n </body>\n</html>\n";
             return true;
         }
 
-        bool ConverterToHTML::addGroups(QSharedPointer<Detail> detail, int &pageCount)
+        bool ConverterToHTML::addGroups(QSharedPointer<Detail> detail)
         {
             detail::Replacer replacer;
 
@@ -331,7 +340,7 @@ namespace qtreports {
                 auto header = groups[i]->getHeader();
                 if (!header.isNull())
                 {
-                    if(!addSection(header, 0, pageCount))
+                    if(!addSection(header, 0))
                     {
                         return false;
                     }
@@ -341,7 +350,6 @@ namespace qtreports {
             int rowCount = m_report->getRowCount();
             for(int i = 0; i < rowCount; i++)
             {
-                // Тут что ?
                 //QWidget * sectionWidget = isLayout() ? sectionWidget = addSectionLayout(layout, report->getMargins(), detail->getHeight()) : nullptr;
 
                 //Закрываем футеры, если группа закончилась
@@ -353,7 +361,7 @@ namespace qtreports {
                         auto footer = m_report->getGroupByIndex(j)->getFooter();
                         if (!footer.isNull())
                         {
-                            if(!addSection(footer, i - 1, pageCount))
+                            if(!addSection(footer, i - 1))
                             {
                                 return false;
                             }
@@ -369,7 +377,7 @@ namespace qtreports {
                         auto header = m_report->getGroupByIndex(j)->getHeader();
                         if (!header.isNull())
                         {
-                            if(!addSection(header, i, pageCount))
+                            if(!addSection(header, i))
                             {
                                 return false;
                             }
@@ -382,7 +390,7 @@ namespace qtreports {
                     particularNames[j] = replacer.replaceField(groupNames[j], m_report, i);
                 }
                 //Выводим поле
-                if(!addSection(detail, i, pageCount))
+                if(!addSection(detail, i))
                 {
                     return false;
                 }
@@ -393,7 +401,7 @@ namespace qtreports {
                 auto footer = groups[i]->getFooter();
                 if (!footer.isNull())
                 {
-                    if(!addSection(footer, (rowCount - 1), pageCount))
+                    if(!addSection(footer, (rowCount - 1)))
                     {
                         return false;
                     }
@@ -402,7 +410,7 @@ namespace qtreports {
             return true;
         }
 
-        bool ConverterToHTML::addSection(QSharedPointer<Section> section, int detailIndex, int &pageCount)
+        bool ConverterToHTML::addSection(QSharedPointer<Section> section, int detailIndex)
         {
             detail::Replacer replacer;
             if( !replacer.replace( section, m_report, detailIndex ) )
@@ -543,24 +551,7 @@ namespace qtreports {
                         }
                     }
 
-                    drawShapes(band, elementStr, detailIndex);
-
-                    int pageHeight = m_report->getHeight();
-                    int freePageSpace = pageHeight;
-
-                    if (freePageSpace < band->getSize().height())
-                    {
-                        m_html += QString("   <div class='detail'>\n%1   </div>\n")
-                                .arg(bandStr);
-
-                        ++pageCount;
-                        //колонтитул
-                        freePageSpace = pageHeight - band->getSize().height();
-                        m_html += "  </div>\n  <div class='page'>\n";
-                        bandStr = "";
-                    }
-                    else
-                        freePageSpace -= band->getSize().height();
+                    drawShapes(band, elementStr);
 
                     bandStr += QString("    <div class='band' "
                             "style='height: %1px'>\n%2    </div>\n")
@@ -569,12 +560,13 @@ namespace qtreports {
                 }
             }
 
-            m_html += QString("   <div class='detail'>\n%1   </div>\n")
-                .arg(bandStr);
+            //m_html += QString("   <div class='detail'>\n%1   </div>\n")
+            //    .arg(bandStr);
+            m_html += QString("%1").arg(bandStr);
             return true;
         }
 
-        void ConverterToHTML::drawShapes(QSharedPointer<Band> band, QString &elementStr, int index)
+        void ConverterToHTML::drawShapes(QSharedPointer<Band> band, QString &elementStr)
         {
             int imgCount = 0;
 
