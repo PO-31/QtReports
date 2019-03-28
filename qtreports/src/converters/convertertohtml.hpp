@@ -12,7 +12,7 @@ namespace qtreports {
         class ConverterToHTML {
 
         public:
-            ConverterToHTML( const ReportPtr & report );
+            explicit ConverterToHTML( const ReportPtr & report );
             ~ConverterToHTML();
 
             bool    convert();
@@ -30,7 +30,7 @@ namespace qtreports {
 
             bool        createHTML();
             bool        addGroups(QSharedPointer<Detail> detail);
-            bool        addSection(QSharedPointer<Section> detail, int detailIndex);
+            bool        addSection(QSharedPointer<Section> detail, int sectionIndex);
             void        drawShapes(QSharedPointer< Band > band, QString &elementStr);
         };
 
