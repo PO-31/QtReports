@@ -54,7 +54,7 @@ namespace qtreports {
             reportFont.setPointSize(style->getFontSize());
             style->isItalic() ? reportFont.setItalic(true) : reportFont.setItalic(false);
             style->isBold() ? reportFont.setBold(true) : reportFont.setBold(false);
-            style->isUnderline() ? reportFont.setUnderline(true) : reportFont.setUnderline(true);
+            style->isUnderline() ? reportFont.setUnderline(true) : reportFont.setUnderline(false);
             style->isStrikeThrough() ? reportFont.setStrikeOut(true) : reportFont.setStrikeOut(false);
             reportPen.setColor(style->getFontColor());
 
@@ -207,9 +207,8 @@ namespace qtreports {
             detail::Replacer replacer;
             QList<GroupPtr> groups = report->getGroups().values();
             QList<QString> groupNames;
-            unsigned long long partLength = static_cast<unsigned long long>(groups.length());
             // Сюда помещаем конкретные имена по которым группируем
-            QString *particularNames = new QString[partLength];
+            QList<QString> particularNames;
             for(int i = 0; i < groups.length(); i++)
             {
                 auto groupExpression = groups[i]->getExpression();
@@ -239,7 +238,7 @@ namespace qtreports {
                 }
 
                 groupNames.append(groupExpression);
-                particularNames[i] = replacer.replaceField(groupNames[i], report, 0);
+                particularNames.append(replacer.replaceField(groupNames[i], report, 0));
             }
 
             // Открываем хедеры групп

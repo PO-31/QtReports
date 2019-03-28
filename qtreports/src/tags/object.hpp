@@ -24,7 +24,7 @@ namespace qtreports {
             Конструктор, создается обьект с именем
             @param[in] name Имя обьекта
             */
-            Object( const QString & name );
+            explicit Object( const QString & name );
             virtual ~Object();
 
             /*! @~russian

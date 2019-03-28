@@ -75,7 +75,7 @@ namespace qtreports {
         Q_OBJECT
 
     public:
-        Engine( QObject * parent = Q_NULLPTR );
+        explicit Engine( QObject * parent = Q_NULLPTR );
         Engine( const QString & path, QObject * parent = Q_NULLPTR );
         ~Engine();
 
@@ -147,7 +147,7 @@ namespace qtreports {
         detail::ReportPtr   getReport() const;
         const QString       getLastError() const;
 
-    public:
+    private:
         bool                                m_isOpened;
         QString                             m_lastError, m_compiledPath;
         detail::ReportPtr                   m_report;

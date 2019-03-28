@@ -21,7 +21,7 @@ namespace qtreports {
         class ConverterToQWidget {
 
         public:
-            ConverterToQWidget( const ReportPtr & report );
+            explicit ConverterToQWidget( const ReportPtr & report );
             ~ConverterToQWidget();
 
             /*! @~russian

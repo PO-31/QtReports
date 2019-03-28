@@ -210,7 +210,7 @@ namespace qtreports
             QList<GroupPtr> groups = report->getGroups().values();
             QList<QString> groupNames;
             //Сюда помещаем конкретные имена по которым группируем
-			QString *particularNames = new QString[groups.length()];
+            QList<QString> particularNames;
             for (int i = 0; i<groups.length(); i++)
             {
                 auto groupExpression = groups[i]->getExpression();
@@ -239,7 +239,7 @@ namespace qtreports
                 }
 
                 groupNames.append(groupExpression);
-                particularNames[i] = replacer.replaceField(groupNames[i], report, 0);
+                particularNames.append(replacer.replaceField(groupNames[i], report, 0));
             }
             //Открываем хедеры групп
             for (int i = 0; i<groups.length(); i++)

@@ -26,7 +26,7 @@ namespace qtreports {
              * @brief Конструктор по умолчанию
              * @param report ссылка на объект ReportPtr
              */
-            ConverterToPDF( const ReportPtr & report );
+            explicit ConverterToPDF( const ReportPtr & report );
             ~ConverterToPDF();
 
             /*! @~russian
