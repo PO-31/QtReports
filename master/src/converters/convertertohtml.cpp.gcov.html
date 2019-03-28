@@ -31,13 +31,13 @@
             <td class="headerValue">coverage.info</td>
             <td></td>
             <td class="headerItem">Lines:</td>
-            <td class="headerCovTableEntry">229</td>
+            <td class="headerCovTableEntry">257</td>
             <td class="headerCovTableEntry">330</td>
-            <td class="headerCovTableEntryLo">69.4 %</td>
+            <td class="headerCovTableEntryMed">77.9 %</td>
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2019-03-27 04:32:43</td>
+            <td class="headerValue">2019-03-28 10:47:48</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntry">10</td>
@@ -252,11 +252,11 @@
 <a name="190"><span class="lineNum">     190 </span><span class="lineCov">          4 :                             QString verticalAlignment = &quot;middle&quot;;</span></a>
 <a name="191"><span class="lineNum">     191 </span>            : </a>
 <a name="192"><span class="lineNum">     192 </span><span class="lineCov">          2 :                             if ((textField-&gt;getAlignment() &amp; Qt::AlignLeft) == Qt::AlignLeft)</span></a>
-<a name="193"><span class="lineNum">     193 </span><span class="lineCov">          2 :                                 textAlignment = &quot;left&quot;;</span></a>
+<a name="193"><span class="lineNum">     193 </span><span class="lineNoCov">          0 :                                 textAlignment = &quot;left&quot;;</span></a>
 <a name="194"><span class="lineNum">     194 </span><span class="lineCov">          2 :                             if ((textField-&gt;getAlignment() &amp; Qt::AlignRight) == Qt::AlignRight)</span></a>
 <a name="195"><span class="lineNum">     195 </span><span class="lineNoCov">          0 :                                 textAlignment = &quot;right&quot;;</span></a>
 <a name="196"><span class="lineNum">     196 </span><span class="lineCov">          2 :                             if ((textField-&gt;getAlignment() &amp; Qt::AlignHCenter) == Qt::AlignHCenter)</span></a>
-<a name="197"><span class="lineNum">     197 </span><span class="lineNoCov">          0 :                                 textAlignment = &quot;center&quot;;</span></a>
+<a name="197"><span class="lineNum">     197 </span><span class="lineCov">          2 :                                 textAlignment = &quot;center&quot;;</span></a>
 <a name="198"><span class="lineNum">     198 </span><span class="lineCov">          2 :                             if ((textField-&gt;getAlignment() &amp; Qt::AlignJustify) == Qt::AlignJustify)</span></a>
 <a name="199"><span class="lineNum">     199 </span><span class="lineNoCov">          0 :                                 textAlignment = &quot;justify&quot;;</span></a>
 <a name="200"><span class="lineNum">     200 </span>            : </a>
@@ -265,7 +265,7 @@
 <a name="203"><span class="lineNum">     203 </span><span class="lineCov">          2 :                             if ((textField-&gt;getAlignment() &amp; Qt::AlignBottom) == Qt::AlignBottom)</span></a>
 <a name="204"><span class="lineNum">     204 </span><span class="lineCov">          2 :                                 verticalAlignment = &quot;bottom&quot;;</span></a>
 <a name="205"><span class="lineNum">     205 </span><span class="lineCov">          2 :                             if ((textField-&gt;getAlignment() &amp; Qt::AlignVCenter) == Qt::AlignVCenter)</span></a>
-<a name="206"><span class="lineNum">     206 </span><span class="lineNoCov">          0 :                                 verticalAlignment = &quot;middle&quot;;</span></a>
+<a name="206"><span class="lineNum">     206 </span><span class="lineCov">          2 :                                 verticalAlignment = &quot;middle&quot;;</span></a>
 <a name="207"><span class="lineNum">     207 </span>            :                             //if ((textField-&gt;getAlignment() &amp; Qt::AlignBaseline) == Qt::AlignBaseline)</a>
 <a name="208"><span class="lineNum">     208 </span>            :                             //    verticalAlignment = &quot;baseline&quot;;</a>
 <a name="209"><span class="lineNum">     209 </span>            : </a>
@@ -366,43 +366,43 @@
 <a name="304"><span class="lineNum">     304 </span><span class="lineCov">          6 :             QList&lt;QString&gt; groupNames;</span></a>
 <a name="305"><span class="lineNum">     305 </span>            :             //Сюда помещаем конкретные имена по которым группируем</a>
 <a name="306"><span class="lineNum">     306 </span><span class="lineCov">          3 :             QString *particularNames = new QString[groups.length()];</span></a>
-<a name="307"><span class="lineNum">     307 </span><span class="lineCov">          3 :             for (int i = 0; i&lt;groups.length(); i++)</span></a>
+<a name="307"><span class="lineNum">     307 </span><span class="lineCov">          5 :             for (int i = 0; i&lt;groups.length(); i++)</span></a>
 <a name="308"><span class="lineNum">     308 </span>            :             {</a>
-<a name="309"><span class="lineNum">     309 </span><span class="lineNoCov">          0 :                 auto groupExpression = groups[i]-&gt;getExpression();</span></a>
-<a name="310"><span class="lineNum">     310 </span><span class="lineNoCov">          0 :                 if(groupExpression == &quot;&quot;)</span></a>
+<a name="309"><span class="lineNum">     309 </span><span class="lineCov">          4 :                 auto groupExpression = groups[i]-&gt;getExpression();</span></a>
+<a name="310"><span class="lineNum">     310 </span><span class="lineCov">          2 :                 if(groupExpression == &quot;&quot;)</span></a>
 <a name="311"><span class="lineNum">     311 </span>            :                 {</a>
 <a name="312"><span class="lineNum">     312 </span><span class="lineNoCov">          0 :                     return false;</span></a>
 <a name="313"><span class="lineNum">     313 </span>            :                 }</a>
 <a name="314"><span class="lineNum">     314 </span>            : </a>
 <a name="315"><span class="lineNum">     315 </span>            :                 // Обрезать лишние символы в полученном значении expression</a>
 <a name="316"><span class="lineNum">     316 </span>            :                 // т.к. оно в формате \n\t\t\tEXPRESSION\n\t\t</a>
-<a name="317"><span class="lineNum">     317 </span><span class="lineNoCov">          0 :                 for(int j=0; j&lt;groupExpression.size(); j++)</span></a>
+<a name="317"><span class="lineNum">     317 </span><span class="lineCov">          2 :                 for(int j=0; j&lt;groupExpression.size(); j++)</span></a>
 <a name="318"><span class="lineNum">     318 </span>            :                 {</a>
-<a name="319"><span class="lineNum">     319 </span><span class="lineNoCov">          0 :                     if(groupExpression[j] != '\n' &amp;&amp; groupExpression[j] != '\t')</span></a>
+<a name="319"><span class="lineNum">     319 </span><span class="lineCov">          2 :                     if(groupExpression[j] != '\n' &amp;&amp; groupExpression[j] != '\t')</span></a>
 <a name="320"><span class="lineNum">     320 </span>            :                     {</a>
-<a name="321"><span class="lineNum">     321 </span><span class="lineNoCov">          0 :                         groupExpression.remove(0, j);</span></a>
-<a name="322"><span class="lineNum">     322 </span><span class="lineNoCov">          0 :                         break;</span></a>
+<a name="321"><span class="lineNum">     321 </span><span class="lineCov">          2 :                         groupExpression.remove(0, j);</span></a>
+<a name="322"><span class="lineNum">     322 </span><span class="lineCov">          2 :                         break;</span></a>
 <a name="323"><span class="lineNum">     323 </span>            :                     }</a>
 <a name="324"><span class="lineNum">     324 </span>            :                 }</a>
-<a name="325"><span class="lineNum">     325 </span><span class="lineNoCov">          0 :                 for(int j=groupExpression.size(); j&gt;=0; j--)</span></a>
+<a name="325"><span class="lineNum">     325 </span><span class="lineCov">          2 :                 for(int j=groupExpression.size(); j&gt;=0; j--)</span></a>
 <a name="326"><span class="lineNum">     326 </span>            :                 {</a>
-<a name="327"><span class="lineNum">     327 </span><span class="lineNoCov">          0 :                     if(groupExpression[j] != '\n' &amp;&amp; groupExpression[j] != '\t')</span></a>
+<a name="327"><span class="lineNum">     327 </span><span class="lineCov">          2 :                     if(groupExpression[j] != '\n' &amp;&amp; groupExpression[j] != '\t')</span></a>
 <a name="328"><span class="lineNum">     328 </span>            :                     {</a>
-<a name="329"><span class="lineNum">     329 </span><span class="lineNoCov">          0 :                         groupExpression.remove(j + 1, groupExpression.size() - j - 1);</span></a>
-<a name="330"><span class="lineNum">     330 </span><span class="lineNoCov">          0 :                         break;</span></a>
+<a name="329"><span class="lineNum">     329 </span><span class="lineCov">          2 :                         groupExpression.remove(j + 1, groupExpression.size() - j - 1);</span></a>
+<a name="330"><span class="lineNum">     330 </span><span class="lineCov">          2 :                         break;</span></a>
 <a name="331"><span class="lineNum">     331 </span>            :                     }</a>
 <a name="332"><span class="lineNum">     332 </span>            :                 }</a>
 <a name="333"><span class="lineNum">     333 </span>            : </a>
-<a name="334"><span class="lineNum">     334 </span><span class="lineNoCov">          0 :                 groupNames.append(groupExpression);</span></a>
-<a name="335"><span class="lineNum">     335 </span><span class="lineNoCov">          0 :                 particularNames[i] = replacer.replaceField(groupNames[i], m_report, 0);</span></a>
+<a name="334"><span class="lineNum">     334 </span><span class="lineCov">          2 :                 groupNames.append(groupExpression);</span></a>
+<a name="335"><span class="lineNum">     335 </span><span class="lineCov">          2 :                 particularNames[i] = replacer.replaceField(groupNames[i], m_report, 0);</span></a>
 <a name="336"><span class="lineNum">     336 </span>            :             }</a>
 <a name="337"><span class="lineNum">     337 </span>            :             //Открываем хедеры групп</a>
-<a name="338"><span class="lineNum">     338 </span><span class="lineCov">          3 :             for (int i = 0; i&lt;groups.length(); i++)</span></a>
+<a name="338"><span class="lineNum">     338 </span><span class="lineCov">          5 :             for (int i = 0; i&lt;groups.length(); i++)</span></a>
 <a name="339"><span class="lineNum">     339 </span>            :             {</a>
-<a name="340"><span class="lineNum">     340 </span><span class="lineNoCov">          0 :                 auto header = groups[i]-&gt;getHeader();</span></a>
-<a name="341"><span class="lineNum">     341 </span><span class="lineNoCov">          0 :                 if (!header.isNull())</span></a>
+<a name="340"><span class="lineNum">     340 </span><span class="lineCov">          4 :                 auto header = groups[i]-&gt;getHeader();</span></a>
+<a name="341"><span class="lineNum">     341 </span><span class="lineCov">          2 :                 if (!header.isNull())</span></a>
 <a name="342"><span class="lineNum">     342 </span>            :                 {</a>
-<a name="343"><span class="lineNum">     343 </span><span class="lineNoCov">          0 :                     if(!addSection(header, 0))</span></a>
+<a name="343"><span class="lineNum">     343 </span><span class="lineCov">          2 :                     if(!addSection(header, 0))</span></a>
 <a name="344"><span class="lineNum">     344 </span>            :                     {</a>
 <a name="345"><span class="lineNum">     345 </span><span class="lineNoCov">          0 :                         return false;</span></a>
 <a name="346"><span class="lineNum">     346 </span>            :                     }</a>
@@ -415,15 +415,15 @@
 <a name="353"><span class="lineNum">     353 </span>            :                 //QWidget * sectionWidget = isLayout() ? sectionWidget = addSectionLayout(layout, report-&gt;getMargins(), detail-&gt;getHeight()) : nullptr;</a>
 <a name="354"><span class="lineNum">     354 </span>            : </a>
 <a name="355"><span class="lineNum">     355 </span>            :                 //Закрываем футеры, если группа закончилась</a>
-<a name="356"><span class="lineNum">     356 </span><span class="lineCov">         32 :                 for(int j = groups.length() - 1; j &gt;= 0; j--)</span></a>
+<a name="356"><span class="lineNum">     356 </span><span class="lineCov">         54 :                 for(int j = groups.length() - 1; j &gt;= 0; j--)</span></a>
 <a name="357"><span class="lineNum">     357 </span>            :                 {</a>
 <a name="358"><span class="lineNum">     358 </span>            :                     //сверяем поле в заголовке и текущее поле</a>
-<a name="359"><span class="lineNum">     359 </span><span class="lineNoCov">          0 :                     if(particularNames[j] != replacer.replaceField(groupNames[j], m_report, i))</span></a>
+<a name="359"><span class="lineNum">     359 </span><span class="lineCov">         22 :                     if(particularNames[j] != replacer.replaceField(groupNames[j], m_report, i))</span></a>
 <a name="360"><span class="lineNum">     360 </span>            :                     {</a>
-<a name="361"><span class="lineNum">     361 </span><span class="lineNoCov">          0 :                         auto footer = m_report-&gt;getGroupByIndex(j)-&gt;getFooter();</span></a>
-<a name="362"><span class="lineNum">     362 </span><span class="lineNoCov">          0 :                         if (!footer.isNull())</span></a>
+<a name="361"><span class="lineNum">     361 </span><span class="lineCov">         28 :                         auto footer = m_report-&gt;getGroupByIndex(j)-&gt;getFooter();</span></a>
+<a name="362"><span class="lineNum">     362 </span><span class="lineCov">         14 :                         if (!footer.isNull())</span></a>
 <a name="363"><span class="lineNum">     363 </span>            :                         {</a>
-<a name="364"><span class="lineNum">     364 </span><span class="lineNoCov">          0 :                             if(!addSection(footer, i - 1))</span></a>
+<a name="364"><span class="lineNum">     364 </span><span class="lineCov">         14 :                             if(!addSection(footer, i - 1))</span></a>
 <a name="365"><span class="lineNum">     365 </span>            :                             {</a>
 <a name="366"><span class="lineNum">     366 </span><span class="lineNoCov">          0 :                                 return false;</span></a>
 <a name="367"><span class="lineNum">     367 </span>            :                             }</a>
@@ -431,15 +431,15 @@
 <a name="369"><span class="lineNum">     369 </span>            :                     }</a>
 <a name="370"><span class="lineNum">     370 </span>            :                 }</a>
 <a name="371"><span class="lineNum">     371 </span>            :                 //Аналогично открываем хедеры</a>
-<a name="372"><span class="lineNum">     372 </span><span class="lineCov">         32 :                 for(int j = 0; j &lt; groupNames.length(); j++)</span></a>
+<a name="372"><span class="lineNum">     372 </span><span class="lineCov">         54 :                 for(int j = 0; j &lt; groupNames.length(); j++)</span></a>
 <a name="373"><span class="lineNum">     373 </span>            :                 {</a>
 <a name="374"><span class="lineNum">     374 </span>            :                     //сверяем поле в заголовке и текущее поле</a>
-<a name="375"><span class="lineNum">     375 </span><span class="lineNoCov">          0 :                     if(particularNames[j] != replacer.replaceField(groupNames[j], m_report, i))</span></a>
+<a name="375"><span class="lineNum">     375 </span><span class="lineCov">         22 :                     if(particularNames[j] != replacer.replaceField(groupNames[j], m_report, i))</span></a>
 <a name="376"><span class="lineNum">     376 </span>            :                     {</a>
-<a name="377"><span class="lineNum">     377 </span><span class="lineNoCov">          0 :                         auto header = m_report-&gt;getGroupByIndex(j)-&gt;getHeader();</span></a>
-<a name="378"><span class="lineNum">     378 </span><span class="lineNoCov">          0 :                         if (!header.isNull())</span></a>
+<a name="377"><span class="lineNum">     377 </span><span class="lineCov">         28 :                         auto header = m_report-&gt;getGroupByIndex(j)-&gt;getHeader();</span></a>
+<a name="378"><span class="lineNum">     378 </span><span class="lineCov">         14 :                         if (!header.isNull())</span></a>
 <a name="379"><span class="lineNum">     379 </span>            :                         {</a>
-<a name="380"><span class="lineNum">     380 </span><span class="lineNoCov">          0 :                             if(!addSection(header, i))</span></a>
+<a name="380"><span class="lineNum">     380 </span><span class="lineCov">         14 :                             if(!addSection(header, i))</span></a>
 <a name="381"><span class="lineNum">     381 </span>            :                             {</a>
 <a name="382"><span class="lineNum">     382 </span><span class="lineNoCov">          0 :                                 return false;</span></a>
 <a name="383"><span class="lineNum">     383 </span>            :                             }</a>
@@ -447,9 +447,9 @@
 <a name="385"><span class="lineNum">     385 </span>            :                     }</a>
 <a name="386"><span class="lineNum">     386 </span>            :                 }</a>
 <a name="387"><span class="lineNum">     387 </span>            :                 //Переписываем имена для сравнения</a>
-<a name="388"><span class="lineNum">     388 </span><span class="lineCov">         32 :                 for(int j = 0; j &lt; groupNames.length(); j++)</span></a>
+<a name="388"><span class="lineNum">     388 </span><span class="lineCov">         54 :                 for(int j = 0; j &lt; groupNames.length(); j++)</span></a>
 <a name="389"><span class="lineNum">     389 </span>            :                 {</a>
-<a name="390"><span class="lineNum">     390 </span><span class="lineNoCov">          0 :                     particularNames[j] = replacer.replaceField(groupNames[j], m_report, i);</span></a>
+<a name="390"><span class="lineNum">     390 </span><span class="lineCov">         22 :                     particularNames[j] = replacer.replaceField(groupNames[j], m_report, i);</span></a>
 <a name="391"><span class="lineNum">     391 </span>            :                 }</a>
 <a name="392"><span class="lineNum">     392 </span>            :                 //Выводим поле</a>
 <a name="393"><span class="lineNum">     393 </span><span class="lineCov">         32 :                 if(!addSection(detail, i))</span></a>
@@ -458,12 +458,12 @@
 <a name="396"><span class="lineNum">     396 </span>            :                 }</a>
 <a name="397"><span class="lineNum">     397 </span>            :             }</a>
 <a name="398"><span class="lineNum">     398 </span>            :             //Закрываем хедеры групп</a>
-<a name="399"><span class="lineNum">     399 </span><span class="lineCov">          3 :             for(int i = groups.length() - 1; i &gt;= 0; i--)</span></a>
+<a name="399"><span class="lineNum">     399 </span><span class="lineCov">          5 :             for(int i = groups.length() - 1; i &gt;= 0; i--)</span></a>
 <a name="400"><span class="lineNum">     400 </span>            :             {</a>
-<a name="401"><span class="lineNum">     401 </span><span class="lineNoCov">          0 :                 auto footer = groups[i]-&gt;getFooter();</span></a>
-<a name="402"><span class="lineNum">     402 </span><span class="lineNoCov">          0 :                 if (!footer.isNull())</span></a>
+<a name="401"><span class="lineNum">     401 </span><span class="lineCov">          4 :                 auto footer = groups[i]-&gt;getFooter();</span></a>
+<a name="402"><span class="lineNum">     402 </span><span class="lineCov">          2 :                 if (!footer.isNull())</span></a>
 <a name="403"><span class="lineNum">     403 </span>            :                 {</a>
-<a name="404"><span class="lineNum">     404 </span><span class="lineNoCov">          0 :                     if(!addSection(footer, (rowCount - 1)))</span></a>
+<a name="404"><span class="lineNum">     404 </span><span class="lineCov">          2 :                     if(!addSection(footer, (rowCount - 1)))</span></a>
 <a name="405"><span class="lineNum">     405 </span>            :                     {</a>
 <a name="406"><span class="lineNum">     406 </span><span class="lineNoCov">          0 :                         return false;</span></a>
 <a name="407"><span class="lineNum">     407 </span>            :                     }</a>
@@ -472,65 +472,65 @@
 <a name="410"><span class="lineNum">     410 </span><span class="lineCov">          3 :             return true;</span></a>
 <a name="411"><span class="lineNum">     411 </span>            :         }</a>
 <a name="412"><span class="lineNum">     412 </span>            : </a>
-<a name="413"><span class="lineNum">     413 </span><span class="lineCov">         32 :         bool ConverterToHTML::addSection(QSharedPointer&lt;Section&gt; section, int detailIndex)</span></a>
+<a name="413"><span class="lineNum">     413 </span><span class="lineCov">         64 :         bool ConverterToHTML::addSection(QSharedPointer&lt;Section&gt; section, int detailIndex)</span></a>
 <a name="414"><span class="lineNum">     414 </span>            :         {</a>
-<a name="415"><span class="lineNum">     415 </span><span class="lineCov">         64 :             detail::Replacer replacer;</span></a>
-<a name="416"><span class="lineNum">     416 </span><span class="lineCov">         32 :             if( !replacer.replace( section, m_report, detailIndex ) )</span></a>
+<a name="415"><span class="lineNum">     415 </span><span class="lineCov">        128 :             detail::Replacer replacer;</span></a>
+<a name="416"><span class="lineNum">     416 </span><span class="lineCov">         64 :             if( !replacer.replace( section, m_report, detailIndex ) )</span></a>
 <a name="417"><span class="lineNum">     417 </span>            :             {</a>
 <a name="418"><span class="lineNum">     418 </span><span class="lineNoCov">          0 :                 m_lastError = &quot;Error in replacing process: &quot; + replacer.getLastError();</span></a>
 <a name="419"><span class="lineNum">     419 </span><span class="lineNoCov">          0 :                 return false;</span></a>
 <a name="420"><span class="lineNum">     420 </span>            :             }</a>
 <a name="421"><span class="lineNum">     421 </span>            : </a>
-<a name="422"><span class="lineNum">     422 </span><span class="lineCov">         64 :             QString bandStr = &quot;&quot;;</span></a>
+<a name="422"><span class="lineNum">     422 </span><span class="lineCov">        128 :             QString bandStr = &quot;&quot;;</span></a>
 <a name="423"><span class="lineNum">     423 </span>            : </a>
-<a name="424"><span class="lineNum">     424 </span><span class="lineCov">        118 :             for(auto &amp;&amp; band : section-&gt;getBands())</span></a>
+<a name="424"><span class="lineNum">     424 </span><span class="lineCov">        182 :             for(auto &amp;&amp; band : section-&gt;getBands())</span></a>
 <a name="425"><span class="lineNum">     425 </span>            :             {</a>
-<a name="426"><span class="lineNum">     426 </span><span class="lineCov">         86 :                 bool isBandEmpty = true;</span></a>
-<a name="427"><span class="lineNum">     427 </span><span class="lineCov">        172 :                 QString elementStr = &quot;&quot;;</span></a>
+<a name="426"><span class="lineNum">     426 </span><span class="lineCov">        118 :                 bool isBandEmpty = true;</span></a>
+<a name="427"><span class="lineNum">     427 </span><span class="lineCov">        236 :                 QString elementStr = &quot;&quot;;</span></a>
 <a name="428"><span class="lineNum">     428 </span>            : </a>
-<a name="429"><span class="lineNum">     429 </span><span class="lineCov">        172 :                 for(auto &amp;&amp; textField : band-&gt;getTextFields())</span></a>
+<a name="429"><span class="lineNum">     429 </span><span class="lineCov">        236 :                 for(auto &amp;&amp; textField : band-&gt;getTextFields())</span></a>
 <a name="430"><span class="lineNum">     430 </span>            :                 {</a>
-<a name="431"><span class="lineNum">     431 </span><span class="lineCov">         86 :                     if (textField-&gt;getText() != &quot;&quot;)</span></a>
+<a name="431"><span class="lineNum">     431 </span><span class="lineCov">        118 :                     if (textField-&gt;getText() != &quot;&quot;)</span></a>
 <a name="432"><span class="lineNum">     432 </span>            :                     {</a>
-<a name="433"><span class="lineNum">     433 </span><span class="lineCov">        172 :                         QString textAlignment = &quot;left&quot;;</span></a>
-<a name="434"><span class="lineNum">     434 </span><span class="lineCov">        172 :                         QString verticalAlignment = &quot;middle&quot;;</span></a>
+<a name="433"><span class="lineNum">     433 </span><span class="lineCov">        236 :                         QString textAlignment = &quot;left&quot;;</span></a>
+<a name="434"><span class="lineNum">     434 </span><span class="lineCov">        236 :                         QString verticalAlignment = &quot;middle&quot;;</span></a>
 <a name="435"><span class="lineNum">     435 </span>            : </a>
-<a name="436"><span class="lineNum">     436 </span><span class="lineCov">         86 :                         if ((textField-&gt;getAlignment() &amp; Qt::AlignLeft) == Qt::AlignLeft)</span></a>
-<a name="437"><span class="lineNum">     437 </span><span class="lineCov">         42 :                             textAlignment = &quot;left&quot;;</span></a>
-<a name="438"><span class="lineNum">     438 </span><span class="lineCov">         86 :                         if ((textField-&gt;getAlignment() &amp; Qt::AlignRight) == Qt::AlignRight)</span></a>
+<a name="436"><span class="lineNum">     436 </span><span class="lineCov">        118 :                         if ((textField-&gt;getAlignment() &amp; Qt::AlignLeft) == Qt::AlignLeft)</span></a>
+<a name="437"><span class="lineNum">     437 </span><span class="lineCov">         74 :                             textAlignment = &quot;left&quot;;</span></a>
+<a name="438"><span class="lineNum">     438 </span><span class="lineCov">        118 :                         if ((textField-&gt;getAlignment() &amp; Qt::AlignRight) == Qt::AlignRight)</span></a>
 <a name="439"><span class="lineNum">     439 </span><span class="lineCov">         44 :                             textAlignment = &quot;right&quot;;</span></a>
-<a name="440"><span class="lineNum">     440 </span><span class="lineCov">         86 :                         if ((textField-&gt;getAlignment() &amp; Qt::AlignHCenter) == Qt::AlignHCenter)</span></a>
+<a name="440"><span class="lineNum">     440 </span><span class="lineCov">        118 :                         if ((textField-&gt;getAlignment() &amp; Qt::AlignHCenter) == Qt::AlignHCenter)</span></a>
 <a name="441"><span class="lineNum">     441 </span><span class="lineNoCov">          0 :                             textAlignment = &quot;center&quot;;</span></a>
-<a name="442"><span class="lineNum">     442 </span><span class="lineCov">         86 :                         if ((textField-&gt;getAlignment() &amp; Qt::AlignJustify) == Qt::AlignJustify)</span></a>
+<a name="442"><span class="lineNum">     442 </span><span class="lineCov">        118 :                         if ((textField-&gt;getAlignment() &amp; Qt::AlignJustify) == Qt::AlignJustify)</span></a>
 <a name="443"><span class="lineNum">     443 </span><span class="lineNoCov">          0 :                             textAlignment = &quot;justify&quot;;</span></a>
 <a name="444"><span class="lineNum">     444 </span>            : </a>
-<a name="445"><span class="lineNum">     445 </span><span class="lineCov">         86 :                         if ((textField-&gt;getAlignment() &amp; Qt::AlignTop) == Qt::AlignTop)</span></a>
-<a name="446"><span class="lineNum">     446 </span><span class="lineCov">         44 :                             verticalAlignment = &quot;top&quot;;</span></a>
-<a name="447"><span class="lineNum">     447 </span><span class="lineCov">         86 :                         if ((textField-&gt;getAlignment() &amp; Qt::AlignBottom) == Qt::AlignBottom)</span></a>
+<a name="445"><span class="lineNum">     445 </span><span class="lineCov">        118 :                         if ((textField-&gt;getAlignment() &amp; Qt::AlignTop) == Qt::AlignTop)</span></a>
+<a name="446"><span class="lineNum">     446 </span><span class="lineCov">         22 :                             verticalAlignment = &quot;top&quot;;</span></a>
+<a name="447"><span class="lineNum">     447 </span><span class="lineCov">        118 :                         if ((textField-&gt;getAlignment() &amp; Qt::AlignBottom) == Qt::AlignBottom)</span></a>
 <a name="448"><span class="lineNum">     448 </span><span class="lineCov">         22 :                             verticalAlignment = &quot;bottom&quot;;</span></a>
-<a name="449"><span class="lineNum">     449 </span><span class="lineCov">         86 :                         if ((textField-&gt;getAlignment() &amp; Qt::AlignVCenter) == Qt::AlignVCenter)</span></a>
-<a name="450"><span class="lineNum">     450 </span><span class="lineCov">         20 :                             verticalAlignment = &quot;middle&quot;;</span></a>
+<a name="449"><span class="lineNum">     449 </span><span class="lineCov">        118 :                         if ((textField-&gt;getAlignment() &amp; Qt::AlignVCenter) == Qt::AlignVCenter)</span></a>
+<a name="450"><span class="lineNum">     450 </span><span class="lineCov">         74 :                             verticalAlignment = &quot;middle&quot;;</span></a>
 <a name="451"><span class="lineNum">     451 </span>            :                         //if ((textField-&gt;getAlignment() &amp; Qt::AlignBaseline) == Qt::AlignBaseline)</a>
 <a name="452"><span class="lineNum">     452 </span>            :                         //    verticalAlignment = &quot;baseline&quot;;</a>
 <a name="453"><span class="lineNum">     453 </span>            : </a>
 <a name="454"><span class="lineNum">     454 </span>            : </a>
-<a name="455"><span class="lineNum">     455 </span><span class="lineCov">        172 :                         elementStr += QString(&quot;     &lt;div class='textfield &quot; + m_defaultStyleName + &quot;' &quot;</span></a>
+<a name="455"><span class="lineNum">     455 </span><span class="lineCov">        236 :                         elementStr += QString(&quot;     &lt;div class='textfield &quot; + m_defaultStyleName + &quot;' &quot;</span></a>
 <a name="456"><span class="lineNum">     456 </span>            :                            &quot;style='left: %1px; top: %2px; &quot;</a>
 <a name="457"><span class="lineNum">     457 </span>            :                            &quot;width: %3px; height: %4px; &quot;</a>
 <a name="458"><span class="lineNum">     458 </span>            :                            &quot;text-align: %5; vertical-align: %6'&gt;%7&lt;/div&gt;\n&quot;)</a>
-<a name="459"><span class="lineNum">     459 </span><span class="lineCov">        344 :                            .arg(textField-&gt;getX())</span></a>
-<a name="460"><span class="lineNum">     460 </span><span class="lineCov">        344 :                            .arg(textField-&gt;getY())</span></a>
-<a name="461"><span class="lineNum">     461 </span><span class="lineCov">        344 :                            .arg(textField-&gt;getWidth())</span></a>
-<a name="462"><span class="lineNum">     462 </span><span class="lineCov">        344 :                            .arg(textField-&gt;getHeight())</span></a>
-<a name="463"><span class="lineNum">     463 </span><span class="lineCov">        344 :                            .arg(textAlignment)</span></a>
-<a name="464"><span class="lineNum">     464 </span><span class="lineCov">        344 :                            .arg(verticalAlignment)</span></a>
-<a name="465"><span class="lineNum">     465 </span><span class="lineCov">        258 :                            .arg(textField-&gt;getText());</span></a>
+<a name="459"><span class="lineNum">     459 </span><span class="lineCov">        472 :                            .arg(textField-&gt;getX())</span></a>
+<a name="460"><span class="lineNum">     460 </span><span class="lineCov">        472 :                            .arg(textField-&gt;getY())</span></a>
+<a name="461"><span class="lineNum">     461 </span><span class="lineCov">        472 :                            .arg(textField-&gt;getWidth())</span></a>
+<a name="462"><span class="lineNum">     462 </span><span class="lineCov">        472 :                            .arg(textField-&gt;getHeight())</span></a>
+<a name="463"><span class="lineNum">     463 </span><span class="lineCov">        472 :                            .arg(textAlignment)</span></a>
+<a name="464"><span class="lineNum">     464 </span><span class="lineCov">        472 :                            .arg(verticalAlignment)</span></a>
+<a name="465"><span class="lineNum">     465 </span><span class="lineCov">        354 :                            .arg(textField-&gt;getText());</span></a>
 <a name="466"><span class="lineNum">     466 </span>            : </a>
-<a name="467"><span class="lineNum">     467 </span><span class="lineCov">         86 :                         isBandEmpty = false;</span></a>
+<a name="467"><span class="lineNum">     467 </span><span class="lineCov">        118 :                         isBandEmpty = false;</span></a>
 <a name="468"><span class="lineNum">     468 </span>            :                     }</a>
 <a name="469"><span class="lineNum">     469 </span>            :                 }</a>
 <a name="470"><span class="lineNum">     470 </span>            : </a>
-<a name="471"><span class="lineNum">     471 </span><span class="lineCov">         86 :                 for(auto &amp;&amp; crosstab : band-&gt;getCrosstabs())</span></a>
+<a name="471"><span class="lineNum">     471 </span><span class="lineCov">        118 :                 for(auto &amp;&amp; crosstab : band-&gt;getCrosstabs())</span></a>
 <a name="472"><span class="lineNum">     472 </span>            :                 {</a>
 <a name="473"><span class="lineNum">     473 </span>            :                     //if (textField-&gt;getText() != &quot;&quot;)</a>
 <a name="474"><span class="lineNum">     474 </span>            :                     //{</a>
@@ -572,9 +572,9 @@
 <a name="510"><span class="lineNum">     510 </span>            :                     //}</a>
 <a name="511"><span class="lineNum">     511 </span>            :                 }</a>
 <a name="512"><span class="lineNum">     512 </span>            : </a>
-<a name="513"><span class="lineNum">     513 </span><span class="lineCov">         86 :                 if (!isBandEmpty)</span></a>
+<a name="513"><span class="lineNum">     513 </span><span class="lineCov">        118 :                 if (!isBandEmpty)</span></a>
 <a name="514"><span class="lineNum">     514 </span>            :                 {</a>
-<a name="515"><span class="lineNum">     515 </span><span class="lineCov">         86 :                     for(auto &amp;&amp; staticText : band-&gt;getStaticTexts())</span></a>
+<a name="515"><span class="lineNum">     515 </span><span class="lineCov">        118 :                     for(auto &amp;&amp; staticText : band-&gt;getStaticTexts())</span></a>
 <a name="516"><span class="lineNum">     516 </span>            :                     {</a>
 <a name="517"><span class="lineNum">     517 </span><span class="lineCov">         22 :                         if (staticText-&gt;getText() != &quot;&quot;)</span></a>
 <a name="518"><span class="lineNum">     518 </span>            :                         {</a>
@@ -613,26 +613,26 @@
 <a name="551"><span class="lineNum">     551 </span>            :                         }</a>
 <a name="552"><span class="lineNum">     552 </span>            :                     }</a>
 <a name="553"><span class="lineNum">     553 </span>            : </a>
-<a name="554"><span class="lineNum">     554 </span><span class="lineCov">         64 :                     drawShapes(band, elementStr);</span></a>
+<a name="554"><span class="lineNum">     554 </span><span class="lineCov">         96 :                     drawShapes(band, elementStr);</span></a>
 <a name="555"><span class="lineNum">     555 </span>            : </a>
 <a name="556"><span class="lineNum">     556 </span>            :                     bandStr += QString(&quot;    &lt;div class='band' &quot;</a>
 <a name="557"><span class="lineNum">     557 </span>            :                             &quot;style='height: %1px'&gt;\n%2    &lt;/div&gt;\n&quot;)</a>
-<a name="558"><span class="lineNum">     558 </span><span class="lineCov">        128 :                             .arg(band-&gt;getSize().height())</span></a>
-<a name="559"><span class="lineNum">     559 </span><span class="lineCov">        192 :                             .arg(elementStr);</span></a>
+<a name="558"><span class="lineNum">     558 </span><span class="lineCov">        192 :                             .arg(band-&gt;getSize().height())</span></a>
+<a name="559"><span class="lineNum">     559 </span><span class="lineCov">        288 :                             .arg(elementStr);</span></a>
 <a name="560"><span class="lineNum">     560 </span>            :                 }</a>
 <a name="561"><span class="lineNum">     561 </span>            :             }</a>
 <a name="562"><span class="lineNum">     562 </span>            : </a>
 <a name="563"><span class="lineNum">     563 </span>            :             //m_html += QString(&quot;   &lt;div class='detail'&gt;\n%1   &lt;/div&gt;\n&quot;)</a>
 <a name="564"><span class="lineNum">     564 </span>            :             //    .arg(bandStr);</a>
-<a name="565"><span class="lineNum">     565 </span><span class="lineCov">         32 :             m_html += QString(&quot;%1&quot;).arg(bandStr);</span></a>
-<a name="566"><span class="lineNum">     566 </span><span class="lineCov">         32 :             return true;</span></a>
+<a name="565"><span class="lineNum">     565 </span><span class="lineCov">         64 :             m_html += QString(&quot;%1&quot;).arg(bandStr);</span></a>
+<a name="566"><span class="lineNum">     566 </span><span class="lineCov">         64 :             return true;</span></a>
 <a name="567"><span class="lineNum">     567 </span>            :         }</a>
 <a name="568"><span class="lineNum">     568 </span>            : </a>
-<a name="569"><span class="lineNum">     569 </span><span class="lineCov">         66 :         void ConverterToHTML::drawShapes(QSharedPointer&lt;Band&gt; band, QString &amp;elementStr)</span></a>
+<a name="569"><span class="lineNum">     569 </span><span class="lineCov">         98 :         void ConverterToHTML::drawShapes(QSharedPointer&lt;Band&gt; band, QString &amp;elementStr)</span></a>
 <a name="570"><span class="lineNum">     570 </span>            :         {</a>
-<a name="571"><span class="lineNum">     571 </span><span class="lineCov">         66 :             int imgCount = 0;</span></a>
+<a name="571"><span class="lineNum">     571 </span><span class="lineCov">         98 :             int imgCount = 0;</span></a>
 <a name="572"><span class="lineNum">     572 </span>            : </a>
-<a name="573"><span class="lineNum">     573 </span><span class="lineCov">         90 :             for (auto &amp;&amp; image : band-&gt;getImages())</span></a>
+<a name="573"><span class="lineNum">     573 </span><span class="lineCov">        122 :             for (auto &amp;&amp; image : band-&gt;getImages())</span></a>
 <a name="574"><span class="lineNum">     574 </span>            :             {</a>
 <a name="575"><span class="lineNum">     575 </span><span class="lineCov">         48 :                QImage img = image-&gt;getImage();</span></a>
 <a name="576"><span class="lineNum">     576 </span><span class="lineCov">         48 :                 QBuffer imageBuffer;     //Создаём буффер для перевода картинки в QByteArray</span></a>
@@ -652,12 +652,12 @@
 <a name="590"><span class="lineNum">     590 </span>            :             }</a>
 <a name="591"><span class="lineNum">     591 </span>            : </a>
 <a name="592"><span class="lineNum">     592 </span>            :             // Получаем количество линий</a>
-<a name="593"><span class="lineNum">     593 </span><span class="lineCov">         66 :             int amountLines = band-&gt;getLines().size();</span></a>
-<a name="594"><span class="lineNum">     594 </span><span class="lineCov">         66 :             int counterLines = 0;</span></a>
+<a name="593"><span class="lineNum">     593 </span><span class="lineCov">         98 :             int amountLines = band-&gt;getLines().size();</span></a>
+<a name="594"><span class="lineNum">     594 </span><span class="lineCov">         98 :             int counterLines = 0;</span></a>
 <a name="595"><span class="lineNum">     595 </span>            :             // Получаем количество не граничных линий</a>
-<a name="596"><span class="lineNum">     596 </span><span class="lineCov">         66 :             int amountNotBorderLines = amountLines - 3;</span></a>
+<a name="596"><span class="lineNum">     596 </span><span class="lineCov">         98 :             int amountNotBorderLines = amountLines - 3;</span></a>
 <a name="597"><span class="lineNum">     597 </span>            : </a>
-<a name="598"><span class="lineNum">     598 </span><span class="lineCov">         68 :             for( auto &amp;&amp; line : band-&gt;getLines() )</span></a>
+<a name="598"><span class="lineNum">     598 </span><span class="lineCov">        100 :             for( auto &amp;&amp; line : band-&gt;getLines() )</span></a>
 <a name="599"><span class="lineNum">     599 </span>            :             {</a>
 <a name="600"><span class="lineNum">     600 </span><span class="lineCov">          2 :                 bool isBorderLeft = false;</span></a>
 <a name="601"><span class="lineNum">     601 </span><span class="lineCov">          2 :                 float angleRad = atan2(line-&gt;getHeight(), line-&gt;getWidth());</span></a>
@@ -712,7 +712,7 @@
 <a name="650"><span class="lineNum">     650 </span>            :                 }</a>
 <a name="651"><span class="lineNum">     651 </span>            :             }</a>
 <a name="652"><span class="lineNum">     652 </span>            : </a>
-<a name="653"><span class="lineNum">     653 </span><span class="lineCov">         68 :             for( auto &amp;&amp; rect : band-&gt;getRects() )</span></a>
+<a name="653"><span class="lineNum">     653 </span><span class="lineCov">        100 :             for( auto &amp;&amp; rect : band-&gt;getRects() )</span></a>
 <a name="654"><span class="lineNum">     654 </span>            :             {</a>
 <a name="655"><span class="lineNum">     655 </span>            :                 elementStr += QString(&quot;     &lt;div class='shape' &quot;</a>
 <a name="656"><span class="lineNum">     656 </span>            :                     &quot;style='border: 1px solid black; left: %1px; top: %2px; &quot;</a>
@@ -723,7 +723,7 @@
 <a name="661"><span class="lineNum">     661 </span><span class="lineCov">          6 :                     .arg(rect-&gt;getHeight());</span></a>
 <a name="662"><span class="lineNum">     662 </span>            :             }</a>
 <a name="663"><span class="lineNum">     663 </span>            : </a>
-<a name="664"><span class="lineNum">     664 </span><span class="lineCov">         68 :             for( auto &amp;&amp; ellipse : band-&gt;getEllipses() )</span></a>
+<a name="664"><span class="lineNum">     664 </span><span class="lineCov">        100 :             for( auto &amp;&amp; ellipse : band-&gt;getEllipses() )</span></a>
 <a name="665"><span class="lineNum">     665 </span>            :             {</a>
 <a name="666"><span class="lineNum">     666 </span>            :                 elementStr += QString(&quot;     &lt;div class='shape' &quot;</a>
 <a name="667"><span class="lineNum">     667 </span>            :                     &quot;style='border: 1px solid black; &quot;</a>
@@ -739,7 +739,7 @@
 <a name="677"><span class="lineNum">     677 </span><span class="lineCov">          8 :                     .arg(ellipse-&gt;getWidth() / 2)</span></a>
 <a name="678"><span class="lineNum">     678 </span><span class="lineCov">          6 :                     .arg(ellipse-&gt;getHeight() / 2);</span></a>
 <a name="679"><span class="lineNum">     679 </span>            :             }</a>
-<a name="680"><span class="lineNum">     680 </span><span class="lineCov">         66 :         }</span></a>
+<a name="680"><span class="lineNum">     680 </span><span class="lineCov">         98 :         }</span></a>
 <a name="681"><span class="lineNum">     681 </span>            : </a>
 <a name="682"><span class="lineNum">     682 </span><span class="lineCov">          5 :         const QString   ConverterToHTML::getLastError() const {</span></a>
 <a name="683"><span class="lineNum">     683 </span><span class="lineCov">          5 :             return m_lastError;</span></a>

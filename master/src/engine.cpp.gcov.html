@@ -37,7 +37,7 @@
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2019-03-27 04:32:43</td>
+            <td class="headerValue">2019-03-28 10:47:48</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntry">22</td>
@@ -203,11 +203,11 @@
 <a name="141"><span class="lineNum">     141 </span><span class="lineCov">         24 :                 QMap&lt; QString, QVariant &gt; param = m_report-&gt;getParameters();</span></a>
 <a name="142"><span class="lineNum">     142 </span>            : </a>
 <a name="143"><span class="lineNum">     143 </span><span class="lineCov">         27 :                 for (int i = 0; i &lt; queries.size(); i++) {</span></a>
-<a name="144"><span class="lineNum">     144 </span><span class="lineCov">         21 :                         for (auto it = param.begin(); it != param.end(); it++) {</span></a>
+<a name="144"><span class="lineNum">     144 </span><span class="lineCov">         23 :                         for (auto it = param.begin(); it != param.end(); it++) {</span></a>
 <a name="145"><span class="lineNum">     145 </span>            :                         </a>
-<a name="146"><span class="lineNum">     146 </span><span class="lineCov">         12 :                                 QString find = &quot;$P{&quot; + it.key() + &quot;}&quot;;</span></a>
-<a name="147"><span class="lineNum">     147 </span><span class="lineCov">         12 :                                 QString to = &quot;'&quot; + it.value().toString() + &quot;'&quot;;</span></a>
-<a name="148"><span class="lineNum">     148 </span><span class="lineCov">          6 :                                 if(queries[i].indexOf(find)!=-1)</span></a>
+<a name="146"><span class="lineNum">     146 </span><span class="lineCov">         16 :                                 QString find = &quot;$P{&quot; + it.key() + &quot;}&quot;;</span></a>
+<a name="147"><span class="lineNum">     147 </span><span class="lineCov">         16 :                                 QString to = &quot;'&quot; + it.value().toString() + &quot;'&quot;;</span></a>
+<a name="148"><span class="lineNum">     148 </span><span class="lineCov">          8 :                                 if(queries[i].indexOf(find)!=-1)</span></a>
 <a name="149"><span class="lineNum">     149 </span><span class="lineNoCov">          0 :                                         queries[i] = queries[i].replace(find, to);</span></a>
 <a name="150"><span class="lineNum">     150 </span>            :                         }</a>
 <a name="151"><span class="lineNum">     151 </span>            :                 }</a>
