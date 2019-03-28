@@ -28,7 +28,7 @@
          isPdfEmbedded="false" />
 
   <queryString>
-    <![CDATA[ select idImg, nameImg, image from images; ]]>
+    <![CDATA[ select idImg, nameImg, image from images order by nameImg; ]]>
   </queryString>
 
   <field name="idImg" class="integer" />
@@ -36,67 +36,87 @@
   <field name="image" class="QString" />
 
   <title>
-    <band height = "200">
+    <band height = "200" splitType="prevent">
       <staticText>
-        <reportElement x="0" y="40" width="200" height="20" style="Arial_Normal" />
+        <reportElement x="0" y="0" width="100" height="20" style="Arial_Normal" />
         <textElement textVAlignment="Top" textAlignment="Right">
           <font isBold="true"/>
         </textElement>
         <text><![CDATA[TopRight Text]]></text>
       </staticText>
       <textField>
-        <reportElement x="20" y="20" width="100" height="30" style="Arial_Normal" />
+        <reportElement x="0" y="20" width="100" height="30" style="Arial_Normal" />
         <textElement textVAlignment="Bottom" textAlignment="Left">
-          <font isBold="true"/>
+          <font isBold="false"/>
         </textElement>
         <textFieldExpression class="QString"><![CDATA[$P{param1}]]></textFieldExpression>
       </textField>
       <image scaleImage="Clip" onErrorType="Icon" isLazy="true">
-        <reportElement x="102" y="0" width="425" height="200" style="Arial_Normal" />
-        <textElement textVAlignment="Bottom" textAlignment="Left">
+        <reportElement x="150" y="0" width="425" height="200" style="Arial_Normal" />
+        <textElement textVAlignment="Middle" textAlignment="Left">
           <font isBold="true"/>
         </textElement>
         <imageExpression class="QString"><![CDATA[$F{image}]]></imageExpression>
       </image>
       <rect>
-        <reportElement x="50" y="0" width="100" height="100" style="Arial_Normal" />
-        <textElement textVAlignment="Bottom" textAlignment="Left">
+        <reportElement x="0" y="50" width="100" height="100" style="Arial_Normal" />
+        <textElement textVAlignment="Middle" textAlignment="Center">
           <font isBold="true"/>
         </textElement>
       </rect>
       <ellipse>
-        <reportElement x="50" y="0" width="100" height="100" style="Arial_Normal" />
+        <reportElement x="" y="50" width="100" height="100" style="Arial_Normal" />
         <textElement textVAlignment="Bottom" textAlignment="Left">
-          <font isBold="true"/>
+          <font isBold="false"/>
         </textElement>
       </ellipse>
       <line>
-        <reportElement x="100" y="0" width="1" height="100" style="Arial_Normal" />
-        <textElement textVAlignment="Bottom" textAlignment="Left">
+        <reportElement x="50" y="50" width="1" height="100" style="Arial_Normal" />
+        <textElement textVAlignment="Bottom" textAlignment="Center">
           <font isBold="true"/>
         </textElement>
       </line>
     </band>
   </title>
+  
+  <group name="nameImg">
+	<groupExpression class="QString"> <![CDATA[$F{nameImg}]]></groupExpression>
+	<groupHeader>
+		<band height="40">
+			<textField>
+				<reportElement x="0" y="0" width="200" height="40" />
+				<textFieldExpression class="QString"> <![CDATA[$F{nameImg}]]> </textFieldExpression>
+			</textField>
+		</band>
+	</groupHeader> 
+	<groupFooter>
+		<band height="40">
+			<textField>
+				<reportElement x="0" y="0" width="200" height="40" />
+				<textFieldExpression class="QString"> <![CDATA[$F{nameImg}]]> </textFieldExpression>
+			</textField>
+		</band>
+	</groupFooter> 
+  </group>
 
   <detail>
-    <band height="200">
+    <band height="60" splitType="stretch">
       <staticText>
-        <reportElement x="0" y="40" width="200" height="20" style="Arial_Normal" />
-        <textElement textVAlignment="Top" textAlignment="Right">
+        <reportElement x="0" y="0" width="200" height="30" style="Arial_Normal" />
+        <textElement textVAlignment="Top" textAlignment="Left">
           <font isBold="true"/>
         </textElement>
-        <text><![CDATA[TopRight Text]]></text>
+        <text><![CDATA[TopLeft Text]]></text>
       </staticText>
-      <textField>
-        <reportElement x="20" y="20" width="100" height="30" style="Arial_Normal" />
+      <textField  evaluationTime="page">
+        <reportElement x="0" y="30" width="200" height="30" style="Arial_Normal" />
         <textElement textVAlignment="Top" textAlignment="Right">
           <font isBold="true"/>
         </textElement>
         <textFieldExpression class="QString"><![CDATA[$P{param1}]]></textFieldExpression>
       </textField>
     </band>
-    <band height="230">
+    <band height="250"  splitType="immediate">
       <textField>
         <reportElement x="0" y="0" width="50" height="20" style="Arial_Normal" />
         <textElement textVAlignment="Top" textAlignment="Right">
@@ -105,16 +125,14 @@
         <textFieldExpression class="QString"><![CDATA[$F{idImg}]]></textFieldExpression>
       </textField>
       <textField>
-        <reportElement x="51" y="0" width="50" height="20" style="Arial_Normal" />
-        <textElement textVAlignment="Bottom" textAlignment="Left">
+        <reportElement x="51" y="0" width="149" height="20" style="Arial_Normal" />
+        <textElement textVAlignment="Middle" textAlignment="Left">
           <font isBold="true"/>
         </textElement>
-        <textFieldExpression class="QString">
-          <![CDATA[$F{nameImg}]]>
-        </textFieldExpression>
+        <textFieldExpression class="QString"> <![CDATA[$F{nameImg}]]> </textFieldExpression>
       </textField>
       <image scaleImage="Clip" onErrorType="Icon" isLazy="true">
-        <reportElement x="102" y="0" width="425" height="200" style="Arial_Normal" />
+        <reportElement x="51" y="20" width="425" height="200" style="Arial_Normal" />
         <textElement textVAlignment="Bottom" textAlignment="Left">
           <font isBold="true"/>
         </textElement>
@@ -124,19 +142,19 @@
     <band height = "100">
       <rect>
         <reportElement x="50" y="0" width="100" height="100" style="Arial_Normal" />
-        <textElement textVAlignment="Bottom" textAlignment="Left">
+        <textElement textVAlignment="Top" textAlignment="Left">
           <font isBold="true"/>
         </textElement>
       </rect>
       <ellipse>
         <reportElement x="50" y="0" width="100" height="100" style="Arial_Normal" />
-        <textElement textVAlignment="Bottom" textAlignment="Left">
+        <textElement textVAlignment="Middle" textAlignment="Center">
           <font isBold="true"/>
         </textElement>
       </ellipse>
       <line>
         <reportElement x="100" y="0" width="1" height="100" style="Arial_Normal" />
-        <textElement textVAlignment="Bottom" textAlignment="Left">
+        <textElement textVAlignment="Bottom" textAlignment="Right">
           <font isBold="true"/>
         </textElement>
       </line>
