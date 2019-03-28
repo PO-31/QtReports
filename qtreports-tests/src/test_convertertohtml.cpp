@@ -26,6 +26,7 @@ void    Test_ConverterToHTML::convert()
 
     QMap < QString, QVariant > map;
     map[ "title" ] = "Best Title in World";
+    map[ "param1" ] = "Best param1 in World";
     qDebug() << endl << "Used map: " << map;
     QVERIFY2( engine.setParameters( map ), engine.getLastError().toStdString().c_str() );
 
