@@ -25,11 +25,16 @@
   </title>
   <detail>
     <band height="20">
-	  <textField>
+      <textField>
         <reportElement x="190" y="0" width="150" height="20" />
         <textFieldExpression class="QString"><![CDATA[$F{group_name}+ 'qwer']]></textFieldExpression>
-      </textField>
-     
+      </textField>     
+    </band>
+    <band height="20">
+      <textField>
+	    <reportElement x="190" y="0" width="150" height="20" />
+	    <textFieldExpression class="QString"><![CDATA[$P{idPlan}+ 5]]></textFieldExpression>
+      </textField>     
     </band>
   </detail>
 
