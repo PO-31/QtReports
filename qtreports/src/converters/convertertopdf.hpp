@@ -2,8 +2,9 @@
 #ifndef CONVERTERTOPDF_HPP
 #define CONVERTERTOPDF_HPP
 #include <QString>
-
+#include <QPdfWriter>
 #include "../tags/report.hpp"
+#include "../tags/section.hpp"
 
 namespace qtreports {
     namespace detail {
@@ -52,10 +53,12 @@ namespace qtreports {
             ReportPtr   m_report;
             QString     m_lastError;
             int         m_dpi;
-
-            bool        create( const QString & path );
-            void        createBand(QSharedPointer< Band > band, QPainter &painter);
-
+            int         m_currentResolution;
+            int         m_currentHeight;
+            bool        addGroupsIntoReport(QPdfWriter &writer, QPainter &painter, const ReportPtr & report, const DetailPtr & detail);
+            bool        create(const QString &path);
+            bool        createSection(QPdfWriter &writer, QPainter &painter, const SectionPtr & section, int i);
+            bool        createBands(QPdfWriter &writer, QPainter &painter, const SectionPtr & section);
         };
 
     }

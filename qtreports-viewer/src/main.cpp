@@ -172,7 +172,7 @@ int main(int argc, char *argv[]) {
         if (file.isEmpty()) {
             return;
         }
-        if (engine->createPDF(file)) {
+        if (!engine->createPDF(file)) {
             showError(engine->getLastError());
             return;
         }
