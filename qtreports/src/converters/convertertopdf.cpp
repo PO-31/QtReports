@@ -47,6 +47,7 @@ namespace qtreports {
             QFont reportFont;
             QPen reportPen;
 
+            // Настройка стилей. Стили считываются из отчета.
             auto &styles = m_report->getStyles();
             auto index = styles.begin();
             auto *style = (*index).data();
@@ -174,7 +175,7 @@ namespace qtreports {
                 }
 
                 for(auto && rect : band->getRects()) {
-                    QRect rectC;// = new QRect();
+                    QRect rectC;
                     rectC.setX(rect->getRect().x());
                     rectC.setY(rect->getRect().y() + m_currentHeight);
                     rectC.setHeight(rect->getRect().height());
@@ -183,7 +184,7 @@ namespace qtreports {
                 }
 
                 for(auto && ellipse : band->getEllipses()) {
-                    QRect rectE;// = new QRect();
+                    QRect rectE;
                     rectE.setX(ellipse->getRect().x());
                     rectE.setY(ellipse->getRect().y() + m_currentHeight);
                     rectE.setHeight(ellipse->getRect().height());

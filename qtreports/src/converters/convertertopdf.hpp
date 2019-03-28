@@ -22,6 +22,10 @@ namespace qtreports {
         class ConverterToPDF {
 
         public:
+            /*!
+             * @brief Конструктор по умолчанию
+             * @param report ссылка на объект ReportPtr
+             */
             ConverterToPDF( const ReportPtr & report );
             ~ConverterToPDF();
 
@@ -50,14 +54,70 @@ namespace qtreports {
             const QString   getLastError() const;
 
         private:
+            /*! @~russian
+            Объект класса ReportPtr
+            */
             ReportPtr   m_report;
+
+            /*! @~russian
+            Содержит информацию о последней ошибке, возникшей в процессе конвертации.
+            */
             QString     m_lastError;
+
+            /*! @~russian
+            Значение DPI для PDF документа.
+            */
             int         m_dpi;
+
+            /*! @~russian
+            Значение текущего разрешения для PDF документа. По умолчанию установлено значение 75.
+            */
             int         m_currentResolution;
+
+            /*! @~russian
+            * Значение текущей высоты кисти, рисующей на листе документа PDF.
+            * Значение постоянно меняется в зависимости от высоты band. Например, если в отчете для band'а,
+            * который отрисовывается в данный момент, значение параметра height равняется 35, то после
+            * отрисовки данного band'а, кисть переместится вниз на 35 единиц.
+            */
             int         m_currentHeight;
+
+            /*! @~russian
+             * Добавляет группу в репорт.
+             * Если не удалось добавить группу, вернет false.
+             * @param[in] writer Ссылка на объект QPdfWriter.
+             * @param[in] painter Ссылка на объект QPainter.
+             * @param[in] report Ссылка на объект ReportPtr.
+             * @param[in] detail Ссылка на объект DetailPtr.
+            */
             bool        addGroupsIntoReport(QPdfWriter &writer, QPainter &painter, const ReportPtr & report, const DetailPtr & detail);
+
+            /*! @~russian
+             * Конвертирует отчет в PDF документ.
+             * Если не удалось конвертировать в PDF, вернет false.
+             * Информация об ошибке содержится в переменной m_lastError.
+             * @param[in] path Путь к файлу PDF.
+            */
             bool        create(const QString &path);
+
+            /*! @~russian
+             * Создает секцию.
+             * Если не удалось создать секцию, вернет false.
+             * Информация об ошибке содержится в переменной m_lastError.
+             * @param[in] writer Ссылка на объект QPdfWriter.
+             * @param[in] painter Ссылка на объект QPainter.
+             * @param[in] section Ссылка на объект SectionPtr. SectionPtr может указывать на такие секции, как:
+             * @code{.cpp} title, header, footer, detail @endcode
+             * @param[in] i Индекс текущей секции.
+            */
             bool        createSection(QPdfWriter &writer, QPainter &painter, const SectionPtr & section, int i);
+
+            /*! @~russian
+             * Создает band.
+             * @param[in] writer Ссылка на объект QPdfWriter.
+             * @param[in] painter Ссылка на объект QPainter.
+             * @param[in] section Ссылка на объект SectionPtr.
+            */
             bool        createBands(QPdfWriter &writer, QPainter &painter, const SectionPtr & section);
         };
 
