@@ -65,12 +65,7 @@ namespace qtreports {
             QString     m_lastError;
 
             /*! @~russian
-            Значение DPI для PDF документа.
-            */
-            int         m_dpi;
-
-            /*! @~russian
-            Значение текущего разрешения для PDF документа. По умолчанию установлено значение 75.
+            Значение текущего разрешения для PDF документа в DPI. По умолчанию установлено значение 75.
             */
             int         m_currentResolution;
 

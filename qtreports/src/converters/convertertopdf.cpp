@@ -10,7 +10,6 @@ namespace qtreports {
 
         ConverterToPDF::ConverterToPDF( const ReportPtr & report ) :
             m_report( report ),
-            m_dpi( 600 ),
             m_currentResolution(75),
             m_currentHeight(0) {}
 
@@ -24,12 +23,12 @@ namespace qtreports {
 
         void    ConverterToPDF::setDPI( int dpi )
         {
-            m_dpi = dpi;
+            m_currentResolution = dpi;
         }
 
         int     ConverterToPDF::getDPI() const
         {
-            return m_dpi;
+            return m_currentResolution;
         }
 
         bool    ConverterToPDF::create( const QString & path )
