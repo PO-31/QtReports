@@ -28,8 +28,8 @@ namespace qtreports {
             Тип создаваемого виджета.
             */
             enum class WidgetType {
-                Report = 0, ///< Îò÷åò
-                Layout ///< Ìàêåò
+                Report = 0, ///< Отчет
+                Layout ///< Макет
             };
 
             bool                convert( WidgetType type = WidgetType::Report );
