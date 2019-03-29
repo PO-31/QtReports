@@ -31,13 +31,13 @@
             <td class="headerValue">coverage.info</td>
             <td></td>
             <td class="headerItem">Lines:</td>
-            <td class="headerCovTableEntry">153</td>
+            <td class="headerCovTableEntry">154</td>
             <td class="headerCovTableEntry">173</td>
-            <td class="headerCovTableEntryMed">88.4 %</td>
+            <td class="headerCovTableEntryMed">89.0 %</td>
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2019-03-29 01:52:25</td>
+            <td class="headerValue">2019-03-29 05:42:36</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntry">10</td>
@@ -172,17 +172,17 @@
 <a name="110"><span class="lineNum">     110 </span>            :             {</a>
 <a name="111"><span class="lineNum">     111 </span><span class="lineCov">         54 :                 if(m_currentHeight + band-&gt;getHeight() &gt; m_report-&gt;getHeight())</span></a>
 <a name="112"><span class="lineNum">     112 </span>            :                 {</a>
-<a name="113"><span class="lineNum">     113 </span><span class="lineCov">         17 :                     writer.newPage();</span></a>
-<a name="114"><span class="lineNum">     114 </span><span class="lineCov">         17 :                     m_currentHeight = 0;</span></a>
+<a name="113"><span class="lineNum">     113 </span><span class="lineCov">         18 :                     writer.newPage();</span></a>
+<a name="114"><span class="lineNum">     114 </span><span class="lineCov">         18 :                     m_currentHeight = 0;</span></a>
 <a name="115"><span class="lineNum">     115 </span>            :                 }</a>
 <a name="116"><span class="lineNum">     116 </span>            : </a>
 <a name="117"><span class="lineNum">     117 </span><span class="lineCov">        120 :                 for(auto &amp;&amp; textField : band-&gt;getTextFields()) {</span></a>
 <a name="118"><span class="lineNum">     118 </span><span class="lineCov">         66 :                     if(textField-&gt;getText() != &quot;&quot;) {</span></a>
 <a name="119"><span class="lineNum">     119 </span><span class="lineCov">         66 :                         Qt::AlignmentFlag alignment = Qt::AlignCenter;</span></a>
 <a name="120"><span class="lineNum">     120 </span><span class="lineCov">         66 :                         if ((textField-&gt;getAlignment() &amp; Qt::AlignLeft) == Qt::AlignLeft)</span></a>
-<a name="121"><span class="lineNum">     121 </span><span class="lineCov">         43 :                             alignment = Qt::AlignLeft;</span></a>
+<a name="121"><span class="lineNum">     121 </span><span class="lineCov">         54 :                             alignment = Qt::AlignLeft;</span></a>
 <a name="122"><span class="lineNum">     122 </span><span class="lineCov">         66 :                         if ((textField-&gt;getAlignment() &amp; Qt::AlignRight) == Qt::AlignRight)</span></a>
-<a name="123"><span class="lineNum">     123 </span><span class="lineCov">         22 :                             alignment = Qt::AlignRight;</span></a>
+<a name="123"><span class="lineNum">     123 </span><span class="lineCov">         11 :                             alignment = Qt::AlignRight;</span></a>
 <a name="124"><span class="lineNum">     124 </span><span class="lineCov">         66 :                         if ((textField-&gt;getAlignment() &amp; Qt::AlignHCenter) == Qt::AlignHCenter)</span></a>
 <a name="125"><span class="lineNum">     125 </span><span class="lineCov">          1 :                             alignment = Qt::AlignCenter;</span></a>
 <a name="126"><span class="lineNum">     126 </span><span class="lineCov">         66 :                         if ((textField-&gt;getAlignment() &amp; Qt::AlignJustify) == Qt::AlignJustify)</span></a>
@@ -195,23 +195,23 @@
 <a name="133"><span class="lineNum">     133 </span>            :                     }</a>
 <a name="134"><span class="lineNum">     134 </span>            :                 }</a>
 <a name="135"><span class="lineNum">     135 </span>            : </a>
-<a name="136"><span class="lineNum">     136 </span><span class="lineCov">         70 :                 for(auto &amp;&amp; staticText : band-&gt;getStaticTexts()) {</span></a>
-<a name="137"><span class="lineNum">     137 </span><span class="lineCov">         16 :                     if(staticText-&gt;getText() != &quot;&quot;) {</span></a>
-<a name="138"><span class="lineNum">     138 </span><span class="lineCov">         16 :                         Qt::AlignmentFlag alignment = Qt::AlignCenter;</span></a>
-<a name="139"><span class="lineNum">     139 </span><span class="lineCov">         16 :                         if ((staticText-&gt;getAlignment() &amp; Qt::AlignLeft) == Qt::AlignLeft)</span></a>
-<a name="140"><span class="lineNum">     140 </span><span class="lineCov">          4 :                             alignment = Qt::AlignLeft;</span></a>
-<a name="141"><span class="lineNum">     141 </span><span class="lineCov">         16 :                         if ((staticText-&gt;getAlignment() &amp; Qt::AlignRight) == Qt::AlignRight)</span></a>
+<a name="136"><span class="lineNum">     136 </span><span class="lineCov">         72 :                 for(auto &amp;&amp; staticText : band-&gt;getStaticTexts()) {</span></a>
+<a name="137"><span class="lineNum">     137 </span><span class="lineCov">         18 :                     if(staticText-&gt;getText() != &quot;&quot;) {</span></a>
+<a name="138"><span class="lineNum">     138 </span><span class="lineCov">         18 :                         Qt::AlignmentFlag alignment = Qt::AlignCenter;</span></a>
+<a name="139"><span class="lineNum">     139 </span><span class="lineCov">         18 :                         if ((staticText-&gt;getAlignment() &amp; Qt::AlignLeft) == Qt::AlignLeft)</span></a>
+<a name="140"><span class="lineNum">     140 </span><span class="lineCov">          5 :                             alignment = Qt::AlignLeft;</span></a>
+<a name="141"><span class="lineNum">     141 </span><span class="lineCov">         18 :                         if ((staticText-&gt;getAlignment() &amp; Qt::AlignRight) == Qt::AlignRight)</span></a>
 <a name="142"><span class="lineNum">     142 </span><span class="lineCov">         12 :                             alignment = Qt::AlignRight;</span></a>
-<a name="143"><span class="lineNum">     143 </span><span class="lineCov">         16 :                         if ((staticText-&gt;getAlignment() &amp; Qt::AlignHCenter) == Qt::AlignHCenter)</span></a>
-<a name="144"><span class="lineNum">     144 </span><span class="lineNoCov">          0 :                             alignment = Qt::AlignCenter;</span></a>
-<a name="145"><span class="lineNum">     145 </span><span class="lineCov">         16 :                         if ((staticText-&gt;getAlignment() &amp; Qt::AlignJustify) == Qt::AlignJustify)</span></a>
+<a name="143"><span class="lineNum">     143 </span><span class="lineCov">         18 :                         if ((staticText-&gt;getAlignment() &amp; Qt::AlignHCenter) == Qt::AlignHCenter)</span></a>
+<a name="144"><span class="lineNum">     144 </span><span class="lineCov">          1 :                             alignment = Qt::AlignCenter;</span></a>
+<a name="145"><span class="lineNum">     145 </span><span class="lineCov">         18 :                         if ((staticText-&gt;getAlignment() &amp; Qt::AlignJustify) == Qt::AlignJustify)</span></a>
 <a name="146"><span class="lineNum">     146 </span><span class="lineNoCov">          0 :                             alignment = Qt::AlignJustify;</span></a>
 <a name="147"><span class="lineNum">     147 </span>            : </a>
-<a name="148"><span class="lineNum">     148 </span><span class="lineCov">         16 :                         int x = staticText-&gt;getX();</span></a>
-<a name="149"><span class="lineNum">     149 </span><span class="lineCov">         16 :                         int y = staticText-&gt;getY();</span></a>
-<a name="150"><span class="lineNum">     150 </span><span class="lineCov">         16 :                         int w = staticText-&gt;getWidth();</span></a>
-<a name="151"><span class="lineNum">     151 </span><span class="lineCov">         16 :                         int h = staticText-&gt;getHeight();</span></a>
-<a name="152"><span class="lineNum">     152 </span><span class="lineCov">         16 :                         painter.drawText(x, y + m_currentHeight, w, h, alignment, staticText-&gt;getText());</span></a>
+<a name="148"><span class="lineNum">     148 </span><span class="lineCov">         18 :                         int x = staticText-&gt;getX();</span></a>
+<a name="149"><span class="lineNum">     149 </span><span class="lineCov">         18 :                         int y = staticText-&gt;getY();</span></a>
+<a name="150"><span class="lineNum">     150 </span><span class="lineCov">         18 :                         int w = staticText-&gt;getWidth();</span></a>
+<a name="151"><span class="lineNum">     151 </span><span class="lineCov">         18 :                         int h = staticText-&gt;getHeight();</span></a>
+<a name="152"><span class="lineNum">     152 </span><span class="lineCov">         18 :                         painter.drawText(x, y + m_currentHeight, w, h, alignment, staticText-&gt;getText());</span></a>
 <a name="153"><span class="lineNum">     153 </span>            :                     }</a>
 <a name="154"><span class="lineNum">     154 </span>            :                 }</a>
 <a name="155"><span class="lineNum">     155 </span>            : </a>

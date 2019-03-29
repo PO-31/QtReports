@@ -37,7 +37,7 @@
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2019-03-29 01:52:25</td>
+            <td class="headerValue">2019-03-29 05:42:36</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntry">19</td>
@@ -93,9 +93,9 @@
 <a name="31"><span class="lineNum">      31 </span><span class="lineCov">          7 :             return m_type == WidgetType::Report;</span></a>
 <a name="32"><span class="lineNum">      32 </span>            :         }</a>
 <a name="33"><span class="lineNum">      33 </span>            : </a>
-<a name="34"><span class="lineNum">      34 </span><span class="lineCov">        434 :         bool    ConverterToQWidget::isLayout() const</span></a>
+<a name="34"><span class="lineNum">      34 </span><span class="lineCov">        442 :         bool    ConverterToQWidget::isLayout() const</span></a>
 <a name="35"><span class="lineNum">      35 </span>            :         {</a>
-<a name="36"><span class="lineNum">      36 </span><span class="lineCov">        434 :             return m_type == WidgetType::Layout;</span></a>
+<a name="36"><span class="lineNum">      36 </span><span class="lineCov">        442 :             return m_type == WidgetType::Layout;</span></a>
 <a name="37"><span class="lineNum">      37 </span>            :         }</a>
 <a name="38"><span class="lineNum">      38 </span>            : </a>
 <a name="39"><span class="lineNum">      39 </span><span class="lineCov">          3 :         ConverterToQWidget::WidgetType  ConverterToQWidget::getType() const</span></a>
@@ -213,13 +213,13 @@
 <a name="151"><span class="lineNum">     151 </span><span class="lineCov">          5 :             return centerFrame;</span></a>
 <a name="152"><span class="lineNum">     152 </span>            :         }</a>
 <a name="153"><span class="lineNum">     153 </span>            : </a>
-<a name="154"><span class="lineNum">     154 </span><span class="lineCov">         22 :         void    ConverterToQWidget::addPage()</span></a>
+<a name="154"><span class="lineNum">     154 </span><span class="lineCov">         24 :         void    ConverterToQWidget::addPage()</span></a>
 <a name="155"><span class="lineNum">     155 </span>            :         {</a>
-<a name="156"><span class="lineNum">     156 </span><span class="lineCov">         44 :             QWidgetPtr widget( new QWidget() );</span></a>
-<a name="157"><span class="lineNum">     157 </span><span class="lineCov">         22 :             widget-&gt;resize( m_report-&gt;getSize() );</span></a>
-<a name="158"><span class="lineNum">     158 </span><span class="lineCov">         22 :             widget-&gt;setStyleSheet( &quot;background-color: white; &quot; );</span></a>
-<a name="159"><span class="lineNum">     159 </span><span class="lineCov">         22 :             m_pages.append( widget );</span></a>
-<a name="160"><span class="lineNum">     160 </span><span class="lineCov">         22 :         }</span></a>
+<a name="156"><span class="lineNum">     156 </span><span class="lineCov">         48 :             QWidgetPtr widget( new QWidget() );</span></a>
+<a name="157"><span class="lineNum">     157 </span><span class="lineCov">         24 :             widget-&gt;resize( m_report-&gt;getSize() );</span></a>
+<a name="158"><span class="lineNum">     158 </span><span class="lineCov">         24 :             widget-&gt;setStyleSheet( &quot;background-color: white; &quot; );</span></a>
+<a name="159"><span class="lineNum">     159 </span><span class="lineCov">         24 :             m_pages.append( widget );</span></a>
+<a name="160"><span class="lineNum">     160 </span><span class="lineCov">         24 :         }</span></a>
 <a name="161"><span class="lineNum">     161 </span>            : </a>
 <a name="162"><span class="lineNum">     162 </span><span class="lineCov">          4 :         bool    ConverterToQWidget::createQWidget( const ReportPtr &amp; report )</span></a>
 <a name="163"><span class="lineNum">     163 </span>            :         {</a>
@@ -420,8 +420,8 @@
 <a name="358"><span class="lineNum">     358 </span>            :             {</a>
 <a name="359"><span class="lineNum">     359 </span><span class="lineCov">         61 :                 if( m_currentHeight + band-&gt;getHeight() &gt; m_report-&gt;getHeight() )</span></a>
 <a name="360"><span class="lineNum">     360 </span>            :                 {</a>
-<a name="361"><span class="lineNum">     361 </span><span class="lineCov">         18 :                     addPage();</span></a>
-<a name="362"><span class="lineNum">     362 </span><span class="lineCov">         18 :                     m_currentHeight = 0;</span></a>
+<a name="361"><span class="lineNum">     361 </span><span class="lineCov">         20 :                     addPage();</span></a>
+<a name="362"><span class="lineNum">     362 </span><span class="lineCov">         20 :                     m_currentHeight = 0;</span></a>
 <a name="363"><span class="lineNum">     363 </span>            :                 }</a>
 <a name="364"><span class="lineNum">     364 </span>            : </a>
 <a name="365"><span class="lineNum">     365 </span><span class="lineCov">         61 :                 auto frame = new QFrame( isLayout() ? parent : m_pages.last().data() );</span></a>
@@ -431,23 +431,23 @@
 <a name="369"><span class="lineNum">     369 </span><span class="lineCov">         61 :                 m_currentHeight += band-&gt;getHeight();</span></a>
 <a name="370"><span class="lineNum">     370 </span><span class="lineCov">         61 :                 dy += band-&gt;getHeight();</span></a>
 <a name="371"><span class="lineNum">     371 </span>            : </a>
-<a name="372"><span class="lineNum">     372 </span><span class="lineCov">        156 :                 for( auto &amp;&amp; textWidget : band-&gt;getTextWidgets() )</span></a>
+<a name="372"><span class="lineNum">     372 </span><span class="lineCov">        160 :                 for( auto &amp;&amp; textWidget : band-&gt;getTextWidgets() )</span></a>
 <a name="373"><span class="lineNum">     373 </span>            :                 {</a>
-<a name="374"><span class="lineNum">     374 </span><span class="lineCov">         95 :                     auto label = new QLabel( frame );</span></a>
-<a name="375"><span class="lineNum">     375 </span><span class="lineCov">        190 :                     QString style = &quot;&quot;;</span></a>
-<a name="376"><span class="lineNum">     376 </span><span class="lineCov">         95 :                     if( textWidget-&gt;isBold() )</span></a>
+<a name="374"><span class="lineNum">     374 </span><span class="lineCov">         99 :                     auto label = new QLabel( frame );</span></a>
+<a name="375"><span class="lineNum">     375 </span><span class="lineCov">        198 :                     QString style = &quot;&quot;;</span></a>
+<a name="376"><span class="lineNum">     376 </span><span class="lineCov">         99 :                     if( textWidget-&gt;isBold() )</span></a>
 <a name="377"><span class="lineNum">     377 </span>            :                     {</a>
-<a name="378"><span class="lineNum">     378 </span><span class="lineCov">         52 :                         style += &quot;font-weight: bold; &quot;;</span></a>
+<a name="378"><span class="lineNum">     378 </span><span class="lineCov">         56 :                         style += &quot;font-weight: bold; &quot;;</span></a>
 <a name="379"><span class="lineNum">     379 </span>            :                     }</a>
-<a name="380"><span class="lineNum">     380 </span><span class="lineCov">         95 :                     if( isLayout() )</span></a>
+<a name="380"><span class="lineNum">     380 </span><span class="lineCov">         99 :                     if( isLayout() )</span></a>
 <a name="381"><span class="lineNum">     381 </span>            :                     {</a>
-<a name="382"><span class="lineNum">     382 </span><span class="lineCov">         13 :                         style += &quot;border: 1px solid gray; &quot;;</span></a>
+<a name="382"><span class="lineNum">     382 </span><span class="lineCov">         15 :                         style += &quot;border: 1px solid gray; &quot;;</span></a>
 <a name="383"><span class="lineNum">     383 </span>            :                     }</a>
-<a name="384"><span class="lineNum">     384 </span><span class="lineCov">         95 :                     label-&gt;setStyleSheet( &quot;background-color: transparent; &quot; + style );</span></a>
-<a name="385"><span class="lineNum">     385 </span><span class="lineCov">         95 :                     label-&gt;setGeometry( textWidget-&gt;getRect() );</span></a>
-<a name="386"><span class="lineNum">     386 </span><span class="lineCov">         95 :                     label-&gt;setAlignment( textWidget-&gt;getAlignment() );</span></a>
-<a name="387"><span class="lineNum">     387 </span><span class="lineCov">        190 :                     auto text = isLayout() ? textWidget-&gt;getOriginalText() : textWidget-&gt;getText();</span></a>
-<a name="388"><span class="lineNum">     388 </span><span class="lineCov">         95 :                     label-&gt;setText( text );</span></a>
+<a name="384"><span class="lineNum">     384 </span><span class="lineCov">         99 :                     label-&gt;setStyleSheet( &quot;background-color: transparent; &quot; + style );</span></a>
+<a name="385"><span class="lineNum">     385 </span><span class="lineCov">         99 :                     label-&gt;setGeometry( textWidget-&gt;getRect() );</span></a>
+<a name="386"><span class="lineNum">     386 </span><span class="lineCov">         99 :                     label-&gt;setAlignment( textWidget-&gt;getAlignment() );</span></a>
+<a name="387"><span class="lineNum">     387 </span><span class="lineCov">        198 :                     auto text = isLayout() ? textWidget-&gt;getOriginalText() : textWidget-&gt;getText();</span></a>
+<a name="388"><span class="lineNum">     388 </span><span class="lineCov">         99 :                     label-&gt;setText( text );</span></a>
 <a name="389"><span class="lineNum">     389 </span>            :                 }</a>
 <a name="390"><span class="lineNum">     390 </span><span class="lineCov">         75 :                 for( auto &amp;&amp; line : band-&gt;getLines() )</span></a>
 <a name="391"><span class="lineNum">     391 </span>            :                 {</a>
