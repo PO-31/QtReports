@@ -45,9 +45,9 @@ namespace qtreports
         m_isOpened = true;
         m_compiledPath = path;
         m_report = parser.getReport();
-
+#ifdef QT_DEBUG
         qDebug() << parser.getLog();
-
+#endif
         //fillColumnsFromReport(); //MB as ProcessedDB::createColumns( ReportPtr )
 
         return true;
