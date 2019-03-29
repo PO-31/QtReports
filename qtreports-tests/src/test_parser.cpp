@@ -528,7 +528,7 @@ void    Test_Parser::parse() {
     QCOMPARE( band_0_title->getName(), QString() );
     QCOMPARE( band_0_title->getLastError(), QString() );
     //QCOMPARE( band_0_title->getWidth(), 600 );
-    QCOMPARE( band_0_title->getHeight(), 200 );
+    QCOMPARE( band_0_title->getHeight(), 300 );
     QVERIFY( band_0_title->getLine( 0 ) != qtreports::detail::LinePtr() );
     QCOMPARE( band_0_title->getLines().empty(), false );
     QCOMPARE( band_0_title->getLinesSize(), 1 );
