@@ -51,7 +51,6 @@ namespace qtreports {
 
             int pageHeight = m_report->getHeight();
             int pageWidth = m_report->getWidth();
-            int freePageSpace = pageHeight;
 
             auto& styles = m_report->getStyles();
 
@@ -110,7 +109,7 @@ namespace qtreports {
                 .arg(style->isUnderline() ? "underline" : "")           // 7 text-docration
                 .arg(style->isStrikeThrough() ? "line-through" : "");   // 8 text-decoration
             }
-            QString defaultStyleName = m_report->getDefaultStyle().isNull() ? "" : "style-" + m_report->getDefaultStyle()->getName();
+            m_defaultStyleName = m_report->getDefaultStyle().isNull() ? "" : "style-" + m_report->getDefaultStyle()->getName();
 
             if(mainStyle == nullptr) {
                 m_html += QString("   .statictext {\n"
@@ -167,7 +166,7 @@ namespace qtreports {
             if(!title.isNull())
             {
                 m_html += "   <div class='title'>\n";       // Start of <div class='title'>
-                addSection(title, 0);
+                addBands(title, 0);
                 m_html += "   </div>\n";                    // End of <div class = 'title'>
             }
 
@@ -179,7 +178,7 @@ namespace qtreports {
             }
 
             m_html += QString("   <div class='detail'>\n"); // Start of <div class='detail'>
-            if(!addGroups(detail))
+            if(!addGroupsIntoReport(detail))
             {
                 return false;
             }
@@ -190,7 +189,7 @@ namespace qtreports {
             return true;
         }
 
-        bool ConverterToHTML::addGroups(QSharedPointer<Detail> detail)
+        bool ConverterToHTML::addGroupsIntoReport(QSharedPointer<Detail> detail)
         {
             detail::Replacer replacer;
 
@@ -234,7 +233,7 @@ namespace qtreports {
                 auto header = groups[i]->getHeader();
                 if (!header.isNull())
                 {
-                    if(!addSection(header, 0))
+                    if(!addBands(header, 0))
                     {
                         return false;
                     }
@@ -255,7 +254,7 @@ namespace qtreports {
                         auto footer = m_report->getGroupByIndex(j)->getFooter();
                         if (!footer.isNull())
                         {
-                            if(!addSection(footer, i - 1))
+                            if(!addBands(footer, i - 1))
                             {
                                 return false;
                             }
@@ -271,7 +270,7 @@ namespace qtreports {
                         auto header = m_report->getGroupByIndex(j)->getHeader();
                         if (!header.isNull())
                         {
-                            if(!addSection(header, i))
+                            if(!addBands(header, i))
                             {
                                 return false;
                             }
@@ -284,7 +283,7 @@ namespace qtreports {
                     particularNames[j] = replacer.replaceField(groupNames[j], m_report, i);
                 }
                 //Выводим поле
-                if(!addSection(detail, i))
+                if(!addBands(detail, i))
                 {
                     return false;
                 }
@@ -295,7 +294,7 @@ namespace qtreports {
                 auto footer = groups[i]->getFooter();
                 if (!footer.isNull())
                 {
-                    if(!addSection(footer, (rowCount - 1)))
+                    if(!addBands(footer, (rowCount - 1)))
                     {
                         return false;
                     }
@@ -304,7 +303,7 @@ namespace qtreports {
             return true;
         }
 
-        bool ConverterToHTML::addSection(QSharedPointer<Section> section, int sectionIndex)
+        bool ConverterToHTML::addBands(QSharedPointer<Section> section, int sectionIndex)
         {
             detail::Replacer replacer;
             if( !replacer.replace( section, m_report, sectionIndex ) )
@@ -438,7 +437,7 @@ namespace qtreports {
                     }
                 }
 
-                drawShapes(band, elementStr);
+                addShapes(band, elementStr);
                 bandStr += QString("    <div class='band' "
                         "style='height: %1px'>\n%2    </div>\n")
                         .arg(band->getSize().height())
@@ -450,7 +449,7 @@ namespace qtreports {
             return true;
         }
 
-        void ConverterToHTML::drawShapes(QSharedPointer<Band> band, QString &elementStr)
+        void ConverterToHTML::addShapes(QSharedPointer<Band> band, QString &elementStr)
         {
             for (auto && image : band->getImages())
             {
