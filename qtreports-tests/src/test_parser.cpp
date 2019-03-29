@@ -519,7 +519,7 @@ void    Test_Parser::parse() {
     QCOMPARE( title->getName(), QString() );
     QCOMPARE( title->getLastError(), QString() );
     //QCOMPARE( title->getWidth(), 600 );
-    QCOMPARE( title->getHeight(), 200 );
+    QCOMPARE( title->getHeight(), 300 );
 
     //FIX. Not full
     auto band_0_title = title->getBand( 0 );
