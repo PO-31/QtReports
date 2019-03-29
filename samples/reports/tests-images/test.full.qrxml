@@ -90,18 +90,6 @@
           <font isBold="true"/>
         </textElement>
       </line>
-      <line>
-        <reportElement x="300" y="0" width="40" height="60" style="Arial_Normal" />
-        <textElement textVAlignment="Bottom" textAlignment="Left">
-          <font isBold="true"/>
-        </textElement>
-      </line>
-      <line>
-        <reportElement x="350" y="0" width="60" height="-40" style="Arial_Normal" />
-        <textElement textVAlignment="Bottom" textAlignment="Left">
-          <font isBold="true"/>
-        </textElement>
-      </line>
     </band>
   </title>
   
