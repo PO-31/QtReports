@@ -42,7 +42,7 @@ void    Test_ConverterToPDF::convert()
 
     qtreports::detail::ConverterToPDF converter( report );
     QVERIFY2( converter.convert( outPath ), converter.getLastError().toStdString().c_str() );
-    QCOMPARE( converter.getDPI(), 600 );
+    QCOMPARE( converter.getDPI(), 75 );
     QCOMPARE( converter.getLastError(), QString() );
 
     QCOMPARE( QFile::exists( outPath ), true );
@@ -67,7 +67,7 @@ void    Test_ConverterToPDF::getDPI()
     auto report = qtreports::detail::ReportPtr();
     qtreports::detail::ConverterToPDF converter( report );
 
-    QCOMPARE( converter.getDPI(), 600 );
+    QCOMPARE( converter.getDPI(), 75 );
 }
 
 void    Test_ConverterToPDF::getLastError()
