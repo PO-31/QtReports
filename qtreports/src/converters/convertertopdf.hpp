@@ -23,8 +23,8 @@ namespace qtreports {
 
         public:
             /*!
-             * @brief Конструктор по умолчанию
-             * @param report ссылка на объект ReportPtr
+             * @brief Конструктор по умолчанию.
+             * @param report ссылка на объект ReportPtr.
              */
             explicit ConverterToPDF( const ReportPtr & report );
             ~ConverterToPDF();
@@ -34,17 +34,18 @@ namespace qtreports {
             Путь может быть полным или относительным, примеры: 
             "C:/example.pdf" "example.pdf"
             @param[in] path Путь, по которому будет создан PDF документ.
+            @return @code{.cpp} true @endcode, если конвертация отчета в PDF прошла успешно, иначе @code{.cpp} false @endcode.
             */
             bool            convert( const QString & path );
 
             /*! @~russian
             Устанавливает DPI
-            @param[in] dpi Новое значение DPI
+            @param[in] dpi Новое значение DPI.
             */
             void            setDPI( int dpi );
 
             /*! @~russian
-            Возвращает текущее значение DPI
+            Возвращает текущее значение DPI.
             */
             int             getDPI() const;
 
@@ -84,6 +85,7 @@ namespace qtreports {
              * @param[in] painter Ссылка на объект QPainter.
              * @param[in] report Ссылка на объект ReportPtr.
              * @param[in] detail Ссылка на объект DetailPtr.
+             * @return @code{.cpp} true @endcode, если добавление группы прошло успешно, иначе @code{.cpp} false @endcode.
             */
             bool        addGroupsIntoReport(QPdfWriter &writer, QPainter &painter, const ReportPtr & report, const DetailPtr & detail);
 
@@ -92,6 +94,7 @@ namespace qtreports {
              * Если не удалось конвертировать в PDF, вернет false.
              * Информация об ошибке содержится в переменной m_lastError.
              * @param[in] path Путь к файлу PDF.
+             * @return @code{.cpp} true @endcode, если конвертация прошла успешно, иначе @code{.cpp} false @endcode.
             */
             bool        create(const QString &path);
 
@@ -102,8 +105,9 @@ namespace qtreports {
              * @param[in] writer Ссылка на объект QPdfWriter.
              * @param[in] painter Ссылка на объект QPainter.
              * @param[in] section Ссылка на объект SectionPtr. SectionPtr может указывать на такие секции, как:
-             * @code{.cpp} title, header, footer, detail @endcode
+             * @code{.cpp} title, header, footer, detail @endcode.
              * @param[in] i Индекс текущей секции.
+             * @return @code{.cpp} true @endcode, если создание секции прошло успешно, иначе @code{.cpp} false @endcode.
             */
             bool        createSection(QPdfWriter &writer, QPainter &painter, const SectionPtr & section, int i);
 
@@ -112,6 +116,7 @@ namespace qtreports {
              * @param[in] writer Ссылка на объект QPdfWriter.
              * @param[in] painter Ссылка на объект QPainter.
              * @param[in] section Ссылка на объект SectionPtr.
+             * @return @code{.cpp} true @endcode, если создание bsnd'a прошло успешно, иначе @code{.cpp} false @endcode.
             */
             bool        createBands(QPdfWriter &writer, QPainter &painter, const SectionPtr & section);
         };
