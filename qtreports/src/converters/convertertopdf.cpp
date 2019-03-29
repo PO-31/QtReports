@@ -2,7 +2,7 @@
 
 #include <QPdfWriter>
 #include <QPainter>
-#include <src/converters/utils/replacer.hpp>
+#include "utils/replacer.hpp"
 #include "convertertoqwidget.hpp"
 
 namespace qtreports {
