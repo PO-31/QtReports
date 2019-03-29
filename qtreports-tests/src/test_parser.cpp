@@ -545,8 +545,8 @@ void    Test_Parser::parse() {
     QCOMPARE( band_0_title->getTextFields().empty(), false );
     QCOMPARE( band_0_title->getTextFieldsSize(), 1 );
     QCOMPARE( band_0_title->getTextWidgets().empty(), false );
-    QCOMPARE( band_0_title->getTextWidgets().size(), 2 );
-    QCOMPARE( band_0_title->getTextWidgetsSize(), 2 );
+    QCOMPARE( band_0_title->getTextWidgets().size(), 4 );
+    QCOMPARE( band_0_title->getTextWidgetsSize(), 4 );
 
     //FIX. Not full
     auto staticText_0_band_0_title = band_0_title->getStaticText( 0 );
@@ -569,8 +569,8 @@ void    Test_Parser::parse() {
 
     auto staticTexts_band_0_title = band_0_title->getStaticTexts();
     QVERIFY( !staticTexts_band_0_title.isEmpty() );
-    QCOMPARE( staticTexts_band_0_title.size(), 1 );
-    QCOMPARE( band_0_title->getStaticTextsSize(), 1 );
+    QCOMPARE( staticTexts_band_0_title.size(), 3 );
+    QCOMPARE( band_0_title->getStaticTextsSize(), 3 );
     QCOMPARE( staticTexts_band_0_title.value( 0 ), staticText_0_band_0_title );
 
     auto bands_title = title->getBands();
