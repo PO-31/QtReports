@@ -11,15 +11,13 @@ namespace qtreports {
 
         /*! @~russian
         @brief Класс, используемый для конвертации репорта в HTML формат.
-
-        Класс, используемый для конвертации репорта в HTML формат.
         */
         class ConverterToHTML {
 
         public:
             /*!
-            * @brief Конструктор по умолчанию
-            * @param report ссылка на объект ReportPtr
+            * @brief Конструктор по умолчанию.
+            * @param report ссылка на объект ReportPtr.
             */
             explicit ConverterToHTML(const ReportPtr & report);
             ~ConverterToHTML();
@@ -27,7 +25,8 @@ namespace qtreports {
             /*! @~russian
             Запускает процесс конвертации репорта в HTML формат.
 
-            @return true в случае успешной конвертации, иначе false
+            @return @code{.cpp} true @endcode если конвертация прошла успешно.
+            @return @code{.cpp} false @endcode если конвертация не удалась.
             */
             bool    convert();
 
@@ -36,23 +35,24 @@ namespace qtreports {
             Путь может быть полным или относительным, примеры:
             "C:/example.html" "example.html"
 
-            @param[in] path Путь, по которому будет создан HTML документ
+            @param[in] path Путь, по которому будет создан HTML документ.
 
-            @return true в случае успешного создания файла, иначе false
+            @return @code{.cpp} true @endcode если создание файла прошло успешно.
+            @return @code{.cpp} false @endcode если создание файла не удалось.
             */
             bool    convert(const QString & path);
 
             /*! @~russian
             Получить описание последней произошедшей ошибки.
 
-            @return Строка с описанием последней произошедшей ошибки
+            @return Строка с описанием последней произошедшей ошибки.
             */
             const QString   getLastError() const;
 
             /*! @~russian
             Получить документ в HTML формате.
 
-            @return Строка с документом в HTML формате
+            @return Строка с документом в HTML формате.
             */
             const QString   getHTML() const;
 
@@ -81,16 +81,18 @@ namespace qtreports {
             /*! @~russian
             Процесс конвертации репорта в HTML формат.
 
-            @return true в случае успешной конвертации, иначе false
+            @return @code{.cpp} true @endcode если конвертация прошла успешно.
+            @return @code{.cpp} false @endcode если конвертация не удалась.
             */
             bool        createHTML();
 
             /*! @~russian
             Добавление group в документ HTML.
 
-            @param[in] detail Ссылка на объект Detail
+            @param[in] detail Ссылка на объект Detail.
 
-            @return true в случае успешного добавления, иначе false
+            @return @code{.cpp} true @endcode если добавление прошло успешно.
+            @return @code{.cpp} false @endcode если добавление не удалось.
             */
             bool        addGroupsIntoReport(QSharedPointer<Detail> detail);
 
@@ -99,9 +101,10 @@ namespace qtreports {
 
             @param[in] section Ссылка на объект Section. Может указывать на такие секции, как:
              * @code{.cpp} title, header, footer, detail @endcode
-            @param[in] sectionIndex Индекс конкретной секции
+            @param[in] sectionIndex Индекс конкретной секции.
 
-            @return true в случае успешного добавления, иначе false
+            @return @code{.cpp} true @endcode если добавление прошло успешно.
+            @return @code{.cpp} false @endcode если добавление не удалось.
             */
             bool        addBands(QSharedPointer<Section> section, int sectionIndex);
 
@@ -109,7 +112,7 @@ namespace qtreports {
             Добавление shape, принадлежащего конретному band, в документ HTML.
 
             @param[in] band Ссылка на объект Band.
-            @param[out] elemenStr Строка, содержащая содержимое band
+            @param[out] elemenStr Строка с содержимым band.
             */
             void        addShapes(QSharedPointer<Band> band, QString &elementStr);
         };
