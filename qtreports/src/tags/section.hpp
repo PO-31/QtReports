@@ -13,9 +13,9 @@ namespace qtreports
     {
 
         /*! @~russian
-        @brief Базовый класс для тэгов <detail>, <title> и подобных.
+        @brief Базовый класс для тэгов <title>, <detail>, <summary> и подобных.
 
-        Базовый класс для тэгов <detail>, <title> и подобных.
+        Базовый класс для тэгов <title>, <detail>, <summary> и подобных.
         */
         class Section : public Object {
 

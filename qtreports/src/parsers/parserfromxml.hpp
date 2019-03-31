@@ -13,6 +13,7 @@
 #include "../tags/group.hpp"
 #include "../tags/title.hpp"
 #include "../tags/detail.hpp"
+#include "../tags/summary.hpp"
 #include "../tags/band.hpp"
 #include "../tags/statictext.hpp"
 #include "../tags/textfield.hpp"
@@ -172,6 +173,11 @@ namespace qtreports {
             @param[in] report указатель на объект отчета
             */
             bool    parseDetail( QXmlStreamReader & reader, const ReportPtr & report );
+            /*! @~russian
+            Парсит тэг Summary
+            @param[in] report указатель на объект отчета
+            */
+            bool    parseSummary( QXmlStreamReader & reader, const ReportPtr & report );
             /*! @~russian
             Парсит тэг Band
             @param[in] section секция (объект, содержащий Band(ы), Detail, Title, groupHeader и т.д.), которой принадлежит Band

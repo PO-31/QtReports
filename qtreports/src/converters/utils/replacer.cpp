@@ -87,6 +87,12 @@ namespace qtreports
                 return false;
             }
 
+            auto summary = report->getSummary();
+            if(!summary.isNull() && !replaceParametersInSection(summary, report))
+            {
+                return false;
+            }
+
             return true;
         }
 

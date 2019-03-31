@@ -41,6 +41,7 @@ namespace qtreports
             m_functions[ "groupFooter" ] = toParseFunc( this, &ParserFromXML::parseGroupFooter );
             m_functions[ "title" ] = toParseFunc( this, &ParserFromXML::parseTitle );
             m_functions[ "detail" ] = toParseFunc( this, &ParserFromXML::parseDetail );
+            m_functions[ "summary" ] = toParseFunc( this, &ParserFromXML::parseSummary );
             m_functions[ "band" ] = toParseFunc( this, &ParserFromXML::parseBand );
             m_functions[ "staticText" ] = toParseFunc( this, &ParserFromXML::parseStaticText );
             m_functions[ "textField" ] = toParseFunc( this, &ParserFromXML::parseTextField );
@@ -611,6 +612,20 @@ namespace qtreports
             detail->setTagName( "detail" );
             //detail->setWidth( report->getWidth() );
             report->setDetail( detail );
+
+            return !reader.hasError();
+        }
+
+        bool ParserFromXML::parseSummary(QXmlStreamReader &reader, const ReportPtr &report)
+        {
+            SummaryPtr summary(new Summary());
+            if( !parseChilds(reader, summary))
+            {
+                return false;
+            }
+
+            summary->setTagName( "summary" );
+            report->setSummary(summary);
 
             return !reader.hasError();
         }

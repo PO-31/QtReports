@@ -17,6 +17,7 @@
 #include "group.hpp"
 #include "title.hpp"
 #include "detail.hpp"
+#include "summary.hpp"
 
 namespace qtreports {
     namespace detail {
@@ -133,6 +134,18 @@ namespace qtreports {
             Возвращает указатель на обьект <detail>
             */
             const DetailPtr                     getDetail() const;
+
+            /*! @~russian
+            Устанавливает <summary>
+            @param[in] summary Указатель на обьект <summary>
+            */
+            void                                setSummary( const SummaryPtr & summary );
+
+            /*! @~russian
+            Возвращает указатель на обьект <summary>
+            */
+            const SummaryPtr                    getSummary() const;
+
 
             /*! @~russian
             устанавливает значение парамметра 
@@ -289,6 +302,7 @@ namespace qtreports {
             QMap< QString, GroupPtr >   m_groups;
             TitlePtr                    m_title;
             DetailPtr                   m_detail;
+            SummaryPtr                  m_summary;
             QMap< QString, QVariant >   m_parameters;
             QVector<bool>               m_group_vec;
 

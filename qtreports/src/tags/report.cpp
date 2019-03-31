@@ -107,6 +107,16 @@ namespace qtreports
             return m_detail;
         }
 
+        void Report::setSummary(const SummaryPtr &summary)
+        {
+            m_summary = summary;
+        }
+
+        const SummaryPtr Report::getSummary() const
+        {
+            return m_summary;
+        }
+
         void    Report::setParameter( const QString & name, const QVariant & value )
         {
             m_parameters[ name ] = value;
