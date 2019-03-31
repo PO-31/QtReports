@@ -37,7 +37,7 @@
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2019-03-31 15:28:02</td>
+            <td class="headerValue">2019-03-31 23:42:16</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntry">10</td>
@@ -310,7 +310,7 @@
 <a name="248"><span class="lineNum">     248 </span>            :                 }</a>
 <a name="249"><span class="lineNum">     249 </span>            : </a>
 <a name="250"><span class="lineNum">     250 </span><span class="lineCov">          1 :                 groupNames.append(groupExpression);</span></a>
-<a name="251"><span class="lineNum">     251 </span><span class="lineCov">          1 :                 particularNames.append(replacer.replaceField(groupNames[i], report, 0, false, false));</span></a>
+<a name="251"><span class="lineNum">     251 </span><span class="lineCov">          1 :                 particularNames.append(replacer.replaceField(groupNames[i], report, 0));</span></a>
 <a name="252"><span class="lineNum">     252 </span>            :             }</a>
 <a name="253"><span class="lineNum">     253 </span>            : </a>
 <a name="254"><span class="lineNum">     254 </span>            :             // Открываем хедеры групп</a>
@@ -333,7 +333,7 @@
 <a name="271"><span class="lineNum">     271 </span><span class="lineCov">         26 :                 for(int j = groups.length() - 1; j &gt;= 0; j--)</span></a>
 <a name="272"><span class="lineNum">     272 </span>            :                 {</a>
 <a name="273"><span class="lineNum">     273 </span>            :                     // Сверяем поле в заголовке и текущее поле</a>
-<a name="274"><span class="lineNum">     274 </span><span class="lineCov">         11 :                     if(particularNames[j] != replacer.replaceField(groupNames[j], report, i, false, false))</span></a>
+<a name="274"><span class="lineNum">     274 </span><span class="lineCov">         11 :                     if(particularNames[j] != replacer.replaceField(groupNames[j], report, i))</span></a>
 <a name="275"><span class="lineNum">     275 </span>            :                     {</a>
 <a name="276"><span class="lineNum">     276 </span><span class="lineCov">         14 :                         auto footer = report-&gt;getGroupByIndex(j)-&gt;getFooter();</span></a>
 <a name="277"><span class="lineNum">     277 </span><span class="lineCov">          7 :                         if(!footer.isNull())</span></a>
@@ -349,7 +349,7 @@
 <a name="287"><span class="lineNum">     287 </span><span class="lineCov">         26 :                 for(int j = 0; j &lt; groupNames.length(); j++)</span></a>
 <a name="288"><span class="lineNum">     288 </span>            :                 {</a>
 <a name="289"><span class="lineNum">     289 </span>            :                     // Сверяем поле в заголовке и текущее поле</a>
-<a name="290"><span class="lineNum">     290 </span><span class="lineCov">         11 :                     if(particularNames[j] != replacer.replaceField(groupNames[j], report, i, false, false))</span></a>
+<a name="290"><span class="lineNum">     290 </span><span class="lineCov">         11 :                     if(particularNames[j] != replacer.replaceField(groupNames[j], report, i))</span></a>
 <a name="291"><span class="lineNum">     291 </span>            :                     {</a>
 <a name="292"><span class="lineNum">     292 </span><span class="lineCov">         14 :                         auto header = report-&gt;getGroupByIndex(j)-&gt;getHeader();</span></a>
 <a name="293"><span class="lineNum">     293 </span><span class="lineCov">          7 :                         if(!header.isNull())</span></a>
@@ -364,7 +364,7 @@
 <a name="302"><span class="lineNum">     302 </span>            :                 // Переписываем имена для сравнения</a>
 <a name="303"><span class="lineNum">     303 </span><span class="lineCov">         26 :                 for(int j = 0; j &lt; groupNames.length(); j++)</span></a>
 <a name="304"><span class="lineNum">     304 </span>            :                 {</a>
-<a name="305"><span class="lineNum">     305 </span><span class="lineCov">         11 :                     particularNames[j] = replacer.replaceField(groupNames[j], report, i, false, false);</span></a>
+<a name="305"><span class="lineNum">     305 </span><span class="lineCov">         11 :                     particularNames[j] = replacer.replaceField(groupNames[j], report, i);</span></a>
 <a name="306"><span class="lineNum">     306 </span>            :                 }</a>
 <a name="307"><span class="lineNum">     307 </span>            :                 // Выводим поле</a>
 <a name="308"><span class="lineNum">     308 </span><span class="lineCov">         15 :                 if(!createSection(writer, painter, detail, i))</span></a>
