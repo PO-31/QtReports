@@ -186,10 +186,10 @@ namespace qtreports
             addVerticalBorder( layout, report->getMargins(), report->getTopMargin() );
 
             auto title = report->getTitle();
-            if( !title.isNull() )
+            if(!title.isNull())
             {
-                QWidget * sectionWidget = isLayout() ? addSectionLayout( layout, report->getMargins(), title->getHeight() ) : nullptr;
-                if( !createSection( sectionWidget, title, 0 ) )
+                QWidget * sectionWidget = isLayout() ? addSectionLayout(layout, report->getMargins(), title->getHeight()) : nullptr;
+                if(!createSection(sectionWidget, title, 0))
                 {
                     return false;
                 }
@@ -197,6 +197,16 @@ namespace qtreports
 
             if(!addGroupsIntoReport(report, detail, layout))
                 return false;
+
+            auto summary = report->getSummary();
+            if(!summary.isNull())
+            {
+                QWidget * sectionWidget = isLayout() ? addSectionLayout(layout, report->getMargins(), summary->getHeight()) : nullptr;
+                if(!createSection(sectionWidget, summary, 0))
+                {
+                    return false;
+                }
+            }
 
             addEmptySection( layout, report->getMargins() );
             addVerticalBorder( layout, report->getMargins(), report->getBottomMargin() );
@@ -239,7 +249,7 @@ namespace qtreports
                 }
 
                 groupNames.append(groupExpression);
-                particularNames.append(replacer.replaceField(groupNames[i], report, 0));
+                particularNames.append(replacer.replaceField(groupNames[i], report, 0, false, false));
             }
             //Открываем хедеры групп
             for (int i = 0; i<groups.length(); i++)
@@ -264,7 +274,7 @@ namespace qtreports
                 for(int j = groups.length() - 1; j >= 0; j--)
                 {
                     //сверяем поле в заголовке и текущее поле
-                    if(particularNames[j] != replacer.replaceField(groupNames[j], report, i))
+                    if(particularNames[j] != replacer.replaceField(groupNames[j], report, i, false, false))
                     {
                         auto footer = report->getGroupByIndex(j)->getFooter();
                         if (!footer.isNull())
@@ -281,7 +291,7 @@ namespace qtreports
                 for(int j = 0; j < groupNames.length(); j++)
                 {                    
                     //сверяем поле в заголовке и текущее поле
-                    if(particularNames[j] != replacer.replaceField(groupNames[j], report, i))
+                    if(particularNames[j] != replacer.replaceField(groupNames[j], report, i, false, false))
                     {
                         auto header = report->getGroupByIndex(j)->getHeader();
                         if (!header.isNull())
@@ -297,7 +307,7 @@ namespace qtreports
                 //Переписываем имена для сравнения
                 for(int j = 0; j < groupNames.length(); j++)
                 {
-                    particularNames[j] = replacer.replaceField(groupNames[j], report, i);
+                    particularNames[j] = replacer.replaceField(groupNames[j], report, i, false, false);
                 }
                 //Выводим поле
                 if (!createSection(sectionWidget, detail, i))

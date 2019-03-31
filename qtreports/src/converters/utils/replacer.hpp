@@ -60,7 +60,7 @@ namespace qtreports
             @param[in] report Указатель на отчет
             @param[in] i Текущая строка
             */
-            QString  replaceField( const QString & text, const ReportPtr & report, int i );
+            QString  replaceField( const QString & text, const ReportPtr & report, int i, bool isTitle, bool isSummary );
 
             /*! @~russian
             Возвращает изображение на основе первого найденного выражения.
@@ -77,7 +77,7 @@ namespace qtreports
             @param[in] report Указатель на отчет
             @param[in] i Текущая строка
             */
-            bool    replaceFieldInTextWidget( const TextWidgetPtr & widget, const ReportPtr & report, int i );
+            bool    replaceFieldInTextWidget( const TextWidgetPtr & widget, const ReportPtr & report, int i, bool isTitle, bool isSummary );
 
             /*! @~russian
             На основе текста виджета вставляет в него изображение из источника данных.

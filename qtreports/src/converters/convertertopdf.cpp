@@ -81,6 +81,16 @@ namespace qtreports {
             if(!addGroupsIntoReport(writer, painter, m_report, detail))
                 return false;
 
+            auto summary = m_report->getSummary();
+            if(!summary.isNull())
+            {
+                if(!createSection(writer, painter, summary, 0))
+                {
+                    m_lastError = "Report->Section is not created: summary";
+                    return false;
+                }
+            }
+
             painter.end();
             return true;
 
@@ -238,7 +248,7 @@ namespace qtreports {
                 }
 
                 groupNames.append(groupExpression);
-                particularNames.append(replacer.replaceField(groupNames[i], report, 0));
+                particularNames.append(replacer.replaceField(groupNames[i], report, 0, false, false));
             }
 
             // Открываем хедеры групп
@@ -261,7 +271,7 @@ namespace qtreports {
                 for(int j = groups.length() - 1; j >= 0; j--)
                 {
                     // Сверяем поле в заголовке и текущее поле
-                    if(particularNames[j] != replacer.replaceField(groupNames[j], report, i))
+                    if(particularNames[j] != replacer.replaceField(groupNames[j], report, i, false, false))
                     {
                         auto footer = report->getGroupByIndex(j)->getFooter();
                         if(!footer.isNull())
@@ -277,7 +287,7 @@ namespace qtreports {
                 for(int j = 0; j < groupNames.length(); j++)
                 {
                     // Сверяем поле в заголовке и текущее поле
-                    if(particularNames[j] != replacer.replaceField(groupNames[j], report, i))
+                    if(particularNames[j] != replacer.replaceField(groupNames[j], report, i, false, false))
                     {
                         auto header = report->getGroupByIndex(j)->getHeader();
                         if(!header.isNull())
@@ -292,7 +302,7 @@ namespace qtreports {
                 // Переписываем имена для сравнения
                 for(int j = 0; j < groupNames.length(); j++)
                 {
-                    particularNames[j] = replacer.replaceField(groupNames[j], report, i);
+                    particularNames[j] = replacer.replaceField(groupNames[j], report, i, false, false);
                 }
                 // Выводим поле
                 if(!createSection(writer, painter, detail, i))

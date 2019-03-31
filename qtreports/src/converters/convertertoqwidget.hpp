@@ -54,7 +54,7 @@ namespace qtreports {
 
             /*! @~russian
             Проверяет, является ли виджет типа WidgetType::Layout.
-            "@return @code{.cpp} true @endcode, если виджет типа WidgetType::Layout,
+            @return @code{.cpp} true @endcode, если виджет типа WidgetType::Layout,
             иначе @code{.cpp} false @endcode.
             @see ConverterToQWidget::WidgetType
             */

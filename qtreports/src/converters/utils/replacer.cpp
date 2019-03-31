@@ -96,9 +96,19 @@ namespace qtreports
             return true;
         }
 
-        QString     Replacer::replaceField( const QString & text, const ReportPtr & report, int i )
+        QString     Replacer::replaceField( const QString & text, const ReportPtr & report, int i, bool isTitle, bool isSummary )
         {
             auto newText = text;
+            if(isSummary)
+            {
+                auto match = QRegularExpressionMatch{};
+                text.lastIndexOf(QRegularExpression { "(\\$F\\{\\w+\\})" }, -1, &match);
+                if(!match.hasMatch())
+                    return newText;
+                auto name = match.captured(0).remove(0,3).remove(-1,1);
+                auto parameter = report->getField(name)->getData(report->getField(name)->getRowCount() - 1);
+                return newText.replace(match.captured(0), parameter);
+            }
             QRegularExpression expr( "(\\$F\\{\\w+\\})", QRegularExpression::CaseInsensitiveOption );
             auto iterator = expr.globalMatch( newText );
             while( iterator.hasNext() )
@@ -107,6 +117,8 @@ namespace qtreports
                 auto name = match.captured( 1 ).remove( 0, 3 ).remove( -1, 1 );
                 auto parameter = report->getField( name )->getData( i );
                 newText.replace( match.captured( 1 ), parameter );
+                if(isTitle)
+                    return newText;
             }
 
             return newText;
@@ -128,10 +140,10 @@ namespace qtreports
             return QImage();
         }
 
-        bool    Replacer::replaceFieldInTextWidget( const TextWidgetPtr & widget, const ReportPtr & report, int i )
+        bool    Replacer::replaceFieldInTextWidget( const TextWidgetPtr & widget, const ReportPtr & report, int i, bool isTitle, bool isSummary )
         {
             auto text = widget->getOriginalText();
-            auto replacedText = replaceField( text, report, i );
+            auto replacedText = replaceField( text, report, i, isTitle, isSummary );
             widget->setText( replacedText );
 
             return true;
@@ -149,20 +161,47 @@ namespace qtreports
 
         bool    Replacer::replaceFieldInSection( const SectionPtr & section, const ReportPtr & report, int i )
         {
+            bool isTitle = false;
+            bool isSummary = false;
+
             if( section.isNull() )
             {
                 m_lastError = "Section is empty.";
                 return false;
             }
 
+            Section* section_ = section.get();
+            if(Summary* summary = dynamic_cast<Summary*>(section_))
+            {
+                isSummary = true;
+            }
+            else if (Title* title = dynamic_cast<Title*>(section_)) {
+                isTitle = true;
+            }
+
             for( auto && band : section->getBands() )
             {
                 for( auto && textWidget : band->getTextWidgets() )
                 {
-                    if( !replaceFieldInTextWidget( textWidget, report, i ) )
+                    if(isTitle)
                     {
-                        return false;
+                        if(!replaceFieldInTextWidget(textWidget, report, i, true, false))
+                        {
+                            return false;
+                        }
                     }
+                    else if(isSummary)
+                    {
+                        if(!replaceFieldInTextWidget(textWidget, report, i, false, true))
+                        {
+                            return false;
+                        }
+                    }
+                    else
+                        if( !replaceFieldInTextWidget( textWidget, report, i, false, false ) )
+                        {
+                            return false;
+                        }
                 }
 
                 for( auto && imageWidget : band->getImages() )
