@@ -248,7 +248,7 @@ namespace qtreports {
                 }
 
                 groupNames.append(groupExpression);
-                particularNames.append(replacer.replaceField(groupNames[i], report, 0, false, false));
+                particularNames.append(replacer.replaceField(groupNames[i], report, 0));
             }
 
             // Открываем хедеры групп
@@ -271,7 +271,7 @@ namespace qtreports {
                 for(int j = groups.length() - 1; j >= 0; j--)
                 {
                     // Сверяем поле в заголовке и текущее поле
-                    if(particularNames[j] != replacer.replaceField(groupNames[j], report, i, false, false))
+                    if(particularNames[j] != replacer.replaceField(groupNames[j], report, i))
                     {
                         auto footer = report->getGroupByIndex(j)->getFooter();
                         if(!footer.isNull())
@@ -287,7 +287,7 @@ namespace qtreports {
                 for(int j = 0; j < groupNames.length(); j++)
                 {
                     // Сверяем поле в заголовке и текущее поле
-                    if(particularNames[j] != replacer.replaceField(groupNames[j], report, i, false, false))
+                    if(particularNames[j] != replacer.replaceField(groupNames[j], report, i))
                     {
                         auto header = report->getGroupByIndex(j)->getHeader();
                         if(!header.isNull())
@@ -302,7 +302,7 @@ namespace qtreports {
                 // Переписываем имена для сравнения
                 for(int j = 0; j < groupNames.length(); j++)
                 {
-                    particularNames[j] = replacer.replaceField(groupNames[j], report, i, false, false);
+                    particularNames[j] = replacer.replaceField(groupNames[j], report, i);
                 }
                 // Выводим поле
                 if(!createSection(writer, painter, detail, i))

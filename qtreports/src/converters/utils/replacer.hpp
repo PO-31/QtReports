@@ -60,7 +60,7 @@ namespace qtreports
             @param[in] report Указатель на отчет
             @param[in] i Текущая строка
             */
-            QString  replaceField( const QString & text, const ReportPtr & report, int i, bool isTitle, bool isSummary );
+            QString  replaceField(const QString & text, const ReportPtr & report, int i, bool isTitle=false, bool isSummary=false);
 
             /*! @~russian
             Возвращает изображение на основе первого найденного выражения.

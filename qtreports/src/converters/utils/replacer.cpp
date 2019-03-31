@@ -96,7 +96,7 @@ namespace qtreports
             return true;
         }
 
-        QString     Replacer::replaceField( const QString & text, const ReportPtr & report, int i, bool isTitle, bool isSummary )
+        QString     Replacer::replaceField(const QString & text, const ReportPtr & report, int i, bool isTitle, bool isSummary)
         {
             auto newText = text;
             if(isSummary)
@@ -109,14 +109,14 @@ namespace qtreports
                 auto parameter = report->getField(name)->getData(report->getField(name)->getRowCount() - 1);
                 return newText.replace(match.captured(0), parameter);
             }
-            QRegularExpression expr( "(\\$F\\{\\w+\\})", QRegularExpression::CaseInsensitiveOption );
-            auto iterator = expr.globalMatch( newText );
-            while( iterator.hasNext() )
+            QRegularExpression expr("(\\$F\\{\\w+\\})", QRegularExpression::CaseInsensitiveOption);
+            auto iterator = expr.globalMatch(newText);
+            while(iterator.hasNext())
             {
                 auto match = iterator.next();
-                auto name = match.captured( 1 ).remove( 0, 3 ).remove( -1, 1 );
-                auto parameter = report->getField( name )->getData( i );
-                newText.replace( match.captured( 1 ), parameter );
+                auto name = match.captured(1).remove(0, 3).remove(-1, 1);
+                auto parameter = report->getField(name)->getData(i);
+                newText.replace(match.captured(1), parameter);
                 if(isTitle)
                     return newText;
             }
@@ -140,7 +140,7 @@ namespace qtreports
             return QImage();
         }
 
-        bool    Replacer::replaceFieldInTextWidget( const TextWidgetPtr & widget, const ReportPtr & report, int i, bool isTitle, bool isSummary )
+        bool    Replacer::replaceFieldInTextWidget( const TextWidgetPtr & widget, const ReportPtr & report, int i, bool isTitle=false, bool isSummary=false )
         {
             auto text = widget->getOriginalText();
             auto replacedText = replaceField( text, report, i, isTitle, isSummary );

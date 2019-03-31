@@ -114,7 +114,7 @@ void openDatabase(const QString& dbPath)
     QMap <QString, QVariant> map;
     map["title"] = "GRISHA RULIT";
     map["idPlan"] = "2";
-    map["summary"] = "FEDOS RULIT";
+    map["summary"] = "SUMMARY";
 
     if (!engine->setParameters(map)) {
         showError(engine->getLastError());
