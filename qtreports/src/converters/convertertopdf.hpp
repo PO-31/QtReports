@@ -26,7 +26,7 @@ namespace qtreports {
              * @brief Конструктор по умолчанию.
              * @param report ссылка на объект ReportPtr.
              */
-            explicit ConverterToPDF( const ReportPtr & report );
+            explicit ConverterToPDF(const ReportPtr & report);
             ~ConverterToPDF();
 
             /*! @~russian
@@ -36,13 +36,13 @@ namespace qtreports {
             @param[in] path Путь, по которому будет создан PDF документ.
             @return @code{.cpp} true @endcode, если конвертация отчета в PDF прошла успешно, иначе @code{.cpp} false @endcode.
             */
-            bool            convert( const QString & path );
+            bool            convert(const QString & path);
 
             /*! @~russian
             Устанавливает DPI
             @param[in] dpi Новое значение DPI.
             */
-            void            setDPI( int dpi );
+            void            setDPI(int dpi);
 
             /*! @~russian
             Возвращает текущее значение DPI.

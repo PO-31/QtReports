@@ -8,20 +8,20 @@
 namespace qtreports {
     namespace detail {
 
-        ConverterToPDF::ConverterToPDF( const ReportPtr & report ) :
-            m_report( report ),
+        ConverterToPDF::ConverterToPDF(const ReportPtr & report) :
+            m_report(report),
             m_currentResolution(75),
             m_currentHeight(0) {}
 
 
         ConverterToPDF::~ConverterToPDF() {}
 
-        bool    ConverterToPDF::convert( const QString & path )
+        bool    ConverterToPDF::convert(const QString & path)
         {
-            return create( path );
+            return create(path);
         }
 
-        void    ConverterToPDF::setDPI( int dpi )
+        void    ConverterToPDF::setDPI(int dpi)
         {
             m_currentResolution = dpi;
         }
@@ -31,9 +31,9 @@ namespace qtreports {
             return m_currentResolution;
         }
 
-        bool    ConverterToPDF::create( const QString & path )
+        bool    ConverterToPDF::create(const QString & path)
         {
-            if( m_report.isNull() ) {
+            if(m_report.isNull()) {
                 m_lastError = "Report is empty";
                 return false;
             }
@@ -84,7 +84,8 @@ namespace qtreports {
             auto summary = m_report->getSummary();
             if(!summary.isNull())
             {
-                if(!createSection(writer, painter, summary, 0))
+                int lastField = m_report->getFieldsDataCount() - 1;
+                if(!createSection(writer, painter, summary, lastField))
                 {
                     m_lastError = "Report->Section is not created: summary";
                     return false;
