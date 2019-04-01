@@ -9,8 +9,8 @@
 namespace qtreports {
     namespace detail {
 
-        ConverterToHTML::ConverterToHTML( const ReportPtr & report ) :
-            m_report( report ) {}
+        ConverterToHTML::ConverterToHTML(const ReportPtr & report) :
+            m_report(report) {}
 
         ConverterToHTML::~ConverterToHTML() {}
 
@@ -18,25 +18,25 @@ namespace qtreports {
             return createHTML();
         }
 
-        bool    ConverterToHTML::convert( const QString & path ) {
-            if( !convert() ) {
+        bool    ConverterToHTML::convert(const QString & path) {
+            if(!convert()) {
                 return false;
             }
 
-            QFile file( path );
+            QFile file(path);
             file.open(
                 QIODevice::OpenModeFlag::WriteOnly |
                 QIODevice::OpenModeFlag::Text |
                 QIODevice::OpenModeFlag::Truncate
-            );
+           );
 
-            if( !file.isOpen() ) {
+            if(!file.isOpen()) {
                 m_lastError = "The file can not be opened";
                 return false;
             }
 
-            QTextStream stream( &file );
-            stream.setCodec( "UTF-8" );
+            QTextStream stream(&file);
+            stream.setCodec("UTF-8");
             stream << m_html;
 
             return true;
@@ -99,7 +99,7 @@ namespace qtreports {
                     "   font-weight: %6 !important;\n"
                     "   text-decoration: %7 %8 !important;\n"
                     "   }\n"
-                )
+               )
                 .arg("style-" + style->getName())                       // 1 name
                 .arg(style->getFontName())                              // 2 font-family
                 .arg(style->getFontSize())                              // 3 font-size
@@ -315,7 +315,7 @@ namespace qtreports {
         bool ConverterToHTML::addBands(QSharedPointer<Section> section, int sectionIndex)
         {
             detail::Replacer replacer;
-            if( !replacer.replace( section, m_report, sectionIndex ) )
+            if(!replacer.replace(section, m_report, sectionIndex))
             {
                 m_lastError = "Error in replacing process: " + replacer.getLastError();
                 return false;
@@ -483,7 +483,7 @@ namespace qtreports {
             // Получаем количество не граничных линий
             int amountNotBorderLines = amountLines - 3;
 
-            for( auto && line : band->getLines() )
+            for(auto && line : band->getLines())
             {
                 bool isBorderLeft = false;
                 bool isLineRotate = false;
@@ -558,7 +558,7 @@ namespace qtreports {
                 }
             }
 
-            for( auto && rect : band->getRects() )
+            for(auto && rect : band->getRects())
             {
                 elementStr += QString("     <div class='shape' "
                     "style='border: 1px solid black; left: %1px; top: %2px; "
@@ -569,7 +569,7 @@ namespace qtreports {
                     .arg(rect->getHeight());
             }
 
-            for( auto && ellipse : band->getEllipses() )
+            for(auto && ellipse : band->getEllipses())
             {
                 elementStr += QString("     <div class='shape' "
                     "style='border: 1px solid black; "

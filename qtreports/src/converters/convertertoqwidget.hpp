@@ -25,7 +25,7 @@ namespace qtreports {
             * @brief Конструктор по умолчанию.
             * @param report ссылка на объект ReportPtr.
             */
-            explicit ConverterToQWidget( const ReportPtr & report );
+            explicit ConverterToQWidget(const ReportPtr & report);
             ~ConverterToQWidget();
 
             /*! @~russian
@@ -42,7 +42,7 @@ namespace qtreports {
             иначе @code{.cpp} false @endcode.
             @see ConverterToQWidget::WidgetType
             */
-            bool                convert( WidgetType type = WidgetType::Report );
+            bool                convert(WidgetType type = WidgetType::Report);
 
             /*! @~russian
             Проверяет, является ли виджет типа WidgetType::Report.
@@ -74,7 +74,7 @@ namespace qtreports {
             /*! @~russian
             Возвращает указатель страницы виджета по индексу.
             */
-            const QWidgetPtr                getPage( int i ) const;
+            const QWidgetPtr                getPage(int i) const;
 
             /*! @~russian
             Возвращает список всех страниц виджета.
@@ -125,14 +125,14 @@ namespace qtreports {
             @param margins Содержит информацию об отступах для данного QBoxLayout.
             @param height Значение высоты секции.
             */
-            void        addVerticalBorder( QBoxLayout * parent, const QMargins & margins, int height );
+            void        addVerticalBorder(QBoxLayout * parent, const QMargins & margins, int height);
 
             /*! @~russian
             Добавляет пустую секцию.
             @param parent Указатель на QBoxLayout, на который пустая секция.
             @param margins Содержит информацию об отступах для данного QBoxLayout.
             */
-            void        addEmptySection( QBoxLayout * parent, const QMargins & margins );
+            void        addEmptySection(QBoxLayout * parent, const QMargins & margins);
 
             /*! @~russian
             Добавляет секцию.
@@ -140,7 +140,7 @@ namespace qtreports {
             @param margins Содержит информацию об отступах для данного QBoxLayout.
             @param height Значение высоты секции.
             */
-            QFrame *    addSectionLayout( QBoxLayout * parent, const QMargins & margins, int height );
+            QFrame *    addSectionLayout(QBoxLayout * parent, const QMargins & margins, int height);
             
             /*! @~russian
             Добавляет новую страницу на виджет.
@@ -162,7 +162,7 @@ namespace qtreports {
             @param report Указатель на отчет, с которым ведется работа.
             @return true, если добавление группы произошло успешно, иначе false.
             */
-            bool        createQWidget( const ReportPtr & report );
+            bool        createQWidget(const ReportPtr & report);
 
             /*! @~russian
              * Создает секцию.
@@ -174,7 +174,7 @@ namespace qtreports {
              * @param i Индекс текущей секции.
              * @return @code{.cpp} true @endcode, если создание секции прошло успешно, иначе @code{.cpp} false @endcode.
             */
-            bool        createSection( QWidget * parent, const SectionPtr & section, int i );
+            bool        createSection(QWidget * parent, const SectionPtr & section, int i);
 
             /*! @~russian
              * Создает band.
@@ -182,7 +182,7 @@ namespace qtreports {
              * @param[in] section Ссылка на объект SectionPtr.
              * @return @code{.cpp} true @endcode, если создание bsnd'a прошло успешно, иначе @code{.cpp} false @endcode.
             */
-            bool        createBands( QWidget * parent, const SectionPtr & section );
+            bool        createBands(QWidget * parent, const SectionPtr & section);
 
         };
 
