@@ -87,7 +87,7 @@ namespace qtreports {
             bool        createHTML();
 
             /*! @~russian
-            Добавление group в документ HTML.
+            Добавление <group> в документ HTML.
 
             @param[in] detail Ссылка на объект Detail.
 
@@ -97,7 +97,7 @@ namespace qtreports {
             bool        addGroupsIntoReport(QSharedPointer<Detail> detail);
 
             /*! @~russian
-            Добавление band, принадлежащего конкретной section,  в документ HTML.
+            Добавление <band>, принадлежащего конкретной <section>,  в документ HTML.
 
             @param[in] section Ссылка на объект Section. Может указывать на такие секции, как:
              * @code{.cpp} title, header, footer, detail @endcode
@@ -109,7 +109,7 @@ namespace qtreports {
             bool        addBands(QSharedPointer<Section> section, int sectionIndex);
 
             /*! @~russian
-            Добавление shape, принадлежащего конретному band, в документ HTML.
+            Добавление <shape>, принадлежащего конретному <band>, в документ HTML.
 
             @param[in] band Ссылка на объект Band.
             @param[out] elemenStr Строка с содержимым band.

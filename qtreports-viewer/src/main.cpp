@@ -112,7 +112,7 @@ void openDatabase(const QString& dbPath)
 
     //setting report parameters
     QMap <QString, QVariant> map;
-    map["title"] = "GRISHA RULIT";
+    map["title"] = "TITLE";
     map["idPlan"] = "2";
     map["summary"] = "SUMMARY";
 

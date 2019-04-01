@@ -105,6 +105,12 @@ namespace qtreports {
             Возвращает карту <field>
             */
             const QMap< QString, FieldPtr >     getFields() const;
+
+
+            /*! @~russian
+            Возвращает количество строк данных поля
+            */
+            int                                 getFieldsDataCount() const;
             
             /*! @~russian
             Устанавливает данные <field>

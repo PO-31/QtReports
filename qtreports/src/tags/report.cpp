@@ -78,6 +78,15 @@ namespace qtreports
             return m_fields;
         }
 
+        int Report::getFieldsDataCount() const
+        {
+            if(m_fields.isEmpty())
+                return 0;
+
+            auto field = m_fields.first();
+            return field->getRowCount();
+        }
+
         void    Report::setFieldData( const QString & name, const QVector< QVariant > & data )
         {
             auto field = getField( name );

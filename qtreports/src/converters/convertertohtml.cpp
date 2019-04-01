@@ -184,6 +184,15 @@ namespace qtreports {
             }
             m_html += QString("   </div>\n");               // End of <div class='detail'>
 
+            auto summary = m_report->getSummary();
+            if(!summary.isNull())
+            {
+                m_html += "   <div class='summary'>\n";       // Start of <div class='summary'>
+                int lastField = m_report->getFieldsDataCount() - 1;
+                addBands(summary, lastField);
+                m_html += "   </div>\n";                    // End of <div class = 'summary'>
+            }
+
             //Колонтитул
             m_html += "  </div>\n </body>\n</html>\n";      // End of <div class='page'>, <body>, <html>
             return true;

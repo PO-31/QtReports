@@ -19,6 +19,12 @@
 				<text><![CDATA[$P{title}]]></text>
 			</staticText>
 		</textElement>
+		<textField>
+			<textElement textAlignment="Center" textVAlignment="Bottom">
+			<reportElement x="310" y="0" width="140" height="40" />
+			<textFieldExpression class="QString"><![CDATA[$F{NManual}]]></textFieldExpression>
+			</textElement>
+		</textField>
 		<rect>
 			<reportElement x="0" y="0" width="480" height="30" />
 			<graphicElement pen="Dotted" />
