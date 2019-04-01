@@ -31,13 +31,13 @@
             <td class="headerValue">coverage.info</td>
             <td></td>
             <td class="headerItem">Lines:</td>
-            <td class="headerCovTableEntry">376</td>
+            <td class="headerCovTableEntry">378</td>
             <td class="headerCovTableEntry">462</td>
-            <td class="headerCovTableEntryMed">81.4 %</td>
+            <td class="headerCovTableEntryMed">81.8 %</td>
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2019-04-01 01:31:19</td>
+            <td class="headerValue">2019-04-01 02:48:22</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntry">46</td>
@@ -122,24 +122,24 @@
 <a name="60"><span class="lineNum">      60 </span>            : </a>
 <a name="61"><span class="lineNum">      61 </span><span class="lineCov">         34 :         ParserFromXML::~ParserFromXML() {}</span></a>
 <a name="62"><span class="lineNum">      62 </span>            : </a>
-<a name="63"><span class="lineNum">      63 </span><span class="lineCov">         35 :         bool    ParserFromXML::parse( const QString &amp; path )</span></a>
+<a name="63"><span class="lineNum">      63 </span><span class="lineCov">         36 :         bool    ParserFromXML::parse( const QString &amp; path )</span></a>
 <a name="64"><span class="lineNum">      64 </span>            :         {</a>
-<a name="65"><span class="lineNum">      65 </span><span class="lineCov">         35 :             m_report.clear();</span></a>
-<a name="66"><span class="lineNum">      66 </span><span class="lineCov">         35 :             m_lastError = &quot;&quot;;</span></a>
-<a name="67"><span class="lineNum">      67 </span><span class="lineCov">         35 :             m_log.setString( new QString() ); //MB Memory Leak</span></a>
+<a name="65"><span class="lineNum">      65 </span><span class="lineCov">         36 :             m_report.clear();</span></a>
+<a name="66"><span class="lineNum">      66 </span><span class="lineCov">         36 :             m_lastError = &quot;&quot;;</span></a>
+<a name="67"><span class="lineNum">      67 </span><span class="lineCov">         36 :             m_log.setString( new QString() ); //MB Memory Leak</span></a>
 <a name="68"><span class="lineNum">      68 </span>            : </a>
-<a name="69"><span class="lineNum">      69 </span><span class="lineCov">         35 :             if( !QFile::exists( path ) )</span></a>
+<a name="69"><span class="lineNum">      69 </span><span class="lineCov">         36 :             if( !QFile::exists( path ) )</span></a>
 <a name="70"><span class="lineNum">      70 </span>            :             {</a>
 <a name="71"><span class="lineNum">      71 </span><span class="lineCov">          3 :                 m_lastError = &quot;The file not exists&quot;;</span></a>
 <a name="72"><span class="lineNum">      72 </span><span class="lineCov">          3 :                 return false;</span></a>
 <a name="73"><span class="lineNum">      73 </span>            :             }</a>
 <a name="74"><span class="lineNum">      74 </span>            : </a>
-<a name="75"><span class="lineNum">      75 </span><span class="lineCov">         64 :             QFile file( path );</span></a>
-<a name="76"><span class="lineNum">      76 </span><span class="lineCov">         32 :             file.open( QIODevice::OpenModeFlag::ReadOnly | QIODevice::Text );</span></a>
-<a name="77"><span class="lineNum">      77 </span><span class="lineCov">         32 :             if( !file.isOpen() )</span></a>
+<a name="75"><span class="lineNum">      75 </span><span class="lineCov">         66 :             QFile file( path );</span></a>
+<a name="76"><span class="lineNum">      76 </span><span class="lineCov">         33 :             file.open( QIODevice::OpenModeFlag::ReadOnly | QIODevice::Text );</span></a>
+<a name="77"><span class="lineNum">      77 </span><span class="lineCov">         33 :             if( !file.isOpen() )</span></a>
 <a name="78"><span class="lineNum">      78 </span>            :             {</a>
-<a name="79"><span class="lineNum">      79 </span><span class="lineNoCov">          0 :                 m_lastError = &quot;The file can not be opened&quot;;</span></a>
-<a name="80"><span class="lineNum">      80 </span><span class="lineNoCov">          0 :                 return false;</span></a>
+<a name="79"><span class="lineNum">      79 </span><span class="lineCov">          1 :                 m_lastError = &quot;The file can not be opened&quot;;</span></a>
+<a name="80"><span class="lineNum">      80 </span><span class="lineCov">          1 :                 return false;</span></a>
 <a name="81"><span class="lineNum">      81 </span>            :             }</a>
 <a name="82"><span class="lineNum">      82 </span>            : </a>
 <a name="83"><span class="lineNum">      83 </span><span class="lineCov">         32 :             return parseDocument( file.readAll() );//.replace( &quot; &quot;, &quot;&quot; )</span></a>
@@ -1013,9 +1013,9 @@
 <a name="951"><span class="lineNum">     951 </span><span class="lineCov">         30 :             return m_report;</span></a>
 <a name="952"><span class="lineNum">     952 </span>            :         }</a>
 <a name="953"><span class="lineNum">     953 </span>            : </a>
-<a name="954"><span class="lineNum">     954 </span><span class="lineCov">         14 :         const QString       ParserFromXML::getLastError() const</span></a>
+<a name="954"><span class="lineNum">     954 </span><span class="lineCov">         15 :         const QString       ParserFromXML::getLastError() const</span></a>
 <a name="955"><span class="lineNum">     955 </span>            :         {</a>
-<a name="956"><span class="lineNum">     956 </span><span class="lineCov">         14 :             return m_lastError;</span></a>
+<a name="956"><span class="lineNum">     956 </span><span class="lineCov">         15 :             return m_lastError;</span></a>
 <a name="957"><span class="lineNum">     957 </span>            :         }</a>
 <a name="958"><span class="lineNum">     958 </span>            : </a>
 <a name="959"><span class="lineNum">     959 </span><span class="lineCov">          3 :         const QString       ParserFromXML::getLog() const</span></a>
