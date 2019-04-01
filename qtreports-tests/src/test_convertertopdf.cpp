@@ -19,28 +19,32 @@ Test_ConverterToPDF::~Test_ConverterToPDF() {}
 void    Test_ConverterToPDF::convert()
 {
     QString reportPath = QFINDTESTDATA( "../samples/reports/tests-images/test.full.qrxml" );
-    qDebug() << endl << "Used report: " << reportPath;
 
     qtreports::Engine engine;
+
+    QString dbPath = QFINDTESTDATA( "../samples/databases/tests-images.db" );
+
+    auto report = engine.getReport();
+    auto outPath = "test.pdf";
+    qtreports::detail::ConverterToPDF converter( report );
+
+    QCOMPARE(converter.convert(outPath), false);
+
     QVERIFY2( engine.open( reportPath ), engine.getLastError().toStdString().c_str() );
 
     QMap < QString, QVariant > map;
     map[ "title" ] = "Best Title in World";
-    qDebug() << endl << "Used map: " << map;
+
     QVERIFY2( engine.setParameters( map ), engine.getLastError().toStdString().c_str() );
 
-    QString dbPath = QFINDTESTDATA( "../samples/databases/tests-images.db" );
-    qDebug() << endl << "Used db: " << dbPath;
     QSqlDatabase::removeDatabase( QSqlDatabase::defaultConnection );
     auto db = QSqlDatabase::addDatabase( "QSQLITE" );
     db.setDatabaseName( dbPath );
     QVERIFY2( db.open(), db.lastError().text().toStdString().c_str() );
     QVERIFY2( engine.setConnection( db ), engine.getLastError().toStdString().c_str() );
+    report = engine.getReport();
 
-    auto report = engine.getReport();
-    auto outPath = "test.pdf";
-
-    qtreports::detail::ConverterToPDF converter( report );
+    converter = qtreports::detail::ConverterToPDF( report );
     QVERIFY2( converter.convert( outPath ), converter.getLastError().toStdString().c_str() );
     QCOMPARE( converter.getDPI(), 75 );
     QCOMPARE( converter.getLastError(), QString() );

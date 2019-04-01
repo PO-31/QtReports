@@ -76,21 +76,17 @@ void    Test_Engine::setConnection() {
     QSqlDatabase db = QSqlDatabase::addDatabase( "QSQLITE" );
     QCOMPARE( engine.setConnection( db ), false );
 
-    QString input = QFINDTESTDATA( "../samples/reports/test/test.default.qreport" );
-    QVERIFY2( engine.open( input ), engine.getLastError().toStdString().c_str() );
-    QCOMPARE( engine.setConnection( db ), false );
-
     db.setDatabaseName( "../samples/databases/test.db" );
     QVERIFY2( db.open(), ( "Can't open database. Error: " + db.lastError().text() ).toStdString().c_str() );
-    QVERIFY2( engine.setConnection( db ), engine.getLastError().toStdString().c_str() );
+    QCOMPARE( engine.setConnection( db ), false );
 
-    /*
-    QSqlQuery q;
-    q.exec("select * from groups_t;");
-    while (q.next()) {
-    qDebug() << q.value(1).toString();
-    }
-    */
+    QString input = QFINDTESTDATA("../samples/reports/test/test.empty.qreport");
+    QVERIFY2( engine.open( input ), engine.getLastError().toStdString().c_str() );
+    QCOMPARE( engine.setConnection( db ), false );\
+
+    input = QFINDTESTDATA( "../samples/reports/test/test.default.qreport" );
+    QVERIFY2( engine.open( input ), engine.getLastError().toStdString().c_str() );
+    QVERIFY2( engine.setConnection( db ), engine.getLastError().toStdString().c_str() );
 }
 
 void    Test_Engine::setDataSource()
