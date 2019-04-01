@@ -42,8 +42,17 @@ void    Test_ConverterToHTML::convert()
 
     qtreports::detail::ConverterToHTML converterToMemory( report );
     QVERIFY2( converterToMemory.convert(), converterToMemory.getLastError().toStdString().c_str() );
+
     QVERIFY( converterToMemory.getHTML() != QString() );
     QCOMPARE( converterToMemory.getLastError(), QString() );
+
+
+    {
+        auto outPath = "%.?";
+        qtreports::detail::ConverterToHTML converterToErrorPath( report );
+        QVERIFY(!converterToErrorPath.convert( outPath ));
+        QCOMPARE(converterToErrorPath.getLastError(), QString("The file can not be opened"));
+    }
 
     auto outPath = "test.pdf";
     qtreports::detail::ConverterToHTML converterToPath( report );

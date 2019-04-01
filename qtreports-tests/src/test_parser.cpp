@@ -4,8 +4,13 @@
 #include <QTest>
 #include <QSize>
 #include <QDebug>
+#include <QLockFile>
 
 #include <qtreports/../../src/parsers/parserfromxml.hpp>
+
+#ifdef Q_OS_WIN
+    extern Q_CORE_EXPORT int qt_ntfs_permission_lookup;
+#endif
 
 Test_Parser::Test_Parser( QObject *parent ) :
     QObject( parent ) {}
@@ -425,6 +430,16 @@ void    Test_Parser::parse() {
     QVERIFY( file.size() != 0 );
     QCOMPARE( parser.parse( "../samples/reports/test/test.errored.qrxml" ), false );
     file.close();
+
+    // On Windows permissions don't work
+    #ifndef Q_OS_WIN
+        file.setFileName("default.txt");
+        QVERIFY(file.exists());
+        QVERIFY(file.setPermissions(QFileDevice::WriteUser));
+        QCOMPARE( parser.parse( "default.txt" ), false);
+        QCOMPARE( parser.getLastError(), QString("The file can not be opened"));
+        QVERIFY(file.setPermissions(QFileDevice::ReadUser | QFileDevice::WriteUser));
+    #endif
 
     QString reportPath = QFINDTESTDATA( "../samples/reports/tests-images/test.full.qrxml" );
     //qDebug() << endl << "Used report: " << reportPath;
