@@ -149,47 +149,20 @@ namespace qtreports
 
         bool    Replacer::replaceFieldInSection(const SectionPtr & section, const ReportPtr & report, int i)
         {
-            bool isTitle = false;
-            bool isSummary = false;
-
             if(section.isNull())
             {
                 m_lastError = "Section is empty.";
                 return false;
             }
 
-            //Section* section_ = section.get();
-            //if(Summary* summary = dynamic_cast<Summary*>(section_))
-            //{
-            //    isSummary = true;
-            //}
-            //else if (Title* title = dynamic_cast<Title*>(section_)) {
-            //    isTitle = true;
-            //}
-
             for(auto && band : section->getBands())
             {
                 for(auto && textWidget : band->getTextWidgets())
                 {
-                    if(isTitle)
+                    if(!replaceFieldInTextWidget(textWidget, report, i))
                     {
-                        if(!replaceFieldInTextWidget(textWidget, report, i))
-                        {
-                            return false;
-                        }
+                        return false;
                     }
-                    else if(isSummary)
-                    {
-                        if(!replaceFieldInTextWidget(textWidget, report, i))
-                        {
-                            return false;
-                        }
-                    }
-                    else
-                        if(!replaceFieldInTextWidget(textWidget, report, i))
-                        {
-                            return false;
-                        }
                 }
 
                 for(auto && imageWidget : band->getImages())
