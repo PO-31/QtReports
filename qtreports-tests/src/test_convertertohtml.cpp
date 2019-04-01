@@ -48,10 +48,23 @@ void    Test_ConverterToHTML::convert()
 
 
     {
-        auto outPath = "%.?";
         qtreports::detail::ConverterToHTML converterToErrorPath( report );
+    #ifdef Q_OS_WIN
+        auto outPath = "%.?";
+    #else
+        auto outPath = "testfile";
+        QVERIFY(!QFile::exists(outPath));
+        QFile file(outPath);
+        QVERIFY(file.open(QFile::WriteOnly));
+        file.write("\0");
+        file.close();
+        QVERIFY(file.setPermissions(QFile::ReadUser));
+    #endif
         QVERIFY(!converterToErrorPath.convert( outPath ));
         QCOMPARE(converterToErrorPath.getLastError(), QString("The file can not be opened"));
+    #ifndef Q_OS_WIN
+        QVERIFY(file.remove());
+    #endif
     }
 
     auto outPath = "test.pdf";
