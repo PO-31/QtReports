@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<report name="multygroup_report">
+	<style name="Arial_Normal" isDefault="true" fontName="Arial"
+	fontSize="12" pdfFontName="c:\tahoma.ttf" pdfEncoding="Cp1251"
+	isPdfEmbedded="false" />
+
+	<queryString>
+		<![CDATA[ select dep_name, group_name, stud_name from groups_t 
+		NATURAL JOIN students_t 
+		NATURAL JOIN departments_t 
+		ORDER BY dep_name, group_name]]>
+	</queryString>
+
+	<field name="dep_name" class="QString" />
+	<field name="group_name" class="QString" />
+	<field name="stud_name" class="QString" />
+	<title>
+		<band height="35">
+		<staticText>
+			<reportElement x="10" y="10" width="150" height="20" />
+			<text><![CDATA[$P{title}]]></text>
+		</staticText>
+		<rect>
+			<reportElement x="0" y="0" width="580" height="35" />
+		</rect>
+		</band>
+	</title>  
+	<group name="dep_name">
+		<groupExpression class="QString">
+			<![CDATA[$F{dep_name}]]>
+		</groupExpression>
+		<groupHeader>
+			<band height="50">
+				<textField>
+					<reportElement x="10" y="0" width="300" height="50" />
+					<textFieldExpression class="QString"><![CDATA[$F{dep_name} + ' header']]></textFieldExpression>
+				</textField>
+				<rect>
+					<reportElement x="0" y="0" width="580" height="50" />
+				</rect>
+			</band>
+		</groupHeader>
+		<groupFooter>
+			<band height="50">
+				<textField>
+					<reportElement x="10" y="0" width="300" height="50" />
+					<textFieldExpression class="QString"><![CDATA[$F{dep_name} + ' footer']]></textFieldExpression>
+				</textField>
+				<rect>
+					<reportElement x="0" y="0" width="580" height="50" />
+				</rect>
+			</band>
+		</groupFooter> 		
+	</group>
+
+	<detail>
+		<band height="30">   
+			<textField>
+				<reportElement x="0" y="0" width="400" height="30" />
+				<textFieldExpression class="QString">
+					<![CDATA[$F{stud_name}]]>
+				</textFieldExpression>
+			</textField>
+			<rect>
+					<reportElement x="0" y="0" width="580" height="30" />
+			</rect>
+		</band>
+	</detail>
+</report>
