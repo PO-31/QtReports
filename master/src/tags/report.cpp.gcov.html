@@ -37,7 +37,7 @@
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2019-04-01 07:56:57</td>
+            <td class="headerValue">2019-04-02 00:12:50</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntry">41</td>
@@ -67,13 +67,13 @@
 <a name="5"><span class="lineNum">       5 </span>            :     namespace detail</a>
 <a name="6"><span class="lineNum">       6 </span>            :     {</a>
 <a name="7"><span class="lineNum">       7 </span>            : </a>
-<a name="8"><span class="lineNum">       8 </span><span class="lineCov">         32 :         Report::Report() :</span></a>
+<a name="8"><span class="lineNum">       8 </span><span class="lineCov">         33 :         Report::Report() :</span></a>
 <a name="9"><span class="lineNum">       9 </span>            :             m_orientation( QPrinter::Orientation::Portrait ),</a>
 <a name="10"><span class="lineNum">      10 </span>            :             m_size( 595, 842 ),</a>
-<a name="11"><span class="lineNum">      11 </span><span class="lineCov">         32 :             m_margins( 30, 30, 30, 30 )</span></a>
-<a name="12"><span class="lineNum">      12 </span><span class="lineCov">         32 :         {}</span></a>
+<a name="11"><span class="lineNum">      11 </span><span class="lineCov">         33 :             m_margins( 30, 30, 30, 30 )</span></a>
+<a name="12"><span class="lineNum">      12 </span><span class="lineCov">         33 :         {}</span></a>
 <a name="13"><span class="lineNum">      13 </span>            : </a>
-<a name="14"><span class="lineNum">      14 </span><span class="lineCov">         64 :         Report::~Report() {}</span></a>
+<a name="14"><span class="lineNum">      14 </span><span class="lineCov">         66 :         Report::~Report() {}</span></a>
 <a name="15"><span class="lineNum">      15 </span>            : </a>
 <a name="16"><span class="lineNum">      16 </span><span class="lineCov">         27 :         void    Report::setDefaultStyle( const StylePtr &amp; style )</span></a>
 <a name="17"><span class="lineNum">      17 </span>            :         {</a>
@@ -120,9 +120,9 @@
 <a name="58"><span class="lineNum">      58 </span><span class="lineCov">         26 :             m_query = query;</span></a>
 <a name="59"><span class="lineNum">      59 </span><span class="lineCov">         26 :         }</span></a>
 <a name="60"><span class="lineNum">      60 </span>            : </a>
-<a name="61"><span class="lineNum">      61 </span><span class="lineCov">         13 :         const QString   Report::getQuery() const</span></a>
+<a name="61"><span class="lineNum">      61 </span><span class="lineCov">         14 :         const QString   Report::getQuery() const</span></a>
 <a name="62"><span class="lineNum">      62 </span>            :         {</a>
-<a name="63"><span class="lineNum">      63 </span><span class="lineCov">         13 :             return m_query;</span></a>
+<a name="63"><span class="lineNum">      63 </span><span class="lineCov">         14 :             return m_query;</span></a>
 <a name="64"><span class="lineNum">      64 </span>            :         }</a>
 <a name="65"><span class="lineNum">      65 </span>            : </a>
 <a name="66"><span class="lineNum">      66 </span><span class="lineCov">        115 :         void    Report::setField( const QString &amp; name, const FieldPtr &amp; field )</span></a>
@@ -203,9 +203,9 @@
 <a name="141"><span class="lineNum">     141 </span><span class="lineCov">        157 :             return m_parameters.value( name );</span></a>
 <a name="142"><span class="lineNum">     142 </span>            :         }</a>
 <a name="143"><span class="lineNum">     143 </span>            : </a>
-<a name="144"><span class="lineNum">     144 </span><span class="lineCov">         12 :         const QMap&lt; QString, QVariant &gt;   Report::getParameters() const</span></a>
+<a name="144"><span class="lineNum">     144 </span><span class="lineCov">         13 :         const QMap&lt; QString, QVariant &gt;   Report::getParameters() const</span></a>
 <a name="145"><span class="lineNum">     145 </span>            :         {</a>
-<a name="146"><span class="lineNum">     146 </span><span class="lineCov">         12 :             return m_parameters;</span></a>
+<a name="146"><span class="lineNum">     146 </span><span class="lineCov">         13 :             return m_parameters;</span></a>
 <a name="147"><span class="lineNum">     147 </span>            :         }</a>
 <a name="148"><span class="lineNum">     148 </span>            : </a>
 <a name="149"><span class="lineNum">     149 </span><span class="lineCov">          9 :         int     Report::getRowCount() const</span></a>
