@@ -91,6 +91,24 @@
         </textElement>
 	  </line>
 	  <line>
+        <reportElement x="200" y="0" width="1" height="100" style="Arial_Normal" />
+        <textElement textVAlignment="Bottom" textAlignment="Left">
+          <font isBold="true"/>
+        </textElement>
+	  </line>
+	  <line>
+        <reportElement x="0" y="100" width="100" height="1" style="Arial_Normal" />
+        <textElement textVAlignment="Bottom" textAlignment="Left">
+          <font isBold="true"/>
+        </textElement>
+	  </line>
+	  <line>
+        <reportElement x="0" y="120" width="100" height="1" style="Arial_Normal" />
+        <textElement textVAlignment="Bottom" textAlignment="Left">
+          <font isBold="true"/>
+        </textElement>
+	  </line>
+	  <line>
         <reportElement x="0" y="150" width="20" height="20" style="Arial_Normal" />
         <textElement textVAlignment="Bottom" textAlignment="Left">
           <font isBold="true"/>
@@ -189,4 +207,30 @@
       </line>
     </band>
   </detail>
+  <summary>
+	<band height="35">
+		<textElement textAlignment="Center" textVAlignment="Middle">
+			<staticText>
+				<reportElement x="10" y="10" width="150" height="20" />
+				<text><![CDATA[$P{summary}]]></text>
+			</staticText>
+		</textElement>
+		<textField>
+			<textElement textAlignment="Center" textVAlignment="Bottom">
+			<reportElement x="210" y="0" width="140" height="40" />
+			<textFieldExpression class="QString"><![CDATA[$F{nameImg}]]></textFieldExpression>
+			</textElement>
+		</textField>
+		<rect>
+			<reportElement x="0" y="0" width="480" height="30" />
+			<graphicElement pen="Dotted" />
+		</rect>
+		<line>
+			<reportElement x="170" y="10" width="20" height="40" />
+		</line>
+		<line>
+			<reportElement x="200" y="30" width="20" height="-40" />
+		</line>
+	</band>
+  </summary>
 </report>
