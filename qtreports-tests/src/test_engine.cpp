@@ -258,8 +258,6 @@ void    Test_Engine::print()
 
     QVERIFY2( db.open(), "Can't open test database 'testDB'" );
     QVERIFY2( engine.setConnection( db ), engine.getLastError().toStdString().c_str() );
-	
-    QCOMPARE( engine.print(), true );
     //QTRY_VERIFY2_WITH_TIMEOUT( engine.print(), engine.getLastError().toStdString().c_str(), 5 );
 }
 
