@@ -37,7 +37,7 @@
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2019-04-03 01:02:47</td>
+            <td class="headerValue">2019-04-03 08:32:54</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntry">19</td>
@@ -460,21 +460,21 @@
 <a name="398"><span class="lineNum">     398 </span><span class="lineCov">        198 :                     auto text = isLayout() ? textWidget-&gt;getOriginalText() : textWidget-&gt;getText();</span></a>
 <a name="399"><span class="lineNum">     399 </span><span class="lineCov">         99 :                     label-&gt;setText(text);</span></a>
 <a name="400"><span class="lineNum">     400 </span>            :                 }</a>
-<a name="401"><span class="lineNum">     401 </span><span class="lineCov">         75 :                 for(auto &amp;&amp; line : band-&gt;getLines())</span></a>
+<a name="401"><span class="lineNum">     401 </span><span class="lineCov">         79 :                 for(auto &amp;&amp; line : band-&gt;getLines())</span></a>
 <a name="402"><span class="lineNum">     402 </span>            :                 {</a>
-<a name="403"><span class="lineNum">     403 </span><span class="lineCov">         14 :                     auto label = new QLabel(frame);</span></a>
-<a name="404"><span class="lineNum">     404 </span><span class="lineCov">         28 :                     QString style = &quot;&quot;;</span></a>
-<a name="405"><span class="lineNum">     405 </span><span class="lineCov">         14 :                     if(line-&gt;isBold())</span></a>
+<a name="403"><span class="lineNum">     403 </span><span class="lineCov">         18 :                     auto label = new QLabel(frame);</span></a>
+<a name="404"><span class="lineNum">     404 </span><span class="lineCov">         36 :                     QString style = &quot;&quot;;</span></a>
+<a name="405"><span class="lineNum">     405 </span><span class="lineCov">         18 :                     if(line-&gt;isBold())</span></a>
 <a name="406"><span class="lineNum">     406 </span>            :                     {</a>
-<a name="407"><span class="lineNum">     407 </span><span class="lineCov">         14 :                         style += &quot;font-weight: bold; &quot;;</span></a>
+<a name="407"><span class="lineNum">     407 </span><span class="lineCov">         18 :                         style += &quot;font-weight: bold; &quot;;</span></a>
 <a name="408"><span class="lineNum">     408 </span>            :                     }</a>
 <a name="409"><span class="lineNum">     409 </span>            :                     //if(isLayout())</a>
 <a name="410"><span class="lineNum">     410 </span>            :                     {</a>
-<a name="411"><span class="lineNum">     411 </span><span class="lineCov">         14 :                         style += &quot;border: 1px solid gray; &quot;;</span></a>
+<a name="411"><span class="lineNum">     411 </span><span class="lineCov">         18 :                         style += &quot;border: 1px solid gray; &quot;;</span></a>
 <a name="412"><span class="lineNum">     412 </span>            :                     }</a>
-<a name="413"><span class="lineNum">     413 </span><span class="lineCov">         14 :                     label-&gt;setStyleSheet(&quot;background-color: transparent; &quot; + style);</span></a>
-<a name="414"><span class="lineNum">     414 </span><span class="lineCov">         14 :                     label-&gt;setGeometry(line-&gt;getRect());</span></a>
-<a name="415"><span class="lineNum">     415 </span><span class="lineCov">         14 :                     label-&gt;setAlignment(line-&gt;getAlignment());</span></a>
+<a name="413"><span class="lineNum">     413 </span><span class="lineCov">         18 :                     label-&gt;setStyleSheet(&quot;background-color: transparent; &quot; + style);</span></a>
+<a name="414"><span class="lineNum">     414 </span><span class="lineCov">         18 :                     label-&gt;setGeometry(line-&gt;getRect());</span></a>
+<a name="415"><span class="lineNum">     415 </span><span class="lineCov">         18 :                     label-&gt;setAlignment(line-&gt;getAlignment());</span></a>
 <a name="416"><span class="lineNum">     416 </span>            :                     //label-&gt;setText(&quot;----------------------&quot;);</a>
 <a name="417"><span class="lineNum">     417 </span>            :                 }</a>
 <a name="418"><span class="lineNum">     418 </span><span class="lineCov">         75 :                 for(auto &amp;&amp; imageWidget : band-&gt;getImages())</span></a>

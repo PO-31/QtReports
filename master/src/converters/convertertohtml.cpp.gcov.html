@@ -31,13 +31,13 @@
             <td class="headerValue">coverage.info</td>
             <td></td>
             <td class="headerItem">Lines:</td>
-            <td class="headerCovTableEntry">212</td>
+            <td class="headerCovTableEntry">220</td>
             <td class="headerCovTableEntry">279</td>
-            <td class="headerCovTableEntryMed">76.0 %</td>
+            <td class="headerCovTableEntryMed">78.9 %</td>
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2019-04-03 01:02:47</td>
+            <td class="headerValue">2019-04-03 08:32:54</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntry">10</td>
@@ -545,18 +545,18 @@
 <a name="483"><span class="lineNum">     483 </span>            :             // Получаем количество не граничных линий</a>
 <a name="484"><span class="lineNum">     484 </span><span class="lineCov">        170 :             int amountNotBorderLines = amountLines - 3;</span></a>
 <a name="485"><span class="lineNum">     485 </span>            : </a>
-<a name="486"><span class="lineNum">     486 </span><span class="lineCov">        206 :             for(auto &amp;&amp; line : band-&gt;getLines())</span></a>
+<a name="486"><span class="lineNum">     486 </span><span class="lineCov">        212 :             for(auto &amp;&amp; line : band-&gt;getLines())</span></a>
 <a name="487"><span class="lineNum">     487 </span>            :             {</a>
-<a name="488"><span class="lineNum">     488 </span><span class="lineCov">         36 :                 bool isBorderLeft = false;</span></a>
-<a name="489"><span class="lineNum">     489 </span><span class="lineCov">         36 :                 bool isLineRotate = false;</span></a>
-<a name="490"><span class="lineNum">     490 </span><span class="lineCov">         36 :                 float angleRad = atan2(line-&gt;getHeight(), line-&gt;getWidth());</span></a>
-<a name="491"><span class="lineNum">     491 </span><span class="lineCov">         36 :                 if(line-&gt;getWidth() != 1 &amp;&amp; line-&gt;getHeight() != 1)</span></a>
-<a name="492"><span class="lineNum">     492 </span><span class="lineNoCov">          0 :                     isLineRotate = true;</span></a>
-<a name="493"><span class="lineNum">     493 </span><span class="lineCov">         36 :                 if(angleRad &gt;= 1.52 &amp;&amp; angleRad &lt;= 1.6)</span></a>
+<a name="488"><span class="lineNum">     488 </span><span class="lineCov">         42 :                 bool isBorderLeft = false;</span></a>
+<a name="489"><span class="lineNum">     489 </span><span class="lineCov">         42 :                 bool isLineRotate = false;</span></a>
+<a name="490"><span class="lineNum">     490 </span><span class="lineCov">         42 :                 float angleRad = atan2(line-&gt;getHeight(), line-&gt;getWidth());</span></a>
+<a name="491"><span class="lineNum">     491 </span><span class="lineCov">         42 :                 if(line-&gt;getWidth() != 1 &amp;&amp; line-&gt;getHeight() != 1)</span></a>
+<a name="492"><span class="lineNum">     492 </span><span class="lineCov">          6 :                     isLineRotate = true;</span></a>
+<a name="493"><span class="lineNum">     493 </span><span class="lineCov">         42 :                 if(angleRad &gt;= 1.52 &amp;&amp; angleRad &lt;= 1.6)</span></a>
 <a name="494"><span class="lineNum">     494 </span><span class="lineCov">         36 :                     isBorderLeft = true;</span></a>
-<a name="495"><span class="lineNum">     495 </span><span class="lineCov">         36 :                 float lineHeight = sqrt(pow(line-&gt;getWidth(), 2) + pow(line-&gt;getHeight(), 2));</span></a>
+<a name="495"><span class="lineNum">     495 </span><span class="lineCov">         42 :                 float lineHeight = sqrt(pow(line-&gt;getWidth(), 2) + pow(line-&gt;getHeight(), 2));</span></a>
 <a name="496"><span class="lineNum">     496 </span>            : </a>
-<a name="497"><span class="lineNum">     497 </span><span class="lineCov">         36 :                 if(isLineRotate) { // Если линия повернута</span></a>
+<a name="497"><span class="lineNum">     497 </span><span class="lineCov">         42 :                 if(isLineRotate) { // Если линия повернута</span></a>
 <a name="498"><span class="lineNum">     498 </span>            :                     elementStr += QString(&quot;     &lt;div class='shape' &quot;</a>
 <a name="499"><span class="lineNum">     499 </span>            :                         &quot;style='left: %1px; top: %2px; &quot;</a>
 <a name="500"><span class="lineNum">     500 </span>            :                         &quot;width: %3px; height: %4px; &quot;</a>
@@ -564,13 +564,13 @@
 <a name="502"><span class="lineNum">     502 </span>            :                         &quot;      &lt;div style='border-top: 1px solid black; height: 1px; width: %5px; &quot;</a>
 <a name="503"><span class="lineNum">     503 </span>            :                         &quot;transform: rotate(%6rad); transform-origin: 0\% 0\%;&quot;</a>
 <a name="504"><span class="lineNum">     504 </span>            :                         &quot;'&gt;&lt;/div&gt;\n     &lt;/div&gt;\n&quot;)</a>
-<a name="505"><span class="lineNum">     505 </span><span class="lineNoCov">          0 :                         .arg(line-&gt;getX())</span></a>
-<a name="506"><span class="lineNum">     506 </span><span class="lineNoCov">          0 :                         .arg(line-&gt;getY())</span></a>
-<a name="507"><span class="lineNum">     507 </span><span class="lineNoCov">          0 :                         .arg((uint)line-&gt;getWidth())</span></a>
-<a name="508"><span class="lineNum">     508 </span><span class="lineNoCov">          0 :                         .arg((uint)line-&gt;getHeight())</span></a>
-<a name="509"><span class="lineNum">     509 </span><span class="lineNoCov">          0 :                         .arg(lineHeight)</span></a>
-<a name="510"><span class="lineNum">     510 </span><span class="lineNoCov">          0 :                         .arg(angleRad);</span></a>
-<a name="511"><span class="lineNum">     511 </span><span class="lineNoCov">          0 :                     continue;</span></a>
+<a name="505"><span class="lineNum">     505 </span><span class="lineCov">         12 :                         .arg(line-&gt;getX())</span></a>
+<a name="506"><span class="lineNum">     506 </span><span class="lineCov">         24 :                         .arg(line-&gt;getY())</span></a>
+<a name="507"><span class="lineNum">     507 </span><span class="lineCov">         24 :                         .arg((uint)line-&gt;getWidth())</span></a>
+<a name="508"><span class="lineNum">     508 </span><span class="lineCov">         24 :                         .arg((uint)line-&gt;getHeight())</span></a>
+<a name="509"><span class="lineNum">     509 </span><span class="lineCov">         24 :                         .arg(lineHeight)</span></a>
+<a name="510"><span class="lineNum">     510 </span><span class="lineCov">         18 :                         .arg(angleRad);</span></a>
+<a name="511"><span class="lineNum">     511 </span><span class="lineCov">          6 :                     continue;</span></a>
 <a name="512"><span class="lineNum">     512 </span>            :                 }</a>
 <a name="513"><span class="lineNum">     513 </span>            : </a>
 <a name="514"><span class="lineNum">     514 </span><span class="lineCov">         36 :                 if(isBorderLeft) { // Если линия вертикальная</span></a>
