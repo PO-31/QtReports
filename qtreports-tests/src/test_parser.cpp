@@ -546,7 +546,7 @@ void    Test_Parser::parse() {
     QCOMPARE( band_0_title->getHeight(), 300 );
     QVERIFY( band_0_title->getLine( 0 ) != qtreports::detail::LinePtr() );
     QCOMPARE( band_0_title->getLines().empty(), false );
-    QCOMPARE( band_0_title->getLinesSize(), 1 );
+    QCOMPARE( band_0_title->getLinesSize(), 3 );
     QVERIFY( band_0_title->getRect( 0 ) != qtreports::detail::RectPtr() );
     QCOMPARE( band_0_title->getRects().empty(), false );
     QCOMPARE( band_0_title->getRectsSize(), 1 );
