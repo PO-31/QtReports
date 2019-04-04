@@ -45,8 +45,15 @@ SOURCES += \
     src/tags/title.cpp \
     src/tags/widget.cpp \
     src/engine.cpp \
-    src/tags/crosstab.cpp \
-    src/tags/summary.cpp
+    src/tags/summary.cpp \
+    src/tags/box.cpp \
+    src/tags/cellcontents.cpp \
+    src/tags/crosstabrowheader.cpp \
+    src/tags/crosstabcolumnheader.cpp \
+    src/tags/measure.cpp \
+    src/tags/rowgroup.cpp \
+    src/tags/columngroup.cpp \
+    src/tags/crosstab.cpp
 
 HEADERS += \
     src/converters/utils/replacer.hpp \
@@ -55,7 +62,6 @@ HEADERS += \
     src/converters/convertertoqwidget.hpp \
     src/parsers/parserfromxml.hpp \
     src/tags/band.hpp \
-    src/tags/crosstab.hpp \
     src/tags/detail.hpp \
     src/tags/ellipse.hpp \
     src/tags/field.hpp \
@@ -74,7 +80,15 @@ HEADERS += \
     src/tags/title.hpp \
     src/tags/widget.hpp \
     include/qtreports/engine.hpp \
-    src/tags/summary.hpp
+    src/tags/summary.hpp \
+    src/tags/box.hpp \
+    src/tags/cellcontents.hpp \
+    src/tags/crosstabrowheader.hpp \
+    src/tags/crosstabcolumnheader.hpp \
+    src/tags/measure.hpp \
+    src/tags/rowgroup.hpp \
+    src/tags/columngroup.hpp \
+    src/tags/crosstab.hpp
 
 QMAKE_CXXFLAGS += -std=c++14
 
