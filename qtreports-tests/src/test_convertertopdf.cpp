@@ -18,7 +18,7 @@ Test_ConverterToPDF::~Test_ConverterToPDF() {}
 
 void    Test_ConverterToPDF::convert()
 {
-    QString reportPath = QFINDTESTDATA( "../samples/reports/tests-images/test.full.qrxml" );
+    QString reportPath = QFINDTESTDATA( "../samples/reports/tests-images/test.withoutstyle.qrxml" );
 
     qtreports::Engine engine;
 
