@@ -94,12 +94,12 @@ namespace qtreports {
             @param[in] name Имя <field>
             @param[in] field Указатель на обьект <field>
             */
-            void                                setField( const QString & name, const FieldPtr & field );   
+            void                                setField( const QString & name, const FieldPtr & field );
             
             /*! @~russian
             Возвращает <field>
             */
-            const FieldPtr                      getField( const QString & name ) const;   
+            const FieldPtr                      getField( const QString & name ) const;
             
             /*! @~russian
             Возвращает карту <field>
@@ -289,12 +289,10 @@ namespace qtreports {
             */
             const QMargins  getMargins() const;
 
-            bool            isDetailHasGroupHeader(int detailNum, const QString &groupField);
-            bool            isDetailHasGroupFooter(int detailNum, const QString &groupField);
-            void            reorderByGroups();
-            const QString   getFieldFromGroupExpression(const QString & expression);
-            const QVector<bool> getGroupVec() { return m_group_vec; }
-            int             getGroupIndexFromField(const QString & field);
+            /*! @~russian
+            Возвращает указатель на объект <group> по его индексу
+            @param[in] index Индекс объекта <group>
+            */
             GroupPtr        getGroupByIndex(int index);
 
         private:
@@ -311,8 +309,6 @@ namespace qtreports {
             SummaryPtr                  m_summary;
             QMap< QString, QVariant >   m_parameters;
             QVector<bool>               m_group_vec;
-
-            void swapRows(int row1, int row2, QVector<bool> & vec);
 
         };
         typedef QSharedPointer< Report > ReportPtr;
