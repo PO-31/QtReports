@@ -48,12 +48,9 @@ SOURCES += \
     src/tags/summary.cpp \
     src/tags/box.cpp \
     src/tags/cellcontents.cpp \
-    src/tags/crosstabrowheader.cpp \
-    src/tags/crosstabcolumnheader.cpp \
-    src/tags/measure.cpp \
-    src/tags/rowgroup.cpp \
-    src/tags/columngroup.cpp \
-    src/tags/crosstab.cpp
+    src/tags/crosstab.cpp \
+    src/tags/crosstabgroup.cpp \
+    src/tags/crosstabsection.cpp
 
 HEADERS += \
     src/converters/utils/replacer.hpp \
@@ -83,12 +80,9 @@ HEADERS += \
     src/tags/summary.hpp \
     src/tags/box.hpp \
     src/tags/cellcontents.hpp \
-    src/tags/crosstabrowheader.hpp \
-    src/tags/crosstabcolumnheader.hpp \
-    src/tags/measure.hpp \
-    src/tags/rowgroup.hpp \
-    src/tags/columngroup.hpp \
-    src/tags/crosstab.hpp
+    src/tags/crosstab.hpp \
+    src/tags/crosstabgroup.hpp \
+    src/tags/crosstabsection.hpp
 
 QMAKE_CXXFLAGS += -std=c++14
 

@@ -2,9 +2,6 @@
 #ifndef BOX_HPP
 #define BOX_HPP
 
-#include <QString>
-#include <QSharedPointer>
-
 #include "object.hpp"
 
 namespace qtreports
@@ -16,10 +13,10 @@ namespace qtreports
             Box();
             ~Box();
 
-            void setBorder(const QString & border);
-            void setBorderColor(const QString & borderColor);
-            QString getBorder() const;
-            QString getBorderColor() const;
+            void        setBorder(const QString & border);
+            void        setBorderColor(const QString & borderColor);
+            QString     getBorder() const;
+            QString     getBorderColor() const;
 
         private:
             QString m_border;
