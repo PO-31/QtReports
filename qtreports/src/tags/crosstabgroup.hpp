@@ -17,7 +17,7 @@ namespace qtreports
                 COLUMN
             };
 
-            CrosstabGroup(const GroupType &groupType = qtreports::detail::CrosstabGroup::ROW);
+            explicit CrosstabGroup(const GroupType &groupType = qtreports::detail::CrosstabGroup::ROW);
             ~CrosstabGroup();
 
             void                                            setGroupType(const qtreports::detail::CrosstabGroup::GroupType &groupType);

@@ -269,7 +269,7 @@ namespace qtreports
             int rowCount = isReport()? report->getRowCount() : 1;
             for(int i = 0; i < rowCount; i++)
             {
-                QWidget * sectionWidget = isLayout() ? sectionWidget = addSectionLayout(layout, report->getMargins(), detail->getHeight()) : nullptr;
+                QWidget * sectionWidget = isLayout() ? addSectionLayout(layout, report->getMargins(), detail->getHeight()) : nullptr;
 
                 //Закрываем футеры, если группа закончилась
                 for(int j = groups.length() - 1; j >= 0; j--)
