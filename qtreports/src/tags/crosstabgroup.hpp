@@ -2,7 +2,7 @@
 #define CROSSTABGROUP_HPP
 
 #include "object.hpp"
-#include "crosstabsection.h"
+#include "crosstabsection.hpp"
 
 namespace qtreports
 {

@@ -1,4 +1,4 @@
-#include "crosstabsection.h"
+#include "crosstabsection.hpp"
 
 
 qtreports::detail::CrosstabSection::CrosstabSection()

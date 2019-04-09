@@ -4,7 +4,7 @@
 
 #include "widget.hpp"
 #include "crosstabgroup.hpp"
-#include "crosstabsection.h"
+#include "crosstabsection.hpp"
 
 namespace qtreports
 {
