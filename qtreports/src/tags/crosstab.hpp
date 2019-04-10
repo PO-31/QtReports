@@ -4,7 +4,7 @@
 
 #include "widget.hpp"
 #include "crosstabgroup.hpp"
-#include "crosstabsection.hpp"
+#include "crosstabcell.hpp"
 
 namespace qtreports
 {
@@ -16,17 +16,19 @@ namespace qtreports
             Crosstab();
             ~Crosstab();
 
-            void                            setRowGroup(const CrosstabGroupPtr &rowGroup);
-            const CrosstabGroupPtr          getRowGroup();
-            void                            setColumnGroup(const CrosstabGroupPtr &columnGroup);
-            const CrosstabGroupPtr          getColumnGroup();
-            void                            setCrosstabCell(const CrosstabSectionPtr &crosstabCell);
-            const CrosstabSectionPtr        getCrosstabCell();
+            void                    setRowGroup(const CrosstabGroupPtr &rowGroup);
+            const CrosstabGroupPtr  getRowGroup();
+            void                    setColumnGroup(const CrosstabGroupPtr &columnGroup);
+            const CrosstabGroupPtr  getColumnGroup();
+            void                    setCrosstabCell(const CrosstabCellPtr &crosstabCell);
+            const CrosstabCellPtr   getCrosstabCell();
 
-        protected:
+        private:
+
+            // подтэги
             CrosstabGroupPtr    m_rowGroup;
             CrosstabGroupPtr    m_columnGroup;
-            CrosstabSectionPtr  m_crosstabCell;
+            CrosstabCellPtr     m_crosstabCell;
         };
         typedef QSharedPointer<Crosstab> CrosstabPtr;
     }

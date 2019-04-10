@@ -36,22 +36,21 @@ namespace qtreports
             void                            addCrosstab( const CrosstabPtr & crosstab );
 
             /*! @~russian
-            Добавляет <staticText> в <band>
-            @param[in] staticText Указатель на <staticText>
-            */
-            void                            addStaticText( const StaticTextPtr & staticText );
-
-
-            /*! @~russian
             Возвращает вектор указателей на <crosstab>
             */
-            const QVector< CrosstabPtr >  getCrosstabs() const;
+            const QVector< CrosstabPtr >    getCrosstabs() const;
 
             /*! @~russian
             Возвращает указатель на <crosstab> по индексу
             @param[in] index Индекс
             */
-            const CrosstabPtr             getCrosstab( int index ) const;
+            const CrosstabPtr               getCrosstab( int index ) const;
+
+            /*! @~russian
+            Добавляет <staticText> в <band>
+            @param[in] staticText Указатель на <staticText>
+            */
+            void                            addStaticText( const StaticTextPtr & staticText );
 
             /*! @~russian
             Возвращает вектор указателей на <staticText>
@@ -197,7 +196,7 @@ namespace qtreports
             QVector< RectPtr >          m_rects;
             QVector< EllipsePtr >       m_ellipses;
             QVector< ImagePtr >         m_images;
-            QVector< CrosstabPtr >         m_crosstabs;
+            QVector< CrosstabPtr >      m_crosstabs;
 
         };
         typedef QSharedPointer< Band > BandPtr;

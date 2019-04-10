@@ -2,7 +2,7 @@
 #define CROSSTABGROUP_HPP
 
 #include "object.hpp"
-#include "crosstabsection.hpp"
+#include "crosstabheader.hpp"
 
 namespace qtreports
 {
@@ -17,21 +17,32 @@ namespace qtreports
                 COLUMN
             };
 
-            explicit CrosstabGroup(const GroupType &groupType = qtreports::detail::CrosstabGroup::ROW);
+            explicit CrosstabGroup(GroupType groupType = qtreports::detail::CrosstabGroup::ROW);
             ~CrosstabGroup();
 
-            void                                            setGroupType(const qtreports::detail::CrosstabGroup::GroupType &groupType);
-            qtreports::detail::CrosstabGroup::GroupType     getGroupType();
-            void                                            setHeader(const CrosstabSectionPtr &header);
-            const CrosstabSectionPtr                        getHeader();
+            void                        setType(GroupType groupType);
+            GroupType                   getType();
+            void                        setHeader(const CrosstabHeaderPtr &header);
+            const CrosstabHeaderPtr     getHeader();
+            void                        setWidth(int width);
+            int                         getWidth();
+            void                        setHeight(int height);
+            int                         getHeight();
 
         protected:
 
-            GroupType m_groupType;
-            CrosstabSectionPtr m_header;
+            GroupType           m_type;
+
+            //подтэги
+            CrosstabHeaderPtr   m_header;
+
+            //атрибуты
+            int                 m_width;    // Используется типом ROW
+            int                 m_height;   // Используется типом COLUMN
 
         };
         typedef QSharedPointer<CrosstabGroup> CrosstabGroupPtr;
+        typedef qtreports::detail::CrosstabGroup::GroupType CrosstabGroupType;
     }
 }
 

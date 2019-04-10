@@ -26,12 +26,12 @@ namespace qtreports
             return m_columnGroup;
         }
 
-        void Crosstab::setCrosstabCell(const CrosstabSectionPtr &crosstabCell)
+        void Crosstab::setCrosstabCell(const CrosstabCellPtr &crosstabCell)
         {
             m_crosstabCell = crosstabCell;
         }
 
-        const CrosstabSectionPtr Crosstab::getCrosstabCell()
+        const CrosstabCellPtr Crosstab::getCrosstabCell()
         {
             return m_crosstabCell;
         }

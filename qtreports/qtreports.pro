@@ -50,7 +50,8 @@ SOURCES += \
     src/tags/cellcontents.cpp \
     src/tags/crosstab.cpp \
     src/tags/crosstabgroup.cpp \
-    src/tags/crosstabsection.cpp
+    src/tags/crosstabheader.cpp \
+    src/tags/crosstabcell.cpp
 
 HEADERS += \
     src/converters/utils/replacer.hpp \
@@ -82,7 +83,8 @@ HEADERS += \
     src/tags/cellcontents.hpp \
     src/tags/crosstab.hpp \
     src/tags/crosstabgroup.hpp \
-    src/tags/crosstabsection.hpp
+    src/tags/crosstabheader.hpp \
+    src/tags/crosstabcell.hpp
 
 QMAKE_CXXFLAGS += -std=c++14
 

@@ -1,31 +1,59 @@
 #include "crosstabgroup.hpp"
 
-qtreports::detail::CrosstabGroup::CrosstabGroup(const GroupType &groupType)
+namespace qtreports
 {
-    m_groupType = groupType;
-}
+    namespace detail
+    {
+        CrosstabGroup::CrosstabGroup(GroupType groupType)
+        {
+            m_type = groupType;
+            m_width = 0;
+            m_height = 0;
+        }
 
-qtreports::detail::CrosstabGroup::~CrosstabGroup()
-{
+        CrosstabGroup::~CrosstabGroup()
+        {
 
-}
+        }
 
-void qtreports::detail::CrosstabGroup::setGroupType(const qtreports::detail::CrosstabGroup::GroupType &groupType)
-{
-    m_groupType = groupType;
-}
+        void CrosstabGroup::setType(GroupType groupType)
+        {
+            m_type = groupType;
+        }
 
-qtreports::detail::CrosstabGroup::GroupType qtreports::detail::CrosstabGroup::getGroupType()
-{
-    return m_groupType;
-}
+        CrosstabGroupType qtreports::detail::CrosstabGroup::getType()
+        {
+            return m_type;
+        }
 
-void qtreports::detail::CrosstabGroup::setHeader(const qtreports::detail::CrosstabSectionPtr &header)
-{
-    m_header = header;
-}
+        void CrosstabGroup::setHeader(const CrosstabHeaderPtr &header)
+        {
+            m_header = header;
+        }
 
-const qtreports::detail::CrosstabSectionPtr qtreports::detail::CrosstabGroup::getHeader()
-{
-    return m_header;
+        const CrosstabHeaderPtr qtreports::detail::CrosstabGroup::getHeader()
+        {
+            return m_header;
+        }
+
+        void CrosstabGroup::setWidth(int width)
+        {
+            m_width = width;
+        }
+
+        int CrosstabGroup::getWidth()
+        {
+            return m_width;
+        }
+
+        void CrosstabGroup::setHeight(int height)
+        {
+            m_height = height;
+        }
+
+        int CrosstabGroup::getHeight()
+        {
+            return m_height;
+        }
+    }
 }
