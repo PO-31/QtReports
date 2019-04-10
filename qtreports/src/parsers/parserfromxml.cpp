@@ -31,31 +31,37 @@ namespace qtreports
 
         ParserFromXML::ParserFromXML() : m_log( new QString() ) //MB Memory Leak
         {
-            m_functions[ "report" ] = toParseFunc( this, &ParserFromXML::parseReport );
-            m_functions[ "style" ] = toParseFunc( this, &ParserFromXML::parseStyle );
-            m_functions[ "queryString" ] = toParseFunc( this, &ParserFromXML::parseQueryString );
-            m_functions[ "field" ] = toParseFunc( this, &ParserFromXML::parseField );
-            m_functions[ "group" ] = toParseFunc( this, &ParserFromXML::parseGroup );
-            m_functions[ "groupExpression" ] = toParseFunc( this, &ParserFromXML::parseGroupExpression );
-            m_functions[ "groupHeader" ] = toParseFunc( this, &ParserFromXML::parseGroupHeader );
-            m_functions[ "groupFooter" ] = toParseFunc( this, &ParserFromXML::parseGroupFooter );
-            m_functions[ "title" ] = toParseFunc( this, &ParserFromXML::parseTitle );
-            m_functions[ "detail" ] = toParseFunc( this, &ParserFromXML::parseDetail );
-            m_functions[ "summary" ] = toParseFunc( this, &ParserFromXML::parseSummary );
-            m_functions[ "band" ] = toParseFunc( this, &ParserFromXML::parseBand );
-            m_functions[ "staticText" ] = toParseFunc( this, &ParserFromXML::parseStaticText );
-            m_functions[ "textField" ] = toParseFunc( this, &ParserFromXML::parseTextField );
-            m_functions[ "line" ] = toParseFunc( this, &ParserFromXML::parseLine );
-            m_functions[ "rect" ] = toParseFunc( this, &ParserFromXML::parseRect );
-            m_functions[ "ellipse" ] = toParseFunc( this, &ParserFromXML::parseEllipse );
-            m_functions[ "image" ] = toParseFunc( this, &ParserFromXML::parseImage );
-            m_functions[ "imageExpression" ] = toParseFunc( this, &ParserFromXML::parseImageExpression );
-            m_functions[ "reportElement" ] = toParseFunc( this, &ParserFromXML::parseReportElement );
-            m_functions[ "textElement" ] = toParseFunc( this, &ParserFromXML::parseTextElement );
-            m_functions[ "font" ] = toParseFunc( this, &ParserFromXML::parseFont );
-            m_functions[ "text" ] = toParseFunc( this, &ParserFromXML::parseText );
-            m_functions[ "textFieldExpression" ] = toParseFunc( this, &ParserFromXML::parseTextFieldExpression );
-            m_functions[ "crosstab" ] = toParseFunc( this, &ParserFromXML::parseCrosstab );
+            m_functions["report"]               = toParseFunc(this, &ParserFromXML::parseReport);
+            m_functions["style"]                = toParseFunc(this, &ParserFromXML::parseStyle);
+            m_functions["queryString"]          = toParseFunc(this, &ParserFromXML::parseQueryString);
+            m_functions["field"]                = toParseFunc(this, &ParserFromXML::parseField);
+            m_functions["group"]                = toParseFunc(this, &ParserFromXML::parseGroup);
+            m_functions["groupExpression"]      = toParseFunc(this, &ParserFromXML::parseGroupExpression);
+            m_functions["groupHeader"]          = toParseFunc(this, &ParserFromXML::parseGroupHeader);
+            m_functions["groupFooter"]          = toParseFunc(this, &ParserFromXML::parseGroupFooter);
+            m_functions["title"]                = toParseFunc(this, &ParserFromXML::parseTitle);
+            m_functions["detail"]               = toParseFunc(this, &ParserFromXML::parseDetail);
+            m_functions["summary"]              = toParseFunc(this, &ParserFromXML::parseSummary);
+            m_functions["band"]                 = toParseFunc(this, &ParserFromXML::parseBand);
+            m_functions["staticText"]           = toParseFunc(this, &ParserFromXML::parseStaticText);
+            m_functions["textField"]            = toParseFunc(this, &ParserFromXML::parseTextField);
+            m_functions["line"]                 = toParseFunc(this, &ParserFromXML::parseLine);
+            m_functions["rect"]                 = toParseFunc(this, &ParserFromXML::parseRect);
+            m_functions["ellipse"]              = toParseFunc(this, &ParserFromXML::parseEllipse);
+            m_functions["image"]                = toParseFunc(this, &ParserFromXML::parseImage);
+            m_functions["imageExpression"]      = toParseFunc(this, &ParserFromXML::parseImageExpression);
+            m_functions["reportElement"]        = toParseFunc(this, &ParserFromXML::parseReportElement);
+            m_functions["textElement"]          = toParseFunc(this, &ParserFromXML::parseTextElement);
+            m_functions["font"]                 = toParseFunc(this, &ParserFromXML::parseFont);
+            m_functions["text"]                 = toParseFunc(this, &ParserFromXML::parseText);
+            m_functions["textFieldExpression"]  = toParseFunc(this, &ParserFromXML::parseTextFieldExpression);
+            m_functions["crosstab"]             = toParseFunc(this, &ParserFromXML::parseCrosstab);
+            m_functions["rowGroup"]             = toParseFunc(this, &ParserFromXML::parseRowGroup);
+            m_functions["columnGroup"]          = toParseFunc(this, &ParserFromXML::parseColumnGroup);
+            m_functions["crosstabCell"]         = toParseFunc(this, &ParserFromXML::parseCrosstabCell);
+            m_functions["crosstabRowHeader"]    = toParseFunc(this, &ParserFromXML::parseCrosstabRowHeader);
+            m_functions["crosstabColumnHeader"] = toParseFunc(this, &ParserFromXML::parseCrosstabColumnHeader);
+            m_functions["cellContents"]         = toParseFunc(this, &ParserFromXML::parseCrosstabCellContents);
         }
 
         ParserFromXML::~ParserFromXML() {}
@@ -654,14 +660,141 @@ namespace qtreports
 
         bool    ParserFromXML::parseCrosstab( QXmlStreamReader & reader, const BandPtr & band )
         {
-            CrosstabPtr crosstab( new Crosstab() );
-            if( !parseChilds( reader, crosstab ) )
+            CrosstabPtr crosstab(new Crosstab());
+            if(!parseChilds(reader, crosstab))
             {
                 return false;
             }
 
-            crosstab->setTagName( "crosstab" );
-            band->addCrosstab( crosstab );
+            crosstab->setTagName("crosstab");
+            band->addCrosstab(crosstab);
+
+            return !reader.hasError();
+        }
+
+        bool ParserFromXML::parseRowGroup(QXmlStreamReader &reader, const CrosstabPtr &crosstab)
+        {
+            CrosstabGroupPtr rowGroup(new CrosstabGroup(CrosstabGroupType::ROW));
+
+            QString width;
+            if(!getRequiredAttribute(reader, "width", width))
+            {
+                return false;
+            }
+
+            QString name = "";
+            getOptionalAttribute(reader, "name", name);
+
+            if(name != "")
+                rowGroup->setName(name);
+
+            if(!parseChilds(reader, rowGroup))
+            {
+                return false;
+            }
+
+            rowGroup->setWidth(width.toInt());
+            rowGroup->setTagName("rowGroup");
+            crosstab->setRowGroup(rowGroup);
+
+            return !reader.hasError();
+        }
+
+        bool ParserFromXML::parseColumnGroup(QXmlStreamReader &reader, const CrosstabPtr &crosstab)
+        {
+            CrosstabGroupPtr columnGroup(new CrosstabGroup(CrosstabGroupType::COLUMN));
+
+            QString height;
+            if(!getRequiredAttribute(reader, "height", height))
+            {
+                return false;
+            }
+
+            QString name = "";
+            getOptionalAttribute(reader, "name", name);
+
+            if(name != "")
+                columnGroup->setName(name);
+
+            if(!parseChilds(reader, columnGroup))
+            {
+                return false;
+            }
+
+            columnGroup->setHeight(height.toInt());
+            columnGroup->setTagName("columnGroup");
+            crosstab->setColumnGroup(columnGroup);
+
+            return !reader.hasError();
+        }
+
+        bool ParserFromXML::parseCrosstabCell(QXmlStreamReader &reader, const CrosstabPtr &crosstab)
+        {
+            CrosstabCellPtr crosstabCell(new CrosstabCell());
+
+            QString width;
+            if(!getRequiredAttribute(reader, "width", width))
+            {
+                return false;
+            }
+
+            QString height;
+            if(!getRequiredAttribute(reader, "height", height))
+            {
+                return false;
+            }
+
+            if(!parseChilds(reader, crosstabCell))
+            {
+                return false;
+            }
+
+            crosstabCell->setWidth(width.toInt());
+            crosstabCell->setHeight(height.toInt());
+            crosstabCell->setTagName("crosstabCell");
+            crosstab->setCrosstabCell(crosstabCell);
+
+            return !reader.hasError();
+        }
+
+        bool ParserFromXML::parseCrosstabRowHeader(QXmlStreamReader &reader, const CrosstabGroupPtr &rowGroup)
+        {
+            CrosstabHeaderPtr crosstabRowHeader(new CrosstabHeader());
+            if(!parseChilds(reader, crosstabRowHeader))
+            {
+                return false;
+            }
+
+            crosstabRowHeader->setTagName("crosstabRowHeader");
+            rowGroup->setHeader(crosstabRowHeader);
+
+            return !reader.hasError();
+        }
+
+        bool ParserFromXML::parseCrosstabColumnHeader(QXmlStreamReader &reader, const CrosstabGroupPtr &columnGroup)
+        {
+            CrosstabHeaderPtr crosstabColumnHeader(new CrosstabHeader());
+            if(!parseChilds(reader, crosstabColumnHeader))
+            {
+                return false;
+            }
+
+            crosstabColumnHeader->setTagName("crosstabColumnHeader");
+            columnGroup->setHeader(crosstabColumnHeader);
+
+            return !reader.hasError();
+        }
+
+        bool ParserFromXML::parseCrosstabCellContents(QXmlStreamReader &reader, const CrosstabCellPtr &crosstabSection)
+        {
+            CellContentsPtr cellContents(new CellContents());
+            if(!parseChilds(reader, cellContents))
+            {
+                return false;
+            }
+
+            cellContents->setTagName("cellContents");
+            crosstabSection->setCellContents(cellContents);
 
             return !reader.hasError();
         }
@@ -680,16 +813,31 @@ namespace qtreports
             return !reader.hasError();
         }
 
-        bool	ParserFromXML::parseTextField( QXmlStreamReader & reader, const BandPtr & band )
+        bool	ParserFromXML::parseTextField(QXmlStreamReader & reader, const WidgetPtr &widget)
         {
-            TextFieldPtr textField( new TextField() );
-            if( !parseChilds( reader, textField ) )
+            TextFieldPtr textField(new TextField());
+            if(!parseChilds(reader, textField))
             {
                 return false;
             }
 
             textField->setTagName( "textField" );
-            band->addTextField( textField );
+
+            // TextField может находится в Band или CellContents (Crosstab)
+            // Нужно понять метод какого именно клаcса нужно вызывать
+            auto data = widget.data();
+            Band* band = dynamic_cast<Band*>(data);
+            if(band)
+            {
+                BandPtr band = qSharedPointerCast<Band>(widget);
+                band->addTextField(textField);
+            }
+            CellContents* cell = dynamic_cast<CellContents*>(data);
+            if(cell)
+            {
+                CellContentsPtr cell = qSharedPointerCast<CellContents>(widget);
+                cell->setTextField(textField);
+            }
 
             return !reader.hasError();
         }

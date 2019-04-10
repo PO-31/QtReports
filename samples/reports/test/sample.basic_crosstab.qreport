@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<report name="multygroup_report">
+	<style name="Arial_Normal" isDefault="true" fontName="Arial"
+	fontSize="12" pdfFontName="c:\tahoma.ttf" pdfEncoding="Cp1251"
+	isPdfEmbedded="false" />
+
+	<queryString>
+		<![CDATA[ select dep_name, group_name, stud_name from groups_t 
+		NATURAL JOIN students_t 
+		NATURAL JOIN departments_t 
+		ORDER BY dep_name, group_name]]>
+	</queryString>
+
+	<field name="dep_name" class="QString" />
+	<field name="group_name" class="QString" />
+	<field name="stud_name" class="QString" />
+	<title>
+		<band height="35">
+		<staticText>
+			<reportElement x="10" y="10" width="150" height="20" />
+			<text><![CDATA[$P{title}]]></text>
+		</staticText>
+		<rect>
+			<reportElement x="0" y="0" width="580" height="35" />
+		</rect>
+		</band>
+	</title>  
+	<group name="dep_name">
+		<groupExpression class="QString">
+			<![CDATA[$F{dep_name}]]>
+		</groupExpression>
+	</group>
+	<group name="group_name">
+		<groupExpression class="QString">
+			<![CDATA[$F{dep_name}]]>
+		</groupExpression>
+	</group>
+
+	<detail>
+	</detail>
+	
+	<summary>
+		<band height="50">
+			<crosstab>
+				<reportElement x="200" y="0" width="360" height="60"/>
+				<rowGroup name="dep_name" width="130">
+					<crosstabRowHeader>
+						<cellContents>
+							<textField>
+								<reportElement x="0" y="0" width="130" height="20"/>
+								<textFieldExpression class="QString"><![CDATA[$F{dep_name}]]></textFieldExpression>
+							</textField>
+						</cellContents>
+					</crosstabRowHeader>
+				</rowGroup>
+				<columnGroup name="group_name" height="20">
+					<crosstabColumnHeader>
+						<cellContents>
+							<textField>
+								<reportElement x="0" y="0" width="30" height="20"/>
+								<textFieldExpression class="QString"><![CDATA[$F{group_name}]]></textFieldExpression>
+							</textField>
+						</cellContents>
+					</crosstabColumnHeader>
+				</columnGroup>
+				<crosstabCell width="30" height="20">
+					<cellContents>
+						<textField>
+							<reportElement x="0" y="0" width="30" height="20"/>
+							<textFieldExpression class="QString"><![CDATA[$F{stud_name}]]></textFieldExpression>
+						</textField>
+					</cellContents>
+				</crosstabCell>
+			</crosstab>
+		</band>
+	</summary>
+</report>

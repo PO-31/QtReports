@@ -184,10 +184,40 @@ namespace qtreports {
             */
             bool    parseBand( QXmlStreamReader & reader, const SectionPtr & section );
             /*! @~russian
-            Парсит Crosstab элемент
+            Парсит тэг Crosstab
             @param[in] band Строка, которой принадлежит объект
             */
-            bool parseCrosstab(QXmlStreamReader & reader, const BandPtr & band );
+            bool parseCrosstab(QXmlStreamReader & reader, const BandPtr & band);
+            /*! @~russian
+            Парсит тэг rowGroup
+            @param[in] crosstab Кросстаб, которому принадлежит объект
+            */
+            bool parseRowGroup(QXmlStreamReader & reader, const CrosstabPtr & crosstab);
+            /*! @~russian
+            Парсит тэг columnGroup
+            @param[in] crosstab Кросстаб, которому принадлежит объект
+            */
+            bool parseColumnGroup(QXmlStreamReader & reader, const CrosstabPtr & crosstab);
+            /*! @~russian
+            Парсит тэг crosstabCell
+            @param[in] crosstab Кросстаб, которому принадлежит объект
+            */
+            bool parseCrosstabCell(QXmlStreamReader & reader, const CrosstabPtr & crosstab);
+            /*! @~russian
+            Парсит тэг crosstabRowHeader
+            @param[in] rowGroup Группа кросстаба, которому принадлежит объект
+            */
+            bool parseCrosstabRowHeader(QXmlStreamReader & reader, const CrosstabGroupPtr &rowGroup);
+            /*! @~russian
+            Парсит тэг crosstabColumnHeader
+            @param[in] columnGroup Группа кросстаба, которому принадлежит объект
+            */
+            bool parseCrosstabColumnHeader(QXmlStreamReader & reader, const CrosstabGroupPtr & columnGroup);
+            /*! @~russian
+            Парсит тэг cellContents
+            @param[in] crosstabSection Секция кросстаба, которому принадлежит объект
+            */
+            bool parseCrosstabCellContents(QXmlStreamReader & reader, const CrosstabCellPtr &crosstabSection);
             /*! @~russian
             Парсит тэг StaticText
             @param[in] band Строка, которой принадлежит объект
@@ -197,7 +227,7 @@ namespace qtreports {
             Парсит тэг TextField
             @param[in] band Строка, которой принадлежит объект
             */
-            bool    parseTextField( QXmlStreamReader & reader, const BandPtr & band );
+            bool    parseTextField( QXmlStreamReader & reader, const WidgetPtr & widget );
             /*! @~russian
             Парсит тэг Line
             @param[in] band Строка, которой принадлежит объект
