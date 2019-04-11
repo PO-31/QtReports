@@ -297,8 +297,6 @@ namespace qtreports
             detail::Replacer replacer;
 
             QList<GroupPtr> groups = getGroups().values();
-            if(groups.size() == 0)
-                return;
             ReportPtr thisPtr(this);
 
             int rowCount = getRowCount();
