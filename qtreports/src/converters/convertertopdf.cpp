@@ -164,7 +164,6 @@ namespace qtreports {
                     }
                 }
 
-
                 for(auto && image : band->getImages()) {
                     QImage img = image->getImage();
                     QRect imageRect;
@@ -200,6 +199,126 @@ namespace qtreports {
                     rectE.setHeight(ellipse->getRect().height());
                     rectE.setWidth(ellipse->getRect().width());
                     painter.drawEllipse(rectE);
+                }
+
+                for(auto && crosstab : band->getCrosstabs())
+                {
+                    detail::Replacer replacer;
+
+                    QList<QString> colGroups;
+                    replacer.replaceColumnGroupsInCrosstab(crosstab, m_report, colGroups);
+
+                    QList<QString> rowGroups;
+                    replacer.replaceRowGroupsInCrosstab(crosstab, m_report, rowGroups);
+
+                    QRect crosstabRect = crosstab->getRect();
+
+                    auto crosstabAligment = crosstab->getAlignment();
+                    auto rowGroup = crosstab->getRowGroup();
+                    auto colGroup = crosstab->getColumnGroup();
+                    auto cell     = crosstab->getCrosstabCell();
+
+                    QRect emptyRect = QRect();
+                    emptyRect.setX(crosstabRect.x());
+                    emptyRect.setY(crosstabRect.y() + m_currentHeight);
+                    emptyRect.setWidth(rowGroup->getWidth());
+                    emptyRect.setHeight(cell->getHeight());
+                    painter.drawRect(emptyRect);
+
+                    int colX = crosstabRect.x() + rowGroup->getWidth();
+                    for (int i = 0; i < colGroups.size(); i++)
+                    {
+                        Qt::AlignmentFlag alignment = Qt::AlignCenter;
+                        if ((colGroup->getHeader()->getCellContents()->getAlignment() & Qt::AlignLeft) == Qt::AlignLeft)
+                            alignment = Qt::AlignLeft;
+                        if ((colGroup->getHeader()->getCellContents()->getAlignment() & Qt::AlignRight) == Qt::AlignRight)
+                            alignment = Qt::AlignRight;
+                        if ((colGroup->getHeader()->getCellContents()->getAlignment() & Qt::AlignHCenter) == Qt::AlignHCenter)
+                            alignment = Qt::AlignCenter;
+                        if ((colGroup->getHeader()->getCellContents()->getAlignment() & Qt::AlignJustify) == Qt::AlignJustify)
+                            alignment = Qt::AlignJustify;
+
+                        int x = colX + colGroup->getHeader()->getCellContents()->getTextField()->getX();
+                        int y = crosstabRect.y() + colGroup->getHeader()->getCellContents()->getTextField()->getY();
+                        int w = colGroup->getHeader()->getCellContents()->getTextField()->getWidth();
+                        int h = colGroup->getHeader()->getCellContents()->getTextField()->getHeight();
+                        painter.drawText(x, y + m_currentHeight, w, h, alignment, colGroups[i]);
+
+                        QRect colRect = QRect();
+                        colRect.setX(colX);
+                        colRect.setY(crosstabRect.y() + m_currentHeight);
+                        colRect.setWidth(cell->getWidth());
+                        colRect.setHeight(colGroup->getHeight());
+                        painter.drawRect(colRect);
+
+                        colX += cell->getWidth();
+                    }
+
+                    int rowY = crosstabRect.y();
+                    for (int i = 0; i < rowGroups.size(); i++)
+                    {
+                        rowY += cell->getHeight();
+
+                        Qt::AlignmentFlag alignment = Qt::AlignCenter;
+                        if ((rowGroup->getHeader()->getCellContents()->getAlignment() & Qt::AlignLeft) == Qt::AlignLeft)
+                            alignment = Qt::AlignLeft;
+                        if ((rowGroup->getHeader()->getCellContents()->getAlignment() & Qt::AlignRight) == Qt::AlignRight)
+                            alignment = Qt::AlignRight;
+                        if ((rowGroup->getHeader()->getCellContents()->getAlignment() & Qt::AlignHCenter) == Qt::AlignHCenter)
+                            alignment = Qt::AlignCenter;
+                        if ((rowGroup->getHeader()->getCellContents()->getAlignment() & Qt::AlignJustify) == Qt::AlignJustify)
+                            alignment = Qt::AlignJustify;
+
+                        int x = crosstabRect.x() + rowGroup->getHeader()->getCellContents()->getTextField()->getX();
+                        int y = rowY + rowGroup->getHeader()->getCellContents()->getTextField()->getY();
+                        int w = rowGroup->getHeader()->getCellContents()->getTextField()->getWidth();
+                        int h = rowGroup->getHeader()->getCellContents()->getTextField()->getHeight();
+                        painter.drawText(x, y + m_currentHeight, w, h, alignment, rowGroups[i]);
+
+                        QRect rowRect = QRect();
+                        rowRect.setX(crosstabRect.x());
+                        rowRect.setY(rowY + m_currentHeight);
+                        rowRect.setWidth(rowGroup->getWidth());
+                        rowRect.setHeight(cell->getHeight());
+                        painter.drawRect(rowRect);
+                    }
+
+                    //FIXME поменять на нормальный обработчик ячеек
+                    int cellX = crosstabRect.x();
+                    int cellY = crosstabRect.y();
+                    for (int i = 0; i < rowGroups.size(); i++)
+                    {
+                        cellX += emptyRect.width();
+                        cellY += emptyRect.height();
+                        for(int j = 0; j < colGroups.size(); j++)
+                        {
+                            Qt::AlignmentFlag alignment = Qt::AlignCenter;
+                            if ((cell->getCellContents()->getAlignment() & Qt::AlignLeft) == Qt::AlignLeft)
+                                alignment = Qt::AlignLeft;
+                            if ((cell->getCellContents()->getAlignment() & Qt::AlignRight) == Qt::AlignRight)
+                                alignment = Qt::AlignRight;
+                            if ((cell->getCellContents()->getAlignment() & Qt::AlignHCenter) == Qt::AlignHCenter)
+                                alignment = Qt::AlignCenter;
+                            if ((cell->getCellContents()->getAlignment() & Qt::AlignJustify) == Qt::AlignJustify)
+                                alignment = Qt::AlignJustify;
+
+                            int x = cellX + cell->getCellContents()->getTextField()->getX();
+                            int y = cellY + cell->getCellContents()->getTextField()->getY();
+                            int w = cell->getCellContents()->getTextField()->getWidth();
+                            int h = cell->getCellContents()->getTextField()->getHeight();
+                            painter.drawText(x, y + m_currentHeight, w, h, alignment, cell->getCellContents()->getTextField()->getOriginalText());
+
+                            QRect cellRect = QRect();
+                            cellRect.setX(cellX);
+                            cellRect.setY(cellY + m_currentHeight);
+                            cellRect.setWidth(cell->getWidth());
+                            cellRect.setHeight(cell->getHeight());
+                            painter.drawRect(cellRect);
+
+                            cellX += cell->getWidth();
+                        }
+                        cellX = crosstabRect.x();
+                    }
                 }
 
                 m_currentHeight += band->getHeight();

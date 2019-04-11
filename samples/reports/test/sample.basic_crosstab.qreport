@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <report name="multygroup_report">
 	<style name="Arial_Normal" isDefault="true" fontName="Arial"
-	fontSize="12" pdfFontName="c:\tahoma.ttf" pdfEncoding="Cp1251"
+	fontSize="10" pdfFontName="c:\tahoma.ttf" pdfEncoding="Cp1251"
 	isPdfEmbedded="false" />
 
 	<queryString>
@@ -37,7 +37,7 @@
 					<crosstabRowHeader>
 						<cellContents>
 							<textField>
-								<reportElement x="0" y="0" width="135" height="20"/>
+								<reportElement x="3" y="3" width="135" height="17"/>
 								<textFieldExpression class="QString"><![CDATA[$F{dep_name}]]></textFieldExpression>
 							</textField>
 						</cellContents>
@@ -47,7 +47,7 @@
 					<crosstabColumnHeader>
 						<cellContents>
 							<textField>
-								<reportElement x="0" y="0" width="90" height="20"/>
+								<reportElement x="3" y="3" width="87" height="17"/>
 								<textFieldExpression class="QString"><![CDATA[$F{group_name}]]></textFieldExpression>
 							</textField>
 						</cellContents>
@@ -56,7 +56,7 @@
 				<crosstabCell width="90" height="20">
 					<cellContents>
 						<textField>
-							<reportElement x="0" y="0" width="90" height="20"/>
+							<reportElement x="3" y="3" width="87" height="17"/>
 							<textFieldExpression class="QString"><![CDATA[$F{stud_name}]]></textFieldExpression>
 						</textField>
 					</cellContents>
