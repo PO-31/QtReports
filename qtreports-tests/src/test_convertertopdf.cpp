@@ -18,11 +18,11 @@ Test_ConverterToPDF::~Test_ConverterToPDF() {}
 
 void    Test_ConverterToPDF::convert()
 {
-    QString reportPath = QFINDTESTDATA( "../samples/reports/tests-images/test.withoutstyle.qrxml" );
+    QString reportPath = QFINDTESTDATA( "../samples/reports/test/sample.crosstab.qreport" );
 
     qtreports::Engine engine;
 
-    QString dbPath = QFINDTESTDATA( "../samples/databases/tests-images.db" );
+    QString dbPath = QFINDTESTDATA( "../samples/databases/test.db" );
 
     auto report = engine.getReport();
     auto outPath = "test.pdf";
