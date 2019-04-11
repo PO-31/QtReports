@@ -3,29 +3,24 @@
   <style name="Optional_style" />
 
   <queryString>
-    <![CDATA[ select * from customers ]]>
+    <![CDATA[ select * from groups_t ]]>
   </queryString>
 
-  <field name="id" class="QString" />
-  <field name="firstname" class="QString" />
-  <field name="lastname" class="QString" />
-  <field name="city" class="QString" />
-  <field name="segment" class="QString" />
+  <field name="group_id" class="QString" />
+  <field name="group_name" class="QString" />
+  <field name="dep_id" class="QString" />
 
   <detail>
-    <band height="300">
+    <band height="60">
       <staticText>
   	<reportElement x="0" y="40" width="500" height="20"/>
        <textElement textAlignment="Left"/>
-  	<text><![CDATA[Это пример форматирования с помощью 	textElement]]></text>
+  	<text><![CDATA[Пример форматирования с помощью 	textElement]]></text>
       </staticText>	
       <textField>
         <reportElement x="220" y="20" width="100" height="200" />
-        <textFieldExpression class="QString">
-          <![CDATA[$P{title}]]>
-        </textFieldExpression>
-      </textField>
+        <text><![CDATA[Текст]]></text>
+        </textField>
     </band>
   </detail>
-
 </report>

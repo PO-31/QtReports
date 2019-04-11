@@ -5,52 +5,43 @@
     isPdfEmbedded="false" />
 
   <queryString>
-    <![CDATA[ select * from customers ]]>
+    <![CDATA[ select * from groups_t ]]>
   </queryString>
 
-  <field name="id" class="QString" />
-  <field name="firstname" class="QString" />
-  <field name="lastname" class="QString" />
-  <field name="city" class="QString" />
-  <field name="segment" class="QString" />
+  <field name="group_id" class="QString" />
+  <field name="group_name" class="QString" />
+  <field name="dep_id" class="QString" />
 
 <group name="first">
         <groupExpression class="QString">
-          <![CDATA[$F{firstname}]]>
+          <![CDATA[$F{group_id}]]>
         </groupExpression>
  </group>
-
   <detail>
-    <band height="400">
-      <staticText>
-        <reportElement x="380" y="0" width="200" height="20" />
-        <text><![CDATA[Тест !!]]></text>
-      </staticText>
+    <band height="30">
+      <rect>
+        <reportElement x="0" y="0" width="50" height="30" />
+      </rect>
       <textField>
-        <reportElement x="220" y="20" width="100" height="200" />
+        <reportElement x="0" y="0" width="50" height="30" />
         <textFieldExpression class="QString">
-          <![CDATA[$P{title}]]>
+          <![CDATA[$F{group_id}]]>
         </textFieldExpression>
       </textField>
+      <rect>
+        <reportElement x="51" y="0" width="100" height="30" />
+      </rect>
       <textField>
-        <reportElement x="0" y="0" width="50" height="20" />
-        <textFieldExpression class="QString">
-          <![CDATA[$F{id}]]>
-        </textFieldExpression>
+        <reportElement x="51" y="0" width="100" height="30" />
+        <textFieldExpression class="QString"> <![CDATA[$F{group_name}]]></textFieldExpression>
       </textField>
+      <rect>
+      <reportElement x="152" y="0" width="100" height="30" />
+    </rect>
       <textField>
-        <reportElement x="51" y="0" width="200" height="20" />
-        <textFieldExpression class="QString">
-          <![CDATA[$F{firstname}]]>
-        </textFieldExpression>
-      </textField>
-      <textField>
-        <reportElement x="252" y="0" width="200" height="20" />
-        <textFieldExpression class="QString">
-          <![CDATA[$F{lastname}]]>
-        </textFieldExpression>
+        <reportElement x="152" y="0" width="100" height="30" />
+        <textFieldExpression class="QString"> <![CDATA[$F{dep_id}]]></textFieldExpression>
       </textField>
     </band>
   </detail>
-
 </report>

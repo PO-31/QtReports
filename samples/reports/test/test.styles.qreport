@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<report name="sample_report">
+  <style name="Style1" isDefault="true" fontName="Arial"
+     fontColor = "red" fontSize="12" pdfFontName="c:\tahoma.ttf" pdfEncoding="Cp1251" isBold="true" isItalic="true"
+    isPdfEmbedded="true" />
+  <style name="Style2" fontName="Times New Roman"
+     fontColor = "blue" fontSize="12" pdfFontName="c:\tahoma.ttf" pdfEncoding="Cp1251"  isItalic="true" />
+  <style name="Style3" fontName="Calibri"
+     fontColor = "green" fontSize="12"  />
+
+<queryString>
+    <![CDATA[ select dep_id from groups_t ]]>
+</queryString>
+
+<field name="group_id" class="QString" />
+  <field name="group_name" class="QString" />
+  <field name="dep_id" class="QString" />
+
+  <detail>
+    <band height="50">  
+    <rect>
+        <reportElement x="0" y="0" width="100" height="30" />
+    </rect>
+      <textField>
+        <reportElement x="0" y="0" width="100" height="30" style = "Style1"/>
+        <text>Test Style1</text>
+      </textField>
+      <rect>
+        <reportElement x="101" y="0" width="100" height="30" />
+    </rect>
+      <textField>
+        <reportElement x="101" y="0" width="100" height="30" style = "Style2"/>
+        <text>Test Style2</text>
+      </textField>
+      <rect>
+        <reportElement x="202" y="0" width="100" height="30" />
+    </rect>
+      <textField>
+        <reportElement x="202" y="0" width="100" height="30" style = "Style3"/>
+        <text>Test Style3</text>
+      </textField>
+    </band>
+  </detail>
+
+</report>
