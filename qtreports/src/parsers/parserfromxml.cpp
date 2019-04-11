@@ -62,6 +62,9 @@ namespace qtreports
             m_functions["crosstabRowHeader"]    = toParseFunc(this, &ParserFromXML::parseCrosstabRowHeader);
             m_functions["crosstabColumnHeader"] = toParseFunc(this, &ParserFromXML::parseCrosstabColumnHeader);
             m_functions["cellContents"]         = toParseFunc(this, &ParserFromXML::parseCrosstabCellContents);
+            m_functions[ "variable" ] = toParseFunc( this, &ParserFromXML::parseVariable );
+            m_functions[ "variableExpression" ] = toParseFunc( this, &ParserFromXML::parseVariableExpression );
+            m_functions[ "initialValueExpression" ] = toParseFunc( this, &ParserFromXML::parseInitialValueExpression );
         }
 
         ParserFromXML::~ParserFromXML() {}
@@ -1076,6 +1079,120 @@ namespace qtreports
             image->setOriginalText( text );
             //image->setClassName( className );
 
+            return !reader.hasError();
+        }
+
+        bool ParserFromXML::parseVariable(QXmlStreamReader& reader, const ReportPtr &report)
+        {
+            QString variableName;
+            if( !getRequiredAttribute( reader, "name", variableName ) )
+            {
+                return false;
+            }
+
+            QString className;
+            if( !getRequiredAttribute( reader, "class", className ) )
+            {
+                className = "QString";
+            }
+
+            QString resetType;
+            if( !getRequiredAttribute( reader, "resetType", resetType ) )
+            {
+                resetType = "Report";
+            }
+
+            QString incrementType;
+            if( !getRequiredAttribute( reader, "incrementType", incrementType ) )
+            {
+                incrementType = "None";
+            }
+
+            QString resetGroup;
+            if( !getRequiredAttribute( reader, "resetGroup", resetGroup ) )
+            {
+                resetGroup = QString();
+            }
+
+            QString incrementGroup;
+            if( !getRequiredAttribute( reader, "incrementGroup", incrementGroup ) )
+            {
+                incrementGroup = QString();
+            }
+
+            QString calculation;
+            if( !getRequiredAttribute( reader, "calculation", calculation ) )
+            {
+                return false;
+            }
+
+            VariablePtr variable( new Variable() );
+            variable->setTagName( "variable" );
+            variable->setName( variableName );
+            variable->setClassName( className );
+            variable->setResetGroup( resetGroup );
+            variable->setIncrementGroup( incrementGroup );
+
+            if (resetType == "None") {
+                variable->setResetType(VariableResetType::None);
+            } else if (resetType == "Report") {
+                variable->setResetType(VariableResetType::Report);
+            } else if (resetType == "Page") {
+                variable->setResetType(VariableResetType::Page);
+            } else if (resetType == "Column") {
+                variable->setResetType(VariableResetType::Column);
+            } else if (resetType == "Group") {
+                variable->setResetType(VariableResetType::Group);
+            }
+
+            if (incrementType == "None") {
+                variable->setIncrementType(VariableIncrementType::None);
+            } else if (incrementType == "Report") {
+                variable->setIncrementType(VariableIncrementType::Report);
+            } else if (incrementType == "Page") {
+                variable->setIncrementType(VariableIncrementType::Page);
+            } else if (incrementType == "Column") {
+                variable->setIncrementType(VariableIncrementType::Column);
+            } else if (incrementType == "Group") {
+                variable->setIncrementType(VariableIncrementType::Group);
+            }
+
+            if (calculation == "Count") {
+                variable->setCalculation(VariableCalculation::Count);
+            } else if (calculation == "Sum") {
+                variable->setCalculation(VariableCalculation::Sum);
+            } else if (calculation == "Average") {
+                variable->setCalculation(VariableCalculation::Average);
+            } else if (calculation == "Lowest") {
+                variable->setCalculation(VariableCalculation::Lowest);
+            } else if (calculation == "Highest") {
+                variable->setCalculation(VariableCalculation::Highest);
+            }
+            report->addVaraible(variable);
+            if( !parseChilds( reader, variable ) )
+            {
+                return false;
+            }
+            return !reader.hasError();
+        }
+
+        bool ParserFromXML::parseVariableExpression(QXmlStreamReader &reader, const VariablePtr &variable)
+        {
+            QString text;
+            if (!getValue(reader, text)) {
+                return false;
+            }
+            variable->setExpression(text);
+            return !reader.hasError();
+        }
+
+        bool ParserFromXML::parseInitialValueExpression(QXmlStreamReader &reader, const VariablePtr &variable)
+        {
+            QString text;
+            if (!getValue(reader, text)) {
+                return false;
+            }
+            variable->setValue(text);
             return !reader.hasError();
         }
 

@@ -276,5 +276,32 @@ namespace qtreports
             return m_groups.value( m_groups.keys().value( index ) );
         }
 
+        void Report::addVaraible(const VariablePtr &variable)
+        {
+            m_variables[variable->getName()] = variable;
+        }
+
+        const VariablePtr Report::getVariable(const QString & name) const
+        {
+            return m_variables.value(name);
+        }
+
+        const QMap<QString, VariablePtr>& Report::getVariables() const
+        {
+            return m_variables;
+        }
+
+        void Report::swapRows(int row1, int row2, QVector<bool> &vec)
+        {
+            for(auto && field : m_fields) {
+                QVariant temp = field.data()->getDataVar(row1);
+                field.data()->setDataVar(row1, field.data()->getDataVar(row2));
+                field.data()->setDataVar(row2, temp);
+            }
+
+            bool tempVec = vec[row1];
+            vec[row2] = vec[row1];
+            vec[row1] = tempVec;
+        }
     }
 }
