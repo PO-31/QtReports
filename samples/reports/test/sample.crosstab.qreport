@@ -33,7 +33,7 @@
 			<crosstabRowHeader>
 				<cellContents>
 					<textField>
-						<reportElement x="0" y="0" width="130" height="20"/>
+						<reportElement x="3" y="3" width="130" height="20"/>
 						<textFieldExpression class="QString"><![CDATA[$F{row}]]></textFieldExpression>
 					</textField>
 				</cellContents>
@@ -43,7 +43,7 @@
 			<crosstabColumnHeader>
 				<cellContents>
 					<textField>
-						<reportElement x="0" y="0" width="30" height="20"/>
+						<reportElement x="3" y="3" width="30" height="20"/>
 						<textFieldExpression class="Integer"><![CDATA[$F{column}]]></textFieldExpression>
 					</textField>
 				</cellContents>
@@ -52,7 +52,7 @@
 		<crosstabCell width="60" height="20">
 			<cellContents>
 				<textField>
-					<reportElement x="0" y="0" width="60" height="20"/>
+					<reportElement x="3" y="3" width="60" height="20"/>
 					<textFieldExpression class="QString"><![CDATA[$F{cell}]]></textFieldExpression>
 				</textField>
 			</cellContents>

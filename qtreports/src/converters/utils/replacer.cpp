@@ -132,25 +132,81 @@ namespace qtreports
 
         bool Replacer::replaceRowGroupsInCrosstab(const CrosstabPtr & crosstab, const ReportPtr & report, QList<QString> & rowGroups)
         {
+            replaceRowGroupInCrosstab(crosstab, report, 0);
+            QList<QString> oldValues;
+            QString value = crosstab->getRowGroup()->getHeader()->getCellContents()->getTextField()->getText();
+            rowGroups.append(value);
+            oldValues.append(value);
             for(int i = 0; i < report->getFieldsDataCount(); i++)
             {
                 replaceRowGroupInCrosstab(crosstab, report, i);
-                rowGroups.append(crosstab->getRowGroup()->getHeader()->getCellContents()->getTextField()->getText());
+                value = crosstab->getRowGroup()->getHeader()->getCellContents()->getTextField()->getText();
+                if(!oldValues.contains(value))
+                {
+                    oldValues.append(value);
+                    rowGroups.append(value);
+                }
             }
-            QSet<QString> uniqueGroups = rowGroups.toSet();
-            rowGroups = uniqueGroups.toList();
             return true;
         }
 
         bool Replacer::replaceColumnGroupsInCrosstab(const CrosstabPtr & crosstab, const ReportPtr & report, QList<QString> & columnGroups)
         {
+            replaceColumnGroupInCrosstab(crosstab, report, 0);
+            QList<QString> oldValues;
+            QString value = crosstab->getColumnGroup()->getHeader()->getCellContents()->getTextField()->getText();
+            columnGroups.append(value);
+            oldValues.append(value);
             for(int i = 0; i < report->getFieldsDataCount(); i++)
             {
                 replaceColumnGroupInCrosstab(crosstab, report, i);
-                columnGroups.append(crosstab->getColumnGroup()->getHeader()->getCellContents()->getTextField()->getText());
+                value = crosstab->getColumnGroup()->getHeader()->getCellContents()->getTextField()->getText();
+                if(!oldValues.contains(value))
+                {
+                    oldValues.append(value);
+                    columnGroups.append(value);
+                }
             }
-            QSet<QString> uniqueGroups = columnGroups.toSet();
-            columnGroups = uniqueGroups.toList();
+            return true;
+        }
+
+        bool Replacer::replaceCellsInCrosstab(const CrosstabPtr & crosstab, const ReportPtr & report, QList<QString> & cells)
+        {
+            QList<QString> uniqueRowValues;
+            replaceRowGroupsInCrosstab(crosstab, report, uniqueRowValues);
+
+            QList<QString> uniqueColValues;
+            replaceColumnGroupsInCrosstab(crosstab, report, uniqueColValues);
+
+            auto mapField = report->getFields();
+
+            auto colGroup = crosstab->getColumnGroup();
+            QString colName = colGroup->getHeader()->getCellContents()->getTextField()->getOriginalText();
+            colName = colName.replace("$", "").replace("F", "").replace("{", "").replace("}", "");
+
+            QString cellName = crosstab->getCrosstabCell()->getCellContents()->getTextField()->getOriginalText();
+            cellName = cellName.replace("$", "").replace("F", "").replace("{", "").replace("}", "");
+
+            int mapCount = 0;
+            for (int i = 0; i < uniqueRowValues.size(); i++)
+            {
+                auto row = uniqueRowValues[i];
+                for(int j = 0; j < uniqueColValues.size(); j++)
+                {
+                    auto columnValue = mapField.value(colName)->getData(mapCount);
+
+                    if(columnValue != uniqueColValues[j])
+                        cells.append("");
+                    else
+                    {
+                        replaceCellInCrosstab(crosstab, report, mapCount);
+                        auto text = mapField.value(cellName)->getData(mapCount);
+                        cells.append(text);
+                        mapCount++;
+                    }
+                }
+            }
+
             return true;
         }
 
@@ -174,8 +230,8 @@ namespace qtreports
 
         bool Replacer::replaceCellInCrosstab(const CrosstabPtr & crosstab, const ReportPtr & report, int i)
         {
-            auto cellText     = crosstab->getCrosstabCell()->getCellContents()->getTextField()->getOriginalText();
-            auto cellReplacedText     = replaceField(cellText, report, i);
+            auto cellText = crosstab->getCrosstabCell()->getCellContents()->getTextField()->getOriginalText();
+            auto cellReplacedText = replaceField(cellText, report, i);
             crosstab->getCrosstabCell()->getCellContents()->getTextField()->setText(cellReplacedText);
 
             return true;

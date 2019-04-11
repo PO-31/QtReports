@@ -78,6 +78,8 @@ namespace qtreports
 
             bool replaceColumnGroupInCrosstab(const CrosstabPtr & crosstab, const ReportPtr & report, int i);
 
+            bool replaceCellsInCrosstab(const CrosstabPtr & crosstab, const ReportPtr & report, QList<QString> & cells);
+
             bool replaceCellInCrosstab(const CrosstabPtr & crosstab, const ReportPtr & report, int i);
 
             /*! @~russian

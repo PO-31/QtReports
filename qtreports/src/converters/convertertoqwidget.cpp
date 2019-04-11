@@ -571,6 +571,9 @@ namespace qtreports
                         QList<QString> rowGroups;
                         replacer.replaceRowGroupsInCrosstab(crosstab, m_report, rowGroups);
 
+                        QList<QString> cells;
+                        replacer.replaceCellsInCrosstab(crosstab, m_report, cells);
+
                         QRect crosstabRect = crosstab->getRect();
 
                         auto crosstabAligment = crosstab->getAlignment();
@@ -628,9 +631,10 @@ namespace qtreports
                             labelRow->setText(rowGroups[i]);
                         }
 
-                        //FIXME поменять на нормальный обработчик ячеек
                         int cellX = crosstabRect.x();
                         int cellY = crosstabRect.y();
+
+                        int cellCount = 0;
                         for (int i = 0; i < rowGroups.size(); i++)
                         {
                             cellX += emptyRect.width();
@@ -648,8 +652,11 @@ namespace qtreports
                                 labelCell->setStyleSheet("background-color: transparent; " + style);
                                 labelCell->setGeometry(cellRect);
                                 labelCell->setAlignment(cell->getCellContents()->getAlignment());
-                                labelCell->setText(cell->getCellContents()->getTextField()->getOriginalText());
 
+                                auto text = cells[cellCount];
+                                labelCell->setText(text);
+
+                                cellCount++;
                                 cellX += cell->getWidth();
                             }
                             cellX = crosstabRect.x();

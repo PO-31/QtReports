@@ -211,9 +211,11 @@ namespace qtreports {
                     QList<QString> rowGroups;
                     replacer.replaceRowGroupsInCrosstab(crosstab, m_report, rowGroups);
 
+                    QList<QString> cells;
+                    replacer.replaceCellsInCrosstab(crosstab, m_report, cells);
+
                     QRect crosstabRect = crosstab->getRect();
 
-                    auto crosstabAligment = crosstab->getAlignment();
                     auto rowGroup = crosstab->getRowGroup();
                     auto colGroup = crosstab->getColumnGroup();
                     auto cell     = crosstab->getCrosstabCell();
@@ -283,9 +285,9 @@ namespace qtreports {
                         painter.drawRect(rowRect);
                     }
 
-                    //FIXME поменять на нормальный обработчик ячеек
                     int cellX = crosstabRect.x();
                     int cellY = crosstabRect.y();
+                    int cellCount = 0;
                     for (int i = 0; i < rowGroups.size(); i++)
                     {
                         cellX += emptyRect.width();
@@ -306,7 +308,7 @@ namespace qtreports {
                             int y = cellY + cell->getCellContents()->getTextField()->getY();
                             int w = cell->getCellContents()->getTextField()->getWidth();
                             int h = cell->getCellContents()->getTextField()->getHeight();
-                            painter.drawText(x, y + m_currentHeight, w, h, alignment, cell->getCellContents()->getTextField()->getOriginalText());
+                            painter.drawText(x, y + m_currentHeight, w, h, alignment, cells[cellCount]);
 
                             QRect cellRect = QRect();
                             cellRect.setX(cellX);
@@ -315,6 +317,7 @@ namespace qtreports {
                             cellRect.setHeight(cell->getHeight());
                             painter.drawRect(cellRect);
 
+                            cellCount++;
                             cellX += cell->getWidth();
                         }
                         cellX = crosstabRect.x();
