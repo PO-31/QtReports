@@ -22,6 +22,7 @@
 #include "../tags/ellipse.hpp"
 #include "../tags/image.hpp"
 #include "../tags/crosstab.hpp"
+#include "../tags/variable.hpp"
 
 namespace qtreports {
     namespace detail {
@@ -225,7 +226,7 @@ namespace qtreports {
             bool    parseStaticText( QXmlStreamReader & reader, const BandPtr & band );
             /*! @~russian
             Парсит тэг TextField
-            @param[in] band Строка, которой принадлежит объект
+            @param[in] band Строка, которой принадлежит объектVariablePtr
             */
             bool    parseTextField( QXmlStreamReader & reader, const WidgetPtr & widget );
             /*! @~russian
@@ -278,6 +279,12 @@ namespace qtreports {
             @param[in] image тэг image, текущий объект
             */
             bool    parseImageExpression( QXmlStreamReader & reader, const ImagePtr & image );
+
+            bool    parseVariable( QXmlStreamReader & reader, const ReportPtr & report );
+
+            bool    parseVariableExpression(QXmlStreamReader & reader, const VariablePtr &variable );
+
+            bool    parseInitialValueExpression( QXmlStreamReader & reader, const VariablePtr & variable );
 
         };
 

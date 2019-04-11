@@ -18,6 +18,7 @@
 #include "title.hpp"
 #include "detail.hpp"
 #include "summary.hpp"
+#include "variable.hpp"
 
 namespace qtreports {
     namespace detail {
@@ -295,20 +296,44 @@ namespace qtreports {
             */
             GroupPtr        getGroupByIndex(int index);
 
+            /*! @~russian
+            Добавляет <variable> в <report>
+            @param[in] variable Указатель на <variable>
+            */
+            void addVaraible(const VariablePtr& variable);
+
+            /*! @~russian
+            Возвращает указатель на <variable> по имени
+            @param[in] name Имя переменной
+            */
+            const VariablePtr getVariable(const QString& name) const;
+
+            /*! @~russian
+            Возвращает карту указателей на <variable>
+            */
+            const QMap<QString, VariablePtr>& getVariables() const;
+
+            /*! @~russian
+            Сформировать таблицу соответствия групп и строк.
+            */
+            void fillGroupsData();
+
         private:
-            QPrinter::Orientation	    m_orientation;
-            QSize	                    m_size;
-            QMargins                    m_margins;
-            StylePtr                    m_defaultStyle;
-            QMap< QString, StylePtr >   m_styles;
-            QString                     m_query;
-            QMap< QString, FieldPtr >   m_fields;
-            QMap< QString, GroupPtr >   m_groups;
-            TitlePtr                    m_title;
-            DetailPtr                   m_detail;
-            SummaryPtr                  m_summary;
-            QMap< QString, QVariant >   m_parameters;
-            QVector<bool>               m_group_vec;
+            QPrinter::Orientation	        m_orientation;
+            QSize	                        m_size;
+            QMargins                        m_margins;
+            StylePtr                        m_defaultStyle;
+            QMap< QString, StylePtr >       m_styles;
+            QString                         m_query;
+            QMap< QString, FieldPtr >       m_fields;
+            QMap< QString, GroupPtr >       m_groups;
+            TitlePtr                        m_title;
+            DetailPtr                       m_detail;
+            SummaryPtr                      m_summary;
+            QMap< QString, QVariant >       m_parameters;
+            QMap< QString, VariablePtr >    m_variables;
+            QMap< QString, QVector<int>>    m_groupsData;
+            QVector<bool>                   m_group_vec;
 
         };
         typedef QSharedPointer< Report > ReportPtr;

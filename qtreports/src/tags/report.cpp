@@ -1,4 +1,5 @@
 #include "report.hpp"
+#include "src/converters/utils/replacer.hpp"
 
 namespace qtreports
 {
@@ -276,5 +277,47 @@ namespace qtreports
             return m_groups.value( m_groups.keys().value( index ) );
         }
 
+        void Report::addVaraible(const VariablePtr &variable)
+        {
+            m_variables[variable->getName()] = variable;
+        }
+
+        const VariablePtr Report::getVariable(const QString & name) const
+        {
+            return m_variables.value(name);
+        }
+
+        const QMap<QString, VariablePtr>& Report::getVariables() const
+        {
+            return m_variables;
+        }
+
+        void Report::fillGroupsData()
+        {
+            detail::Replacer replacer;
+
+            QList<GroupPtr> groups = getGroups().values();
+            ReportPtr thisPtr(this);
+
+            int rowCount = getRowCount();
+            for (auto group : groups) {
+                auto expression = group->getExpression();
+                if (expression.isEmpty()) {
+                    continue;
+                }
+                expression = expression.replace('\n', "", Qt::CaseInsensitive);
+                expression = expression.replace('\t', "", Qt::CaseInsensitive);
+
+                m_groupsData[expression].append(0);
+                auto value = replacer.replaceField(expression, thisPtr, 0);
+                for (int i = 1; i < rowCount; i++) {
+                    auto newValue = replacer.replaceField(expression, thisPtr, i);
+                    if (value != newValue) {
+                        value = newValue;
+                        m_groupsData[expression].append(i);
+                    }
+                }
+            }
+        }
     }
 }
