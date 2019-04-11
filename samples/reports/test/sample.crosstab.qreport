@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<report name="sample_report" orientation="Landscape">
+  <style name="Arial_Normal" isDefault="true" fontName="Arial"
+    fontSize="12" pdfFontName="c:\tahoma.ttf" pdfEncoding="Cp1251"
+    isPdfEmbedded="false" />
+
+  <queryString>
+    <![CDATA[ select row, column, cell from cttable;]]>
+  </queryString>
+
+  <field name="row" class="QString" />
+  <field name="column" class="Integer" />
+  <field name="cell" class="QString" />
+
+  <title>
+    <band height="35">
+      <staticText>
+        <reportElement x="10" y="10" width="150" height="20" />
+        <text><![CDATA[$P{title}]]></text>
+      </staticText>
+      <rect>
+        <reportElement x="0" y="0" width="580" height="35" />
+      </rect>
+    </band>
+  </title>
+  <detail>
+  </detail>
+  <summary>
+	<band height="360">
+	<crosstab>
+		<reportElement x="0" y="0" width="360" height="60"/>
+		<rowGroup name="row" width="130">
+			<crosstabRowHeader>
+				<cellContents>
+					<textField>
+						<reportElement x="0" y="0" width="130" height="20"/>
+						<textFieldExpression class="QString"><![CDATA[$F{row}]]></textFieldExpression>
+					</textField>
+				</cellContents>
+			</crosstabRowHeader>
+		</rowGroup>
+		<columnGroup name="column" height="20">
+			<crosstabColumnHeader>
+				<cellContents>
+					<textField>
+						<reportElement x="0" y="0" width="30" height="20"/>
+						<textFieldExpression class="Integer"><![CDATA[$F{column}]]></textFieldExpression>
+					</textField>
+				</cellContents>
+			</crosstabColumnHeader>
+		</columnGroup>
+		<crosstabCell width="60" height="20">
+			<cellContents>
+				<textField>
+					<reportElement x="0" y="0" width="60" height="20"/>
+					<textFieldExpression class="QString"><![CDATA[$F{cell}]]></textFieldExpression>
+				</textField>
+			</cellContents>
+		</crosstabCell>
+	</crosstab>
+</band>
+  </summary>
+
+</report>
