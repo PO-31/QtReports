@@ -94,27 +94,38 @@ namespace qtreports {
             @return @code{.cpp} true @endcode если добавление прошло успешно.
             @return @code{.cpp} false @endcode если добавление не удалось.
             */
-            bool        addGroupsIntoReport(QSharedPointer<Detail> detail);
+            bool        addGroupsIntoReport(DetailPtr detail);
 
             /*! @~russian
-            Добавление <band>, принадлежащего конкретной <section>,  в документ HTML.
+            Добавление <band> в документ HTML.
 
-            @param[in] section Ссылка на объект Section. Может указывать на такие секции, как:
-             * @code{.cpp} title, header, footer, detail @endcode
+            @param[in] section Ссылка на объект Section, который содержит объект Band.
+            Может указывать на такие секции, как:
+            @code{.cpp} title, header, footer, detail @endcode
             @param[in] sectionIndex Индекс конкретной секции.
 
             @return @code{.cpp} true @endcode если добавление прошло успешно.
             @return @code{.cpp} false @endcode если добавление не удалось.
             */
-            bool        addBands(QSharedPointer<Section> section, int sectionIndex);
+            bool        addBand(SectionPtr section, int sectionIndex);
 
             /*! @~russian
-            Добавление <shape>, принадлежащего конретному <band>, в документ HTML.
+            Добавление объекта Shape в документ HTML.
 
-            @param[in] band Ссылка на объект Band.
+            @param[in] band Ссылка на объект Band, который содержит объект Shape:
+            @code{.cpp} image, line, rect, ellipse @endcode
             @param[out] elemenStr Строка с содержимым band.
             */
-            void        addShapes(QSharedPointer<Band> band, QString &elementStr);
+            void        addShapes(BandPtr band, QString &elementStr);
+
+            /*! @~russian
+            Добавление объектов Crosstab в документ HTML.
+            @param[in] band Ссылка на объект Band, который содержит объекты Crosstab.
+            @param[out] elemenStr Строка с содержимым band.
+            @return @code{.cpp} true @endcode если добавление прошло успешно.
+            @return @code{.cpp} false @endcode если добавление не удалось.
+            */
+            bool        addCrosstabsIntoReport(BandPtr band, QString &elementStr);
         };
 
     }

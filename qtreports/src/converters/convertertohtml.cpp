@@ -166,7 +166,7 @@ namespace qtreports {
             if(!title.isNull())
             {
                 m_html += "   <div class='title'>\n";       // Start of <div class='title'>
-                addBands(title, 0);
+                addBand(title, 0);
                 m_html += "   </div>\n";                    // End of <div class = 'title'>
             }
 
@@ -189,7 +189,7 @@ namespace qtreports {
             {
                 m_html += "   <div class='summary'>\n";       // Start of <div class='summary'>
                 int lastField = m_report->getFieldsDataCount() - 1;
-                addBands(summary, lastField);
+                addBand(summary, lastField);
                 m_html += "   </div>\n";                    // End of <div class = 'summary'>
             }
 
@@ -198,7 +198,7 @@ namespace qtreports {
             return true;
         }
 
-        bool ConverterToHTML::addGroupsIntoReport(QSharedPointer<Detail> detail)
+        bool ConverterToHTML::addGroupsIntoReport(DetailPtr detail)
         {
             detail::Replacer replacer;
 
@@ -242,7 +242,7 @@ namespace qtreports {
                 auto header = groups[i]->getHeader();
                 if (!header.isNull())
                 {
-                    if(!addBands(header, 0))
+                    if(!addBand(header, 0))
                     {
                         return false;
                     }
@@ -263,7 +263,7 @@ namespace qtreports {
                         auto footer = m_report->getGroupByIndex(j)->getFooter();
                         if (!footer.isNull())
                         {
-                            if(!addBands(footer, i - 1))
+                            if(!addBand(footer, i - 1))
                             {
                                 return false;
                             }
@@ -279,7 +279,7 @@ namespace qtreports {
                         auto header = m_report->getGroupByIndex(j)->getHeader();
                         if (!header.isNull())
                         {
-                            if(!addBands(header, i))
+                            if(!addBand(header, i))
                             {
                                 return false;
                             }
@@ -292,7 +292,7 @@ namespace qtreports {
                     particularNames[j] = replacer.replaceField(groupNames[j], m_report, i);
                 }
                 //Выводим поле
-                if(!addBands(detail, i))
+                if(!addBand(detail, i))
                 {
                     return false;
                 }
@@ -303,7 +303,7 @@ namespace qtreports {
                 auto footer = groups[i]->getFooter();
                 if (!footer.isNull())
                 {
-                    if(!addBands(footer, (rowCount - 1)))
+                    if(!addBand(footer, (rowCount - 1)))
                     {
                         return false;
                     }
@@ -312,7 +312,7 @@ namespace qtreports {
             return true;
         }
 
-        bool ConverterToHTML::addBands(QSharedPointer<Section> section, int sectionIndex)
+        bool ConverterToHTML::addBand(SectionPtr section, int sectionIndex)
         {
             detail::Replacer replacer;
             if(!replacer.replace(section, m_report, sectionIndex))
@@ -367,46 +367,6 @@ namespace qtreports {
                     }
                 }
 
-                for(auto && crosstab : band->getCrosstabs())
-                {
-                    //if (textField->getText() != "")
-                    //{
-                        QString textAlignment = "left";
-                        QString verticalAlignment = "middle";
-
-                        if ((crosstab->getAlignment() & Qt::AlignLeft) == Qt::AlignLeft)
-                            textAlignment = "left";
-                        if ((crosstab->getAlignment() & Qt::AlignRight) == Qt::AlignRight)
-                            textAlignment = "right";
-                        if ((crosstab->getAlignment() & Qt::AlignHCenter) == Qt::AlignHCenter)
-                            textAlignment = "center";
-                        if ((crosstab->getAlignment() & Qt::AlignJustify) == Qt::AlignJustify)
-                            textAlignment = "justify";
-
-                        if ((crosstab->getAlignment() & Qt::AlignTop) == Qt::AlignTop)
-                            verticalAlignment = "top";
-                        if ((crosstab->getAlignment() & Qt::AlignBottom) == Qt::AlignBottom)
-                            verticalAlignment = "bottom";
-                        if ((crosstab->getAlignment() & Qt::AlignVCenter) == Qt::AlignVCenter)
-                            verticalAlignment = "middle";
-                        //if ((textField->getAlignment() & Qt::AlignBaseline) == Qt::AlignBaseline)
-                        //    verticalAlignment = "baseline";
-
-
-                        elementStr += QString("     <div class='textfield " + m_defaultStyleName + "' "
-                           "style='left: %1px; top: %2px; "
-                           "width: %3px; height: %4px; "
-                           "text-align: %5; vertical-align: %6'>%7</div>\n")
-                           .arg(crosstab->getX())
-                           .arg(crosstab->getY())
-                           .arg(200)
-                           .arg(100)
-                           .arg(textAlignment)
-                           .arg(verticalAlignment)
-                           .arg("<<<ЭТО КРОССТАБ>>>");
-                    //}
-                }
-
                 for(auto && staticText : band->getStaticTexts())
                 {
                     if (staticText->getText() != "")
@@ -447,6 +407,8 @@ namespace qtreports {
                 }
 
                 addShapes(band, elementStr);
+                addCrosstabsIntoReport(band, elementStr);
+
                 bandStr += QString("    <div class='band' "
                         "style='height: %1px'>\n%2    </div>\n")
                         .arg(band->getSize().height())
@@ -458,7 +420,7 @@ namespace qtreports {
             return true;
         }
 
-        void ConverterToHTML::addShapes(QSharedPointer<Band> band, QString &elementStr)
+        void ConverterToHTML::addShapes(BandPtr band, QString &elementStr)
         {
             for (auto && image : band->getImages())
             {
@@ -585,6 +547,77 @@ namespace qtreports {
                     .arg(ellipse->getWidth() / 2)
                     .arg(ellipse->getHeight() / 2);
             }
+        }
+
+        bool ConverterToHTML::addCrosstabsIntoReport(BandPtr band, QString &elementStr)
+        {
+            if(m_report->getFields().size() < 3)
+            {
+                return false;
+            }
+
+            for(auto && crosstab : band->getCrosstabs())
+            {
+                detail::Replacer replacer;
+
+                QList<QString> colGroups;
+                replacer.replaceColumnGroupsInCrosstab(crosstab, m_report, colGroups);
+
+                QList<QString> rowGroups;
+                replacer.replaceRowGroupsInCrosstab(crosstab, m_report, rowGroups);
+
+                QList<QString> cells;
+                replacer.replaceCellsInCrosstab(crosstab, m_report, cells);
+
+                auto rowGroup = crosstab->getRowGroup();
+                auto colGroup = crosstab->getColumnGroup();
+                auto cell     = crosstab->getCrosstabCell();
+
+                QString tableBody = "";
+                QString tableRow = QString("				<th style='border: 0.5px solid black; width: %1px; height: %2px;'></th>\n")
+                                   .arg(rowGroup->getWidth())
+                                   .arg(colGroup->getHeight());
+                for (int i = 0; i < colGroups.size(); i++)
+                {
+                    tableRow += QString("				<th style='border: 0.5px solid black;"
+                                        " width: %1px'>" + colGroups[i] + "</th>\n")
+                                        .arg(cell->getWidth());
+                }
+                tableBody += QString("			<tr>\n%1			</tr>\n").arg(tableRow);
+
+                tableRow = "";
+                int cellCount = 0;
+                for (int i = 0; i < rowGroups.size(); i++)
+                {
+                    tableRow += QString("				<th style='border: 0.5px solid black;"
+                                        " height: %1px'>" + rowGroups[i] + "</th>\n")
+                                        .arg(cell->getHeight());
+                    for(int i = 0; i < colGroups.size(); i++)
+                    {
+                        auto text = cells[cellCount];
+                        tableRow += "				<td style='border: 0.5px solid black;'>"
+                                 + text + "</th>\n";
+                        cellCount++;
+                    }
+                    tableBody += QString("			<tr>\n%1			</tr>\n").arg(tableRow);
+                    tableRow = "";
+                }
+
+
+                elementStr += QString("		<table class ='crosstab " + m_defaultStyleName + "'"
+                                      " cellspacing=0 "
+                                      "style='left: %1px; top: %2px; "
+                                      "width: %3px; height: %4px; "
+                                      "border: 0.5px solid black;'>"
+                                      "\n%5		</table>\n")
+                                      .arg(crosstab->getRect().x())         // x
+                                      .arg(crosstab->getRect().y())         // y
+                                      .arg(crosstab->getRect().width())     // width
+                                      .arg(crosstab->getRect().height())    // height
+                                      .arg(tableBody);                      // table body
+
+            }
+            return true;
         }
 
         const QString   ConverterToHTML::getLastError() const {
