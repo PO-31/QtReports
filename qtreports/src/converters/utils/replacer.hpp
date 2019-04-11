@@ -70,6 +70,16 @@ namespace qtreports
             */
             QImage  replaceFieldImage(const QString & text, const ReportPtr & report, int i);
 
+            bool replaceColumnGroupsInCrosstab(const CrosstabPtr & crosstab, const ReportPtr & report, QList<QString> & columnGroups);
+
+            bool replaceRowGroupsInCrosstab(const CrosstabPtr & crosstab, const ReportPtr & report, QList<QString> & rowGroups);
+
+            bool replaceRowGroupInCrosstab(const CrosstabPtr & crosstab, const ReportPtr & report, int i);
+
+            bool replaceColumnGroupInCrosstab(const CrosstabPtr & crosstab, const ReportPtr & report, int i);
+
+            bool replaceCellInCrosstab(const CrosstabPtr & crosstab, const ReportPtr & report, int i);
+
             /*! @~russian
             Заменяет текст виджета текстом с подставленными значениями полей из источника данных.
             Перегружанная функция, предоставленная для удобства.

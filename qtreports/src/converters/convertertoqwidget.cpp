@@ -4,6 +4,7 @@
 #include <QLabel>
 #include <QPainter>
 #include <QDebug>
+#include <QList>
 
 #include "utils/replacer.hpp"
 
@@ -129,8 +130,6 @@ namespace qtreports
 
             auto centerFrame = new QFrame();
             centerFrame->setFixedHeight(height);
-
-
 
             auto rightFrame = new QFrame();
             rightFrame->setFixedHeight(height);
@@ -484,6 +483,178 @@ namespace qtreports
                     label->setStyleSheet("background-color: transparent; " + style);
                     label->setGeometry(ellipse->getRect());
                     label->setAlignment(ellipse->getAlignment());
+                }
+                for(auto && crosstab : band->getCrosstabs())
+                {
+                    if(isLayout())
+                    {
+                        /*
+                         * +---------+---------+
+                         * |_________|_$F{col}_|
+                         * |_$F{row}_|$F{cell}_|
+                         * +-------------------+
+                        */
+                        auto labelEmpty = new QLabel(frame);
+                        auto labelRow   = new QLabel(frame);
+                        auto labelCol   = new QLabel(frame);
+                        auto labelCell  = new QLabel(frame);
+                        QString style = "";
+                        if(isLayout())
+                        {
+                            style += "border: 1px solid gray; ";
+                        }
+                        auto crosstabAligment = crosstab->getAlignment();
+                        auto rowGroup = crosstab->getRowGroup();
+                        auto colGroup = crosstab->getColumnGroup();
+                        auto cell     = crosstab->getCrosstabCell();
+
+                        QRect crosstabRect = crosstab->getRect();
+
+                        QRect emptyRect = QRect();
+                        emptyRect.setX(crosstabRect.x());
+                        emptyRect.setY(crosstabRect.y());
+                        emptyRect.setWidth(rowGroup->getWidth());
+                        emptyRect.setHeight(cell->getHeight());
+
+                        QRect colRect = QRect();
+                        colRect.setX(emptyRect.x() + emptyRect.width());
+                        colRect.setY(crosstabRect.y());
+                        colRect.setWidth(cell->getWidth());
+                        colRect.setHeight(colGroup->getHeight());
+
+                        QRect rowRect = QRect();
+                        rowRect.setX(crosstabRect.x());
+                        rowRect.setY(emptyRect.y() + emptyRect.height());
+                        rowRect.setWidth(rowGroup->getWidth());
+                        rowRect.setHeight(cell->getHeight());
+
+                        QRect cellRect = QRect();
+                        cellRect.setX(colRect.x());
+                        cellRect.setY(rowRect.y());
+                        cellRect.setWidth(cell->getWidth());
+                        cellRect.setHeight(cell->getHeight());
+
+                        auto textFieldRow  = crosstab->getRowGroup()->getHeader()->getCellContents()->getTextField();
+                        auto textFieldCol  = crosstab->getColumnGroup()->getHeader()->getCellContents()->getTextField();
+                        auto textFieldCell = crosstab->getCrosstabCell()->getCellContents()->getTextField();
+
+                        auto textRow  = textFieldRow->getOriginalText();
+                        auto textCol  = textFieldCol->getOriginalText();
+                        auto textCell = textFieldCell->getOriginalText();
+
+                        labelEmpty->setStyleSheet("background-color: transparent; " + style);
+                        labelEmpty->setGeometry(emptyRect);
+                        labelEmpty->setAlignment(crosstabAligment);
+
+                        labelRow->setStyleSheet("background-color: transparent; " + style);
+                        labelRow->setGeometry(rowRect);
+                        labelRow->setAlignment(crosstabAligment);
+                        labelRow->setText(textRow);
+
+                        labelCol->setStyleSheet("background-color: transparent; " + style);
+                        labelCol->setGeometry(colRect);
+                        labelCol->setAlignment(crosstabAligment);
+                        labelCol->setText(textCol);
+
+                        labelCell->setStyleSheet("background-color: transparent; " + style);
+                        labelCell->setGeometry(cellRect);
+                        labelCell->setAlignment(crosstabAligment);
+                        labelCell->setText(textCell);
+                    }
+                    else
+                    {
+                        detail::Replacer replacer;
+
+                        QList<QString> colGroups;
+                        replacer.replaceColumnGroupsInCrosstab(crosstab, m_report, colGroups);
+
+                        QList<QString> rowGroups;
+                        replacer.replaceRowGroupsInCrosstab(crosstab, m_report, rowGroups);
+
+                        QRect crosstabRect = crosstab->getRect();
+
+                        auto crosstabAligment = crosstab->getAlignment();
+                        auto rowGroup = crosstab->getRowGroup();
+                        auto colGroup = crosstab->getColumnGroup();
+                        auto cell     = crosstab->getCrosstabCell();
+
+                        auto labelEmpty = new QLabel(frame);
+                        QRect emptyRect = QRect();
+                        emptyRect.setX(crosstabRect.x());
+                        emptyRect.setY(crosstabRect.y());
+                        emptyRect.setWidth(rowGroup->getWidth());
+                        emptyRect.setHeight(cell->getHeight());
+
+                        QString style = "border: 1px solid gray;";
+                        labelEmpty->setStyleSheet("background-color: transparent; " + style);
+                        labelEmpty->setGeometry(emptyRect);
+                        labelEmpty->setAlignment(crosstabAligment);
+
+                        int colX = crosstabRect.x() + emptyRect.width();
+                        for (int i = 0; i < colGroups.size(); i++)
+                        {
+                            auto labelCol = new QLabel(frame);
+
+                            QRect colRect = QRect();
+                            colRect.setX(colX);
+                            colRect.setY(crosstabRect.y());
+                            colRect.setWidth(cell->getWidth());
+                            colRect.setHeight(colGroup->getHeight());
+
+                            labelCol->setStyleSheet("background-color: transparent; " + style);
+                            labelCol->setGeometry(colRect);
+                            labelCol->setAlignment(colGroup->getHeader()->getCellContents()->getAlignment());
+                            labelCol->setText(colGroups[i]);
+
+                            colX += cell->getWidth();
+                        }
+
+                        int rowY = crosstabRect.y();
+                        for (int i = 0; i < rowGroups.size(); i++)
+                        {
+                            rowY += cell->getHeight();
+
+                            auto labelRow = new QLabel(frame);
+
+                            QRect rowRect = QRect();
+                            rowRect.setX(crosstabRect.x());
+                            rowRect.setY(rowY);
+                            rowRect.setWidth(rowGroup->getWidth());
+                            rowRect.setHeight(cell->getHeight());
+
+                            labelRow->setStyleSheet("background-color: transparent; " + style);
+                            labelRow->setGeometry(rowRect);
+                            labelRow->setAlignment(rowGroup->getHeader()->getCellContents()->getAlignment());
+                            labelRow->setText(rowGroups[i]);
+                        }
+
+                        //FIXME поменять на нормальный обработчик ячеек
+                        int cellX = crosstabRect.x();
+                        int cellY = crosstabRect.y();
+                        for (int i = 0; i < rowGroups.size(); i++)
+                        {
+                            cellX += emptyRect.width();
+                            cellY += emptyRect.height();
+                            for(int j = 0; j < colGroups.size(); j++)
+                            {
+                                auto labelCell = new QLabel(frame);
+
+                                QRect cellRect = QRect();
+                                cellRect.setX(cellX);
+                                cellRect.setY(cellY);
+                                cellRect.setWidth(cell->getWidth());
+                                cellRect.setHeight(cell->getHeight());
+
+                                labelCell->setStyleSheet("background-color: transparent; " + style);
+                                labelCell->setGeometry(cellRect);
+                                labelCell->setAlignment(cell->getCellContents()->getAlignment());
+                                labelCell->setText(cell->getCellContents()->getTextField()->getOriginalText());
+
+                                cellX += cell->getWidth();
+                            }
+                            cellX = crosstabRect.x();
+                        }
+                    }
                 }
             }
 

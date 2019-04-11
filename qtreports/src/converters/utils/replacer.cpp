@@ -4,6 +4,8 @@
 #include <QImage>
 #include <QByteArray>
 #include <QDebug>
+#include <QList>
+#include <QSet>
 
 namespace qtreports
 {
@@ -128,6 +130,57 @@ namespace qtreports
             return QImage();
         }
 
+        bool Replacer::replaceRowGroupsInCrosstab(const CrosstabPtr & crosstab, const ReportPtr & report, QList<QString> & rowGroups)
+        {
+            for(int i = 0; i < report->getFieldsDataCount(); i++)
+            {
+                replaceRowGroupInCrosstab(crosstab, report, i);
+                rowGroups.append(crosstab->getRowGroup()->getHeader()->getCellContents()->getTextField()->getText());
+            }
+            QSet<QString> uniqueGroups = rowGroups.toSet();
+            rowGroups = uniqueGroups.toList();
+            return true;
+        }
+
+        bool Replacer::replaceColumnGroupsInCrosstab(const CrosstabPtr & crosstab, const ReportPtr & report, QList<QString> & columnGroups)
+        {
+            for(int i = 0; i < report->getFieldsDataCount(); i++)
+            {
+                replaceColumnGroupInCrosstab(crosstab, report, i);
+                columnGroups.append(crosstab->getColumnGroup()->getHeader()->getCellContents()->getTextField()->getText());
+            }
+            QSet<QString> uniqueGroups = columnGroups.toSet();
+            columnGroups = uniqueGroups.toList();
+            return true;
+        }
+
+        bool Replacer::replaceRowGroupInCrosstab(const CrosstabPtr & crosstab, const ReportPtr & report, int i)
+        {
+            auto rowGroupText = crosstab->getRowGroup()->getHeader()->getCellContents()->getTextField()->getOriginalText();
+            auto rowGroupReplacedText = replaceField(rowGroupText, report, i);
+            crosstab->getRowGroup()->getHeader()->getCellContents()->getTextField()->setText(rowGroupReplacedText);
+
+            return true;
+        }
+
+        bool Replacer::replaceColumnGroupInCrosstab(const CrosstabPtr & crosstab, const ReportPtr & report, int i)
+        {
+            auto colGroupText = crosstab->getColumnGroup()->getHeader()->getCellContents()->getTextField()->getOriginalText();
+            auto colGroupReplacedText = replaceField(colGroupText, report, i);
+            crosstab->getColumnGroup()->getHeader()->getCellContents()->getTextField()->setText(colGroupReplacedText);
+
+            return true;
+        }
+
+        bool Replacer::replaceCellInCrosstab(const CrosstabPtr & crosstab, const ReportPtr & report, int i)
+        {
+            auto cellText     = crosstab->getCrosstabCell()->getCellContents()->getTextField()->getOriginalText();
+            auto cellReplacedText     = replaceField(cellText, report, i);
+            crosstab->getCrosstabCell()->getCellContents()->getTextField()->setText(cellReplacedText);
+
+            return true;
+        }
+
         bool    Replacer::replaceFieldInTextWidget(const TextWidgetPtr & widget, const ReportPtr & report, int i)
         {
             auto text = widget->getOriginalText();
@@ -156,7 +209,7 @@ namespace qtreports
             }
 
             for(auto && band : section->getBands())
-            {
+            {   
                 for(auto && textWidget : band->getTextWidgets())
                 {
                     if(!replaceFieldInTextWidget(textWidget, report, i))

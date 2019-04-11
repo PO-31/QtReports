@@ -24,30 +24,20 @@
 			<reportElement x="0" y="0" width="580" height="35" />
 		</rect>
 		</band>
-	</title>  
-	<group name="dep_name">
-		<groupExpression class="QString">
-			<![CDATA[$F{dep_name}]]>
-		</groupExpression>
-	</group>
-	<group name="group_name">
-		<groupExpression class="QString">
-			<![CDATA[$F{dep_name}]]>
-		</groupExpression>
-	</group>
-
+	</title>
+	
 	<detail>
 	</detail>
 	
 	<summary>
-		<band height="50">
+		<band height="80">
 			<crosstab>
-				<reportElement x="200" y="0" width="360" height="60"/>
-				<rowGroup name="dep_name" width="130">
+				<reportElement x="20" y="20" width="250" height="60"/>
+				<rowGroup name="dep_name" width="135">
 					<crosstabRowHeader>
 						<cellContents>
 							<textField>
-								<reportElement x="0" y="0" width="130" height="20"/>
+								<reportElement x="0" y="0" width="135" height="20"/>
 								<textFieldExpression class="QString"><![CDATA[$F{dep_name}]]></textFieldExpression>
 							</textField>
 						</cellContents>
@@ -57,16 +47,16 @@
 					<crosstabColumnHeader>
 						<cellContents>
 							<textField>
-								<reportElement x="0" y="0" width="30" height="20"/>
+								<reportElement x="0" y="0" width="90" height="20"/>
 								<textFieldExpression class="QString"><![CDATA[$F{group_name}]]></textFieldExpression>
 							</textField>
 						</cellContents>
 					</crosstabColumnHeader>
 				</columnGroup>
-				<crosstabCell width="30" height="20">
+				<crosstabCell width="90" height="20">
 					<cellContents>
 						<textField>
-							<reportElement x="0" y="0" width="30" height="20"/>
+							<reportElement x="0" y="0" width="90" height="20"/>
 							<textFieldExpression class="QString"><![CDATA[$F{stud_name}]]></textFieldExpression>
 						</textField>
 					</cellContents>
