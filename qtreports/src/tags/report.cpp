@@ -318,6 +318,8 @@ namespace qtreports
                     }
                 }
             }
+
+            thisPtr.reset();
         }
     }
 }
