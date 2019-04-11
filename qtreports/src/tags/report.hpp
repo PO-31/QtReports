@@ -313,6 +313,11 @@ namespace qtreports {
             */
             const QMap<QString, VariablePtr>& getVariables() const;
 
+            /*! @~russian
+            Сформировать таблицу соответствия групп и строк.
+            */
+            void fillGroupsData();
+
         private:
             QPrinter::Orientation	        m_orientation;
             QSize	                        m_size;
@@ -327,6 +332,7 @@ namespace qtreports {
             SummaryPtr                      m_summary;
             QMap< QString, QVariant >       m_parameters;
             QMap< QString, VariablePtr >    m_variables;
+            QMap< QString, QVector<int>>    m_groupsData;
             QVector<bool>                   m_group_vec;
 
         };
