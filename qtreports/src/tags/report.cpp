@@ -292,12 +292,11 @@ namespace qtreports
             return m_variables;
         }
 
-        void Report::fillGroupsData()
+        void Report::fillGroupsData(const QSharedPointer<Report> &reportPtr)
         {
             detail::Replacer replacer;
 
             QList<GroupPtr> groups = getGroups().values();
-            ReportPtr thisPtr(this);
 
             int rowCount = getRowCount();
             for (auto group : groups) {
@@ -309,17 +308,15 @@ namespace qtreports
                 expression = expression.replace('\t', "", Qt::CaseInsensitive);
 
                 m_groupsData[expression].append(0);
-                auto value = replacer.replaceField(expression, thisPtr, 0);
+                auto value = replacer.replaceField(expression, reportPtr, 0);
                 for (int i = 1; i < rowCount; i++) {
-                    auto newValue = replacer.replaceField(expression, thisPtr, i);
+                    auto newValue = replacer.replaceField(expression, reportPtr, i);
                     if (value != newValue) {
                         value = newValue;
                         m_groupsData[expression].append(i);
                     }
                 }
             }
-
-            thisPtr.reset();
         }
     }
 }
