@@ -31,13 +31,13 @@
             <td class="headerValue">coverage.info</td>
             <td></td>
             <td class="headerItem">Lines:</td>
-            <td class="headerCovTableEntry">237</td>
-            <td class="headerCovTableEntry">382</td>
-            <td class="headerCovTableEntryLo">62.0 %</td>
+            <td class="headerCovTableEntry">229</td>
+            <td class="headerCovTableEntry">374</td>
+            <td class="headerCovTableEntryLo">61.2 %</td>
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2019-04-12 00:10:07</td>
+            <td class="headerValue">2019-04-12 00:34:53</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntry">19</td>
@@ -290,448 +290,428 @@
 <a name="228"><span class="lineNum">     228 </span>            :                 {</a>
 <a name="229"><span class="lineNum">     229 </span><span class="lineNoCov">          0 :                     return false;</span></a>
 <a name="230"><span class="lineNum">     230 </span>            :                 }</a>
-<a name="231"><span class="lineNum">     231 </span>            : </a>
-<a name="232"><span class="lineNum">     232 </span>            :                 // Обрезать лишние символы в полученном значении expression</a>
-<a name="233"><span class="lineNum">     233 </span>            :                 // т.к. оно в формате \n\t\t\tEXPRESSION\n\t\t</a>
-<a name="234"><span class="lineNum">     234 </span><span class="lineCov">          2 :                 for(int j=0; j&lt;groupExpression.size(); j++)</span></a>
-<a name="235"><span class="lineNum">     235 </span>            :                 {</a>
-<a name="236"><span class="lineNum">     236 </span><span class="lineCov">          2 :                     if(groupExpression[j] != '\n' &amp;&amp; groupExpression[j] != '\t')</span></a>
-<a name="237"><span class="lineNum">     237 </span>            :                     {</a>
-<a name="238"><span class="lineNum">     238 </span><span class="lineCov">          2 :                         groupExpression.remove(0, j);</span></a>
-<a name="239"><span class="lineNum">     239 </span><span class="lineCov">          2 :                         break;</span></a>
-<a name="240"><span class="lineNum">     240 </span>            :                     }</a>
-<a name="241"><span class="lineNum">     241 </span>            :                 }</a>
-<a name="242"><span class="lineNum">     242 </span><span class="lineCov">          2 :                 for(int j=groupExpression.size(); j&gt;=0; j--)</span></a>
-<a name="243"><span class="lineNum">     243 </span>            :                 {</a>
-<a name="244"><span class="lineNum">     244 </span><span class="lineCov">          2 :                     if(groupExpression[j] != '\n' &amp;&amp; groupExpression[j] != '\t')</span></a>
-<a name="245"><span class="lineNum">     245 </span>            :                     {</a>
-<a name="246"><span class="lineNum">     246 </span><span class="lineCov">          2 :                         groupExpression.remove(j + 1, groupExpression.size() - j - 1);</span></a>
-<a name="247"><span class="lineNum">     247 </span><span class="lineCov">          2 :                         break;</span></a>
-<a name="248"><span class="lineNum">     248 </span>            :                     }</a>
-<a name="249"><span class="lineNum">     249 </span>            :                 }</a>
-<a name="250"><span class="lineNum">     250 </span>            : </a>
-<a name="251"><span class="lineNum">     251 </span><span class="lineCov">          2 :                 groupNames.append(groupExpression);</span></a>
-<a name="252"><span class="lineNum">     252 </span><span class="lineCov">          2 :                 particularNames.append(replacer.replaceField(groupNames[i], report, 0));</span></a>
-<a name="253"><span class="lineNum">     253 </span>            :             }</a>
-<a name="254"><span class="lineNum">     254 </span>            :             //Открываем хедеры групп</a>
-<a name="255"><span class="lineNum">     255 </span><span class="lineCov">          6 :             for (int i = 0; i&lt;groups.length(); i++)</span></a>
-<a name="256"><span class="lineNum">     256 </span>            :             {</a>
-<a name="257"><span class="lineNum">     257 </span><span class="lineCov">          4 :                 auto header = groups[i]-&gt;getHeader();</span></a>
-<a name="258"><span class="lineNum">     258 </span><span class="lineCov">          2 :                 if (!header.isNull())</span></a>
-<a name="259"><span class="lineNum">     259 </span>            :                 {</a>
-<a name="260"><span class="lineNum">     260 </span><span class="lineCov">          2 :                     QWidget * sectionWidget = isLayout() ? addSectionLayout(layout, report-&gt;getMargins(), header-&gt;getHeight()) : nullptr;</span></a>
-<a name="261"><span class="lineNum">     261 </span><span class="lineCov">          2 :                     if (!createSection(sectionWidget, header, 0))</span></a>
-<a name="262"><span class="lineNum">     262 </span>            :                     {</a>
-<a name="263"><span class="lineNum">     263 </span><span class="lineNoCov">          0 :                         return false;</span></a>
-<a name="264"><span class="lineNum">     264 </span>            :                     }</a>
-<a name="265"><span class="lineNum">     265 </span>            :                 }</a>
-<a name="266"><span class="lineNum">     266 </span>            :             }</a>
-<a name="267"><span class="lineNum">     267 </span>            : </a>
-<a name="268"><span class="lineNum">     268 </span><span class="lineCov">          4 :             int rowCount = isReport()? report-&gt;getRowCount() : 1;</span></a>
-<a name="269"><span class="lineNum">     269 </span><span class="lineCov">         21 :             for(int i = 0; i &lt; rowCount; i++)</span></a>
-<a name="270"><span class="lineNum">     270 </span>            :             {</a>
-<a name="271"><span class="lineNum">     271 </span><span class="lineCov">         17 :                 QWidget * sectionWidget = isLayout() ? addSectionLayout(layout, report-&gt;getMargins(), detail-&gt;getHeight()) : nullptr;</span></a>
-<a name="272"><span class="lineNum">     272 </span>            : </a>
-<a name="273"><span class="lineNum">     273 </span>            :                 //Закрываем футеры, если группа закончилась</a>
-<a name="274"><span class="lineNum">     274 </span><span class="lineCov">         29 :                 for(int j = groups.length() - 1; j &gt;= 0; j--)</span></a>
-<a name="275"><span class="lineNum">     275 </span>            :                 {</a>
-<a name="276"><span class="lineNum">     276 </span>            :                     //сверяем поле в заголовке и текущее поле</a>
-<a name="277"><span class="lineNum">     277 </span><span class="lineCov">         12 :                     if(particularNames[j] != replacer.replaceField(groupNames[j], report, i))</span></a>
-<a name="278"><span class="lineNum">     278 </span>            :                     {</a>
-<a name="279"><span class="lineNum">     279 </span><span class="lineCov">         14 :                         auto footer = report-&gt;getGroupByIndex(j)-&gt;getFooter();</span></a>
-<a name="280"><span class="lineNum">     280 </span><span class="lineCov">          7 :                         if (!footer.isNull())</span></a>
-<a name="281"><span class="lineNum">     281 </span>            :                         {</a>
-<a name="282"><span class="lineNum">     282 </span><span class="lineCov">          7 :                             QWidget * sectionWidgetFooter = isLayout() ? addSectionLayout(layout, report-&gt;getMargins(), footer-&gt;getHeight()) : nullptr;</span></a>
-<a name="283"><span class="lineNum">     283 </span><span class="lineCov">          7 :                             if (!createSection(sectionWidgetFooter, footer, i - 1))</span></a>
-<a name="284"><span class="lineNum">     284 </span>            :                             {</a>
-<a name="285"><span class="lineNum">     285 </span><span class="lineNoCov">          0 :                                 return false;</span></a>
-<a name="286"><span class="lineNum">     286 </span>            :                             }</a>
-<a name="287"><span class="lineNum">     287 </span>            :                         }</a>
-<a name="288"><span class="lineNum">     288 </span>            :                     }</a>
-<a name="289"><span class="lineNum">     289 </span>            :                 }</a>
-<a name="290"><span class="lineNum">     290 </span>            :                 //Аналогично открываем хедеры</a>
-<a name="291"><span class="lineNum">     291 </span><span class="lineCov">         29 :                 for(int j = 0; j &lt; groupNames.length(); j++)</span></a>
-<a name="292"><span class="lineNum">     292 </span>            :                 {                    </a>
-<a name="293"><span class="lineNum">     293 </span>            :                     //сверяем поле в заголовке и текущее поле</a>
-<a name="294"><span class="lineNum">     294 </span><span class="lineCov">         12 :                     if(particularNames[j] != replacer.replaceField(groupNames[j], report, i))</span></a>
-<a name="295"><span class="lineNum">     295 </span>            :                     {</a>
-<a name="296"><span class="lineNum">     296 </span><span class="lineCov">         14 :                         auto header = report-&gt;getGroupByIndex(j)-&gt;getHeader();</span></a>
-<a name="297"><span class="lineNum">     297 </span><span class="lineCov">          7 :                         if (!header.isNull())</span></a>
-<a name="298"><span class="lineNum">     298 </span>            :                         {</a>
-<a name="299"><span class="lineNum">     299 </span><span class="lineCov">          7 :                             QWidget * sectionWidgetHeader = isLayout() ? addSectionLayout(layout, report-&gt;getMargins(), header-&gt;getHeight()) : nullptr;</span></a>
-<a name="300"><span class="lineNum">     300 </span><span class="lineCov">          7 :                             if (!createSection(sectionWidgetHeader, header, i))</span></a>
-<a name="301"><span class="lineNum">     301 </span>            :                             {</a>
-<a name="302"><span class="lineNum">     302 </span><span class="lineNoCov">          0 :                                 return false;</span></a>
-<a name="303"><span class="lineNum">     303 </span>            :                             }</a>
-<a name="304"><span class="lineNum">     304 </span>            :                         }</a>
-<a name="305"><span class="lineNum">     305 </span>            :                     }</a>
-<a name="306"><span class="lineNum">     306 </span>            :                 }</a>
-<a name="307"><span class="lineNum">     307 </span>            :                 //Переписываем имена для сравнения</a>
-<a name="308"><span class="lineNum">     308 </span><span class="lineCov">         29 :                 for(int j = 0; j &lt; groupNames.length(); j++)</span></a>
-<a name="309"><span class="lineNum">     309 </span>            :                 {</a>
-<a name="310"><span class="lineNum">     310 </span><span class="lineCov">         12 :                     particularNames[j] = replacer.replaceField(groupNames[j], report, i);</span></a>
-<a name="311"><span class="lineNum">     311 </span>            :                 }</a>
-<a name="312"><span class="lineNum">     312 </span>            :                 //Выводим поле</a>
-<a name="313"><span class="lineNum">     313 </span><span class="lineCov">         17 :                 if (!createSection(sectionWidget, detail, i))</span></a>
-<a name="314"><span class="lineNum">     314 </span>            :                 {</a>
-<a name="315"><span class="lineNum">     315 </span><span class="lineNoCov">          0 :                     return false;</span></a>
-<a name="316"><span class="lineNum">     316 </span>            :                 }</a>
-<a name="317"><span class="lineNum">     317 </span>            :             }</a>
-<a name="318"><span class="lineNum">     318 </span>            :             //Закрываем хедеры групп</a>
-<a name="319"><span class="lineNum">     319 </span><span class="lineCov">          6 :             for(int i = groups.length() - 1; i &gt;= 0; i--)</span></a>
-<a name="320"><span class="lineNum">     320 </span>            :             {</a>
-<a name="321"><span class="lineNum">     321 </span><span class="lineCov">          4 :                 auto footer = groups[i]-&gt;getFooter();</span></a>
-<a name="322"><span class="lineNum">     322 </span><span class="lineCov">          2 :                             if (!footer.isNull())</span></a>
-<a name="323"><span class="lineNum">     323 </span>            :                             {</a>
-<a name="324"><span class="lineNum">     324 </span><span class="lineCov">          2 :                                 QWidget * sectionWidget = isLayout() ? addSectionLayout(layout, report-&gt;getMargins(), footer-&gt;getHeight()) : nullptr;</span></a>
-<a name="325"><span class="lineNum">     325 </span><span class="lineCov">          2 :                                 if (!createSection(sectionWidget, footer, (rowCount - 1)))</span></a>
-<a name="326"><span class="lineNum">     326 </span>            :                                 {</a>
-<a name="327"><span class="lineNum">     327 </span><span class="lineNoCov">          0 :                                     return false;</span></a>
-<a name="328"><span class="lineNum">     328 </span>            :                                 }</a>
-<a name="329"><span class="lineNum">     329 </span>            :                             }</a>
-<a name="330"><span class="lineNum">     330 </span>            :             }</a>
-<a name="331"><span class="lineNum">     331 </span><span class="lineCov">          4 :             return true;</span></a>
-<a name="332"><span class="lineNum">     332 </span>            :         }</a>
-<a name="333"><span class="lineNum">     333 </span>            : </a>
-<a name="334"><span class="lineNum">     334 </span>            : </a>
-<a name="335"><span class="lineNum">     335 </span><span class="lineCov">         39 :         bool    ConverterToQWidget::createSection(QWidget * parent, const SectionPtr &amp; section, int i)</span></a>
-<a name="336"><span class="lineNum">     336 </span>            :         {</a>
-<a name="337"><span class="lineNum">     337 </span><span class="lineCov">         39 :             if(isLayout())</span></a>
-<a name="338"><span class="lineNum">     338 </span>            :             {</a>
-<a name="339"><span class="lineNum">     339 </span><span class="lineCov">          6 :                 auto label = new QLabel(parent);</span></a>
-<a name="340"><span class="lineNum">     340 </span><span class="lineCov">          6 :                 label-&gt;setText(section-&gt;getTagName());</span></a>
-<a name="341"><span class="lineNum">     341 </span><span class="lineCov">          6 :                 label-&gt;setStyleSheet(&quot;font-size: 26px; color: gray&quot;);</span></a>
-<a name="342"><span class="lineNum">     342 </span><span class="lineCov">          6 :                 label-&gt;setAlignment(Qt::AlignCenter);</span></a>
-<a name="343"><span class="lineNum">     343 </span><span class="lineCov">          6 :                 label-&gt;setAttribute(Qt::WA_TranslucentBackground);</span></a>
-<a name="344"><span class="lineNum">     344 </span><span class="lineCov">          6 :                 label-&gt;resize(parent-&gt;size());</span></a>
-<a name="345"><span class="lineNum">     345 </span>            :             }</a>
-<a name="346"><span class="lineNum">     346 </span>            :             else</a>
-<a name="347"><span class="lineNum">     347 </span>            :             {</a>
-<a name="348"><span class="lineNum">     348 </span><span class="lineCov">         66 :                 detail::Replacer replacer;</span></a>
-<a name="349"><span class="lineNum">     349 </span><span class="lineCov">         33 :                 if(!replacer.replace(section, m_report, i))</span></a>
+<a name="231"><span class="lineNum">     231 </span><span class="lineCov">          2 :                 groupNames.append(groupExpression);</span></a>
+<a name="232"><span class="lineNum">     232 </span><span class="lineCov">          2 :                 particularNames.append(replacer.replaceField(groupNames[i], report, 0));</span></a>
+<a name="233"><span class="lineNum">     233 </span>            :             }</a>
+<a name="234"><span class="lineNum">     234 </span>            :             //Открываем хедеры групп</a>
+<a name="235"><span class="lineNum">     235 </span><span class="lineCov">          6 :             for (int i = 0; i&lt;groups.length(); i++)</span></a>
+<a name="236"><span class="lineNum">     236 </span>            :             {</a>
+<a name="237"><span class="lineNum">     237 </span><span class="lineCov">          4 :                 auto header = groups[i]-&gt;getHeader();</span></a>
+<a name="238"><span class="lineNum">     238 </span><span class="lineCov">          2 :                 if (!header.isNull())</span></a>
+<a name="239"><span class="lineNum">     239 </span>            :                 {</a>
+<a name="240"><span class="lineNum">     240 </span><span class="lineCov">          2 :                     QWidget * sectionWidget = isLayout() ? addSectionLayout(layout, report-&gt;getMargins(), header-&gt;getHeight()) : nullptr;</span></a>
+<a name="241"><span class="lineNum">     241 </span><span class="lineCov">          2 :                     if (!createSection(sectionWidget, header, 0))</span></a>
+<a name="242"><span class="lineNum">     242 </span>            :                     {</a>
+<a name="243"><span class="lineNum">     243 </span><span class="lineNoCov">          0 :                         return false;</span></a>
+<a name="244"><span class="lineNum">     244 </span>            :                     }</a>
+<a name="245"><span class="lineNum">     245 </span>            :                 }</a>
+<a name="246"><span class="lineNum">     246 </span>            :             }</a>
+<a name="247"><span class="lineNum">     247 </span>            : </a>
+<a name="248"><span class="lineNum">     248 </span><span class="lineCov">          4 :             int rowCount = isReport()? report-&gt;getRowCount() : 1;</span></a>
+<a name="249"><span class="lineNum">     249 </span><span class="lineCov">         21 :             for(int i = 0; i &lt; rowCount; i++)</span></a>
+<a name="250"><span class="lineNum">     250 </span>            :             {</a>
+<a name="251"><span class="lineNum">     251 </span><span class="lineCov">         17 :                 QWidget * sectionWidget = isLayout() ? addSectionLayout(layout, report-&gt;getMargins(), detail-&gt;getHeight()) : nullptr;</span></a>
+<a name="252"><span class="lineNum">     252 </span>            : </a>
+<a name="253"><span class="lineNum">     253 </span>            :                 //Закрываем футеры, если группа закончилась</a>
+<a name="254"><span class="lineNum">     254 </span><span class="lineCov">         29 :                 for(int j = groups.length() - 1; j &gt;= 0; j--)</span></a>
+<a name="255"><span class="lineNum">     255 </span>            :                 {</a>
+<a name="256"><span class="lineNum">     256 </span>            :                     //сверяем поле в заголовке и текущее поле</a>
+<a name="257"><span class="lineNum">     257 </span><span class="lineCov">         12 :                     if(particularNames[j] != replacer.replaceField(groupNames[j], report, i))</span></a>
+<a name="258"><span class="lineNum">     258 </span>            :                     {</a>
+<a name="259"><span class="lineNum">     259 </span><span class="lineCov">         14 :                         auto footer = report-&gt;getGroupByIndex(j)-&gt;getFooter();</span></a>
+<a name="260"><span class="lineNum">     260 </span><span class="lineCov">          7 :                         if (!footer.isNull())</span></a>
+<a name="261"><span class="lineNum">     261 </span>            :                         {</a>
+<a name="262"><span class="lineNum">     262 </span><span class="lineCov">          7 :                             QWidget * sectionWidgetFooter = isLayout() ? addSectionLayout(layout, report-&gt;getMargins(), footer-&gt;getHeight()) : nullptr;</span></a>
+<a name="263"><span class="lineNum">     263 </span><span class="lineCov">          7 :                             if (!createSection(sectionWidgetFooter, footer, i - 1))</span></a>
+<a name="264"><span class="lineNum">     264 </span>            :                             {</a>
+<a name="265"><span class="lineNum">     265 </span><span class="lineNoCov">          0 :                                 return false;</span></a>
+<a name="266"><span class="lineNum">     266 </span>            :                             }</a>
+<a name="267"><span class="lineNum">     267 </span>            :                         }</a>
+<a name="268"><span class="lineNum">     268 </span>            :                     }</a>
+<a name="269"><span class="lineNum">     269 </span>            :                 }</a>
+<a name="270"><span class="lineNum">     270 </span>            :                 //Аналогично открываем хедеры</a>
+<a name="271"><span class="lineNum">     271 </span><span class="lineCov">         29 :                 for(int j = 0; j &lt; groupNames.length(); j++)</span></a>
+<a name="272"><span class="lineNum">     272 </span>            :                 {                    </a>
+<a name="273"><span class="lineNum">     273 </span>            :                     //сверяем поле в заголовке и текущее поле</a>
+<a name="274"><span class="lineNum">     274 </span><span class="lineCov">         12 :                     if(particularNames[j] != replacer.replaceField(groupNames[j], report, i))</span></a>
+<a name="275"><span class="lineNum">     275 </span>            :                     {</a>
+<a name="276"><span class="lineNum">     276 </span><span class="lineCov">         14 :                         auto header = report-&gt;getGroupByIndex(j)-&gt;getHeader();</span></a>
+<a name="277"><span class="lineNum">     277 </span><span class="lineCov">          7 :                         if (!header.isNull())</span></a>
+<a name="278"><span class="lineNum">     278 </span>            :                         {</a>
+<a name="279"><span class="lineNum">     279 </span><span class="lineCov">          7 :                             QWidget * sectionWidgetHeader = isLayout() ? addSectionLayout(layout, report-&gt;getMargins(), header-&gt;getHeight()) : nullptr;</span></a>
+<a name="280"><span class="lineNum">     280 </span><span class="lineCov">          7 :                             if (!createSection(sectionWidgetHeader, header, i))</span></a>
+<a name="281"><span class="lineNum">     281 </span>            :                             {</a>
+<a name="282"><span class="lineNum">     282 </span><span class="lineNoCov">          0 :                                 return false;</span></a>
+<a name="283"><span class="lineNum">     283 </span>            :                             }</a>
+<a name="284"><span class="lineNum">     284 </span>            :                         }</a>
+<a name="285"><span class="lineNum">     285 </span>            :                     }</a>
+<a name="286"><span class="lineNum">     286 </span>            :                 }</a>
+<a name="287"><span class="lineNum">     287 </span>            :                 //Переписываем имена для сравнения</a>
+<a name="288"><span class="lineNum">     288 </span><span class="lineCov">         29 :                 for(int j = 0; j &lt; groupNames.length(); j++)</span></a>
+<a name="289"><span class="lineNum">     289 </span>            :                 {</a>
+<a name="290"><span class="lineNum">     290 </span><span class="lineCov">         12 :                     particularNames[j] = replacer.replaceField(groupNames[j], report, i);</span></a>
+<a name="291"><span class="lineNum">     291 </span>            :                 }</a>
+<a name="292"><span class="lineNum">     292 </span>            :                 //Выводим поле</a>
+<a name="293"><span class="lineNum">     293 </span><span class="lineCov">         17 :                 if (!createSection(sectionWidget, detail, i))</span></a>
+<a name="294"><span class="lineNum">     294 </span>            :                 {</a>
+<a name="295"><span class="lineNum">     295 </span><span class="lineNoCov">          0 :                     return false;</span></a>
+<a name="296"><span class="lineNum">     296 </span>            :                 }</a>
+<a name="297"><span class="lineNum">     297 </span>            :             }</a>
+<a name="298"><span class="lineNum">     298 </span>            :             //Закрываем хедеры групп</a>
+<a name="299"><span class="lineNum">     299 </span><span class="lineCov">          6 :             for(int i = groups.length() - 1; i &gt;= 0; i--)</span></a>
+<a name="300"><span class="lineNum">     300 </span>            :             {</a>
+<a name="301"><span class="lineNum">     301 </span><span class="lineCov">          4 :                 auto footer = groups[i]-&gt;getFooter();</span></a>
+<a name="302"><span class="lineNum">     302 </span><span class="lineCov">          2 :                             if (!footer.isNull())</span></a>
+<a name="303"><span class="lineNum">     303 </span>            :                             {</a>
+<a name="304"><span class="lineNum">     304 </span><span class="lineCov">          2 :                                 QWidget * sectionWidget = isLayout() ? addSectionLayout(layout, report-&gt;getMargins(), footer-&gt;getHeight()) : nullptr;</span></a>
+<a name="305"><span class="lineNum">     305 </span><span class="lineCov">          2 :                                 if (!createSection(sectionWidget, footer, (rowCount - 1)))</span></a>
+<a name="306"><span class="lineNum">     306 </span>            :                                 {</a>
+<a name="307"><span class="lineNum">     307 </span><span class="lineNoCov">          0 :                                     return false;</span></a>
+<a name="308"><span class="lineNum">     308 </span>            :                                 }</a>
+<a name="309"><span class="lineNum">     309 </span>            :                             }</a>
+<a name="310"><span class="lineNum">     310 </span>            :             }</a>
+<a name="311"><span class="lineNum">     311 </span><span class="lineCov">          4 :             return true;</span></a>
+<a name="312"><span class="lineNum">     312 </span>            :         }</a>
+<a name="313"><span class="lineNum">     313 </span>            : </a>
+<a name="314"><span class="lineNum">     314 </span>            : </a>
+<a name="315"><span class="lineNum">     315 </span><span class="lineCov">         39 :         bool    ConverterToQWidget::createSection(QWidget * parent, const SectionPtr &amp; section, int i)</span></a>
+<a name="316"><span class="lineNum">     316 </span>            :         {</a>
+<a name="317"><span class="lineNum">     317 </span><span class="lineCov">         39 :             if(isLayout())</span></a>
+<a name="318"><span class="lineNum">     318 </span>            :             {</a>
+<a name="319"><span class="lineNum">     319 </span><span class="lineCov">          6 :                 auto label = new QLabel(parent);</span></a>
+<a name="320"><span class="lineNum">     320 </span><span class="lineCov">          6 :                 label-&gt;setText(section-&gt;getTagName());</span></a>
+<a name="321"><span class="lineNum">     321 </span><span class="lineCov">          6 :                 label-&gt;setStyleSheet(&quot;font-size: 26px; color: gray&quot;);</span></a>
+<a name="322"><span class="lineNum">     322 </span><span class="lineCov">          6 :                 label-&gt;setAlignment(Qt::AlignCenter);</span></a>
+<a name="323"><span class="lineNum">     323 </span><span class="lineCov">          6 :                 label-&gt;setAttribute(Qt::WA_TranslucentBackground);</span></a>
+<a name="324"><span class="lineNum">     324 </span><span class="lineCov">          6 :                 label-&gt;resize(parent-&gt;size());</span></a>
+<a name="325"><span class="lineNum">     325 </span>            :             }</a>
+<a name="326"><span class="lineNum">     326 </span>            :             else</a>
+<a name="327"><span class="lineNum">     327 </span>            :             {</a>
+<a name="328"><span class="lineNum">     328 </span><span class="lineCov">         66 :                 detail::Replacer replacer;</span></a>
+<a name="329"><span class="lineNum">     329 </span><span class="lineCov">         33 :                 if(!replacer.replace(section, m_report, i))</span></a>
+<a name="330"><span class="lineNum">     330 </span>            :                 {</a>
+<a name="331"><span class="lineNum">     331 </span><span class="lineNoCov">          0 :                     m_lastError = &quot;Error in replacing process: &quot; + replacer.getLastError();</span></a>
+<a name="332"><span class="lineNum">     332 </span><span class="lineNoCov">          0 :                     return false;</span></a>
+<a name="333"><span class="lineNum">     333 </span>            :                 }</a>
+<a name="334"><span class="lineNum">     334 </span>            :             }</a>
+<a name="335"><span class="lineNum">     335 </span>            : </a>
+<a name="336"><span class="lineNum">     336 </span><span class="lineCov">         39 :             if(!createBands(parent, section))</span></a>
+<a name="337"><span class="lineNum">     337 </span>            :             {</a>
+<a name="338"><span class="lineNum">     338 </span><span class="lineNoCov">          0 :                 return false;</span></a>
+<a name="339"><span class="lineNum">     339 </span>            :             }</a>
+<a name="340"><span class="lineNum">     340 </span>            : </a>
+<a name="341"><span class="lineNum">     341 </span><span class="lineCov">         39 :             return true;</span></a>
+<a name="342"><span class="lineNum">     342 </span>            :         }</a>
+<a name="343"><span class="lineNum">     343 </span>            : </a>
+<a name="344"><span class="lineNum">     344 </span><span class="lineCov">         39 :         bool    ConverterToQWidget::createBands(QWidget * parent, const SectionPtr &amp; section)</span></a>
+<a name="345"><span class="lineNum">     345 </span>            :         {</a>
+<a name="346"><span class="lineNum">     346 </span><span class="lineCov">         39 :             auto dy = 0;</span></a>
+<a name="347"><span class="lineNum">     347 </span><span class="lineCov">        102 :             for(auto &amp;&amp; band : section-&gt;getBands())</span></a>
+<a name="348"><span class="lineNum">     348 </span>            :             {</a>
+<a name="349"><span class="lineNum">     349 </span><span class="lineCov">         63 :                 if(m_currentHeight + band-&gt;getHeight() &gt; m_report-&gt;getHeight())</span></a>
 <a name="350"><span class="lineNum">     350 </span>            :                 {</a>
-<a name="351"><span class="lineNum">     351 </span><span class="lineNoCov">          0 :                     m_lastError = &quot;Error in replacing process: &quot; + replacer.getLastError();</span></a>
-<a name="352"><span class="lineNum">     352 </span><span class="lineNoCov">          0 :                     return false;</span></a>
+<a name="351"><span class="lineNum">     351 </span><span class="lineCov">         20 :                     addPage();</span></a>
+<a name="352"><span class="lineNum">     352 </span><span class="lineCov">         20 :                     m_currentHeight = 0;</span></a>
 <a name="353"><span class="lineNum">     353 </span>            :                 }</a>
-<a name="354"><span class="lineNum">     354 </span>            :             }</a>
-<a name="355"><span class="lineNum">     355 </span>            : </a>
-<a name="356"><span class="lineNum">     356 </span><span class="lineCov">         39 :             if(!createBands(parent, section))</span></a>
-<a name="357"><span class="lineNum">     357 </span>            :             {</a>
-<a name="358"><span class="lineNum">     358 </span><span class="lineNoCov">          0 :                 return false;</span></a>
-<a name="359"><span class="lineNum">     359 </span>            :             }</a>
-<a name="360"><span class="lineNum">     360 </span>            : </a>
-<a name="361"><span class="lineNum">     361 </span><span class="lineCov">         39 :             return true;</span></a>
-<a name="362"><span class="lineNum">     362 </span>            :         }</a>
-<a name="363"><span class="lineNum">     363 </span>            : </a>
-<a name="364"><span class="lineNum">     364 </span><span class="lineCov">         39 :         bool    ConverterToQWidget::createBands(QWidget * parent, const SectionPtr &amp; section)</span></a>
-<a name="365"><span class="lineNum">     365 </span>            :         {</a>
-<a name="366"><span class="lineNum">     366 </span><span class="lineCov">         39 :             auto dy = 0;</span></a>
-<a name="367"><span class="lineNum">     367 </span><span class="lineCov">        102 :             for(auto &amp;&amp; band : section-&gt;getBands())</span></a>
-<a name="368"><span class="lineNum">     368 </span>            :             {</a>
-<a name="369"><span class="lineNum">     369 </span><span class="lineCov">         63 :                 if(m_currentHeight + band-&gt;getHeight() &gt; m_report-&gt;getHeight())</span></a>
-<a name="370"><span class="lineNum">     370 </span>            :                 {</a>
-<a name="371"><span class="lineNum">     371 </span><span class="lineCov">         20 :                     addPage();</span></a>
-<a name="372"><span class="lineNum">     372 </span><span class="lineCov">         20 :                     m_currentHeight = 0;</span></a>
-<a name="373"><span class="lineNum">     373 </span>            :                 }</a>
-<a name="374"><span class="lineNum">     374 </span>            : </a>
-<a name="375"><span class="lineNum">     375 </span><span class="lineCov">         63 :                 auto frame = new QFrame(isLayout() ? parent : m_pages.last().data());</span></a>
-<a name="376"><span class="lineNum">     376 </span><span class="lineCov">         63 :                 frame-&gt;setStyleSheet(&quot;background-color: transparent; &quot;);</span></a>
-<a name="377"><span class="lineNum">     377 </span><span class="lineCov">         63 :                 frame-&gt;move(frame-&gt;x(), isLayout() ? dy : m_currentHeight);</span></a>
-<a name="378"><span class="lineNum">     378 </span>            : </a>
-<a name="379"><span class="lineNum">     379 </span><span class="lineCov">         63 :                 m_currentHeight += band-&gt;getHeight();</span></a>
-<a name="380"><span class="lineNum">     380 </span><span class="lineCov">         63 :                 dy += band-&gt;getHeight();</span></a>
-<a name="381"><span class="lineNum">     381 </span>            : </a>
-<a name="382"><span class="lineNum">     382 </span><span class="lineCov">        166 :                 for(auto &amp;&amp; textWidget : band-&gt;getTextWidgets())</span></a>
-<a name="383"><span class="lineNum">     383 </span>            :                 {</a>
-<a name="384"><span class="lineNum">     384 </span><span class="lineCov">        103 :                     auto label = new QLabel(frame);</span></a>
-<a name="385"><span class="lineNum">     385 </span><span class="lineCov">        206 :                     QString style = &quot;&quot;;</span></a>
-<a name="386"><span class="lineNum">     386 </span><span class="lineCov">        103 :                     if(textWidget-&gt;isBold())</span></a>
-<a name="387"><span class="lineNum">     387 </span>            :                     {</a>
-<a name="388"><span class="lineNum">     388 </span><span class="lineCov">         56 :                         style += &quot;font-weight: bold; &quot;;</span></a>
-<a name="389"><span class="lineNum">     389 </span>            :                     }</a>
-<a name="390"><span class="lineNum">     390 </span><span class="lineCov">        103 :                     if(isLayout())</span></a>
-<a name="391"><span class="lineNum">     391 </span>            :                     {</a>
-<a name="392"><span class="lineNum">     392 </span><span class="lineCov">         17 :                         style += &quot;border: 1px solid gray; &quot;;</span></a>
-<a name="393"><span class="lineNum">     393 </span>            :                     }</a>
-<a name="394"><span class="lineNum">     394 </span><span class="lineCov">        103 :                     label-&gt;setStyleSheet(&quot;background-color: transparent; &quot; + style);</span></a>
-<a name="395"><span class="lineNum">     395 </span><span class="lineCov">        103 :                     label-&gt;setGeometry(textWidget-&gt;getRect());</span></a>
-<a name="396"><span class="lineNum">     396 </span><span class="lineCov">        103 :                     label-&gt;setAlignment(textWidget-&gt;getAlignment());</span></a>
-<a name="397"><span class="lineNum">     397 </span><span class="lineCov">        206 :                     auto text = isLayout() ? textWidget-&gt;getOriginalText() : textWidget-&gt;getText();</span></a>
-<a name="398"><span class="lineNum">     398 </span><span class="lineCov">        103 :                     label-&gt;setText(text);</span></a>
-<a name="399"><span class="lineNum">     399 </span>            :                 }</a>
-<a name="400"><span class="lineNum">     400 </span><span class="lineCov">         91 :                 for(auto &amp;&amp; line : band-&gt;getLines())</span></a>
-<a name="401"><span class="lineNum">     401 </span>            :                 {</a>
-<a name="402"><span class="lineNum">     402 </span><span class="lineCov">         28 :                     auto label = new QLabel(frame);</span></a>
-<a name="403"><span class="lineNum">     403 </span><span class="lineCov">         56 :                     QString style = &quot;&quot;;</span></a>
-<a name="404"><span class="lineNum">     404 </span><span class="lineCov">         28 :                     if(line-&gt;isBold())</span></a>
-<a name="405"><span class="lineNum">     405 </span>            :                     {</a>
-<a name="406"><span class="lineNum">     406 </span><span class="lineCov">         24 :                         style += &quot;font-weight: bold; &quot;;</span></a>
-<a name="407"><span class="lineNum">     407 </span>            :                     }</a>
-<a name="408"><span class="lineNum">     408 </span>            :                     //if(isLayout())</a>
-<a name="409"><span class="lineNum">     409 </span>            :                     {</a>
-<a name="410"><span class="lineNum">     410 </span><span class="lineCov">         28 :                         style += &quot;border: 1px solid gray; &quot;;</span></a>
-<a name="411"><span class="lineNum">     411 </span>            :                     }</a>
-<a name="412"><span class="lineNum">     412 </span><span class="lineCov">         28 :                     label-&gt;setStyleSheet(&quot;background-color: transparent; &quot; + style);</span></a>
-<a name="413"><span class="lineNum">     413 </span><span class="lineCov">         28 :                     label-&gt;setGeometry(line-&gt;getRect());</span></a>
-<a name="414"><span class="lineNum">     414 </span><span class="lineCov">         28 :                     label-&gt;setAlignment(line-&gt;getAlignment());</span></a>
-<a name="415"><span class="lineNum">     415 </span>            :                     //label-&gt;setText(&quot;----------------------&quot;);</a>
-<a name="416"><span class="lineNum">     416 </span>            :                 }</a>
-<a name="417"><span class="lineNum">     417 </span><span class="lineCov">         77 :                 for(auto &amp;&amp; imageWidget : band-&gt;getImages())</span></a>
-<a name="418"><span class="lineNum">     418 </span>            :                 {</a>
-<a name="419"><span class="lineNum">     419 </span><span class="lineCov">         14 :                     if(imageWidget-&gt;getRect().isEmpty())</span></a>
-<a name="420"><span class="lineNum">     420 </span>            :                     {</a>
-<a name="421"><span class="lineNum">     421 </span><span class="lineNoCov">          0 :                         m_lastError = &quot;Ellipse \&quot;&quot; + imageWidget-&gt;getName() + &quot;\&quot; rect is empty&quot;;</span></a>
-<a name="422"><span class="lineNum">     422 </span><span class="lineNoCov">          0 :                         return false;</span></a>
-<a name="423"><span class="lineNum">     423 </span>            :                     }</a>
-<a name="424"><span class="lineNum">     424 </span>            : </a>
-<a name="425"><span class="lineNum">     425 </span><span class="lineCov">         14 :                     auto label = new QLabel(frame);</span></a>
-<a name="426"><span class="lineNum">     426 </span><span class="lineCov">         28 :                     QString style = &quot;&quot;;</span></a>
-<a name="427"><span class="lineNum">     427 </span><span class="lineCov">         14 :                     if(isLayout())</span></a>
-<a name="428"><span class="lineNum">     428 </span>            :                     {</a>
-<a name="429"><span class="lineNum">     429 </span><span class="lineCov">          2 :                         style += &quot;border: 1px solid gray; &quot;;</span></a>
-<a name="430"><span class="lineNum">     430 </span>            :                     }</a>
-<a name="431"><span class="lineNum">     431 </span><span class="lineCov">         14 :                     label-&gt;setStyleSheet(&quot;background-color: transparent; &quot; + style);</span></a>
-<a name="432"><span class="lineNum">     432 </span><span class="lineCov">         14 :                     label-&gt;setGeometry(imageWidget-&gt;getRect());</span></a>
-<a name="433"><span class="lineNum">     433 </span><span class="lineCov">         14 :                     label-&gt;setAlignment(imageWidget-&gt;getAlignment());</span></a>
-<a name="434"><span class="lineNum">     434 </span><span class="lineCov">         14 :                     label-&gt;setPixmap(QPixmap::fromImage(imageWidget-&gt;getImage()));</span></a>
-<a name="435"><span class="lineNum">     435 </span>            :                 }</a>
-<a name="436"><span class="lineNum">     436 </span><span class="lineCov">         79 :                 for(auto &amp;&amp; rect : band-&gt;getRects())</span></a>
-<a name="437"><span class="lineNum">     437 </span>            :                 {</a>
-<a name="438"><span class="lineNum">     438 </span><span class="lineCov">         16 :                     if(rect-&gt;getRect().isEmpty())</span></a>
-<a name="439"><span class="lineNum">     439 </span>            :                     {</a>
-<a name="440"><span class="lineNum">     440 </span><span class="lineNoCov">          0 :                         m_lastError = &quot;Rect \&quot;&quot; + rect-&gt;getName() + &quot;\&quot; rect is empty&quot;;</span></a>
-<a name="441"><span class="lineNum">     441 </span><span class="lineNoCov">          0 :                         return false;</span></a>
-<a name="442"><span class="lineNum">     442 </span>            :                     }</a>
-<a name="443"><span class="lineNum">     443 </span>            : </a>
-<a name="444"><span class="lineNum">     444 </span><span class="lineCov">         16 :                     auto label = new QLabel(frame);</span></a>
-<a name="445"><span class="lineNum">     445 </span><span class="lineCov">         32 :                     QString style = &quot;&quot;;</span></a>
-<a name="446"><span class="lineNum">     446 </span><span class="lineCov">         16 :                     if(rect-&gt;isBold())</span></a>
-<a name="447"><span class="lineNum">     447 </span>            :                     {</a>
-<a name="448"><span class="lineNum">     448 </span><span class="lineCov">         14 :                         style += &quot;font-weight: bold; &quot;;</span></a>
-<a name="449"><span class="lineNum">     449 </span>            :                     }</a>
-<a name="450"><span class="lineNum">     450 </span>            :                     //if(isLayout())</a>
-<a name="451"><span class="lineNum">     451 </span>            :                     {</a>
-<a name="452"><span class="lineNum">     452 </span><span class="lineCov">         16 :                         style += &quot;border: 1px solid gray; &quot;;</span></a>
-<a name="453"><span class="lineNum">     453 </span>            :                     }</a>
-<a name="454"><span class="lineNum">     454 </span><span class="lineCov">         16 :                     label-&gt;setStyleSheet(&quot;background-color: transparent; &quot; + style);</span></a>
-<a name="455"><span class="lineNum">     455 </span><span class="lineCov">         16 :                     label-&gt;setGeometry(rect-&gt;getRect());</span></a>
-<a name="456"><span class="lineNum">     456 </span><span class="lineCov">         16 :                     label-&gt;setAlignment(rect-&gt;getAlignment());</span></a>
-<a name="457"><span class="lineNum">     457 </span>            :                     //label-&gt;setText(&quot;----------------------&quot;);</a>
-<a name="458"><span class="lineNum">     458 </span>            :                 }</a>
-<a name="459"><span class="lineNum">     459 </span><span class="lineCov">         77 :                 for(auto &amp;&amp; ellipse : band-&gt;getEllipses())</span></a>
-<a name="460"><span class="lineNum">     460 </span>            :                 {</a>
-<a name="461"><span class="lineNum">     461 </span><span class="lineCov">         14 :                     if(ellipse-&gt;getSize().isEmpty())</span></a>
-<a name="462"><span class="lineNum">     462 </span>            :                     {</a>
-<a name="463"><span class="lineNum">     463 </span><span class="lineNoCov">          0 :                         m_lastError = &quot;Ellipse \&quot;&quot; + ellipse-&gt;getName() + &quot;\&quot; size is empty&quot;;</span></a>
-<a name="464"><span class="lineNum">     464 </span><span class="lineNoCov">          0 :                         return false;</span></a>
-<a name="465"><span class="lineNum">     465 </span>            :                     }</a>
-<a name="466"><span class="lineNum">     466 </span>            : </a>
-<a name="467"><span class="lineNum">     467 </span><span class="lineCov">         14 :                     auto label = new QLabel(frame);</span></a>
-<a name="468"><span class="lineNum">     468 </span><span class="lineCov">         28 :                     QString style = &quot;&quot;;</span></a>
-<a name="469"><span class="lineNum">     469 </span><span class="lineCov">         14 :                     if(isLayout())</span></a>
+<a name="354"><span class="lineNum">     354 </span>            : </a>
+<a name="355"><span class="lineNum">     355 </span><span class="lineCov">         63 :                 auto frame = new QFrame(isLayout() ? parent : m_pages.last().data());</span></a>
+<a name="356"><span class="lineNum">     356 </span><span class="lineCov">         63 :                 frame-&gt;setStyleSheet(&quot;background-color: transparent; &quot;);</span></a>
+<a name="357"><span class="lineNum">     357 </span><span class="lineCov">         63 :                 frame-&gt;move(frame-&gt;x(), isLayout() ? dy : m_currentHeight);</span></a>
+<a name="358"><span class="lineNum">     358 </span>            : </a>
+<a name="359"><span class="lineNum">     359 </span><span class="lineCov">         63 :                 m_currentHeight += band-&gt;getHeight();</span></a>
+<a name="360"><span class="lineNum">     360 </span><span class="lineCov">         63 :                 dy += band-&gt;getHeight();</span></a>
+<a name="361"><span class="lineNum">     361 </span>            : </a>
+<a name="362"><span class="lineNum">     362 </span><span class="lineCov">        166 :                 for(auto &amp;&amp; textWidget : band-&gt;getTextWidgets())</span></a>
+<a name="363"><span class="lineNum">     363 </span>            :                 {</a>
+<a name="364"><span class="lineNum">     364 </span><span class="lineCov">        103 :                     auto label = new QLabel(frame);</span></a>
+<a name="365"><span class="lineNum">     365 </span><span class="lineCov">        206 :                     QString style = &quot;&quot;;</span></a>
+<a name="366"><span class="lineNum">     366 </span><span class="lineCov">        103 :                     if(textWidget-&gt;isBold())</span></a>
+<a name="367"><span class="lineNum">     367 </span>            :                     {</a>
+<a name="368"><span class="lineNum">     368 </span><span class="lineCov">         56 :                         style += &quot;font-weight: bold; &quot;;</span></a>
+<a name="369"><span class="lineNum">     369 </span>            :                     }</a>
+<a name="370"><span class="lineNum">     370 </span><span class="lineCov">        103 :                     if(isLayout())</span></a>
+<a name="371"><span class="lineNum">     371 </span>            :                     {</a>
+<a name="372"><span class="lineNum">     372 </span><span class="lineCov">         17 :                         style += &quot;border: 1px solid gray; &quot;;</span></a>
+<a name="373"><span class="lineNum">     373 </span>            :                     }</a>
+<a name="374"><span class="lineNum">     374 </span><span class="lineCov">        103 :                     label-&gt;setStyleSheet(&quot;background-color: transparent; &quot; + style);</span></a>
+<a name="375"><span class="lineNum">     375 </span><span class="lineCov">        103 :                     label-&gt;setGeometry(textWidget-&gt;getRect());</span></a>
+<a name="376"><span class="lineNum">     376 </span><span class="lineCov">        103 :                     label-&gt;setAlignment(textWidget-&gt;getAlignment());</span></a>
+<a name="377"><span class="lineNum">     377 </span><span class="lineCov">        206 :                     auto text = isLayout() ? textWidget-&gt;getOriginalText() : textWidget-&gt;getText();</span></a>
+<a name="378"><span class="lineNum">     378 </span><span class="lineCov">        103 :                     label-&gt;setText(text);</span></a>
+<a name="379"><span class="lineNum">     379 </span>            :                 }</a>
+<a name="380"><span class="lineNum">     380 </span><span class="lineCov">         91 :                 for(auto &amp;&amp; line : band-&gt;getLines())</span></a>
+<a name="381"><span class="lineNum">     381 </span>            :                 {</a>
+<a name="382"><span class="lineNum">     382 </span><span class="lineCov">         28 :                     auto label = new QLabel(frame);</span></a>
+<a name="383"><span class="lineNum">     383 </span><span class="lineCov">         56 :                     QString style = &quot;&quot;;</span></a>
+<a name="384"><span class="lineNum">     384 </span><span class="lineCov">         28 :                     if(line-&gt;isBold())</span></a>
+<a name="385"><span class="lineNum">     385 </span>            :                     {</a>
+<a name="386"><span class="lineNum">     386 </span><span class="lineCov">         24 :                         style += &quot;font-weight: bold; &quot;;</span></a>
+<a name="387"><span class="lineNum">     387 </span>            :                     }</a>
+<a name="388"><span class="lineNum">     388 </span>            :                     //if(isLayout())</a>
+<a name="389"><span class="lineNum">     389 </span>            :                     {</a>
+<a name="390"><span class="lineNum">     390 </span><span class="lineCov">         28 :                         style += &quot;border: 1px solid gray; &quot;;</span></a>
+<a name="391"><span class="lineNum">     391 </span>            :                     }</a>
+<a name="392"><span class="lineNum">     392 </span><span class="lineCov">         28 :                     label-&gt;setStyleSheet(&quot;background-color: transparent; &quot; + style);</span></a>
+<a name="393"><span class="lineNum">     393 </span><span class="lineCov">         28 :                     label-&gt;setGeometry(line-&gt;getRect());</span></a>
+<a name="394"><span class="lineNum">     394 </span><span class="lineCov">         28 :                     label-&gt;setAlignment(line-&gt;getAlignment());</span></a>
+<a name="395"><span class="lineNum">     395 </span>            :                     //label-&gt;setText(&quot;----------------------&quot;);</a>
+<a name="396"><span class="lineNum">     396 </span>            :                 }</a>
+<a name="397"><span class="lineNum">     397 </span><span class="lineCov">         77 :                 for(auto &amp;&amp; imageWidget : band-&gt;getImages())</span></a>
+<a name="398"><span class="lineNum">     398 </span>            :                 {</a>
+<a name="399"><span class="lineNum">     399 </span><span class="lineCov">         14 :                     if(imageWidget-&gt;getRect().isEmpty())</span></a>
+<a name="400"><span class="lineNum">     400 </span>            :                     {</a>
+<a name="401"><span class="lineNum">     401 </span><span class="lineNoCov">          0 :                         m_lastError = &quot;Ellipse \&quot;&quot; + imageWidget-&gt;getName() + &quot;\&quot; rect is empty&quot;;</span></a>
+<a name="402"><span class="lineNum">     402 </span><span class="lineNoCov">          0 :                         return false;</span></a>
+<a name="403"><span class="lineNum">     403 </span>            :                     }</a>
+<a name="404"><span class="lineNum">     404 </span>            : </a>
+<a name="405"><span class="lineNum">     405 </span><span class="lineCov">         14 :                     auto label = new QLabel(frame);</span></a>
+<a name="406"><span class="lineNum">     406 </span><span class="lineCov">         28 :                     QString style = &quot;&quot;;</span></a>
+<a name="407"><span class="lineNum">     407 </span><span class="lineCov">         14 :                     if(isLayout())</span></a>
+<a name="408"><span class="lineNum">     408 </span>            :                     {</a>
+<a name="409"><span class="lineNum">     409 </span><span class="lineCov">          2 :                         style += &quot;border: 1px solid gray; &quot;;</span></a>
+<a name="410"><span class="lineNum">     410 </span>            :                     }</a>
+<a name="411"><span class="lineNum">     411 </span><span class="lineCov">         14 :                     label-&gt;setStyleSheet(&quot;background-color: transparent; &quot; + style);</span></a>
+<a name="412"><span class="lineNum">     412 </span><span class="lineCov">         14 :                     label-&gt;setGeometry(imageWidget-&gt;getRect());</span></a>
+<a name="413"><span class="lineNum">     413 </span><span class="lineCov">         14 :                     label-&gt;setAlignment(imageWidget-&gt;getAlignment());</span></a>
+<a name="414"><span class="lineNum">     414 </span><span class="lineCov">         14 :                     label-&gt;setPixmap(QPixmap::fromImage(imageWidget-&gt;getImage()));</span></a>
+<a name="415"><span class="lineNum">     415 </span>            :                 }</a>
+<a name="416"><span class="lineNum">     416 </span><span class="lineCov">         79 :                 for(auto &amp;&amp; rect : band-&gt;getRects())</span></a>
+<a name="417"><span class="lineNum">     417 </span>            :                 {</a>
+<a name="418"><span class="lineNum">     418 </span><span class="lineCov">         16 :                     if(rect-&gt;getRect().isEmpty())</span></a>
+<a name="419"><span class="lineNum">     419 </span>            :                     {</a>
+<a name="420"><span class="lineNum">     420 </span><span class="lineNoCov">          0 :                         m_lastError = &quot;Rect \&quot;&quot; + rect-&gt;getName() + &quot;\&quot; rect is empty&quot;;</span></a>
+<a name="421"><span class="lineNum">     421 </span><span class="lineNoCov">          0 :                         return false;</span></a>
+<a name="422"><span class="lineNum">     422 </span>            :                     }</a>
+<a name="423"><span class="lineNum">     423 </span>            : </a>
+<a name="424"><span class="lineNum">     424 </span><span class="lineCov">         16 :                     auto label = new QLabel(frame);</span></a>
+<a name="425"><span class="lineNum">     425 </span><span class="lineCov">         32 :                     QString style = &quot;&quot;;</span></a>
+<a name="426"><span class="lineNum">     426 </span><span class="lineCov">         16 :                     if(rect-&gt;isBold())</span></a>
+<a name="427"><span class="lineNum">     427 </span>            :                     {</a>
+<a name="428"><span class="lineNum">     428 </span><span class="lineCov">         14 :                         style += &quot;font-weight: bold; &quot;;</span></a>
+<a name="429"><span class="lineNum">     429 </span>            :                     }</a>
+<a name="430"><span class="lineNum">     430 </span>            :                     //if(isLayout())</a>
+<a name="431"><span class="lineNum">     431 </span>            :                     {</a>
+<a name="432"><span class="lineNum">     432 </span><span class="lineCov">         16 :                         style += &quot;border: 1px solid gray; &quot;;</span></a>
+<a name="433"><span class="lineNum">     433 </span>            :                     }</a>
+<a name="434"><span class="lineNum">     434 </span><span class="lineCov">         16 :                     label-&gt;setStyleSheet(&quot;background-color: transparent; &quot; + style);</span></a>
+<a name="435"><span class="lineNum">     435 </span><span class="lineCov">         16 :                     label-&gt;setGeometry(rect-&gt;getRect());</span></a>
+<a name="436"><span class="lineNum">     436 </span><span class="lineCov">         16 :                     label-&gt;setAlignment(rect-&gt;getAlignment());</span></a>
+<a name="437"><span class="lineNum">     437 </span>            :                     //label-&gt;setText(&quot;----------------------&quot;);</a>
+<a name="438"><span class="lineNum">     438 </span>            :                 }</a>
+<a name="439"><span class="lineNum">     439 </span><span class="lineCov">         77 :                 for(auto &amp;&amp; ellipse : band-&gt;getEllipses())</span></a>
+<a name="440"><span class="lineNum">     440 </span>            :                 {</a>
+<a name="441"><span class="lineNum">     441 </span><span class="lineCov">         14 :                     if(ellipse-&gt;getSize().isEmpty())</span></a>
+<a name="442"><span class="lineNum">     442 </span>            :                     {</a>
+<a name="443"><span class="lineNum">     443 </span><span class="lineNoCov">          0 :                         m_lastError = &quot;Ellipse \&quot;&quot; + ellipse-&gt;getName() + &quot;\&quot; size is empty&quot;;</span></a>
+<a name="444"><span class="lineNum">     444 </span><span class="lineNoCov">          0 :                         return false;</span></a>
+<a name="445"><span class="lineNum">     445 </span>            :                     }</a>
+<a name="446"><span class="lineNum">     446 </span>            : </a>
+<a name="447"><span class="lineNum">     447 </span><span class="lineCov">         14 :                     auto label = new QLabel(frame);</span></a>
+<a name="448"><span class="lineNum">     448 </span><span class="lineCov">         28 :                     QString style = &quot;&quot;;</span></a>
+<a name="449"><span class="lineNum">     449 </span><span class="lineCov">         14 :                     if(isLayout())</span></a>
+<a name="450"><span class="lineNum">     450 </span>            :                     {</a>
+<a name="451"><span class="lineNum">     451 </span><span class="lineCov">          2 :                         style += &quot;border: 1px solid gray; &quot;;</span></a>
+<a name="452"><span class="lineNum">     452 </span>            :                     }</a>
+<a name="453"><span class="lineNum">     453 </span>            : </a>
+<a name="454"><span class="lineNum">     454 </span><span class="lineCov">         28 :                     QPixmap pixmap(ellipse-&gt;getSize());</span></a>
+<a name="455"><span class="lineNum">     455 </span><span class="lineCov">         14 :                     pixmap.fill(Qt::GlobalColor::transparent);</span></a>
+<a name="456"><span class="lineNum">     456 </span>            : </a>
+<a name="457"><span class="lineNum">     457 </span><span class="lineCov">         28 :                     QPainter painter(&amp;pixmap);</span></a>
+<a name="458"><span class="lineNum">     458 </span><span class="lineCov">         14 :                     painter.setRenderHint(QPainter::Antialiasing);</span></a>
+<a name="459"><span class="lineNum">     459 </span><span class="lineCov">         14 :                     painter.drawEllipse(ellipse-&gt;getRect());</span></a>
+<a name="460"><span class="lineNum">     460 </span><span class="lineCov">         14 :                     painter.end();</span></a>
+<a name="461"><span class="lineNum">     461 </span><span class="lineCov">         14 :                     label-&gt;setPixmap(pixmap);</span></a>
+<a name="462"><span class="lineNum">     462 </span>            : </a>
+<a name="463"><span class="lineNum">     463 </span><span class="lineCov">         14 :                     label-&gt;setStyleSheet(&quot;background-color: transparent; &quot; + style);</span></a>
+<a name="464"><span class="lineNum">     464 </span><span class="lineCov">         14 :                     label-&gt;setGeometry(ellipse-&gt;getRect());</span></a>
+<a name="465"><span class="lineNum">     465 </span><span class="lineCov">         14 :                     label-&gt;setAlignment(ellipse-&gt;getAlignment());</span></a>
+<a name="466"><span class="lineNum">     466 </span>            :                 }</a>
+<a name="467"><span class="lineNum">     467 </span><span class="lineCov">         63 :                 for(auto &amp;&amp; crosstab : band-&gt;getCrosstabs())</span></a>
+<a name="468"><span class="lineNum">     468 </span>            :                 {</a>
+<a name="469"><span class="lineNum">     469 </span><span class="lineNoCov">          0 :                     if(isLayout())</span></a>
 <a name="470"><span class="lineNum">     470 </span>            :                     {</a>
-<a name="471"><span class="lineNum">     471 </span><span class="lineCov">          2 :                         style += &quot;border: 1px solid gray; &quot;;</span></a>
-<a name="472"><span class="lineNum">     472 </span>            :                     }</a>
-<a name="473"><span class="lineNum">     473 </span>            : </a>
-<a name="474"><span class="lineNum">     474 </span><span class="lineCov">         28 :                     QPixmap pixmap(ellipse-&gt;getSize());</span></a>
-<a name="475"><span class="lineNum">     475 </span><span class="lineCov">         14 :                     pixmap.fill(Qt::GlobalColor::transparent);</span></a>
-<a name="476"><span class="lineNum">     476 </span>            : </a>
-<a name="477"><span class="lineNum">     477 </span><span class="lineCov">         28 :                     QPainter painter(&amp;pixmap);</span></a>
-<a name="478"><span class="lineNum">     478 </span><span class="lineCov">         14 :                     painter.setRenderHint(QPainter::Antialiasing);</span></a>
-<a name="479"><span class="lineNum">     479 </span><span class="lineCov">         14 :                     painter.drawEllipse(ellipse-&gt;getRect());</span></a>
-<a name="480"><span class="lineNum">     480 </span><span class="lineCov">         14 :                     painter.end();</span></a>
-<a name="481"><span class="lineNum">     481 </span><span class="lineCov">         14 :                     label-&gt;setPixmap(pixmap);</span></a>
-<a name="482"><span class="lineNum">     482 </span>            : </a>
-<a name="483"><span class="lineNum">     483 </span><span class="lineCov">         14 :                     label-&gt;setStyleSheet(&quot;background-color: transparent; &quot; + style);</span></a>
-<a name="484"><span class="lineNum">     484 </span><span class="lineCov">         14 :                     label-&gt;setGeometry(ellipse-&gt;getRect());</span></a>
-<a name="485"><span class="lineNum">     485 </span><span class="lineCov">         14 :                     label-&gt;setAlignment(ellipse-&gt;getAlignment());</span></a>
-<a name="486"><span class="lineNum">     486 </span>            :                 }</a>
-<a name="487"><span class="lineNum">     487 </span><span class="lineCov">         63 :                 for(auto &amp;&amp; crosstab : band-&gt;getCrosstabs())</span></a>
-<a name="488"><span class="lineNum">     488 </span>            :                 {</a>
-<a name="489"><span class="lineNum">     489 </span><span class="lineNoCov">          0 :                     if(isLayout())</span></a>
-<a name="490"><span class="lineNum">     490 </span>            :                     {</a>
-<a name="491"><span class="lineNum">     491 </span>            :                         /*</a>
-<a name="492"><span class="lineNum">     492 </span>            :                          * +---------+---------+</a>
-<a name="493"><span class="lineNum">     493 </span>            :                          * |_________|_$F{col}_|</a>
-<a name="494"><span class="lineNum">     494 </span>            :                          * |_$F{row}_|$F{cell}_|</a>
-<a name="495"><span class="lineNum">     495 </span>            :                          * +-------------------+</a>
-<a name="496"><span class="lineNum">     496 </span>            :                         */</a>
-<a name="497"><span class="lineNum">     497 </span><span class="lineNoCov">          0 :                         auto labelEmpty = new QLabel(frame);</span></a>
-<a name="498"><span class="lineNum">     498 </span><span class="lineNoCov">          0 :                         auto labelRow   = new QLabel(frame);</span></a>
-<a name="499"><span class="lineNum">     499 </span><span class="lineNoCov">          0 :                         auto labelCol   = new QLabel(frame);</span></a>
-<a name="500"><span class="lineNum">     500 </span><span class="lineNoCov">          0 :                         auto labelCell  = new QLabel(frame);</span></a>
-<a name="501"><span class="lineNum">     501 </span><span class="lineNoCov">          0 :                         QString style = &quot;&quot;;</span></a>
-<a name="502"><span class="lineNum">     502 </span><span class="lineNoCov">          0 :                         if(isLayout())</span></a>
-<a name="503"><span class="lineNum">     503 </span>            :                         {</a>
-<a name="504"><span class="lineNum">     504 </span><span class="lineNoCov">          0 :                             style += &quot;border: 1px solid gray; &quot;;</span></a>
-<a name="505"><span class="lineNum">     505 </span>            :                         }</a>
-<a name="506"><span class="lineNum">     506 </span><span class="lineNoCov">          0 :                         auto crosstabAligment = crosstab-&gt;getAlignment();</span></a>
-<a name="507"><span class="lineNum">     507 </span><span class="lineNoCov">          0 :                         auto rowGroup = crosstab-&gt;getRowGroup();</span></a>
-<a name="508"><span class="lineNum">     508 </span><span class="lineNoCov">          0 :                         auto colGroup = crosstab-&gt;getColumnGroup();</span></a>
-<a name="509"><span class="lineNum">     509 </span><span class="lineNoCov">          0 :                         auto cell     = crosstab-&gt;getCrosstabCell();</span></a>
+<a name="471"><span class="lineNum">     471 </span>            :                         /*</a>
+<a name="472"><span class="lineNum">     472 </span>            :                          * +---------+---------+</a>
+<a name="473"><span class="lineNum">     473 </span>            :                          * |_________|_$F{col}_|</a>
+<a name="474"><span class="lineNum">     474 </span>            :                          * |_$F{row}_|$F{cell}_|</a>
+<a name="475"><span class="lineNum">     475 </span>            :                          * +-------------------+</a>
+<a name="476"><span class="lineNum">     476 </span>            :                         */</a>
+<a name="477"><span class="lineNum">     477 </span><span class="lineNoCov">          0 :                         auto labelEmpty = new QLabel(frame);</span></a>
+<a name="478"><span class="lineNum">     478 </span><span class="lineNoCov">          0 :                         auto labelRow   = new QLabel(frame);</span></a>
+<a name="479"><span class="lineNum">     479 </span><span class="lineNoCov">          0 :                         auto labelCol   = new QLabel(frame);</span></a>
+<a name="480"><span class="lineNum">     480 </span><span class="lineNoCov">          0 :                         auto labelCell  = new QLabel(frame);</span></a>
+<a name="481"><span class="lineNum">     481 </span><span class="lineNoCov">          0 :                         QString style = &quot;&quot;;</span></a>
+<a name="482"><span class="lineNum">     482 </span><span class="lineNoCov">          0 :                         if(isLayout())</span></a>
+<a name="483"><span class="lineNum">     483 </span>            :                         {</a>
+<a name="484"><span class="lineNum">     484 </span><span class="lineNoCov">          0 :                             style += &quot;border: 1px solid gray; &quot;;</span></a>
+<a name="485"><span class="lineNum">     485 </span>            :                         }</a>
+<a name="486"><span class="lineNum">     486 </span><span class="lineNoCov">          0 :                         auto crosstabAligment = crosstab-&gt;getAlignment();</span></a>
+<a name="487"><span class="lineNum">     487 </span><span class="lineNoCov">          0 :                         auto rowGroup = crosstab-&gt;getRowGroup();</span></a>
+<a name="488"><span class="lineNum">     488 </span><span class="lineNoCov">          0 :                         auto colGroup = crosstab-&gt;getColumnGroup();</span></a>
+<a name="489"><span class="lineNum">     489 </span><span class="lineNoCov">          0 :                         auto cell     = crosstab-&gt;getCrosstabCell();</span></a>
+<a name="490"><span class="lineNum">     490 </span>            : </a>
+<a name="491"><span class="lineNum">     491 </span><span class="lineNoCov">          0 :                         QRect crosstabRect = crosstab-&gt;getRect();</span></a>
+<a name="492"><span class="lineNum">     492 </span>            : </a>
+<a name="493"><span class="lineNum">     493 </span><span class="lineNoCov">          0 :                         QRect emptyRect = QRect();</span></a>
+<a name="494"><span class="lineNum">     494 </span><span class="lineNoCov">          0 :                         emptyRect.setX(crosstabRect.x());</span></a>
+<a name="495"><span class="lineNum">     495 </span><span class="lineNoCov">          0 :                         emptyRect.setY(crosstabRect.y());</span></a>
+<a name="496"><span class="lineNum">     496 </span><span class="lineNoCov">          0 :                         emptyRect.setWidth(rowGroup-&gt;getWidth());</span></a>
+<a name="497"><span class="lineNum">     497 </span><span class="lineNoCov">          0 :                         emptyRect.setHeight(cell-&gt;getHeight());</span></a>
+<a name="498"><span class="lineNum">     498 </span>            : </a>
+<a name="499"><span class="lineNum">     499 </span><span class="lineNoCov">          0 :                         QRect colRect = QRect();</span></a>
+<a name="500"><span class="lineNum">     500 </span><span class="lineNoCov">          0 :                         colRect.setX(emptyRect.x() + emptyRect.width());</span></a>
+<a name="501"><span class="lineNum">     501 </span><span class="lineNoCov">          0 :                         colRect.setY(crosstabRect.y());</span></a>
+<a name="502"><span class="lineNum">     502 </span><span class="lineNoCov">          0 :                         colRect.setWidth(cell-&gt;getWidth());</span></a>
+<a name="503"><span class="lineNum">     503 </span><span class="lineNoCov">          0 :                         colRect.setHeight(colGroup-&gt;getHeight());</span></a>
+<a name="504"><span class="lineNum">     504 </span>            : </a>
+<a name="505"><span class="lineNum">     505 </span><span class="lineNoCov">          0 :                         QRect rowRect = QRect();</span></a>
+<a name="506"><span class="lineNum">     506 </span><span class="lineNoCov">          0 :                         rowRect.setX(crosstabRect.x());</span></a>
+<a name="507"><span class="lineNum">     507 </span><span class="lineNoCov">          0 :                         rowRect.setY(emptyRect.y() + emptyRect.height());</span></a>
+<a name="508"><span class="lineNum">     508 </span><span class="lineNoCov">          0 :                         rowRect.setWidth(rowGroup-&gt;getWidth());</span></a>
+<a name="509"><span class="lineNum">     509 </span><span class="lineNoCov">          0 :                         rowRect.setHeight(cell-&gt;getHeight());</span></a>
 <a name="510"><span class="lineNum">     510 </span>            : </a>
-<a name="511"><span class="lineNum">     511 </span><span class="lineNoCov">          0 :                         QRect crosstabRect = crosstab-&gt;getRect();</span></a>
-<a name="512"><span class="lineNum">     512 </span>            : </a>
-<a name="513"><span class="lineNum">     513 </span><span class="lineNoCov">          0 :                         QRect emptyRect = QRect();</span></a>
-<a name="514"><span class="lineNum">     514 </span><span class="lineNoCov">          0 :                         emptyRect.setX(crosstabRect.x());</span></a>
-<a name="515"><span class="lineNum">     515 </span><span class="lineNoCov">          0 :                         emptyRect.setY(crosstabRect.y());</span></a>
-<a name="516"><span class="lineNum">     516 </span><span class="lineNoCov">          0 :                         emptyRect.setWidth(rowGroup-&gt;getWidth());</span></a>
-<a name="517"><span class="lineNum">     517 </span><span class="lineNoCov">          0 :                         emptyRect.setHeight(cell-&gt;getHeight());</span></a>
-<a name="518"><span class="lineNum">     518 </span>            : </a>
-<a name="519"><span class="lineNum">     519 </span><span class="lineNoCov">          0 :                         QRect colRect = QRect();</span></a>
-<a name="520"><span class="lineNum">     520 </span><span class="lineNoCov">          0 :                         colRect.setX(emptyRect.x() + emptyRect.width());</span></a>
-<a name="521"><span class="lineNum">     521 </span><span class="lineNoCov">          0 :                         colRect.setY(crosstabRect.y());</span></a>
-<a name="522"><span class="lineNum">     522 </span><span class="lineNoCov">          0 :                         colRect.setWidth(cell-&gt;getWidth());</span></a>
-<a name="523"><span class="lineNum">     523 </span><span class="lineNoCov">          0 :                         colRect.setHeight(colGroup-&gt;getHeight());</span></a>
+<a name="511"><span class="lineNum">     511 </span><span class="lineNoCov">          0 :                         QRect cellRect = QRect();</span></a>
+<a name="512"><span class="lineNum">     512 </span><span class="lineNoCov">          0 :                         cellRect.setX(colRect.x());</span></a>
+<a name="513"><span class="lineNum">     513 </span><span class="lineNoCov">          0 :                         cellRect.setY(rowRect.y());</span></a>
+<a name="514"><span class="lineNum">     514 </span><span class="lineNoCov">          0 :                         cellRect.setWidth(cell-&gt;getWidth());</span></a>
+<a name="515"><span class="lineNum">     515 </span><span class="lineNoCov">          0 :                         cellRect.setHeight(cell-&gt;getHeight());</span></a>
+<a name="516"><span class="lineNum">     516 </span>            : </a>
+<a name="517"><span class="lineNum">     517 </span><span class="lineNoCov">          0 :                         auto textFieldRow  = crosstab-&gt;getRowGroup()-&gt;getHeader()-&gt;getCellContents()-&gt;getTextField();</span></a>
+<a name="518"><span class="lineNum">     518 </span><span class="lineNoCov">          0 :                         auto textFieldCol  = crosstab-&gt;getColumnGroup()-&gt;getHeader()-&gt;getCellContents()-&gt;getTextField();</span></a>
+<a name="519"><span class="lineNum">     519 </span><span class="lineNoCov">          0 :                         auto textFieldCell = crosstab-&gt;getCrosstabCell()-&gt;getCellContents()-&gt;getTextField();</span></a>
+<a name="520"><span class="lineNum">     520 </span>            : </a>
+<a name="521"><span class="lineNum">     521 </span><span class="lineNoCov">          0 :                         auto textRow  = textFieldRow-&gt;getOriginalText();</span></a>
+<a name="522"><span class="lineNum">     522 </span><span class="lineNoCov">          0 :                         auto textCol  = textFieldCol-&gt;getOriginalText();</span></a>
+<a name="523"><span class="lineNum">     523 </span><span class="lineNoCov">          0 :                         auto textCell = textFieldCell-&gt;getOriginalText();</span></a>
 <a name="524"><span class="lineNum">     524 </span>            : </a>
-<a name="525"><span class="lineNum">     525 </span><span class="lineNoCov">          0 :                         QRect rowRect = QRect();</span></a>
-<a name="526"><span class="lineNum">     526 </span><span class="lineNoCov">          0 :                         rowRect.setX(crosstabRect.x());</span></a>
-<a name="527"><span class="lineNum">     527 </span><span class="lineNoCov">          0 :                         rowRect.setY(emptyRect.y() + emptyRect.height());</span></a>
-<a name="528"><span class="lineNum">     528 </span><span class="lineNoCov">          0 :                         rowRect.setWidth(rowGroup-&gt;getWidth());</span></a>
-<a name="529"><span class="lineNum">     529 </span><span class="lineNoCov">          0 :                         rowRect.setHeight(cell-&gt;getHeight());</span></a>
-<a name="530"><span class="lineNum">     530 </span>            : </a>
-<a name="531"><span class="lineNum">     531 </span><span class="lineNoCov">          0 :                         QRect cellRect = QRect();</span></a>
-<a name="532"><span class="lineNum">     532 </span><span class="lineNoCov">          0 :                         cellRect.setX(colRect.x());</span></a>
-<a name="533"><span class="lineNum">     533 </span><span class="lineNoCov">          0 :                         cellRect.setY(rowRect.y());</span></a>
-<a name="534"><span class="lineNum">     534 </span><span class="lineNoCov">          0 :                         cellRect.setWidth(cell-&gt;getWidth());</span></a>
-<a name="535"><span class="lineNum">     535 </span><span class="lineNoCov">          0 :                         cellRect.setHeight(cell-&gt;getHeight());</span></a>
-<a name="536"><span class="lineNum">     536 </span>            : </a>
-<a name="537"><span class="lineNum">     537 </span><span class="lineNoCov">          0 :                         auto textFieldRow  = crosstab-&gt;getRowGroup()-&gt;getHeader()-&gt;getCellContents()-&gt;getTextField();</span></a>
-<a name="538"><span class="lineNum">     538 </span><span class="lineNoCov">          0 :                         auto textFieldCol  = crosstab-&gt;getColumnGroup()-&gt;getHeader()-&gt;getCellContents()-&gt;getTextField();</span></a>
-<a name="539"><span class="lineNum">     539 </span><span class="lineNoCov">          0 :                         auto textFieldCell = crosstab-&gt;getCrosstabCell()-&gt;getCellContents()-&gt;getTextField();</span></a>
-<a name="540"><span class="lineNum">     540 </span>            : </a>
-<a name="541"><span class="lineNum">     541 </span><span class="lineNoCov">          0 :                         auto textRow  = textFieldRow-&gt;getOriginalText();</span></a>
-<a name="542"><span class="lineNum">     542 </span><span class="lineNoCov">          0 :                         auto textCol  = textFieldCol-&gt;getOriginalText();</span></a>
-<a name="543"><span class="lineNum">     543 </span><span class="lineNoCov">          0 :                         auto textCell = textFieldCell-&gt;getOriginalText();</span></a>
-<a name="544"><span class="lineNum">     544 </span>            : </a>
-<a name="545"><span class="lineNum">     545 </span><span class="lineNoCov">          0 :                         labelEmpty-&gt;setStyleSheet(&quot;background-color: transparent; &quot; + style);</span></a>
-<a name="546"><span class="lineNum">     546 </span><span class="lineNoCov">          0 :                         labelEmpty-&gt;setGeometry(emptyRect);</span></a>
-<a name="547"><span class="lineNum">     547 </span><span class="lineNoCov">          0 :                         labelEmpty-&gt;setAlignment(crosstabAligment);</span></a>
-<a name="548"><span class="lineNum">     548 </span>            : </a>
-<a name="549"><span class="lineNum">     549 </span><span class="lineNoCov">          0 :                         labelRow-&gt;setStyleSheet(&quot;background-color: transparent; &quot; + style);</span></a>
-<a name="550"><span class="lineNum">     550 </span><span class="lineNoCov">          0 :                         labelRow-&gt;setGeometry(rowRect);</span></a>
-<a name="551"><span class="lineNum">     551 </span><span class="lineNoCov">          0 :                         labelRow-&gt;setAlignment(crosstabAligment);</span></a>
-<a name="552"><span class="lineNum">     552 </span><span class="lineNoCov">          0 :                         labelRow-&gt;setText(textRow);</span></a>
+<a name="525"><span class="lineNum">     525 </span><span class="lineNoCov">          0 :                         labelEmpty-&gt;setStyleSheet(&quot;background-color: transparent; &quot; + style);</span></a>
+<a name="526"><span class="lineNum">     526 </span><span class="lineNoCov">          0 :                         labelEmpty-&gt;setGeometry(emptyRect);</span></a>
+<a name="527"><span class="lineNum">     527 </span><span class="lineNoCov">          0 :                         labelEmpty-&gt;setAlignment(crosstabAligment);</span></a>
+<a name="528"><span class="lineNum">     528 </span>            : </a>
+<a name="529"><span class="lineNum">     529 </span><span class="lineNoCov">          0 :                         labelRow-&gt;setStyleSheet(&quot;background-color: transparent; &quot; + style);</span></a>
+<a name="530"><span class="lineNum">     530 </span><span class="lineNoCov">          0 :                         labelRow-&gt;setGeometry(rowRect);</span></a>
+<a name="531"><span class="lineNum">     531 </span><span class="lineNoCov">          0 :                         labelRow-&gt;setAlignment(crosstabAligment);</span></a>
+<a name="532"><span class="lineNum">     532 </span><span class="lineNoCov">          0 :                         labelRow-&gt;setText(textRow);</span></a>
+<a name="533"><span class="lineNum">     533 </span>            : </a>
+<a name="534"><span class="lineNum">     534 </span><span class="lineNoCov">          0 :                         labelCol-&gt;setStyleSheet(&quot;background-color: transparent; &quot; + style);</span></a>
+<a name="535"><span class="lineNum">     535 </span><span class="lineNoCov">          0 :                         labelCol-&gt;setGeometry(colRect);</span></a>
+<a name="536"><span class="lineNum">     536 </span><span class="lineNoCov">          0 :                         labelCol-&gt;setAlignment(crosstabAligment);</span></a>
+<a name="537"><span class="lineNum">     537 </span><span class="lineNoCov">          0 :                         labelCol-&gt;setText(textCol);</span></a>
+<a name="538"><span class="lineNum">     538 </span>            : </a>
+<a name="539"><span class="lineNum">     539 </span><span class="lineNoCov">          0 :                         labelCell-&gt;setStyleSheet(&quot;background-color: transparent; &quot; + style);</span></a>
+<a name="540"><span class="lineNum">     540 </span><span class="lineNoCov">          0 :                         labelCell-&gt;setGeometry(cellRect);</span></a>
+<a name="541"><span class="lineNum">     541 </span><span class="lineNoCov">          0 :                         labelCell-&gt;setAlignment(crosstabAligment);</span></a>
+<a name="542"><span class="lineNum">     542 </span><span class="lineNoCov">          0 :                         labelCell-&gt;setText(textCell);</span></a>
+<a name="543"><span class="lineNum">     543 </span>            :                     }</a>
+<a name="544"><span class="lineNum">     544 </span>            :                     else</a>
+<a name="545"><span class="lineNum">     545 </span>            :                     {</a>
+<a name="546"><span class="lineNum">     546 </span><span class="lineNoCov">          0 :                         detail::Replacer replacer;</span></a>
+<a name="547"><span class="lineNum">     547 </span>            : </a>
+<a name="548"><span class="lineNum">     548 </span><span class="lineNoCov">          0 :                         QList&lt;QString&gt; colGroups;</span></a>
+<a name="549"><span class="lineNum">     549 </span><span class="lineNoCov">          0 :                         replacer.replaceColumnGroupsInCrosstab(crosstab, m_report, colGroups);</span></a>
+<a name="550"><span class="lineNum">     550 </span>            : </a>
+<a name="551"><span class="lineNum">     551 </span><span class="lineNoCov">          0 :                         QList&lt;QString&gt; rowGroups;</span></a>
+<a name="552"><span class="lineNum">     552 </span><span class="lineNoCov">          0 :                         replacer.replaceRowGroupsInCrosstab(crosstab, m_report, rowGroups);</span></a>
 <a name="553"><span class="lineNum">     553 </span>            : </a>
-<a name="554"><span class="lineNum">     554 </span><span class="lineNoCov">          0 :                         labelCol-&gt;setStyleSheet(&quot;background-color: transparent; &quot; + style);</span></a>
-<a name="555"><span class="lineNum">     555 </span><span class="lineNoCov">          0 :                         labelCol-&gt;setGeometry(colRect);</span></a>
-<a name="556"><span class="lineNum">     556 </span><span class="lineNoCov">          0 :                         labelCol-&gt;setAlignment(crosstabAligment);</span></a>
-<a name="557"><span class="lineNum">     557 </span><span class="lineNoCov">          0 :                         labelCol-&gt;setText(textCol);</span></a>
+<a name="554"><span class="lineNum">     554 </span><span class="lineNoCov">          0 :                         QList&lt;QString&gt; cells;</span></a>
+<a name="555"><span class="lineNum">     555 </span><span class="lineNoCov">          0 :                         replacer.replaceCellsInCrosstab(crosstab, m_report, cells);</span></a>
+<a name="556"><span class="lineNum">     556 </span>            : </a>
+<a name="557"><span class="lineNum">     557 </span><span class="lineNoCov">          0 :                         QRect crosstabRect = crosstab-&gt;getRect();</span></a>
 <a name="558"><span class="lineNum">     558 </span>            : </a>
-<a name="559"><span class="lineNum">     559 </span><span class="lineNoCov">          0 :                         labelCell-&gt;setStyleSheet(&quot;background-color: transparent; &quot; + style);</span></a>
-<a name="560"><span class="lineNum">     560 </span><span class="lineNoCov">          0 :                         labelCell-&gt;setGeometry(cellRect);</span></a>
-<a name="561"><span class="lineNum">     561 </span><span class="lineNoCov">          0 :                         labelCell-&gt;setAlignment(crosstabAligment);</span></a>
-<a name="562"><span class="lineNum">     562 </span><span class="lineNoCov">          0 :                         labelCell-&gt;setText(textCell);</span></a>
-<a name="563"><span class="lineNum">     563 </span>            :                     }</a>
-<a name="564"><span class="lineNum">     564 </span>            :                     else</a>
-<a name="565"><span class="lineNum">     565 </span>            :                     {</a>
-<a name="566"><span class="lineNum">     566 </span><span class="lineNoCov">          0 :                         detail::Replacer replacer;</span></a>
-<a name="567"><span class="lineNum">     567 </span>            : </a>
-<a name="568"><span class="lineNum">     568 </span><span class="lineNoCov">          0 :                         QList&lt;QString&gt; colGroups;</span></a>
-<a name="569"><span class="lineNum">     569 </span><span class="lineNoCov">          0 :                         replacer.replaceColumnGroupsInCrosstab(crosstab, m_report, colGroups);</span></a>
+<a name="559"><span class="lineNum">     559 </span><span class="lineNoCov">          0 :                         auto crosstabAligment = crosstab-&gt;getAlignment();</span></a>
+<a name="560"><span class="lineNum">     560 </span><span class="lineNoCov">          0 :                         auto rowGroup = crosstab-&gt;getRowGroup();</span></a>
+<a name="561"><span class="lineNum">     561 </span><span class="lineNoCov">          0 :                         auto colGroup = crosstab-&gt;getColumnGroup();</span></a>
+<a name="562"><span class="lineNum">     562 </span><span class="lineNoCov">          0 :                         auto cell     = crosstab-&gt;getCrosstabCell();</span></a>
+<a name="563"><span class="lineNum">     563 </span>            : </a>
+<a name="564"><span class="lineNum">     564 </span><span class="lineNoCov">          0 :                         auto labelEmpty = new QLabel(frame);</span></a>
+<a name="565"><span class="lineNum">     565 </span><span class="lineNoCov">          0 :                         QRect emptyRect = QRect();</span></a>
+<a name="566"><span class="lineNum">     566 </span><span class="lineNoCov">          0 :                         emptyRect.setX(crosstabRect.x());</span></a>
+<a name="567"><span class="lineNum">     567 </span><span class="lineNoCov">          0 :                         emptyRect.setY(crosstabRect.y());</span></a>
+<a name="568"><span class="lineNum">     568 </span><span class="lineNoCov">          0 :                         emptyRect.setWidth(rowGroup-&gt;getWidth());</span></a>
+<a name="569"><span class="lineNum">     569 </span><span class="lineNoCov">          0 :                         emptyRect.setHeight(cell-&gt;getHeight());</span></a>
 <a name="570"><span class="lineNum">     570 </span>            : </a>
-<a name="571"><span class="lineNum">     571 </span><span class="lineNoCov">          0 :                         QList&lt;QString&gt; rowGroups;</span></a>
-<a name="572"><span class="lineNum">     572 </span><span class="lineNoCov">          0 :                         replacer.replaceRowGroupsInCrosstab(crosstab, m_report, rowGroups);</span></a>
-<a name="573"><span class="lineNum">     573 </span>            : </a>
-<a name="574"><span class="lineNum">     574 </span><span class="lineNoCov">          0 :                         QList&lt;QString&gt; cells;</span></a>
-<a name="575"><span class="lineNum">     575 </span><span class="lineNoCov">          0 :                         replacer.replaceCellsInCrosstab(crosstab, m_report, cells);</span></a>
-<a name="576"><span class="lineNum">     576 </span>            : </a>
-<a name="577"><span class="lineNum">     577 </span><span class="lineNoCov">          0 :                         QRect crosstabRect = crosstab-&gt;getRect();</span></a>
-<a name="578"><span class="lineNum">     578 </span>            : </a>
-<a name="579"><span class="lineNum">     579 </span><span class="lineNoCov">          0 :                         auto crosstabAligment = crosstab-&gt;getAlignment();</span></a>
-<a name="580"><span class="lineNum">     580 </span><span class="lineNoCov">          0 :                         auto rowGroup = crosstab-&gt;getRowGroup();</span></a>
-<a name="581"><span class="lineNum">     581 </span><span class="lineNoCov">          0 :                         auto colGroup = crosstab-&gt;getColumnGroup();</span></a>
-<a name="582"><span class="lineNum">     582 </span><span class="lineNoCov">          0 :                         auto cell     = crosstab-&gt;getCrosstabCell();</span></a>
-<a name="583"><span class="lineNum">     583 </span>            : </a>
-<a name="584"><span class="lineNum">     584 </span><span class="lineNoCov">          0 :                         auto labelEmpty = new QLabel(frame);</span></a>
-<a name="585"><span class="lineNum">     585 </span><span class="lineNoCov">          0 :                         QRect emptyRect = QRect();</span></a>
-<a name="586"><span class="lineNum">     586 </span><span class="lineNoCov">          0 :                         emptyRect.setX(crosstabRect.x());</span></a>
-<a name="587"><span class="lineNum">     587 </span><span class="lineNoCov">          0 :                         emptyRect.setY(crosstabRect.y());</span></a>
-<a name="588"><span class="lineNum">     588 </span><span class="lineNoCov">          0 :                         emptyRect.setWidth(rowGroup-&gt;getWidth());</span></a>
-<a name="589"><span class="lineNum">     589 </span><span class="lineNoCov">          0 :                         emptyRect.setHeight(cell-&gt;getHeight());</span></a>
-<a name="590"><span class="lineNum">     590 </span>            : </a>
-<a name="591"><span class="lineNum">     591 </span><span class="lineNoCov">          0 :                         QString style = &quot;border: 1px solid gray;&quot;;</span></a>
-<a name="592"><span class="lineNum">     592 </span><span class="lineNoCov">          0 :                         labelEmpty-&gt;setStyleSheet(&quot;background-color: transparent; &quot; + style);</span></a>
-<a name="593"><span class="lineNum">     593 </span><span class="lineNoCov">          0 :                         labelEmpty-&gt;setGeometry(emptyRect);</span></a>
-<a name="594"><span class="lineNum">     594 </span><span class="lineNoCov">          0 :                         labelEmpty-&gt;setAlignment(crosstabAligment);</span></a>
-<a name="595"><span class="lineNum">     595 </span>            : </a>
-<a name="596"><span class="lineNum">     596 </span><span class="lineNoCov">          0 :                         int colX = crosstabRect.x() + emptyRect.width();</span></a>
-<a name="597"><span class="lineNum">     597 </span><span class="lineNoCov">          0 :                         for (int i = 0; i &lt; colGroups.size(); i++)</span></a>
-<a name="598"><span class="lineNum">     598 </span>            :                         {</a>
-<a name="599"><span class="lineNum">     599 </span><span class="lineNoCov">          0 :                             auto labelCol = new QLabel(frame);</span></a>
-<a name="600"><span class="lineNum">     600 </span>            : </a>
-<a name="601"><span class="lineNum">     601 </span><span class="lineNoCov">          0 :                             QRect colRect = QRect();</span></a>
-<a name="602"><span class="lineNum">     602 </span><span class="lineNoCov">          0 :                             colRect.setX(colX);</span></a>
-<a name="603"><span class="lineNum">     603 </span><span class="lineNoCov">          0 :                             colRect.setY(crosstabRect.y());</span></a>
-<a name="604"><span class="lineNum">     604 </span><span class="lineNoCov">          0 :                             colRect.setWidth(cell-&gt;getWidth());</span></a>
-<a name="605"><span class="lineNum">     605 </span><span class="lineNoCov">          0 :                             colRect.setHeight(colGroup-&gt;getHeight());</span></a>
-<a name="606"><span class="lineNum">     606 </span>            : </a>
-<a name="607"><span class="lineNum">     607 </span><span class="lineNoCov">          0 :                             labelCol-&gt;setStyleSheet(&quot;background-color: transparent; &quot; + style);</span></a>
-<a name="608"><span class="lineNum">     608 </span><span class="lineNoCov">          0 :                             labelCol-&gt;setGeometry(colRect);</span></a>
-<a name="609"><span class="lineNum">     609 </span><span class="lineNoCov">          0 :                             labelCol-&gt;setAlignment(colGroup-&gt;getHeader()-&gt;getCellContents()-&gt;getAlignment());</span></a>
-<a name="610"><span class="lineNum">     610 </span><span class="lineNoCov">          0 :                             labelCol-&gt;setText(colGroups[i]);</span></a>
-<a name="611"><span class="lineNum">     611 </span>            : </a>
-<a name="612"><span class="lineNum">     612 </span><span class="lineNoCov">          0 :                             colX += cell-&gt;getWidth();</span></a>
-<a name="613"><span class="lineNum">     613 </span>            :                         }</a>
-<a name="614"><span class="lineNum">     614 </span>            : </a>
-<a name="615"><span class="lineNum">     615 </span><span class="lineNoCov">          0 :                         int rowY = crosstabRect.y();</span></a>
-<a name="616"><span class="lineNum">     616 </span><span class="lineNoCov">          0 :                         for (int i = 0; i &lt; rowGroups.size(); i++)</span></a>
-<a name="617"><span class="lineNum">     617 </span>            :                         {</a>
-<a name="618"><span class="lineNum">     618 </span><span class="lineNoCov">          0 :                             rowY += cell-&gt;getHeight();</span></a>
-<a name="619"><span class="lineNum">     619 </span>            : </a>
-<a name="620"><span class="lineNum">     620 </span><span class="lineNoCov">          0 :                             auto labelRow = new QLabel(frame);</span></a>
-<a name="621"><span class="lineNum">     621 </span>            : </a>
-<a name="622"><span class="lineNum">     622 </span><span class="lineNoCov">          0 :                             QRect rowRect = QRect();</span></a>
-<a name="623"><span class="lineNum">     623 </span><span class="lineNoCov">          0 :                             rowRect.setX(crosstabRect.x());</span></a>
-<a name="624"><span class="lineNum">     624 </span><span class="lineNoCov">          0 :                             rowRect.setY(rowY);</span></a>
-<a name="625"><span class="lineNum">     625 </span><span class="lineNoCov">          0 :                             rowRect.setWidth(rowGroup-&gt;getWidth());</span></a>
-<a name="626"><span class="lineNum">     626 </span><span class="lineNoCov">          0 :                             rowRect.setHeight(cell-&gt;getHeight());</span></a>
-<a name="627"><span class="lineNum">     627 </span>            : </a>
-<a name="628"><span class="lineNum">     628 </span><span class="lineNoCov">          0 :                             labelRow-&gt;setStyleSheet(&quot;background-color: transparent; &quot; + style);</span></a>
-<a name="629"><span class="lineNum">     629 </span><span class="lineNoCov">          0 :                             labelRow-&gt;setGeometry(rowRect);</span></a>
-<a name="630"><span class="lineNum">     630 </span><span class="lineNoCov">          0 :                             labelRow-&gt;setAlignment(rowGroup-&gt;getHeader()-&gt;getCellContents()-&gt;getAlignment());</span></a>
-<a name="631"><span class="lineNum">     631 </span><span class="lineNoCov">          0 :                             labelRow-&gt;setText(rowGroups[i]);</span></a>
-<a name="632"><span class="lineNum">     632 </span>            :                         }</a>
-<a name="633"><span class="lineNum">     633 </span>            : </a>
-<a name="634"><span class="lineNum">     634 </span><span class="lineNoCov">          0 :                         int cellX = crosstabRect.x();</span></a>
-<a name="635"><span class="lineNum">     635 </span><span class="lineNoCov">          0 :                         int cellY = crosstabRect.y();</span></a>
-<a name="636"><span class="lineNum">     636 </span>            : </a>
-<a name="637"><span class="lineNum">     637 </span><span class="lineNoCov">          0 :                         int cellCount = 0;</span></a>
-<a name="638"><span class="lineNum">     638 </span><span class="lineNoCov">          0 :                         for (int i = 0; i &lt; rowGroups.size(); i++)</span></a>
-<a name="639"><span class="lineNum">     639 </span>            :                         {</a>
-<a name="640"><span class="lineNum">     640 </span><span class="lineNoCov">          0 :                             cellX += emptyRect.width();</span></a>
-<a name="641"><span class="lineNum">     641 </span><span class="lineNoCov">          0 :                             cellY += emptyRect.height();</span></a>
-<a name="642"><span class="lineNum">     642 </span><span class="lineNoCov">          0 :                             for(int j = 0; j &lt; colGroups.size(); j++)</span></a>
-<a name="643"><span class="lineNum">     643 </span>            :                             {</a>
-<a name="644"><span class="lineNum">     644 </span><span class="lineNoCov">          0 :                                 auto labelCell = new QLabel(frame);</span></a>
-<a name="645"><span class="lineNum">     645 </span>            : </a>
-<a name="646"><span class="lineNum">     646 </span><span class="lineNoCov">          0 :                                 QRect cellRect = QRect();</span></a>
-<a name="647"><span class="lineNum">     647 </span><span class="lineNoCov">          0 :                                 cellRect.setX(cellX);</span></a>
-<a name="648"><span class="lineNum">     648 </span><span class="lineNoCov">          0 :                                 cellRect.setY(cellY);</span></a>
-<a name="649"><span class="lineNum">     649 </span><span class="lineNoCov">          0 :                                 cellRect.setWidth(cell-&gt;getWidth());</span></a>
-<a name="650"><span class="lineNum">     650 </span><span class="lineNoCov">          0 :                                 cellRect.setHeight(cell-&gt;getHeight());</span></a>
-<a name="651"><span class="lineNum">     651 </span>            : </a>
-<a name="652"><span class="lineNum">     652 </span><span class="lineNoCov">          0 :                                 labelCell-&gt;setStyleSheet(&quot;background-color: transparent; &quot; + style);</span></a>
-<a name="653"><span class="lineNum">     653 </span><span class="lineNoCov">          0 :                                 labelCell-&gt;setGeometry(cellRect);</span></a>
-<a name="654"><span class="lineNum">     654 </span><span class="lineNoCov">          0 :                                 labelCell-&gt;setAlignment(cell-&gt;getCellContents()-&gt;getAlignment());</span></a>
-<a name="655"><span class="lineNum">     655 </span>            : </a>
-<a name="656"><span class="lineNum">     656 </span><span class="lineNoCov">          0 :                                 auto text = cells[cellCount];</span></a>
-<a name="657"><span class="lineNum">     657 </span><span class="lineNoCov">          0 :                                 labelCell-&gt;setText(text);</span></a>
-<a name="658"><span class="lineNum">     658 </span>            : </a>
-<a name="659"><span class="lineNum">     659 </span><span class="lineNoCov">          0 :                                 cellCount++;</span></a>
-<a name="660"><span class="lineNum">     660 </span><span class="lineNoCov">          0 :                                 cellX += cell-&gt;getWidth();</span></a>
-<a name="661"><span class="lineNum">     661 </span>            :                             }</a>
-<a name="662"><span class="lineNum">     662 </span><span class="lineNoCov">          0 :                             cellX = crosstabRect.x();</span></a>
-<a name="663"><span class="lineNum">     663 </span>            :                         }</a>
-<a name="664"><span class="lineNum">     664 </span>            :                     }</a>
-<a name="665"><span class="lineNum">     665 </span>            :                 }</a>
-<a name="666"><span class="lineNum">     666 </span>            :             }</a>
-<a name="667"><span class="lineNum">     667 </span>            : </a>
-<a name="668"><span class="lineNum">     668 </span><span class="lineCov">         39 :             return true;</span></a>
-<a name="669"><span class="lineNum">     669 </span>            :         }</a>
-<a name="670"><span class="lineNum">     670 </span>            : </a>
-<a name="671"><span class="lineNum">     671 </span>            :     }</a>
-<a name="672"><span class="lineNum">     672 </span>            : }</a>
+<a name="571"><span class="lineNum">     571 </span><span class="lineNoCov">          0 :                         QString style = &quot;border: 1px solid gray;&quot;;</span></a>
+<a name="572"><span class="lineNum">     572 </span><span class="lineNoCov">          0 :                         labelEmpty-&gt;setStyleSheet(&quot;background-color: transparent; &quot; + style);</span></a>
+<a name="573"><span class="lineNum">     573 </span><span class="lineNoCov">          0 :                         labelEmpty-&gt;setGeometry(emptyRect);</span></a>
+<a name="574"><span class="lineNum">     574 </span><span class="lineNoCov">          0 :                         labelEmpty-&gt;setAlignment(crosstabAligment);</span></a>
+<a name="575"><span class="lineNum">     575 </span>            : </a>
+<a name="576"><span class="lineNum">     576 </span><span class="lineNoCov">          0 :                         int colX = crosstabRect.x() + emptyRect.width();</span></a>
+<a name="577"><span class="lineNum">     577 </span><span class="lineNoCov">          0 :                         for (int i = 0; i &lt; colGroups.size(); i++)</span></a>
+<a name="578"><span class="lineNum">     578 </span>            :                         {</a>
+<a name="579"><span class="lineNum">     579 </span><span class="lineNoCov">          0 :                             auto labelCol = new QLabel(frame);</span></a>
+<a name="580"><span class="lineNum">     580 </span>            : </a>
+<a name="581"><span class="lineNum">     581 </span><span class="lineNoCov">          0 :                             QRect colRect = QRect();</span></a>
+<a name="582"><span class="lineNum">     582 </span><span class="lineNoCov">          0 :                             colRect.setX(colX);</span></a>
+<a name="583"><span class="lineNum">     583 </span><span class="lineNoCov">          0 :                             colRect.setY(crosstabRect.y());</span></a>
+<a name="584"><span class="lineNum">     584 </span><span class="lineNoCov">          0 :                             colRect.setWidth(cell-&gt;getWidth());</span></a>
+<a name="585"><span class="lineNum">     585 </span><span class="lineNoCov">          0 :                             colRect.setHeight(colGroup-&gt;getHeight());</span></a>
+<a name="586"><span class="lineNum">     586 </span>            : </a>
+<a name="587"><span class="lineNum">     587 </span><span class="lineNoCov">          0 :                             labelCol-&gt;setStyleSheet(&quot;background-color: transparent; &quot; + style);</span></a>
+<a name="588"><span class="lineNum">     588 </span><span class="lineNoCov">          0 :                             labelCol-&gt;setGeometry(colRect);</span></a>
+<a name="589"><span class="lineNum">     589 </span><span class="lineNoCov">          0 :                             labelCol-&gt;setAlignment(colGroup-&gt;getHeader()-&gt;getCellContents()-&gt;getAlignment());</span></a>
+<a name="590"><span class="lineNum">     590 </span><span class="lineNoCov">          0 :                             labelCol-&gt;setText(colGroups[i]);</span></a>
+<a name="591"><span class="lineNum">     591 </span>            : </a>
+<a name="592"><span class="lineNum">     592 </span><span class="lineNoCov">          0 :                             colX += cell-&gt;getWidth();</span></a>
+<a name="593"><span class="lineNum">     593 </span>            :                         }</a>
+<a name="594"><span class="lineNum">     594 </span>            : </a>
+<a name="595"><span class="lineNum">     595 </span><span class="lineNoCov">          0 :                         int rowY = crosstabRect.y();</span></a>
+<a name="596"><span class="lineNum">     596 </span><span class="lineNoCov">          0 :                         for (int i = 0; i &lt; rowGroups.size(); i++)</span></a>
+<a name="597"><span class="lineNum">     597 </span>            :                         {</a>
+<a name="598"><span class="lineNum">     598 </span><span class="lineNoCov">          0 :                             rowY += cell-&gt;getHeight();</span></a>
+<a name="599"><span class="lineNum">     599 </span>            : </a>
+<a name="600"><span class="lineNum">     600 </span><span class="lineNoCov">          0 :                             auto labelRow = new QLabel(frame);</span></a>
+<a name="601"><span class="lineNum">     601 </span>            : </a>
+<a name="602"><span class="lineNum">     602 </span><span class="lineNoCov">          0 :                             QRect rowRect = QRect();</span></a>
+<a name="603"><span class="lineNum">     603 </span><span class="lineNoCov">          0 :                             rowRect.setX(crosstabRect.x());</span></a>
+<a name="604"><span class="lineNum">     604 </span><span class="lineNoCov">          0 :                             rowRect.setY(rowY);</span></a>
+<a name="605"><span class="lineNum">     605 </span><span class="lineNoCov">          0 :                             rowRect.setWidth(rowGroup-&gt;getWidth());</span></a>
+<a name="606"><span class="lineNum">     606 </span><span class="lineNoCov">          0 :                             rowRect.setHeight(cell-&gt;getHeight());</span></a>
+<a name="607"><span class="lineNum">     607 </span>            : </a>
+<a name="608"><span class="lineNum">     608 </span><span class="lineNoCov">          0 :                             labelRow-&gt;setStyleSheet(&quot;background-color: transparent; &quot; + style);</span></a>
+<a name="609"><span class="lineNum">     609 </span><span class="lineNoCov">          0 :                             labelRow-&gt;setGeometry(rowRect);</span></a>
+<a name="610"><span class="lineNum">     610 </span><span class="lineNoCov">          0 :                             labelRow-&gt;setAlignment(rowGroup-&gt;getHeader()-&gt;getCellContents()-&gt;getAlignment());</span></a>
+<a name="611"><span class="lineNum">     611 </span><span class="lineNoCov">          0 :                             labelRow-&gt;setText(rowGroups[i]);</span></a>
+<a name="612"><span class="lineNum">     612 </span>            :                         }</a>
+<a name="613"><span class="lineNum">     613 </span>            : </a>
+<a name="614"><span class="lineNum">     614 </span><span class="lineNoCov">          0 :                         int cellX = crosstabRect.x();</span></a>
+<a name="615"><span class="lineNum">     615 </span><span class="lineNoCov">          0 :                         int cellY = crosstabRect.y();</span></a>
+<a name="616"><span class="lineNum">     616 </span>            : </a>
+<a name="617"><span class="lineNum">     617 </span><span class="lineNoCov">          0 :                         int cellCount = 0;</span></a>
+<a name="618"><span class="lineNum">     618 </span><span class="lineNoCov">          0 :                         for (int i = 0; i &lt; rowGroups.size(); i++)</span></a>
+<a name="619"><span class="lineNum">     619 </span>            :                         {</a>
+<a name="620"><span class="lineNum">     620 </span><span class="lineNoCov">          0 :                             cellX += emptyRect.width();</span></a>
+<a name="621"><span class="lineNum">     621 </span><span class="lineNoCov">          0 :                             cellY += emptyRect.height();</span></a>
+<a name="622"><span class="lineNum">     622 </span><span class="lineNoCov">          0 :                             for(int j = 0; j &lt; colGroups.size(); j++)</span></a>
+<a name="623"><span class="lineNum">     623 </span>            :                             {</a>
+<a name="624"><span class="lineNum">     624 </span><span class="lineNoCov">          0 :                                 auto labelCell = new QLabel(frame);</span></a>
+<a name="625"><span class="lineNum">     625 </span>            : </a>
+<a name="626"><span class="lineNum">     626 </span><span class="lineNoCov">          0 :                                 QRect cellRect = QRect();</span></a>
+<a name="627"><span class="lineNum">     627 </span><span class="lineNoCov">          0 :                                 cellRect.setX(cellX);</span></a>
+<a name="628"><span class="lineNum">     628 </span><span class="lineNoCov">          0 :                                 cellRect.setY(cellY);</span></a>
+<a name="629"><span class="lineNum">     629 </span><span class="lineNoCov">          0 :                                 cellRect.setWidth(cell-&gt;getWidth());</span></a>
+<a name="630"><span class="lineNum">     630 </span><span class="lineNoCov">          0 :                                 cellRect.setHeight(cell-&gt;getHeight());</span></a>
+<a name="631"><span class="lineNum">     631 </span>            : </a>
+<a name="632"><span class="lineNum">     632 </span><span class="lineNoCov">          0 :                                 labelCell-&gt;setStyleSheet(&quot;background-color: transparent; &quot; + style);</span></a>
+<a name="633"><span class="lineNum">     633 </span><span class="lineNoCov">          0 :                                 labelCell-&gt;setGeometry(cellRect);</span></a>
+<a name="634"><span class="lineNum">     634 </span><span class="lineNoCov">          0 :                                 labelCell-&gt;setAlignment(cell-&gt;getCellContents()-&gt;getAlignment());</span></a>
+<a name="635"><span class="lineNum">     635 </span>            : </a>
+<a name="636"><span class="lineNum">     636 </span><span class="lineNoCov">          0 :                                 auto text = cells[cellCount];</span></a>
+<a name="637"><span class="lineNum">     637 </span><span class="lineNoCov">          0 :                                 labelCell-&gt;setText(text);</span></a>
+<a name="638"><span class="lineNum">     638 </span>            : </a>
+<a name="639"><span class="lineNum">     639 </span><span class="lineNoCov">          0 :                                 cellCount++;</span></a>
+<a name="640"><span class="lineNum">     640 </span><span class="lineNoCov">          0 :                                 cellX += cell-&gt;getWidth();</span></a>
+<a name="641"><span class="lineNum">     641 </span>            :                             }</a>
+<a name="642"><span class="lineNum">     642 </span><span class="lineNoCov">          0 :                             cellX = crosstabRect.x();</span></a>
+<a name="643"><span class="lineNum">     643 </span>            :                         }</a>
+<a name="644"><span class="lineNum">     644 </span>            :                     }</a>
+<a name="645"><span class="lineNum">     645 </span>            :                 }</a>
+<a name="646"><span class="lineNum">     646 </span>            :             }</a>
+<a name="647"><span class="lineNum">     647 </span>            : </a>
+<a name="648"><span class="lineNum">     648 </span><span class="lineCov">         39 :             return true;</span></a>
+<a name="649"><span class="lineNum">     649 </span>            :         }</a>
+<a name="650"><span class="lineNum">     650 </span>            : </a>
+<a name="651"><span class="lineNum">     651 </span>            :     }</a>
+<a name="652"><span class="lineNum">     652 </span>            : }</a>
 </pre>
       </td>
     </tr>

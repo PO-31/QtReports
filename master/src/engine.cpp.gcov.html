@@ -31,13 +31,13 @@
             <td class="headerValue">coverage.info</td>
             <td></td>
             <td class="headerItem">Lines:</td>
-            <td class="headerCovTableEntry">126</td>
-            <td class="headerCovTableEntry">174</td>
-            <td class="headerCovTableEntryLo">72.4 %</td>
+            <td class="headerCovTableEntry">127</td>
+            <td class="headerCovTableEntry">175</td>
+            <td class="headerCovTableEntryLo">72.6 %</td>
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2019-04-12 00:10:07</td>
+            <td class="headerValue">2019-04-12 00:34:53</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntry">22</td>
@@ -401,7 +401,7 @@
 <a name="339"><span class="lineNum">     339 </span><span class="lineCov">         41 :             field-&gt;setData( iterator.value() );</span></a>
 <a name="340"><span class="lineNum">     340 </span>            :         }</a>
 <a name="341"><span class="lineNum">     341 </span>            : </a>
-<a name="342"><span class="lineNum">     342 </span>            :         //m_report-&gt;fillGroupsData();</a>
+<a name="342"><span class="lineNum">     342 </span><span class="lineCov">         13 :         m_report-&gt;fillGroupsData(getReport());</span></a>
 <a name="343"><span class="lineNum">     343 </span>            : </a>
 <a name="344"><span class="lineNum">     344 </span><span class="lineCov">         13 :         return true;</span></a>
 <a name="345"><span class="lineNum">     345 </span>            :     }</a>
@@ -443,9 +443,9 @@
 <a name="381"><span class="lineNum">     381 </span><span class="lineCov">         32 :         return m_isOpened;</span></a>
 <a name="382"><span class="lineNum">     382 </span>            :     }</a>
 <a name="383"><span class="lineNum">     383 </span>            : </a>
-<a name="384"><span class="lineNum">     384 </span><span class="lineCov">          6 :     detail::ReportPtr   Engine::getReport() const</span></a>
+<a name="384"><span class="lineNum">     384 </span><span class="lineCov">         19 :     detail::ReportPtr   Engine::getReport() const</span></a>
 <a name="385"><span class="lineNum">     385 </span>            :     {</a>
-<a name="386"><span class="lineNum">     386 </span><span class="lineCov">          6 :         return m_report;</span></a>
+<a name="386"><span class="lineNum">     386 </span><span class="lineCov">         19 :         return m_report;</span></a>
 <a name="387"><span class="lineNum">     387 </span>            :     }</a>
 <a name="388"><span class="lineNum">     388 </span>            : </a>
 <a name="389"><span class="lineNum">     389 </span><span class="lineCov">         47 :     const QString   Engine::getLastError() const</span></a>

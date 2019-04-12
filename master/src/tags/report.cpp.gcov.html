@@ -31,18 +31,18 @@
             <td class="headerValue">coverage.info</td>
             <td></td>
             <td class="headerItem">Lines:</td>
-            <td class="headerCovTableEntry">105</td>
-            <td class="headerCovTableEntry">155</td>
-            <td class="headerCovTableEntryLo">67.7 %</td>
+            <td class="headerCovTableEntry">122</td>
+            <td class="headerCovTableEntry">153</td>
+            <td class="headerCovTableEntryMed">79.7 %</td>
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2019-04-12 00:10:07</td>
+            <td class="headerValue">2019-04-12 00:34:53</td>
             <td></td>
             <td class="headerItem">Functions:</td>
-            <td class="headerCovTableEntry">43</td>
+            <td class="headerCovTableEntry">44</td>
             <td class="headerCovTableEntry">53</td>
-            <td class="headerCovTableEntryMed">81.1 %</td>
+            <td class="headerCovTableEntryMed">83.0 %</td>
           </tr>
           <tr><td><img src="../../glass.png" width=3 height=3 alt=""></td></tr>
         </table>
@@ -111,9 +111,9 @@
 <a name="49"><span class="lineNum">      49 </span><span class="lineNoCov">          0 :             return m_groups.value( name );</span></a>
 <a name="50"><span class="lineNum">      50 </span>            :         }</a>
 <a name="51"><span class="lineNum">      51 </span>            : </a>
-<a name="52"><span class="lineNum">      52 </span><span class="lineCov">         10 :         const QMap&lt; QString, GroupPtr &gt;     Report::getGroups() const</span></a>
+<a name="52"><span class="lineNum">      52 </span><span class="lineCov">         23 :         const QMap&lt; QString, GroupPtr &gt;     Report::getGroups() const</span></a>
 <a name="53"><span class="lineNum">      53 </span>            :         {</a>
-<a name="54"><span class="lineNum">      54 </span><span class="lineCov">         10 :             return m_groups;</span></a>
+<a name="54"><span class="lineNum">      54 </span><span class="lineCov">         23 :             return m_groups;</span></a>
 <a name="55"><span class="lineNum">      55 </span>            :         }</a>
 <a name="56"><span class="lineNum">      56 </span>            : </a>
 <a name="57"><span class="lineNum">      57 </span><span class="lineCov">         26 :         void    Report::setQuery( const QString &amp; query )</span></a>
@@ -131,14 +131,14 @@
 <a name="69"><span class="lineNum">      69 </span><span class="lineCov">        111 :             m_fields[ name ] = field;</span></a>
 <a name="70"><span class="lineNum">      70 </span><span class="lineCov">        111 :         }</span></a>
 <a name="71"><span class="lineNum">      71 </span>            : </a>
-<a name="72"><span class="lineNum">      72 </span><span class="lineCov">        498 :         const FieldPtr  Report::getField( const QString &amp; name ) const</span></a>
+<a name="72"><span class="lineNum">      72 </span><span class="lineCov">        520 :         const FieldPtr  Report::getField( const QString &amp; name ) const</span></a>
 <a name="73"><span class="lineNum">      73 </span>            :         {</a>
-<a name="74"><span class="lineNum">      74 </span><span class="lineCov">        498 :             return m_fields.value( name );</span></a>
+<a name="74"><span class="lineNum">      74 </span><span class="lineCov">        520 :             return m_fields.value( name );</span></a>
 <a name="75"><span class="lineNum">      75 </span>            :         }</a>
 <a name="76"><span class="lineNum">      76 </span>            : </a>
-<a name="77"><span class="lineNum">      77 </span><span class="lineCov">        184 :         const QMap&lt; QString, FieldPtr &gt;   Report::getFields() const</span></a>
+<a name="77"><span class="lineNum">      77 </span><span class="lineCov">        197 :         const QMap&lt; QString, FieldPtr &gt;   Report::getFields() const</span></a>
 <a name="78"><span class="lineNum">      78 </span>            :         {</a>
-<a name="79"><span class="lineNum">      79 </span><span class="lineCov">        184 :             return m_fields;</span></a>
+<a name="79"><span class="lineNum">      79 </span><span class="lineCov">        197 :             return m_fields;</span></a>
 <a name="80"><span class="lineNum">      80 </span>            :         }</a>
 <a name="81"><span class="lineNum">      81 </span>            : </a>
 <a name="82"><span class="lineNum">      82 </span><span class="lineCov">         58 :         int Report::getFieldsDataCount() const</span></a>
@@ -209,15 +209,15 @@
 <a name="147"><span class="lineNum">     147 </span><span class="lineCov">         13 :             return m_parameters;</span></a>
 <a name="148"><span class="lineNum">     148 </span>            :         }</a>
 <a name="149"><span class="lineNum">     149 </span>            : </a>
-<a name="150"><span class="lineNum">     150 </span><span class="lineCov">          9 :         int     Report::getRowCount() const</span></a>
+<a name="150"><span class="lineNum">     150 </span><span class="lineCov">         22 :         int     Report::getRowCount() const</span></a>
 <a name="151"><span class="lineNum">     151 </span>            :         {</a>
-<a name="152"><span class="lineNum">     152 </span><span class="lineCov">          9 :             int max = 0;</span></a>
-<a name="153"><span class="lineNum">     153 </span><span class="lineCov">         40 :             for( auto &amp;&amp; field : getFields() )</span></a>
+<a name="152"><span class="lineNum">     152 </span><span class="lineCov">         22 :             int max = 0;</span></a>
+<a name="153"><span class="lineNum">     153 </span><span class="lineCov">        110 :             for( auto &amp;&amp; field : getFields() )</span></a>
 <a name="154"><span class="lineNum">     154 </span>            :             {</a>
-<a name="155"><span class="lineNum">     155 </span><span class="lineCov">         31 :                 max = std::max( max, field-&gt;getRowCount() );</span></a>
+<a name="155"><span class="lineNum">     155 </span><span class="lineCov">         88 :                 max = std::max( max, field-&gt;getRowCount() );</span></a>
 <a name="156"><span class="lineNum">     156 </span>            :             }</a>
 <a name="157"><span class="lineNum">     157 </span>            : </a>
-<a name="158"><span class="lineNum">     158 </span><span class="lineCov">          9 :             return max;</span></a>
+<a name="158"><span class="lineNum">     158 </span><span class="lineCov">         22 :             return max;</span></a>
 <a name="159"><span class="lineNum">     159 </span>            :             //return m_rowCount;</a>
 <a name="160"><span class="lineNum">     160 </span>            :         }</a>
 <a name="161"><span class="lineNum">     161 </span>            : </a>
@@ -354,37 +354,34 @@
 <a name="292"><span class="lineNum">     292 </span><span class="lineNoCov">          0 :             return m_variables;</span></a>
 <a name="293"><span class="lineNum">     293 </span>            :         }</a>
 <a name="294"><span class="lineNum">     294 </span>            : </a>
-<a name="295"><span class="lineNum">     295 </span><span class="lineNoCov">          0 :         void Report::fillGroupsData()</span></a>
+<a name="295"><span class="lineNum">     295 </span><span class="lineCov">         13 :         void Report::fillGroupsData(const QSharedPointer&lt;Report&gt; &amp;reportPtr)</span></a>
 <a name="296"><span class="lineNum">     296 </span>            :         {</a>
-<a name="297"><span class="lineNum">     297 </span><span class="lineNoCov">          0 :             detail::Replacer replacer;</span></a>
+<a name="297"><span class="lineNum">     297 </span><span class="lineCov">         26 :             detail::Replacer replacer;</span></a>
 <a name="298"><span class="lineNum">     298 </span>            : </a>
-<a name="299"><span class="lineNum">     299 </span><span class="lineNoCov">          0 :             QList&lt;GroupPtr&gt; groups = getGroups().values();</span></a>
-<a name="300"><span class="lineNum">     300 </span><span class="lineNoCov">          0 :             ReportPtr thisPtr(this);</span></a>
-<a name="301"><span class="lineNum">     301 </span>            : </a>
-<a name="302"><span class="lineNum">     302 </span><span class="lineNoCov">          0 :             int rowCount = getRowCount();</span></a>
-<a name="303"><span class="lineNum">     303 </span><span class="lineNoCov">          0 :             for (auto group : groups) {</span></a>
-<a name="304"><span class="lineNum">     304 </span><span class="lineNoCov">          0 :                 auto expression = group-&gt;getExpression();</span></a>
-<a name="305"><span class="lineNum">     305 </span><span class="lineNoCov">          0 :                 if (expression.isEmpty()) {</span></a>
-<a name="306"><span class="lineNum">     306 </span><span class="lineNoCov">          0 :                     continue;</span></a>
-<a name="307"><span class="lineNum">     307 </span>            :                 }</a>
-<a name="308"><span class="lineNum">     308 </span><span class="lineNoCov">          0 :                 expression = expression.replace('\n', &quot;&quot;, Qt::CaseInsensitive);</span></a>
-<a name="309"><span class="lineNum">     309 </span><span class="lineNoCov">          0 :                 expression = expression.replace('\t', &quot;&quot;, Qt::CaseInsensitive);</span></a>
-<a name="310"><span class="lineNum">     310 </span>            : </a>
-<a name="311"><span class="lineNum">     311 </span><span class="lineNoCov">          0 :                 m_groupsData[expression].append(0);</span></a>
-<a name="312"><span class="lineNum">     312 </span><span class="lineNoCov">          0 :                 auto value = replacer.replaceField(expression, thisPtr, 0);</span></a>
-<a name="313"><span class="lineNum">     313 </span><span class="lineNoCov">          0 :                 for (int i = 1; i &lt; rowCount; i++) {</span></a>
-<a name="314"><span class="lineNum">     314 </span><span class="lineNoCov">          0 :                     auto newValue = replacer.replaceField(expression, thisPtr, i);</span></a>
-<a name="315"><span class="lineNum">     315 </span><span class="lineNoCov">          0 :                     if (value != newValue) {</span></a>
-<a name="316"><span class="lineNum">     316 </span><span class="lineNoCov">          0 :                         value = newValue;</span></a>
-<a name="317"><span class="lineNum">     317 </span><span class="lineNoCov">          0 :                         m_groupsData[expression].append(i);</span></a>
-<a name="318"><span class="lineNum">     318 </span>            :                     }</a>
-<a name="319"><span class="lineNum">     319 </span>            :                 }</a>
-<a name="320"><span class="lineNum">     320 </span>            :             }</a>
-<a name="321"><span class="lineNum">     321 </span>            : </a>
-<a name="322"><span class="lineNum">     322 </span><span class="lineNoCov">          0 :             thisPtr.reset();</span></a>
-<a name="323"><span class="lineNum">     323 </span><span class="lineNoCov">          0 :         }</span></a>
-<a name="324"><span class="lineNum">     324 </span>            :     }</a>
-<a name="325"><span class="lineNum">     325 </span>            : }</a>
+<a name="299"><span class="lineNum">     299 </span><span class="lineCov">         26 :             QList&lt;GroupPtr&gt; groups = getGroups().values();</span></a>
+<a name="300"><span class="lineNum">     300 </span>            : </a>
+<a name="301"><span class="lineNum">     301 </span><span class="lineCov">         13 :             int rowCount = getRowCount();</span></a>
+<a name="302"><span class="lineNum">     302 </span><span class="lineCov">         15 :             for (auto group : groups) {</span></a>
+<a name="303"><span class="lineNum">     303 </span><span class="lineCov">          4 :                 auto expression = group-&gt;getExpression();</span></a>
+<a name="304"><span class="lineNum">     304 </span><span class="lineCov">          2 :                 if (expression.isEmpty()) {</span></a>
+<a name="305"><span class="lineNum">     305 </span><span class="lineNoCov">          0 :                     continue;</span></a>
+<a name="306"><span class="lineNum">     306 </span>            :                 }</a>
+<a name="307"><span class="lineNum">     307 </span><span class="lineCov">          2 :                 expression = expression.replace('\n', &quot;&quot;, Qt::CaseInsensitive);</span></a>
+<a name="308"><span class="lineNum">     308 </span><span class="lineCov">          2 :                 expression = expression.replace('\t', &quot;&quot;, Qt::CaseInsensitive);</span></a>
+<a name="309"><span class="lineNum">     309 </span>            : </a>
+<a name="310"><span class="lineNum">     310 </span><span class="lineCov">          2 :                 m_groupsData[expression].append(0);</span></a>
+<a name="311"><span class="lineNum">     311 </span><span class="lineCov">          4 :                 auto value = replacer.replaceField(expression, reportPtr, 0);</span></a>
+<a name="312"><span class="lineNum">     312 </span><span class="lineCov">         22 :                 for (int i = 1; i &lt; rowCount; i++) {</span></a>
+<a name="313"><span class="lineNum">     313 </span><span class="lineCov">         40 :                     auto newValue = replacer.replaceField(expression, reportPtr, i);</span></a>
+<a name="314"><span class="lineNum">     314 </span><span class="lineCov">         20 :                     if (value != newValue) {</span></a>
+<a name="315"><span class="lineNum">     315 </span><span class="lineCov">         14 :                         value = newValue;</span></a>
+<a name="316"><span class="lineNum">     316 </span><span class="lineCov">         14 :                         m_groupsData[expression].append(i);</span></a>
+<a name="317"><span class="lineNum">     317 </span>            :                     }</a>
+<a name="318"><span class="lineNum">     318 </span>            :                 }</a>
+<a name="319"><span class="lineNum">     319 </span>            :             }</a>
+<a name="320"><span class="lineNum">     320 </span><span class="lineCov">         13 :         }</span></a>
+<a name="321"><span class="lineNum">     321 </span>            :     }</a>
+<a name="322"><span class="lineNum">     322 </span>            : }</a>
 </pre>
       </td>
     </tr>
