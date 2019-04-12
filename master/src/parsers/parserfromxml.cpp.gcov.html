@@ -31,13 +31,13 @@
             <td class="headerValue">coverage.info</td>
             <td></td>
             <td class="headerItem">Lines:</td>
-            <td class="headerCovTableEntry">463</td>
-            <td class="headerCovTableEntry">619</td>
-            <td class="headerCovTableEntryLo">74.8 %</td>
+            <td class="headerCovTableEntry">475</td>
+            <td class="headerCovTableEntry">632</td>
+            <td class="headerCovTableEntryMed">75.2 %</td>
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2019-04-12 03:03:51</td>
+            <td class="headerValue">2019-04-12 03:27:14</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntry">58</td>
@@ -175,16 +175,16 @@
 <a name="113"><span class="lineNum">     113 </span><span class="lineCov">        195 :             return true;</span></a>
 <a name="114"><span class="lineNum">     114 </span>            :         }</a>
 <a name="115"><span class="lineNum">     115 </span>            : </a>
-<a name="116"><span class="lineNum">     116 </span><span class="lineCov">       2528 :         bool    ParserFromXML::getAttribute( QXmlStreamReader &amp; reader, const QString &amp; name, QString &amp; data, AttributeOption option )</span></a>
+<a name="116"><span class="lineNum">     116 </span><span class="lineCov">       2533 :         bool    ParserFromXML::getAttribute( QXmlStreamReader &amp; reader, const QString &amp; name, QString &amp; data, AttributeOption option )</span></a>
 <a name="117"><span class="lineNum">     117 </span>            :         {</a>
-<a name="118"><span class="lineNum">     118 </span><span class="lineCov">       2528 :             m_log &lt;&lt; &quot;getAttribute():\tstart. name: &quot; &lt;&lt; name &lt;&lt; endl;</span></a>
-<a name="119"><span class="lineNum">     119 </span><span class="lineCov">       5056 :             auto &amp;&amp; attributes = reader.attributes();</span></a>
-<a name="120"><span class="lineNum">     120 </span><span class="lineCov">       2528 :             if( !attributes.hasAttribute( name ) )</span></a>
+<a name="118"><span class="lineNum">     118 </span><span class="lineCov">       2533 :             m_log &lt;&lt; &quot;getAttribute():\tstart. name: &quot; &lt;&lt; name &lt;&lt; endl;</span></a>
+<a name="119"><span class="lineNum">     119 </span><span class="lineCov">       5066 :             auto &amp;&amp; attributes = reader.attributes();</span></a>
+<a name="120"><span class="lineNum">     120 </span><span class="lineCov">       2533 :             if( !attributes.hasAttribute( name ) )</span></a>
 <a name="121"><span class="lineNum">     121 </span>            :             {</a>
-<a name="122"><span class="lineNum">     122 </span><span class="lineCov">        424 :                 m_log &lt;&lt; &quot;getAttribute():\tnot have attribute: &quot; + name &lt;&lt; endl;</span></a>
-<a name="123"><span class="lineNum">     123 </span><span class="lineCov">        424 :                 if( option == AttributeOption::Optional )</span></a>
+<a name="122"><span class="lineNum">     122 </span><span class="lineCov">        429 :                 m_log &lt;&lt; &quot;getAttribute():\tnot have attribute: &quot; + name &lt;&lt; endl;</span></a>
+<a name="123"><span class="lineNum">     123 </span><span class="lineCov">        429 :                 if( option == AttributeOption::Optional )</span></a>
 <a name="124"><span class="lineNum">     124 </span>            :                 {</a>
-<a name="125"><span class="lineNum">     125 </span><span class="lineCov">        424 :                     return true;</span></a>
+<a name="125"><span class="lineNum">     125 </span><span class="lineCov">        429 :                     return true;</span></a>
 <a name="126"><span class="lineNum">     126 </span>            :                 }</a>
 <a name="127"><span class="lineNum">     127 </span><span class="lineNoCov">          0 :                 m_log &lt;&lt; &quot;getAttribute():\terror&quot; &lt;&lt; endl;</span></a>
 <a name="128"><span class="lineNum">     128 </span><span class="lineNoCov">          0 :                 auto elementName = reader.name().toString();</span></a>
@@ -202,9 +202,9 @@
 <a name="140"><span class="lineNum">     140 </span><span class="lineCov">       1528 :             return getAttribute( reader, name, data, AttributeOption::Required );</span></a>
 <a name="141"><span class="lineNum">     141 </span>            :         }</a>
 <a name="142"><span class="lineNum">     142 </span>            : </a>
-<a name="143"><span class="lineNum">     143 </span><span class="lineCov">       1000 :         bool    ParserFromXML::getOptionalAttribute( QXmlStreamReader &amp; reader, const QString &amp; name, QString &amp; data )</span></a>
+<a name="143"><span class="lineNum">     143 </span><span class="lineCov">       1005 :         bool    ParserFromXML::getOptionalAttribute( QXmlStreamReader &amp; reader, const QString &amp; name, QString &amp; data )</span></a>
 <a name="144"><span class="lineNum">     144 </span>            :         {</a>
-<a name="145"><span class="lineNum">     145 </span><span class="lineCov">       1000 :             return getAttribute( reader, name, data, AttributeOption::Optional );</span></a>
+<a name="145"><span class="lineNum">     145 </span><span class="lineCov">       1005 :             return getAttribute( reader, name, data, AttributeOption::Optional );</span></a>
 <a name="146"><span class="lineNum">     146 </span>            :         }</a>
 <a name="147"><span class="lineNum">     147 </span>            : </a>
 <a name="148"><span class="lineNum">     148 </span><span class="lineCov">        352 :         bool    ParserFromXML::goToElementEnd( QXmlStreamReader &amp; reader )</span></a>
@@ -726,570 +726,584 @@
 <a name="664"><span class="lineNum">     664 </span><span class="lineCov">          1 :         bool    ParserFromXML::parseCrosstab( QXmlStreamReader &amp; reader, const BandPtr &amp; band )</span></a>
 <a name="665"><span class="lineNum">     665 </span>            :         {</a>
 <a name="666"><span class="lineNum">     666 </span><span class="lineCov">          2 :             CrosstabPtr crosstab(new Crosstab());</span></a>
-<a name="667"><span class="lineNum">     667 </span><span class="lineCov">          1 :             if(!parseChilds(reader, crosstab))</span></a>
-<a name="668"><span class="lineNum">     668 </span>            :             {</a>
-<a name="669"><span class="lineNum">     669 </span><span class="lineNoCov">          0 :                 return false;</span></a>
-<a name="670"><span class="lineNum">     670 </span>            :             }</a>
-<a name="671"><span class="lineNum">     671 </span>            : </a>
-<a name="672"><span class="lineNum">     672 </span><span class="lineCov">          1 :             crosstab-&gt;setTagName(&quot;crosstab&quot;);</span></a>
-<a name="673"><span class="lineNum">     673 </span><span class="lineCov">          1 :             band-&gt;addCrosstab(crosstab);</span></a>
-<a name="674"><span class="lineNum">     674 </span>            : </a>
-<a name="675"><span class="lineNum">     675 </span><span class="lineCov">          1 :             return !reader.hasError();</span></a>
-<a name="676"><span class="lineNum">     676 </span>            :         }</a>
-<a name="677"><span class="lineNum">     677 </span>            : </a>
-<a name="678"><span class="lineNum">     678 </span><span class="lineCov">          1 :         bool ParserFromXML::parseRowGroup(QXmlStreamReader &amp;reader, const CrosstabPtr &amp;crosstab)</span></a>
-<a name="679"><span class="lineNum">     679 </span>            :         {</a>
-<a name="680"><span class="lineNum">     680 </span><span class="lineCov">          2 :             CrosstabGroupPtr rowGroup(new CrosstabGroup(CrosstabGroupType::ROW));</span></a>
-<a name="681"><span class="lineNum">     681 </span>            : </a>
-<a name="682"><span class="lineNum">     682 </span><span class="lineCov">          2 :             QString width;</span></a>
-<a name="683"><span class="lineNum">     683 </span><span class="lineCov">          1 :             if(!getRequiredAttribute(reader, &quot;width&quot;, width))</span></a>
-<a name="684"><span class="lineNum">     684 </span>            :             {</a>
-<a name="685"><span class="lineNum">     685 </span><span class="lineNoCov">          0 :                 return false;</span></a>
-<a name="686"><span class="lineNum">     686 </span>            :             }</a>
-<a name="687"><span class="lineNum">     687 </span>            : </a>
-<a name="688"><span class="lineNum">     688 </span><span class="lineCov">          2 :             QString name = &quot;&quot;;</span></a>
-<a name="689"><span class="lineNum">     689 </span><span class="lineCov">          1 :             getOptionalAttribute(reader, &quot;name&quot;, name);</span></a>
-<a name="690"><span class="lineNum">     690 </span>            : </a>
-<a name="691"><span class="lineNum">     691 </span><span class="lineCov">          1 :             if(name != &quot;&quot;)</span></a>
-<a name="692"><span class="lineNum">     692 </span><span class="lineCov">          1 :                 rowGroup-&gt;setName(name);</span></a>
-<a name="693"><span class="lineNum">     693 </span>            : </a>
-<a name="694"><span class="lineNum">     694 </span><span class="lineCov">          1 :             if(!parseChilds(reader, rowGroup))</span></a>
-<a name="695"><span class="lineNum">     695 </span>            :             {</a>
-<a name="696"><span class="lineNum">     696 </span><span class="lineNoCov">          0 :                 return false;</span></a>
-<a name="697"><span class="lineNum">     697 </span>            :             }</a>
-<a name="698"><span class="lineNum">     698 </span>            : </a>
-<a name="699"><span class="lineNum">     699 </span><span class="lineCov">          1 :             rowGroup-&gt;setWidth(width.toInt());</span></a>
-<a name="700"><span class="lineNum">     700 </span><span class="lineCov">          1 :             rowGroup-&gt;setTagName(&quot;rowGroup&quot;);</span></a>
-<a name="701"><span class="lineNum">     701 </span><span class="lineCov">          1 :             crosstab-&gt;setRowGroup(rowGroup);</span></a>
-<a name="702"><span class="lineNum">     702 </span>            : </a>
-<a name="703"><span class="lineNum">     703 </span><span class="lineCov">          1 :             return !reader.hasError();</span></a>
-<a name="704"><span class="lineNum">     704 </span>            :         }</a>
-<a name="705"><span class="lineNum">     705 </span>            : </a>
-<a name="706"><span class="lineNum">     706 </span><span class="lineCov">          1 :         bool ParserFromXML::parseColumnGroup(QXmlStreamReader &amp;reader, const CrosstabPtr &amp;crosstab)</span></a>
-<a name="707"><span class="lineNum">     707 </span>            :         {</a>
-<a name="708"><span class="lineNum">     708 </span><span class="lineCov">          2 :             CrosstabGroupPtr columnGroup(new CrosstabGroup(CrosstabGroupType::COLUMN));</span></a>
-<a name="709"><span class="lineNum">     709 </span>            : </a>
-<a name="710"><span class="lineNum">     710 </span><span class="lineCov">          2 :             QString height;</span></a>
-<a name="711"><span class="lineNum">     711 </span><span class="lineCov">          1 :             if(!getRequiredAttribute(reader, &quot;height&quot;, height))</span></a>
-<a name="712"><span class="lineNum">     712 </span>            :             {</a>
-<a name="713"><span class="lineNum">     713 </span><span class="lineNoCov">          0 :                 return false;</span></a>
-<a name="714"><span class="lineNum">     714 </span>            :             }</a>
-<a name="715"><span class="lineNum">     715 </span>            : </a>
-<a name="716"><span class="lineNum">     716 </span><span class="lineCov">          2 :             QString name = &quot;&quot;;</span></a>
-<a name="717"><span class="lineNum">     717 </span><span class="lineCov">          1 :             getOptionalAttribute(reader, &quot;name&quot;, name);</span></a>
-<a name="718"><span class="lineNum">     718 </span>            : </a>
-<a name="719"><span class="lineNum">     719 </span><span class="lineCov">          1 :             if(name != &quot;&quot;)</span></a>
-<a name="720"><span class="lineNum">     720 </span><span class="lineCov">          1 :                 columnGroup-&gt;setName(name);</span></a>
-<a name="721"><span class="lineNum">     721 </span>            : </a>
-<a name="722"><span class="lineNum">     722 </span><span class="lineCov">          1 :             if(!parseChilds(reader, columnGroup))</span></a>
-<a name="723"><span class="lineNum">     723 </span>            :             {</a>
-<a name="724"><span class="lineNum">     724 </span><span class="lineNoCov">          0 :                 return false;</span></a>
-<a name="725"><span class="lineNum">     725 </span>            :             }</a>
-<a name="726"><span class="lineNum">     726 </span>            : </a>
-<a name="727"><span class="lineNum">     727 </span><span class="lineCov">          1 :             columnGroup-&gt;setHeight(height.toInt());</span></a>
-<a name="728"><span class="lineNum">     728 </span><span class="lineCov">          1 :             columnGroup-&gt;setTagName(&quot;columnGroup&quot;);</span></a>
-<a name="729"><span class="lineNum">     729 </span><span class="lineCov">          1 :             crosstab-&gt;setColumnGroup(columnGroup);</span></a>
-<a name="730"><span class="lineNum">     730 </span>            : </a>
-<a name="731"><span class="lineNum">     731 </span><span class="lineCov">          1 :             return !reader.hasError();</span></a>
-<a name="732"><span class="lineNum">     732 </span>            :         }</a>
-<a name="733"><span class="lineNum">     733 </span>            : </a>
-<a name="734"><span class="lineNum">     734 </span><span class="lineCov">          1 :         bool ParserFromXML::parseCrosstabCell(QXmlStreamReader &amp;reader, const CrosstabPtr &amp;crosstab)</span></a>
-<a name="735"><span class="lineNum">     735 </span>            :         {</a>
-<a name="736"><span class="lineNum">     736 </span><span class="lineCov">          2 :             CrosstabCellPtr crosstabCell(new CrosstabCell());</span></a>
-<a name="737"><span class="lineNum">     737 </span>            : </a>
-<a name="738"><span class="lineNum">     738 </span><span class="lineCov">          2 :             QString width;</span></a>
-<a name="739"><span class="lineNum">     739 </span><span class="lineCov">          1 :             if(!getRequiredAttribute(reader, &quot;width&quot;, width))</span></a>
-<a name="740"><span class="lineNum">     740 </span>            :             {</a>
-<a name="741"><span class="lineNum">     741 </span><span class="lineNoCov">          0 :                 return false;</span></a>
-<a name="742"><span class="lineNum">     742 </span>            :             }</a>
-<a name="743"><span class="lineNum">     743 </span>            : </a>
-<a name="744"><span class="lineNum">     744 </span><span class="lineCov">          2 :             QString height;</span></a>
-<a name="745"><span class="lineNum">     745 </span><span class="lineCov">          1 :             if(!getRequiredAttribute(reader, &quot;height&quot;, height))</span></a>
-<a name="746"><span class="lineNum">     746 </span>            :             {</a>
-<a name="747"><span class="lineNum">     747 </span><span class="lineNoCov">          0 :                 return false;</span></a>
-<a name="748"><span class="lineNum">     748 </span>            :             }</a>
-<a name="749"><span class="lineNum">     749 </span>            : </a>
-<a name="750"><span class="lineNum">     750 </span><span class="lineCov">          1 :             if(!parseChilds(reader, crosstabCell))</span></a>
-<a name="751"><span class="lineNum">     751 </span>            :             {</a>
-<a name="752"><span class="lineNum">     752 </span><span class="lineNoCov">          0 :                 return false;</span></a>
-<a name="753"><span class="lineNum">     753 </span>            :             }</a>
-<a name="754"><span class="lineNum">     754 </span>            : </a>
-<a name="755"><span class="lineNum">     755 </span><span class="lineCov">          1 :             crosstabCell-&gt;setWidth(width.toInt());</span></a>
-<a name="756"><span class="lineNum">     756 </span><span class="lineCov">          1 :             crosstabCell-&gt;setHeight(height.toInt());</span></a>
-<a name="757"><span class="lineNum">     757 </span><span class="lineCov">          1 :             crosstabCell-&gt;setTagName(&quot;crosstabCell&quot;);</span></a>
-<a name="758"><span class="lineNum">     758 </span><span class="lineCov">          1 :             crosstab-&gt;setCrosstabCell(crosstabCell);</span></a>
-<a name="759"><span class="lineNum">     759 </span>            : </a>
-<a name="760"><span class="lineNum">     760 </span><span class="lineCov">          1 :             return !reader.hasError();</span></a>
-<a name="761"><span class="lineNum">     761 </span>            :         }</a>
-<a name="762"><span class="lineNum">     762 </span>            : </a>
-<a name="763"><span class="lineNum">     763 </span><span class="lineCov">          1 :         bool ParserFromXML::parseCrosstabRowHeader(QXmlStreamReader &amp;reader, const CrosstabGroupPtr &amp;rowGroup)</span></a>
-<a name="764"><span class="lineNum">     764 </span>            :         {</a>
-<a name="765"><span class="lineNum">     765 </span><span class="lineCov">          2 :             CrosstabHeaderPtr crosstabRowHeader(new CrosstabHeader());</span></a>
-<a name="766"><span class="lineNum">     766 </span><span class="lineCov">          1 :             if(!parseChilds(reader, crosstabRowHeader))</span></a>
-<a name="767"><span class="lineNum">     767 </span>            :             {</a>
-<a name="768"><span class="lineNum">     768 </span><span class="lineNoCov">          0 :                 return false;</span></a>
-<a name="769"><span class="lineNum">     769 </span>            :             }</a>
-<a name="770"><span class="lineNum">     770 </span>            : </a>
-<a name="771"><span class="lineNum">     771 </span><span class="lineCov">          1 :             crosstabRowHeader-&gt;setTagName(&quot;crosstabRowHeader&quot;);</span></a>
-<a name="772"><span class="lineNum">     772 </span><span class="lineCov">          1 :             rowGroup-&gt;setHeader(crosstabRowHeader);</span></a>
+<a name="667"><span class="lineNum">     667 </span><span class="lineCov">          2 :             QString attribute;</span></a>
+<a name="668"><span class="lineNum">     668 </span><span class="lineCov">          1 :             getOptionalAttribute( reader, &quot;isRepeatColumnHeaders&quot;, attribute );</span></a>
+<a name="669"><span class="lineNum">     669 </span><span class="lineCov">          1 :                 crosstab-&gt;setColumnHeadersRepeating(static_cast&lt;QVariant&gt;(attribute).toBool() );//Исправь, если можешь сделать каст лучше</span></a>
+<a name="670"><span class="lineNum">     670 </span><span class="lineCov">          1 :             getOptionalAttribute( reader, &quot;isRepeatRowHeaders&quot;, attribute );</span></a>
+<a name="671"><span class="lineNum">     671 </span><span class="lineCov">          1 :                 crosstab-&gt;setRowHeadersRepeating(static_cast&lt;QVariant&gt;(attribute).toBool() );//Исправь, если можешь сделать каст лучше</span></a>
+<a name="672"><span class="lineNum">     672 </span><span class="lineCov">          1 :             getOptionalAttribute( reader, &quot;ignoreWigth&quot;, attribute );</span></a>
+<a name="673"><span class="lineNum">     673 </span><span class="lineCov">          1 :                 crosstab-&gt;setWidthIgnoring(static_cast&lt;QVariant&gt;(attribute).toBool() );//Исправь, если можешь сделать каст лучше</span></a>
+<a name="674"><span class="lineNum">     674 </span><span class="lineCov">          1 :             getOptionalAttribute( reader, &quot;runDirection&quot;, attribute );</span></a>
+<a name="675"><span class="lineNum">     675 </span><span class="lineCov">          1 :             if(attribute.toLower() == (&quot;rtl&quot;))</span></a>
+<a name="676"><span class="lineNum">     676 </span><span class="lineNoCov">          0 :                 crosstab-&gt;setRunDirectionLeftToRight(false);</span></a>
+<a name="677"><span class="lineNum">     677 </span>            :             else</a>
+<a name="678"><span class="lineNum">     678 </span><span class="lineCov">          1 :                 crosstab-&gt;setRunDirectionLeftToRight(true);</span></a>
+<a name="679"><span class="lineNum">     679 </span><span class="lineCov">          1 :             getOptionalAttribute( reader, &quot;columnBreakOffset&quot;, attribute );</span></a>
+<a name="680"><span class="lineNum">     680 </span><span class="lineCov">          1 :                 crosstab-&gt;setColumnBreakOffset(attribute.toInt());</span></a>
+<a name="681"><span class="lineNum">     681 </span><span class="lineCov">          1 :             if(!parseChilds(reader, crosstab))</span></a>
+<a name="682"><span class="lineNum">     682 </span>            :             {</a>
+<a name="683"><span class="lineNum">     683 </span><span class="lineNoCov">          0 :                 return false;</span></a>
+<a name="684"><span class="lineNum">     684 </span>            :             }</a>
+<a name="685"><span class="lineNum">     685 </span>            : </a>
+<a name="686"><span class="lineNum">     686 </span><span class="lineCov">          1 :             crosstab-&gt;setTagName(&quot;crosstab&quot;);</span></a>
+<a name="687"><span class="lineNum">     687 </span><span class="lineCov">          1 :             band-&gt;addCrosstab(crosstab);</span></a>
+<a name="688"><span class="lineNum">     688 </span>            : </a>
+<a name="689"><span class="lineNum">     689 </span><span class="lineCov">          1 :             return !reader.hasError();</span></a>
+<a name="690"><span class="lineNum">     690 </span>            :         }</a>
+<a name="691"><span class="lineNum">     691 </span>            : </a>
+<a name="692"><span class="lineNum">     692 </span><span class="lineCov">          1 :         bool ParserFromXML::parseRowGroup(QXmlStreamReader &amp;reader, const CrosstabPtr &amp;crosstab)</span></a>
+<a name="693"><span class="lineNum">     693 </span>            :         {</a>
+<a name="694"><span class="lineNum">     694 </span><span class="lineCov">          2 :             CrosstabGroupPtr rowGroup(new CrosstabGroup(CrosstabGroupType::ROW));</span></a>
+<a name="695"><span class="lineNum">     695 </span>            : </a>
+<a name="696"><span class="lineNum">     696 </span><span class="lineCov">          2 :             QString width;</span></a>
+<a name="697"><span class="lineNum">     697 </span><span class="lineCov">          1 :             if(!getRequiredAttribute(reader, &quot;width&quot;, width))</span></a>
+<a name="698"><span class="lineNum">     698 </span>            :             {</a>
+<a name="699"><span class="lineNum">     699 </span><span class="lineNoCov">          0 :                 return false;</span></a>
+<a name="700"><span class="lineNum">     700 </span>            :             }</a>
+<a name="701"><span class="lineNum">     701 </span>            : </a>
+<a name="702"><span class="lineNum">     702 </span><span class="lineCov">          2 :             QString name = &quot;&quot;;</span></a>
+<a name="703"><span class="lineNum">     703 </span><span class="lineCov">          1 :             getOptionalAttribute(reader, &quot;name&quot;, name);</span></a>
+<a name="704"><span class="lineNum">     704 </span>            : </a>
+<a name="705"><span class="lineNum">     705 </span><span class="lineCov">          1 :             if(name != &quot;&quot;)</span></a>
+<a name="706"><span class="lineNum">     706 </span><span class="lineCov">          1 :                 rowGroup-&gt;setName(name);</span></a>
+<a name="707"><span class="lineNum">     707 </span>            : </a>
+<a name="708"><span class="lineNum">     708 </span><span class="lineCov">          1 :             if(!parseChilds(reader, rowGroup))</span></a>
+<a name="709"><span class="lineNum">     709 </span>            :             {</a>
+<a name="710"><span class="lineNum">     710 </span><span class="lineNoCov">          0 :                 return false;</span></a>
+<a name="711"><span class="lineNum">     711 </span>            :             }</a>
+<a name="712"><span class="lineNum">     712 </span>            : </a>
+<a name="713"><span class="lineNum">     713 </span><span class="lineCov">          1 :             rowGroup-&gt;setWidth(width.toInt());</span></a>
+<a name="714"><span class="lineNum">     714 </span><span class="lineCov">          1 :             rowGroup-&gt;setTagName(&quot;rowGroup&quot;);</span></a>
+<a name="715"><span class="lineNum">     715 </span><span class="lineCov">          1 :             crosstab-&gt;setRowGroup(rowGroup);</span></a>
+<a name="716"><span class="lineNum">     716 </span>            : </a>
+<a name="717"><span class="lineNum">     717 </span><span class="lineCov">          1 :             return !reader.hasError();</span></a>
+<a name="718"><span class="lineNum">     718 </span>            :         }</a>
+<a name="719"><span class="lineNum">     719 </span>            : </a>
+<a name="720"><span class="lineNum">     720 </span><span class="lineCov">          1 :         bool ParserFromXML::parseColumnGroup(QXmlStreamReader &amp;reader, const CrosstabPtr &amp;crosstab)</span></a>
+<a name="721"><span class="lineNum">     721 </span>            :         {</a>
+<a name="722"><span class="lineNum">     722 </span><span class="lineCov">          2 :             CrosstabGroupPtr columnGroup(new CrosstabGroup(CrosstabGroupType::COLUMN));</span></a>
+<a name="723"><span class="lineNum">     723 </span>            : </a>
+<a name="724"><span class="lineNum">     724 </span><span class="lineCov">          2 :             QString height;</span></a>
+<a name="725"><span class="lineNum">     725 </span><span class="lineCov">          1 :             if(!getRequiredAttribute(reader, &quot;height&quot;, height))</span></a>
+<a name="726"><span class="lineNum">     726 </span>            :             {</a>
+<a name="727"><span class="lineNum">     727 </span><span class="lineNoCov">          0 :                 return false;</span></a>
+<a name="728"><span class="lineNum">     728 </span>            :             }</a>
+<a name="729"><span class="lineNum">     729 </span>            : </a>
+<a name="730"><span class="lineNum">     730 </span><span class="lineCov">          2 :             QString name = &quot;&quot;;</span></a>
+<a name="731"><span class="lineNum">     731 </span><span class="lineCov">          1 :             getOptionalAttribute(reader, &quot;name&quot;, name);</span></a>
+<a name="732"><span class="lineNum">     732 </span>            : </a>
+<a name="733"><span class="lineNum">     733 </span><span class="lineCov">          1 :             if(name != &quot;&quot;)</span></a>
+<a name="734"><span class="lineNum">     734 </span><span class="lineCov">          1 :                 columnGroup-&gt;setName(name);</span></a>
+<a name="735"><span class="lineNum">     735 </span>            : </a>
+<a name="736"><span class="lineNum">     736 </span><span class="lineCov">          1 :             if(!parseChilds(reader, columnGroup))</span></a>
+<a name="737"><span class="lineNum">     737 </span>            :             {</a>
+<a name="738"><span class="lineNum">     738 </span><span class="lineNoCov">          0 :                 return false;</span></a>
+<a name="739"><span class="lineNum">     739 </span>            :             }</a>
+<a name="740"><span class="lineNum">     740 </span>            : </a>
+<a name="741"><span class="lineNum">     741 </span><span class="lineCov">          1 :             columnGroup-&gt;setHeight(height.toInt());</span></a>
+<a name="742"><span class="lineNum">     742 </span><span class="lineCov">          1 :             columnGroup-&gt;setTagName(&quot;columnGroup&quot;);</span></a>
+<a name="743"><span class="lineNum">     743 </span><span class="lineCov">          1 :             crosstab-&gt;setColumnGroup(columnGroup);</span></a>
+<a name="744"><span class="lineNum">     744 </span>            : </a>
+<a name="745"><span class="lineNum">     745 </span><span class="lineCov">          1 :             return !reader.hasError();</span></a>
+<a name="746"><span class="lineNum">     746 </span>            :         }</a>
+<a name="747"><span class="lineNum">     747 </span>            : </a>
+<a name="748"><span class="lineNum">     748 </span><span class="lineCov">          1 :         bool ParserFromXML::parseCrosstabCell(QXmlStreamReader &amp;reader, const CrosstabPtr &amp;crosstab)</span></a>
+<a name="749"><span class="lineNum">     749 </span>            :         {</a>
+<a name="750"><span class="lineNum">     750 </span><span class="lineCov">          2 :             CrosstabCellPtr crosstabCell(new CrosstabCell());</span></a>
+<a name="751"><span class="lineNum">     751 </span>            : </a>
+<a name="752"><span class="lineNum">     752 </span><span class="lineCov">          2 :             QString width;</span></a>
+<a name="753"><span class="lineNum">     753 </span><span class="lineCov">          1 :             if(!getRequiredAttribute(reader, &quot;width&quot;, width))</span></a>
+<a name="754"><span class="lineNum">     754 </span>            :             {</a>
+<a name="755"><span class="lineNum">     755 </span><span class="lineNoCov">          0 :                 return false;</span></a>
+<a name="756"><span class="lineNum">     756 </span>            :             }</a>
+<a name="757"><span class="lineNum">     757 </span>            : </a>
+<a name="758"><span class="lineNum">     758 </span><span class="lineCov">          2 :             QString height;</span></a>
+<a name="759"><span class="lineNum">     759 </span><span class="lineCov">          1 :             if(!getRequiredAttribute(reader, &quot;height&quot;, height))</span></a>
+<a name="760"><span class="lineNum">     760 </span>            :             {</a>
+<a name="761"><span class="lineNum">     761 </span><span class="lineNoCov">          0 :                 return false;</span></a>
+<a name="762"><span class="lineNum">     762 </span>            :             }</a>
+<a name="763"><span class="lineNum">     763 </span>            : </a>
+<a name="764"><span class="lineNum">     764 </span><span class="lineCov">          1 :             if(!parseChilds(reader, crosstabCell))</span></a>
+<a name="765"><span class="lineNum">     765 </span>            :             {</a>
+<a name="766"><span class="lineNum">     766 </span><span class="lineNoCov">          0 :                 return false;</span></a>
+<a name="767"><span class="lineNum">     767 </span>            :             }</a>
+<a name="768"><span class="lineNum">     768 </span>            : </a>
+<a name="769"><span class="lineNum">     769 </span><span class="lineCov">          1 :             crosstabCell-&gt;setWidth(width.toInt());</span></a>
+<a name="770"><span class="lineNum">     770 </span><span class="lineCov">          1 :             crosstabCell-&gt;setHeight(height.toInt());</span></a>
+<a name="771"><span class="lineNum">     771 </span><span class="lineCov">          1 :             crosstabCell-&gt;setTagName(&quot;crosstabCell&quot;);</span></a>
+<a name="772"><span class="lineNum">     772 </span><span class="lineCov">          1 :             crosstab-&gt;setCrosstabCell(crosstabCell);</span></a>
 <a name="773"><span class="lineNum">     773 </span>            : </a>
 <a name="774"><span class="lineNum">     774 </span><span class="lineCov">          1 :             return !reader.hasError();</span></a>
 <a name="775"><span class="lineNum">     775 </span>            :         }</a>
 <a name="776"><span class="lineNum">     776 </span>            : </a>
-<a name="777"><span class="lineNum">     777 </span><span class="lineCov">          1 :         bool ParserFromXML::parseCrosstabColumnHeader(QXmlStreamReader &amp;reader, const CrosstabGroupPtr &amp;columnGroup)</span></a>
+<a name="777"><span class="lineNum">     777 </span><span class="lineCov">          1 :         bool ParserFromXML::parseCrosstabRowHeader(QXmlStreamReader &amp;reader, const CrosstabGroupPtr &amp;rowGroup)</span></a>
 <a name="778"><span class="lineNum">     778 </span>            :         {</a>
-<a name="779"><span class="lineNum">     779 </span><span class="lineCov">          2 :             CrosstabHeaderPtr crosstabColumnHeader(new CrosstabHeader());</span></a>
-<a name="780"><span class="lineNum">     780 </span><span class="lineCov">          1 :             if(!parseChilds(reader, crosstabColumnHeader))</span></a>
+<a name="779"><span class="lineNum">     779 </span><span class="lineCov">          2 :             CrosstabHeaderPtr crosstabRowHeader(new CrosstabHeader());</span></a>
+<a name="780"><span class="lineNum">     780 </span><span class="lineCov">          1 :             if(!parseChilds(reader, crosstabRowHeader))</span></a>
 <a name="781"><span class="lineNum">     781 </span>            :             {</a>
 <a name="782"><span class="lineNum">     782 </span><span class="lineNoCov">          0 :                 return false;</span></a>
 <a name="783"><span class="lineNum">     783 </span>            :             }</a>
 <a name="784"><span class="lineNum">     784 </span>            : </a>
-<a name="785"><span class="lineNum">     785 </span><span class="lineCov">          1 :             crosstabColumnHeader-&gt;setTagName(&quot;crosstabColumnHeader&quot;);</span></a>
-<a name="786"><span class="lineNum">     786 </span><span class="lineCov">          1 :             columnGroup-&gt;setHeader(crosstabColumnHeader);</span></a>
+<a name="785"><span class="lineNum">     785 </span><span class="lineCov">          1 :             crosstabRowHeader-&gt;setTagName(&quot;crosstabRowHeader&quot;);</span></a>
+<a name="786"><span class="lineNum">     786 </span><span class="lineCov">          1 :             rowGroup-&gt;setHeader(crosstabRowHeader);</span></a>
 <a name="787"><span class="lineNum">     787 </span>            : </a>
 <a name="788"><span class="lineNum">     788 </span><span class="lineCov">          1 :             return !reader.hasError();</span></a>
 <a name="789"><span class="lineNum">     789 </span>            :         }</a>
 <a name="790"><span class="lineNum">     790 </span>            : </a>
-<a name="791"><span class="lineNum">     791 </span><span class="lineCov">          3 :         bool ParserFromXML::parseCrosstabCellContents(QXmlStreamReader &amp;reader, const CrosstabCellPtr &amp;crosstabSection)</span></a>
+<a name="791"><span class="lineNum">     791 </span><span class="lineCov">          1 :         bool ParserFromXML::parseCrosstabColumnHeader(QXmlStreamReader &amp;reader, const CrosstabGroupPtr &amp;columnGroup)</span></a>
 <a name="792"><span class="lineNum">     792 </span>            :         {</a>
-<a name="793"><span class="lineNum">     793 </span><span class="lineCov">          6 :             CellContentsPtr cellContents(new CellContents());</span></a>
-<a name="794"><span class="lineNum">     794 </span><span class="lineCov">          3 :             if(!parseChilds(reader, cellContents))</span></a>
+<a name="793"><span class="lineNum">     793 </span><span class="lineCov">          2 :             CrosstabHeaderPtr crosstabColumnHeader(new CrosstabHeader());</span></a>
+<a name="794"><span class="lineNum">     794 </span><span class="lineCov">          1 :             if(!parseChilds(reader, crosstabColumnHeader))</span></a>
 <a name="795"><span class="lineNum">     795 </span>            :             {</a>
 <a name="796"><span class="lineNum">     796 </span><span class="lineNoCov">          0 :                 return false;</span></a>
 <a name="797"><span class="lineNum">     797 </span>            :             }</a>
 <a name="798"><span class="lineNum">     798 </span>            : </a>
-<a name="799"><span class="lineNum">     799 </span><span class="lineCov">          3 :             cellContents-&gt;setTagName(&quot;cellContents&quot;);</span></a>
-<a name="800"><span class="lineNum">     800 </span><span class="lineCov">          3 :             crosstabSection-&gt;setCellContents(cellContents);</span></a>
+<a name="799"><span class="lineNum">     799 </span><span class="lineCov">          1 :             crosstabColumnHeader-&gt;setTagName(&quot;crosstabColumnHeader&quot;);</span></a>
+<a name="800"><span class="lineNum">     800 </span><span class="lineCov">          1 :             columnGroup-&gt;setHeader(crosstabColumnHeader);</span></a>
 <a name="801"><span class="lineNum">     801 </span>            : </a>
-<a name="802"><span class="lineNum">     802 </span><span class="lineCov">          3 :             return !reader.hasError();</span></a>
+<a name="802"><span class="lineNum">     802 </span><span class="lineCov">          1 :             return !reader.hasError();</span></a>
 <a name="803"><span class="lineNum">     803 </span>            :         }</a>
 <a name="804"><span class="lineNum">     804 </span>            : </a>
-<a name="805"><span class="lineNum">     805 </span><span class="lineCov">         44 :         bool    ParserFromXML::parseStaticText( QXmlStreamReader &amp; reader, const BandPtr &amp; band )</span></a>
+<a name="805"><span class="lineNum">     805 </span><span class="lineCov">          3 :         bool ParserFromXML::parseCrosstabCellContents(QXmlStreamReader &amp;reader, const CrosstabCellPtr &amp;crosstabSection)</span></a>
 <a name="806"><span class="lineNum">     806 </span>            :         {</a>
-<a name="807"><span class="lineNum">     807 </span><span class="lineCov">         88 :             StaticTextPtr staticText( new StaticText() );</span></a>
-<a name="808"><span class="lineNum">     808 </span><span class="lineCov">         44 :             if( !parseChilds( reader, staticText ) )</span></a>
+<a name="807"><span class="lineNum">     807 </span><span class="lineCov">          6 :             CellContentsPtr cellContents(new CellContents());</span></a>
+<a name="808"><span class="lineNum">     808 </span><span class="lineCov">          3 :             if(!parseChilds(reader, cellContents))</span></a>
 <a name="809"><span class="lineNum">     809 </span>            :             {</a>
 <a name="810"><span class="lineNum">     810 </span><span class="lineNoCov">          0 :                 return false;</span></a>
 <a name="811"><span class="lineNum">     811 </span>            :             }</a>
 <a name="812"><span class="lineNum">     812 </span>            : </a>
-<a name="813"><span class="lineNum">     813 </span><span class="lineCov">         44 :             staticText-&gt;setTagName( &quot;staticText&quot; );</span></a>
-<a name="814"><span class="lineNum">     814 </span><span class="lineCov">         44 :             band-&gt;addStaticText( staticText );</span></a>
+<a name="813"><span class="lineNum">     813 </span><span class="lineCov">          3 :             cellContents-&gt;setTagName(&quot;cellContents&quot;);</span></a>
+<a name="814"><span class="lineNum">     814 </span><span class="lineCov">          3 :             crosstabSection-&gt;setCellContents(cellContents);</span></a>
 <a name="815"><span class="lineNum">     815 </span>            : </a>
-<a name="816"><span class="lineNum">     816 </span><span class="lineCov">         44 :             return !reader.hasError();</span></a>
+<a name="816"><span class="lineNum">     816 </span><span class="lineCov">          3 :             return !reader.hasError();</span></a>
 <a name="817"><span class="lineNum">     817 </span>            :         }</a>
 <a name="818"><span class="lineNum">     818 </span>            : </a>
-<a name="819"><span class="lineNum">     819 </span><span class="lineCov">        109 :         bool    ParserFromXML::parseTextField(QXmlStreamReader &amp; reader, const WidgetPtr &amp;widget)</span></a>
+<a name="819"><span class="lineNum">     819 </span><span class="lineCov">         44 :         bool    ParserFromXML::parseStaticText( QXmlStreamReader &amp; reader, const BandPtr &amp; band )</span></a>
 <a name="820"><span class="lineNum">     820 </span>            :         {</a>
-<a name="821"><span class="lineNum">     821 </span><span class="lineCov">        218 :             TextFieldPtr textField(new TextField());</span></a>
-<a name="822"><span class="lineNum">     822 </span><span class="lineCov">        109 :             if(!parseChilds(reader, textField))</span></a>
+<a name="821"><span class="lineNum">     821 </span><span class="lineCov">         88 :             StaticTextPtr staticText( new StaticText() );</span></a>
+<a name="822"><span class="lineNum">     822 </span><span class="lineCov">         44 :             if( !parseChilds( reader, staticText ) )</span></a>
 <a name="823"><span class="lineNum">     823 </span>            :             {</a>
 <a name="824"><span class="lineNum">     824 </span><span class="lineNoCov">          0 :                 return false;</span></a>
 <a name="825"><span class="lineNum">     825 </span>            :             }</a>
 <a name="826"><span class="lineNum">     826 </span>            : </a>
-<a name="827"><span class="lineNum">     827 </span><span class="lineCov">        109 :             textField-&gt;setTagName( &quot;textField&quot; );</span></a>
-<a name="828"><span class="lineNum">     828 </span>            : </a>
-<a name="829"><span class="lineNum">     829 </span>            :             // TextField может находится в Band или CellContents (Crosstab)</a>
-<a name="830"><span class="lineNum">     830 </span>            :             // Нужно понять метод какого именно клаcса нужно вызывать</a>
-<a name="831"><span class="lineNum">     831 </span><span class="lineCov">        109 :             auto data = widget.data();</span></a>
-<a name="832"><span class="lineNum">     832 </span><span class="lineCov">        109 :             Band* band = dynamic_cast&lt;Band*&gt;(data);</span></a>
-<a name="833"><span class="lineNum">     833 </span><span class="lineCov">        109 :             if(band)</span></a>
-<a name="834"><span class="lineNum">     834 </span>            :             {</a>
-<a name="835"><span class="lineNum">     835 </span><span class="lineCov">        212 :                 BandPtr band = qSharedPointerCast&lt;Band&gt;(widget);</span></a>
-<a name="836"><span class="lineNum">     836 </span><span class="lineCov">        106 :                 band-&gt;addTextField(textField);</span></a>
-<a name="837"><span class="lineNum">     837 </span>            :             }</a>
-<a name="838"><span class="lineNum">     838 </span><span class="lineCov">        109 :             CellContents* cell = dynamic_cast&lt;CellContents*&gt;(data);</span></a>
-<a name="839"><span class="lineNum">     839 </span><span class="lineCov">        109 :             if(cell)</span></a>
-<a name="840"><span class="lineNum">     840 </span>            :             {</a>
-<a name="841"><span class="lineNum">     841 </span><span class="lineCov">          6 :                 CellContentsPtr cell = qSharedPointerCast&lt;CellContents&gt;(widget);</span></a>
-<a name="842"><span class="lineNum">     842 </span><span class="lineCov">          3 :                 cell-&gt;setTextField(textField);</span></a>
-<a name="843"><span class="lineNum">     843 </span>            :             }</a>
-<a name="844"><span class="lineNum">     844 </span>            : </a>
-<a name="845"><span class="lineNum">     845 </span><span class="lineCov">        109 :             return !reader.hasError();</span></a>
-<a name="846"><span class="lineNum">     846 </span>            :         }</a>
-<a name="847"><span class="lineNum">     847 </span>            : </a>
-<a name="848"><span class="lineNum">     848 </span><span class="lineCov">         45 :         bool    ParserFromXML::parseLine( QXmlStreamReader &amp; reader, const BandPtr &amp; band )</span></a>
-<a name="849"><span class="lineNum">     849 </span>            :         {</a>
-<a name="850"><span class="lineNum">     850 </span><span class="lineCov">         90 :             LinePtr line( new Line() );</span></a>
-<a name="851"><span class="lineNum">     851 </span><span class="lineCov">         45 :             if( !parseChilds( reader, line ) )</span></a>
-<a name="852"><span class="lineNum">     852 </span>            :             {</a>
-<a name="853"><span class="lineNum">     853 </span><span class="lineNoCov">          0 :                 return false;</span></a>
-<a name="854"><span class="lineNum">     854 </span>            :             }</a>
-<a name="855"><span class="lineNum">     855 </span>            : </a>
-<a name="856"><span class="lineNum">     856 </span><span class="lineCov">         45 :             line-&gt;setTagName( &quot;line&quot; );</span></a>
-<a name="857"><span class="lineNum">     857 </span><span class="lineCov">         45 :             band-&gt;addLine( line );</span></a>
+<a name="827"><span class="lineNum">     827 </span><span class="lineCov">         44 :             staticText-&gt;setTagName( &quot;staticText&quot; );</span></a>
+<a name="828"><span class="lineNum">     828 </span><span class="lineCov">         44 :             band-&gt;addStaticText( staticText );</span></a>
+<a name="829"><span class="lineNum">     829 </span>            : </a>
+<a name="830"><span class="lineNum">     830 </span><span class="lineCov">         44 :             return !reader.hasError();</span></a>
+<a name="831"><span class="lineNum">     831 </span>            :         }</a>
+<a name="832"><span class="lineNum">     832 </span>            : </a>
+<a name="833"><span class="lineNum">     833 </span><span class="lineCov">        109 :         bool    ParserFromXML::parseTextField(QXmlStreamReader &amp; reader, const WidgetPtr &amp;widget)</span></a>
+<a name="834"><span class="lineNum">     834 </span>            :         {</a>
+<a name="835"><span class="lineNum">     835 </span><span class="lineCov">        218 :             TextFieldPtr textField(new TextField());</span></a>
+<a name="836"><span class="lineNum">     836 </span><span class="lineCov">        109 :             if(!parseChilds(reader, textField))</span></a>
+<a name="837"><span class="lineNum">     837 </span>            :             {</a>
+<a name="838"><span class="lineNum">     838 </span><span class="lineNoCov">          0 :                 return false;</span></a>
+<a name="839"><span class="lineNum">     839 </span>            :             }</a>
+<a name="840"><span class="lineNum">     840 </span>            : </a>
+<a name="841"><span class="lineNum">     841 </span><span class="lineCov">        109 :             textField-&gt;setTagName( &quot;textField&quot; );</span></a>
+<a name="842"><span class="lineNum">     842 </span>            : </a>
+<a name="843"><span class="lineNum">     843 </span>            :             // TextField может находится в Band или CellContents (Crosstab)</a>
+<a name="844"><span class="lineNum">     844 </span>            :             // Нужно понять метод какого именно клаcса нужно вызывать</a>
+<a name="845"><span class="lineNum">     845 </span><span class="lineCov">        109 :             auto data = widget.data();</span></a>
+<a name="846"><span class="lineNum">     846 </span><span class="lineCov">        109 :             Band* band = dynamic_cast&lt;Band*&gt;(data);</span></a>
+<a name="847"><span class="lineNum">     847 </span><span class="lineCov">        109 :             if(band)</span></a>
+<a name="848"><span class="lineNum">     848 </span>            :             {</a>
+<a name="849"><span class="lineNum">     849 </span><span class="lineCov">        212 :                 BandPtr band = qSharedPointerCast&lt;Band&gt;(widget);</span></a>
+<a name="850"><span class="lineNum">     850 </span><span class="lineCov">        106 :                 band-&gt;addTextField(textField);</span></a>
+<a name="851"><span class="lineNum">     851 </span>            :             }</a>
+<a name="852"><span class="lineNum">     852 </span><span class="lineCov">        109 :             CellContents* cell = dynamic_cast&lt;CellContents*&gt;(data);</span></a>
+<a name="853"><span class="lineNum">     853 </span><span class="lineCov">        109 :             if(cell)</span></a>
+<a name="854"><span class="lineNum">     854 </span>            :             {</a>
+<a name="855"><span class="lineNum">     855 </span><span class="lineCov">          6 :                 CellContentsPtr cell = qSharedPointerCast&lt;CellContents&gt;(widget);</span></a>
+<a name="856"><span class="lineNum">     856 </span><span class="lineCov">          3 :                 cell-&gt;setTextField(textField);</span></a>
+<a name="857"><span class="lineNum">     857 </span>            :             }</a>
 <a name="858"><span class="lineNum">     858 </span>            : </a>
-<a name="859"><span class="lineNum">     859 </span><span class="lineCov">         45 :             return !reader.hasError();</span></a>
+<a name="859"><span class="lineNum">     859 </span><span class="lineCov">        109 :             return !reader.hasError();</span></a>
 <a name="860"><span class="lineNum">     860 </span>            :         }</a>
 <a name="861"><span class="lineNum">     861 </span>            : </a>
-<a name="862"><span class="lineNum">     862 </span><span class="lineCov">         19 :         bool    ParserFromXML::parseRect( QXmlStreamReader &amp; reader, const BandPtr &amp; band )</span></a>
+<a name="862"><span class="lineNum">     862 </span><span class="lineCov">         45 :         bool    ParserFromXML::parseLine( QXmlStreamReader &amp; reader, const BandPtr &amp; band )</span></a>
 <a name="863"><span class="lineNum">     863 </span>            :         {</a>
-<a name="864"><span class="lineNum">     864 </span><span class="lineCov">         38 :             RectPtr rect( new Rect() );</span></a>
-<a name="865"><span class="lineNum">     865 </span><span class="lineCov">         19 :             if( !parseChilds( reader, rect ) )</span></a>
+<a name="864"><span class="lineNum">     864 </span><span class="lineCov">         90 :             LinePtr line( new Line() );</span></a>
+<a name="865"><span class="lineNum">     865 </span><span class="lineCov">         45 :             if( !parseChilds( reader, line ) )</span></a>
 <a name="866"><span class="lineNum">     866 </span>            :             {</a>
 <a name="867"><span class="lineNum">     867 </span><span class="lineNoCov">          0 :                 return false;</span></a>
 <a name="868"><span class="lineNum">     868 </span>            :             }</a>
 <a name="869"><span class="lineNum">     869 </span>            : </a>
-<a name="870"><span class="lineNum">     870 </span><span class="lineCov">         19 :             rect-&gt;setTagName( &quot;rect&quot; );</span></a>
-<a name="871"><span class="lineNum">     871 </span><span class="lineCov">         19 :             band-&gt;addRect( rect );</span></a>
+<a name="870"><span class="lineNum">     870 </span><span class="lineCov">         45 :             line-&gt;setTagName( &quot;line&quot; );</span></a>
+<a name="871"><span class="lineNum">     871 </span><span class="lineCov">         45 :             band-&gt;addLine( line );</span></a>
 <a name="872"><span class="lineNum">     872 </span>            : </a>
-<a name="873"><span class="lineNum">     873 </span><span class="lineCov">         19 :             return !reader.hasError();</span></a>
+<a name="873"><span class="lineNum">     873 </span><span class="lineCov">         45 :             return !reader.hasError();</span></a>
 <a name="874"><span class="lineNum">     874 </span>            :         }</a>
 <a name="875"><span class="lineNum">     875 </span>            : </a>
-<a name="876"><span class="lineNum">     876 </span><span class="lineCov">         10 :         bool    ParserFromXML::parseEllipse( QXmlStreamReader &amp; reader, const BandPtr &amp; band )</span></a>
+<a name="876"><span class="lineNum">     876 </span><span class="lineCov">         19 :         bool    ParserFromXML::parseRect( QXmlStreamReader &amp; reader, const BandPtr &amp; band )</span></a>
 <a name="877"><span class="lineNum">     877 </span>            :         {</a>
-<a name="878"><span class="lineNum">     878 </span><span class="lineCov">         20 :             EllipsePtr ellipse( new Ellipse() );</span></a>
-<a name="879"><span class="lineNum">     879 </span><span class="lineCov">         10 :             if( !parseChilds( reader, ellipse ) )</span></a>
+<a name="878"><span class="lineNum">     878 </span><span class="lineCov">         38 :             RectPtr rect( new Rect() );</span></a>
+<a name="879"><span class="lineNum">     879 </span><span class="lineCov">         19 :             if( !parseChilds( reader, rect ) )</span></a>
 <a name="880"><span class="lineNum">     880 </span>            :             {</a>
 <a name="881"><span class="lineNum">     881 </span><span class="lineNoCov">          0 :                 return false;</span></a>
 <a name="882"><span class="lineNum">     882 </span>            :             }</a>
 <a name="883"><span class="lineNum">     883 </span>            : </a>
-<a name="884"><span class="lineNum">     884 </span><span class="lineCov">         10 :             ellipse-&gt;setTagName( &quot;ellipse&quot; );</span></a>
-<a name="885"><span class="lineNum">     885 </span><span class="lineCov">         10 :             band-&gt;addEllipse( ellipse );</span></a>
+<a name="884"><span class="lineNum">     884 </span><span class="lineCov">         19 :             rect-&gt;setTagName( &quot;rect&quot; );</span></a>
+<a name="885"><span class="lineNum">     885 </span><span class="lineCov">         19 :             band-&gt;addRect( rect );</span></a>
 <a name="886"><span class="lineNum">     886 </span>            : </a>
-<a name="887"><span class="lineNum">     887 </span><span class="lineCov">         10 :             return !reader.hasError();</span></a>
+<a name="887"><span class="lineNum">     887 </span><span class="lineCov">         19 :             return !reader.hasError();</span></a>
 <a name="888"><span class="lineNum">     888 </span>            :         }</a>
 <a name="889"><span class="lineNum">     889 </span>            : </a>
-<a name="890"><span class="lineNum">     890 </span><span class="lineCov">         10 :         bool    ParserFromXML::parseImage( QXmlStreamReader &amp; reader, const BandPtr &amp; band )</span></a>
+<a name="890"><span class="lineNum">     890 </span><span class="lineCov">         10 :         bool    ParserFromXML::parseEllipse( QXmlStreamReader &amp; reader, const BandPtr &amp; band )</span></a>
 <a name="891"><span class="lineNum">     891 </span>            :         {</a>
-<a name="892"><span class="lineNum">     892 </span><span class="lineCov">         20 :             ImagePtr image( new Image() );</span></a>
-<a name="893"><span class="lineNum">     893 </span><span class="lineCov">         10 :             if( !parseChilds( reader, image ) )</span></a>
+<a name="892"><span class="lineNum">     892 </span><span class="lineCov">         20 :             EllipsePtr ellipse( new Ellipse() );</span></a>
+<a name="893"><span class="lineNum">     893 </span><span class="lineCov">         10 :             if( !parseChilds( reader, ellipse ) )</span></a>
 <a name="894"><span class="lineNum">     894 </span>            :             {</a>
 <a name="895"><span class="lineNum">     895 </span><span class="lineNoCov">          0 :                 return false;</span></a>
 <a name="896"><span class="lineNum">     896 </span>            :             }</a>
 <a name="897"><span class="lineNum">     897 </span>            : </a>
-<a name="898"><span class="lineNum">     898 </span><span class="lineCov">         10 :             image-&gt;setTagName( &quot;image&quot; );</span></a>
-<a name="899"><span class="lineNum">     899 </span><span class="lineCov">         10 :             band-&gt;addImage( image );</span></a>
+<a name="898"><span class="lineNum">     898 </span><span class="lineCov">         10 :             ellipse-&gt;setTagName( &quot;ellipse&quot; );</span></a>
+<a name="899"><span class="lineNum">     899 </span><span class="lineCov">         10 :             band-&gt;addEllipse( ellipse );</span></a>
 <a name="900"><span class="lineNum">     900 </span>            : </a>
 <a name="901"><span class="lineNum">     901 </span><span class="lineCov">         10 :             return !reader.hasError();</span></a>
 <a name="902"><span class="lineNum">     902 </span>            :         }</a>
 <a name="903"><span class="lineNum">     903 </span>            : </a>
-<a name="904"><span class="lineNum">     904 </span><span class="lineCov">        238 :         bool    ParserFromXML::parseReportElement( QXmlStreamReader &amp; reader, const WidgetPtr &amp; widget )</span></a>
+<a name="904"><span class="lineNum">     904 </span><span class="lineCov">         10 :         bool    ParserFromXML::parseImage( QXmlStreamReader &amp; reader, const BandPtr &amp; band )</span></a>
 <a name="905"><span class="lineNum">     905 </span>            :         {</a>
-<a name="906"><span class="lineNum">     906 </span><span class="lineCov">        476 :             QString xString;</span></a>
-<a name="907"><span class="lineNum">     907 </span><span class="lineCov">        238 :             if( !getRequiredAttribute( reader, &quot;x&quot;, xString ) )</span></a>
+<a name="906"><span class="lineNum">     906 </span><span class="lineCov">         20 :             ImagePtr image( new Image() );</span></a>
+<a name="907"><span class="lineNum">     907 </span><span class="lineCov">         10 :             if( !parseChilds( reader, image ) )</span></a>
 <a name="908"><span class="lineNum">     908 </span>            :             {</a>
 <a name="909"><span class="lineNum">     909 </span><span class="lineNoCov">          0 :                 return false;</span></a>
 <a name="910"><span class="lineNum">     910 </span>            :             }</a>
 <a name="911"><span class="lineNum">     911 </span>            : </a>
-<a name="912"><span class="lineNum">     912 </span><span class="lineCov">        476 :             QString yString;</span></a>
-<a name="913"><span class="lineNum">     913 </span><span class="lineCov">        238 :             if( !getRequiredAttribute( reader, &quot;y&quot;, yString ) )</span></a>
-<a name="914"><span class="lineNum">     914 </span>            :             {</a>
-<a name="915"><span class="lineNum">     915 </span><span class="lineNoCov">          0 :                 return false;</span></a>
-<a name="916"><span class="lineNum">     916 </span>            :             }</a>
+<a name="912"><span class="lineNum">     912 </span><span class="lineCov">         10 :             image-&gt;setTagName( &quot;image&quot; );</span></a>
+<a name="913"><span class="lineNum">     913 </span><span class="lineCov">         10 :             band-&gt;addImage( image );</span></a>
+<a name="914"><span class="lineNum">     914 </span>            : </a>
+<a name="915"><span class="lineNum">     915 </span><span class="lineCov">         10 :             return !reader.hasError();</span></a>
+<a name="916"><span class="lineNum">     916 </span>            :         }</a>
 <a name="917"><span class="lineNum">     917 </span>            : </a>
-<a name="918"><span class="lineNum">     918 </span><span class="lineCov">        476 :             QString widthString;</span></a>
-<a name="919"><span class="lineNum">     919 </span><span class="lineCov">        238 :             if( !getRequiredAttribute( reader, &quot;width&quot;, widthString ) )</span></a>
-<a name="920"><span class="lineNum">     920 </span>            :             {</a>
-<a name="921"><span class="lineNum">     921 </span><span class="lineNoCov">          0 :                 return false;</span></a>
-<a name="922"><span class="lineNum">     922 </span>            :             }</a>
-<a name="923"><span class="lineNum">     923 </span>            : </a>
-<a name="924"><span class="lineNum">     924 </span><span class="lineCov">        476 :             QString heightString;</span></a>
-<a name="925"><span class="lineNum">     925 </span><span class="lineCov">        238 :             if( !getRequiredAttribute( reader, &quot;height&quot;, heightString ) )</span></a>
-<a name="926"><span class="lineNum">     926 </span>            :             {</a>
-<a name="927"><span class="lineNum">     927 </span><span class="lineNoCov">          0 :                 return false;</span></a>
-<a name="928"><span class="lineNum">     928 </span>            :             }</a>
-<a name="929"><span class="lineNum">     929 </span>            : </a>
-<a name="930"><span class="lineNum">     930 </span><span class="lineCov">        476 :             QString styleString;</span></a>
-<a name="931"><span class="lineNum">     931 </span><span class="lineCov">        238 :             if( !getOptionalAttribute( reader, &quot;style&quot;, styleString ) )</span></a>
-<a name="932"><span class="lineNum">     932 </span>            :             {</a>
-<a name="933"><span class="lineNum">     933 </span><span class="lineNoCov">          0 :                 return false;</span></a>
-<a name="934"><span class="lineNum">     934 </span>            :             }</a>
-<a name="935"><span class="lineNum">     935 </span>            : </a>
-<a name="936"><span class="lineNum">     936 </span><span class="lineCov">        238 :             if( !goToElementEnd( reader ) )</span></a>
-<a name="937"><span class="lineNum">     937 </span>            :             {</a>
-<a name="938"><span class="lineNum">     938 </span><span class="lineNoCov">          0 :                 return false;</span></a>
-<a name="939"><span class="lineNum">     939 </span>            :             }</a>
-<a name="940"><span class="lineNum">     940 </span>            : </a>
-<a name="941"><span class="lineNum">     941 </span><span class="lineCov">        238 :             if( !xString.isEmpty() )</span></a>
-<a name="942"><span class="lineNum">     942 </span>            :             {</a>
-<a name="943"><span class="lineNum">     943 </span><span class="lineCov">        238 :                 widget-&gt;setX( xString.toInt() );</span></a>
-<a name="944"><span class="lineNum">     944 </span>            :             }</a>
-<a name="945"><span class="lineNum">     945 </span>            : </a>
-<a name="946"><span class="lineNum">     946 </span><span class="lineCov">        238 :             if( !yString.isEmpty() )</span></a>
-<a name="947"><span class="lineNum">     947 </span>            :             {</a>
-<a name="948"><span class="lineNum">     948 </span><span class="lineCov">        238 :                 widget-&gt;setY( yString.toInt() );</span></a>
-<a name="949"><span class="lineNum">     949 </span>            :             }</a>
-<a name="950"><span class="lineNum">     950 </span>            : </a>
-<a name="951"><span class="lineNum">     951 </span><span class="lineCov">        238 :             if( !widthString.isEmpty() )</span></a>
-<a name="952"><span class="lineNum">     952 </span>            :             {</a>
-<a name="953"><span class="lineNum">     953 </span><span class="lineCov">        238 :                 auto width = widthString.toInt();</span></a>
-<a name="954"><span class="lineNum">     954 </span>            :                 //if( widthString.contains( &quot;%&quot; ) )</a>
-<a name="955"><span class="lineNum">     955 </span>            :                 //{</a>
-<a name="956"><span class="lineNum">     956 </span>            :                     //auto percentString = widthString.split( &quot;%&quot; ).at( 0 );</a>
-<a name="957"><span class="lineNum">     957 </span>            :                     //auto percent = 0.01 * std::max( 0, std::min( 100, percentString.toInt() ) );</a>
-<a name="958"><span class="lineNum">     958 </span>            :                     //width = static_cast&lt; int &gt;( percent * m_report-&gt;getWidth() );</a>
-<a name="959"><span class="lineNum">     959 </span>            :                 //}</a>
-<a name="960"><span class="lineNum">     960 </span><span class="lineCov">        238 :                 widget-&gt;setWidth( width );</span></a>
-<a name="961"><span class="lineNum">     961 </span>            :             }</a>
-<a name="962"><span class="lineNum">     962 </span>            : </a>
-<a name="963"><span class="lineNum">     963 </span><span class="lineCov">        238 :             if( !heightString.isEmpty() )</span></a>
-<a name="964"><span class="lineNum">     964 </span>            :             {</a>
-<a name="965"><span class="lineNum">     965 </span><span class="lineCov">        238 :                 widget-&gt;setHeight( heightString.toInt() );</span></a>
-<a name="966"><span class="lineNum">     966 </span>            :             }</a>
-<a name="967"><span class="lineNum">     967 </span>            :             </a>
-<a name="968"><span class="lineNum">     968 </span><span class="lineCov">        238 :             if( !styleString.isEmpty() )</span></a>
-<a name="969"><span class="lineNum">     969 </span>            :             {</a>
-<a name="970"><span class="lineNum">     970 </span><span class="lineCov">        105 :                 widget-&gt;setStyle( styleString );</span></a>
-<a name="971"><span class="lineNum">     971 </span>            :             }</a>
-<a name="972"><span class="lineNum">     972 </span>            : </a>
-<a name="973"><span class="lineNum">     973 </span>            :             //widget-&gt;setRect( QRect( x, y, width, height ) );</a>
-<a name="974"><span class="lineNum">     974 </span>            : </a>
-<a name="975"><span class="lineNum">     975 </span><span class="lineCov">        238 :             return !reader.hasError();</span></a>
-<a name="976"><span class="lineNum">     976 </span>            :         }</a>
-<a name="977"><span class="lineNum">     977 </span>            : </a>
-<a name="978"><span class="lineNum">     978 </span><span class="lineCov">        116 :         bool    ParserFromXML::parseTextElement( QXmlStreamReader &amp; reader, const WidgetPtr &amp; widget )</span></a>
-<a name="979"><span class="lineNum">     979 </span>            :         {</a>
-<a name="980"><span class="lineNum">     980 </span><span class="lineCov">        232 :             QString textAlignment;</span></a>
-<a name="981"><span class="lineNum">     981 </span><span class="lineCov">        116 :             if( !getRequiredAttribute( reader, &quot;textAlignment&quot;, textAlignment ) )</span></a>
-<a name="982"><span class="lineNum">     982 </span>            :             {</a>
-<a name="983"><span class="lineNum">     983 </span><span class="lineNoCov">          0 :                 return false;</span></a>
-<a name="984"><span class="lineNum">     984 </span>            :             }</a>
-<a name="985"><span class="lineNum">     985 </span>            : </a>
-<a name="986"><span class="lineNum">     986 </span><span class="lineCov">        232 :             QString textVAlignment;</span></a>
-<a name="987"><span class="lineNum">     987 </span><span class="lineCov">        116 :             if( !getOptionalAttribute( reader, &quot;textVAlignment&quot;, textVAlignment ) )</span></a>
-<a name="988"><span class="lineNum">     988 </span>            :             {</a>
-<a name="989"><span class="lineNum">     989 </span><span class="lineNoCov">          0 :                 return false;</span></a>
-<a name="990"><span class="lineNum">     990 </span>            :             }</a>
+<a name="918"><span class="lineNum">     918 </span><span class="lineCov">        238 :         bool    ParserFromXML::parseReportElement( QXmlStreamReader &amp; reader, const WidgetPtr &amp; widget )</span></a>
+<a name="919"><span class="lineNum">     919 </span>            :         {</a>
+<a name="920"><span class="lineNum">     920 </span><span class="lineCov">        476 :             QString xString;</span></a>
+<a name="921"><span class="lineNum">     921 </span><span class="lineCov">        238 :             if( !getRequiredAttribute( reader, &quot;x&quot;, xString ) )</span></a>
+<a name="922"><span class="lineNum">     922 </span>            :             {</a>
+<a name="923"><span class="lineNum">     923 </span><span class="lineNoCov">          0 :                 return false;</span></a>
+<a name="924"><span class="lineNum">     924 </span>            :             }</a>
+<a name="925"><span class="lineNum">     925 </span>            : </a>
+<a name="926"><span class="lineNum">     926 </span><span class="lineCov">        476 :             QString yString;</span></a>
+<a name="927"><span class="lineNum">     927 </span><span class="lineCov">        238 :             if( !getRequiredAttribute( reader, &quot;y&quot;, yString ) )</span></a>
+<a name="928"><span class="lineNum">     928 </span>            :             {</a>
+<a name="929"><span class="lineNum">     929 </span><span class="lineNoCov">          0 :                 return false;</span></a>
+<a name="930"><span class="lineNum">     930 </span>            :             }</a>
+<a name="931"><span class="lineNum">     931 </span>            : </a>
+<a name="932"><span class="lineNum">     932 </span><span class="lineCov">        476 :             QString widthString;</span></a>
+<a name="933"><span class="lineNum">     933 </span><span class="lineCov">        238 :             if( !getRequiredAttribute( reader, &quot;width&quot;, widthString ) )</span></a>
+<a name="934"><span class="lineNum">     934 </span>            :             {</a>
+<a name="935"><span class="lineNum">     935 </span><span class="lineNoCov">          0 :                 return false;</span></a>
+<a name="936"><span class="lineNum">     936 </span>            :             }</a>
+<a name="937"><span class="lineNum">     937 </span>            : </a>
+<a name="938"><span class="lineNum">     938 </span><span class="lineCov">        476 :             QString heightString;</span></a>
+<a name="939"><span class="lineNum">     939 </span><span class="lineCov">        238 :             if( !getRequiredAttribute( reader, &quot;height&quot;, heightString ) )</span></a>
+<a name="940"><span class="lineNum">     940 </span>            :             {</a>
+<a name="941"><span class="lineNum">     941 </span><span class="lineNoCov">          0 :                 return false;</span></a>
+<a name="942"><span class="lineNum">     942 </span>            :             }</a>
+<a name="943"><span class="lineNum">     943 </span>            : </a>
+<a name="944"><span class="lineNum">     944 </span><span class="lineCov">        476 :             QString styleString;</span></a>
+<a name="945"><span class="lineNum">     945 </span><span class="lineCov">        238 :             if( !getOptionalAttribute( reader, &quot;style&quot;, styleString ) )</span></a>
+<a name="946"><span class="lineNum">     946 </span>            :             {</a>
+<a name="947"><span class="lineNum">     947 </span><span class="lineNoCov">          0 :                 return false;</span></a>
+<a name="948"><span class="lineNum">     948 </span>            :             }</a>
+<a name="949"><span class="lineNum">     949 </span>            : </a>
+<a name="950"><span class="lineNum">     950 </span><span class="lineCov">        238 :             if( !goToElementEnd( reader ) )</span></a>
+<a name="951"><span class="lineNum">     951 </span>            :             {</a>
+<a name="952"><span class="lineNum">     952 </span><span class="lineNoCov">          0 :                 return false;</span></a>
+<a name="953"><span class="lineNum">     953 </span>            :             }</a>
+<a name="954"><span class="lineNum">     954 </span>            : </a>
+<a name="955"><span class="lineNum">     955 </span><span class="lineCov">        238 :             if( !xString.isEmpty() )</span></a>
+<a name="956"><span class="lineNum">     956 </span>            :             {</a>
+<a name="957"><span class="lineNum">     957 </span><span class="lineCov">        238 :                 widget-&gt;setX( xString.toInt() );</span></a>
+<a name="958"><span class="lineNum">     958 </span>            :             }</a>
+<a name="959"><span class="lineNum">     959 </span>            : </a>
+<a name="960"><span class="lineNum">     960 </span><span class="lineCov">        238 :             if( !yString.isEmpty() )</span></a>
+<a name="961"><span class="lineNum">     961 </span>            :             {</a>
+<a name="962"><span class="lineNum">     962 </span><span class="lineCov">        238 :                 widget-&gt;setY( yString.toInt() );</span></a>
+<a name="963"><span class="lineNum">     963 </span>            :             }</a>
+<a name="964"><span class="lineNum">     964 </span>            : </a>
+<a name="965"><span class="lineNum">     965 </span><span class="lineCov">        238 :             if( !widthString.isEmpty() )</span></a>
+<a name="966"><span class="lineNum">     966 </span>            :             {</a>
+<a name="967"><span class="lineNum">     967 </span><span class="lineCov">        238 :                 auto width = widthString.toInt();</span></a>
+<a name="968"><span class="lineNum">     968 </span>            :                 //if( widthString.contains( &quot;%&quot; ) )</a>
+<a name="969"><span class="lineNum">     969 </span>            :                 //{</a>
+<a name="970"><span class="lineNum">     970 </span>            :                     //auto percentString = widthString.split( &quot;%&quot; ).at( 0 );</a>
+<a name="971"><span class="lineNum">     971 </span>            :                     //auto percent = 0.01 * std::max( 0, std::min( 100, percentString.toInt() ) );</a>
+<a name="972"><span class="lineNum">     972 </span>            :                     //width = static_cast&lt; int &gt;( percent * m_report-&gt;getWidth() );</a>
+<a name="973"><span class="lineNum">     973 </span>            :                 //}</a>
+<a name="974"><span class="lineNum">     974 </span><span class="lineCov">        238 :                 widget-&gt;setWidth( width );</span></a>
+<a name="975"><span class="lineNum">     975 </span>            :             }</a>
+<a name="976"><span class="lineNum">     976 </span>            : </a>
+<a name="977"><span class="lineNum">     977 </span><span class="lineCov">        238 :             if( !heightString.isEmpty() )</span></a>
+<a name="978"><span class="lineNum">     978 </span>            :             {</a>
+<a name="979"><span class="lineNum">     979 </span><span class="lineCov">        238 :                 widget-&gt;setHeight( heightString.toInt() );</span></a>
+<a name="980"><span class="lineNum">     980 </span>            :             }</a>
+<a name="981"><span class="lineNum">     981 </span>            :             </a>
+<a name="982"><span class="lineNum">     982 </span><span class="lineCov">        238 :             if( !styleString.isEmpty() )</span></a>
+<a name="983"><span class="lineNum">     983 </span>            :             {</a>
+<a name="984"><span class="lineNum">     984 </span><span class="lineCov">        105 :                 widget-&gt;setStyle( styleString );</span></a>
+<a name="985"><span class="lineNum">     985 </span>            :             }</a>
+<a name="986"><span class="lineNum">     986 </span>            : </a>
+<a name="987"><span class="lineNum">     987 </span>            :             //widget-&gt;setRect( QRect( x, y, width, height ) );</a>
+<a name="988"><span class="lineNum">     988 </span>            : </a>
+<a name="989"><span class="lineNum">     989 </span><span class="lineCov">        238 :             return !reader.hasError();</span></a>
+<a name="990"><span class="lineNum">     990 </span>            :         }</a>
 <a name="991"><span class="lineNum">     991 </span>            : </a>
-<a name="992"><span class="lineNum">     992 </span><span class="lineCov">        116 :             if( !parseChilds( reader, widget ) )</span></a>
-<a name="993"><span class="lineNum">     993 </span>            :             {</a>
-<a name="994"><span class="lineNum">     994 </span><span class="lineNoCov">          0 :                 return false;</span></a>
-<a name="995"><span class="lineNum">     995 </span>            :             }</a>
-<a name="996"><span class="lineNum">     996 </span>            : </a>
-<a name="997"><span class="lineNum">     997 </span><span class="lineCov">        116 :             auto isCenter = isEquals( textAlignment, &quot;Center&quot; );</span></a>
-<a name="998"><span class="lineNum">     998 </span><span class="lineCov">        116 :             auto isRight = isEquals( textAlignment, &quot;Right&quot; );</span></a>
+<a name="992"><span class="lineNum">     992 </span><span class="lineCov">        116 :         bool    ParserFromXML::parseTextElement( QXmlStreamReader &amp; reader, const WidgetPtr &amp; widget )</span></a>
+<a name="993"><span class="lineNum">     993 </span>            :         {</a>
+<a name="994"><span class="lineNum">     994 </span><span class="lineCov">        232 :             QString textAlignment;</span></a>
+<a name="995"><span class="lineNum">     995 </span><span class="lineCov">        116 :             if( !getRequiredAttribute( reader, &quot;textAlignment&quot;, textAlignment ) )</span></a>
+<a name="996"><span class="lineNum">     996 </span>            :             {</a>
+<a name="997"><span class="lineNum">     997 </span><span class="lineNoCov">          0 :                 return false;</span></a>
+<a name="998"><span class="lineNum">     998 </span>            :             }</a>
 <a name="999"><span class="lineNum">     999 </span>            : </a>
-<a name="1000"><span class="lineNum">    1000 </span><span class="lineCov">        116 :             auto isVTop = isEquals( textVAlignment, &quot;Top&quot; );</span></a>
-<a name="1001"><span class="lineNum">    1001 </span><span class="lineCov">        116 :             auto isVBottom = isEquals( textVAlignment, &quot;Bottom&quot; );</span></a>
-<a name="1002"><span class="lineNum">    1002 </span>            : </a>
-<a name="1003"><span class="lineNum">    1003 </span><span class="lineCov">        116 :             auto hFlag = isCenter ? Qt::AlignCenter : isRight ? Qt::AlignRight : Qt::AlignLeft;</span></a>
-<a name="1004"><span class="lineNum">    1004 </span><span class="lineCov">        116 :             auto vFlag = isVTop ? Qt::AlignTop : isVBottom ? Qt::AlignBottom : Qt::AlignVCenter;</span></a>
+<a name="1000"><span class="lineNum">    1000 </span><span class="lineCov">        232 :             QString textVAlignment;</span></a>
+<a name="1001"><span class="lineNum">    1001 </span><span class="lineCov">        116 :             if( !getOptionalAttribute( reader, &quot;textVAlignment&quot;, textVAlignment ) )</span></a>
+<a name="1002"><span class="lineNum">    1002 </span>            :             {</a>
+<a name="1003"><span class="lineNum">    1003 </span><span class="lineNoCov">          0 :                 return false;</span></a>
+<a name="1004"><span class="lineNum">    1004 </span>            :             }</a>
 <a name="1005"><span class="lineNum">    1005 </span>            : </a>
-<a name="1006"><span class="lineNum">    1006 </span><span class="lineCov">        116 :             widget-&gt;setAlignment( hFlag | vFlag );</span></a>
-<a name="1007"><span class="lineNum">    1007 </span>            : </a>
-<a name="1008"><span class="lineNum">    1008 </span><span class="lineCov">        116 :             return !reader.hasError();</span></a>
-<a name="1009"><span class="lineNum">    1009 </span>            :         }</a>
+<a name="1006"><span class="lineNum">    1006 </span><span class="lineCov">        116 :             if( !parseChilds( reader, widget ) )</span></a>
+<a name="1007"><span class="lineNum">    1007 </span>            :             {</a>
+<a name="1008"><span class="lineNum">    1008 </span><span class="lineNoCov">          0 :                 return false;</span></a>
+<a name="1009"><span class="lineNum">    1009 </span>            :             }</a>
 <a name="1010"><span class="lineNum">    1010 </span>            : </a>
-<a name="1011"><span class="lineNum">    1011 </span><span class="lineCov">        105 :         bool    ParserFromXML::parseFont( QXmlStreamReader &amp; reader, const WidgetPtr &amp; widget )</span></a>
-<a name="1012"><span class="lineNum">    1012 </span>            :         {</a>
-<a name="1013"><span class="lineNum">    1013 </span><span class="lineCov">        210 :             QString isBold;</span></a>
-<a name="1014"><span class="lineNum">    1014 </span><span class="lineCov">        105 :             if( !getOptionalAttribute( reader, &quot;isBold&quot;, isBold ) )</span></a>
-<a name="1015"><span class="lineNum">    1015 </span>            :             {</a>
-<a name="1016"><span class="lineNum">    1016 </span><span class="lineNoCov">          0 :                 return false;</span></a>
-<a name="1017"><span class="lineNum">    1017 </span>            :             }</a>
-<a name="1018"><span class="lineNum">    1018 </span>            : </a>
-<a name="1019"><span class="lineNum">    1019 </span><span class="lineCov">        105 :             if( !goToElementEnd( reader ) )</span></a>
-<a name="1020"><span class="lineNum">    1020 </span>            :             {</a>
-<a name="1021"><span class="lineNum">    1021 </span><span class="lineNoCov">          0 :                 return false;</span></a>
-<a name="1022"><span class="lineNum">    1022 </span>            :             }</a>
-<a name="1023"><span class="lineNum">    1023 </span>            : </a>
-<a name="1024"><span class="lineNum">    1024 </span><span class="lineCov">        105 :             if( !isBold.isEmpty() )</span></a>
-<a name="1025"><span class="lineNum">    1025 </span>            :             {</a>
-<a name="1026"><span class="lineNum">    1026 </span><span class="lineCov">        105 :                 widget-&gt;setBold( toBool( isBold ) );</span></a>
-<a name="1027"><span class="lineNum">    1027 </span>            :             }</a>
-<a name="1028"><span class="lineNum">    1028 </span>            : </a>
-<a name="1029"><span class="lineNum">    1029 </span><span class="lineCov">        105 :             return !reader.hasError();</span></a>
-<a name="1030"><span class="lineNum">    1030 </span>            :         }</a>
-<a name="1031"><span class="lineNum">    1031 </span>            : </a>
-<a name="1032"><span class="lineNum">    1032 </span><span class="lineCov">         45 :         bool    ParserFromXML::parseText( QXmlStreamReader &amp; reader, const StaticTextPtr &amp; staticText )</span></a>
-<a name="1033"><span class="lineNum">    1033 </span>            :         {</a>
-<a name="1034"><span class="lineNum">    1034 </span><span class="lineCov">         90 :             QString text;</span></a>
-<a name="1035"><span class="lineNum">    1035 </span><span class="lineCov">         45 :             if( !getValue( reader, text ) )</span></a>
-<a name="1036"><span class="lineNum">    1036 </span>            :             {</a>
-<a name="1037"><span class="lineNum">    1037 </span><span class="lineNoCov">          0 :                 return false;</span></a>
-<a name="1038"><span class="lineNum">    1038 </span>            :             }</a>
-<a name="1039"><span class="lineNum">    1039 </span>            : </a>
-<a name="1040"><span class="lineNum">    1040 </span><span class="lineCov">         45 :             staticText-&gt;setOriginalText( text );</span></a>
-<a name="1041"><span class="lineNum">    1041 </span>            : </a>
-<a name="1042"><span class="lineNum">    1042 </span><span class="lineCov">         45 :             return !reader.hasError();</span></a>
-<a name="1043"><span class="lineNum">    1043 </span>            :         }</a>
-<a name="1044"><span class="lineNum">    1044 </span>            : </a>
-<a name="1045"><span class="lineNum">    1045 </span><span class="lineCov">        108 :         bool    ParserFromXML::parseTextFieldExpression( QXmlStreamReader &amp; reader, const TextFieldPtr &amp; textField )</span></a>
-<a name="1046"><span class="lineNum">    1046 </span>            :         {</a>
-<a name="1047"><span class="lineNum">    1047 </span><span class="lineCov">        216 :             QString className;</span></a>
-<a name="1048"><span class="lineNum">    1048 </span><span class="lineCov">        108 :             if( !getRequiredAttribute( reader, &quot;class&quot;, className ) )</span></a>
-<a name="1049"><span class="lineNum">    1049 </span>            :             {</a>
-<a name="1050"><span class="lineNum">    1050 </span><span class="lineNoCov">          0 :                 return false;</span></a>
-<a name="1051"><span class="lineNum">    1051 </span>            :             }</a>
-<a name="1052"><span class="lineNum">    1052 </span>            : </a>
-<a name="1053"><span class="lineNum">    1053 </span><span class="lineCov">        216 :             QString text;</span></a>
-<a name="1054"><span class="lineNum">    1054 </span><span class="lineCov">        108 :             if( !getValue( reader, text ) )</span></a>
-<a name="1055"><span class="lineNum">    1055 </span>            :             {</a>
-<a name="1056"><span class="lineNum">    1056 </span><span class="lineNoCov">          0 :                 return false;</span></a>
-<a name="1057"><span class="lineNum">    1057 </span>            :             }</a>
+<a name="1011"><span class="lineNum">    1011 </span><span class="lineCov">        116 :             auto isCenter = isEquals( textAlignment, &quot;Center&quot; );</span></a>
+<a name="1012"><span class="lineNum">    1012 </span><span class="lineCov">        116 :             auto isRight = isEquals( textAlignment, &quot;Right&quot; );</span></a>
+<a name="1013"><span class="lineNum">    1013 </span>            : </a>
+<a name="1014"><span class="lineNum">    1014 </span><span class="lineCov">        116 :             auto isVTop = isEquals( textVAlignment, &quot;Top&quot; );</span></a>
+<a name="1015"><span class="lineNum">    1015 </span><span class="lineCov">        116 :             auto isVBottom = isEquals( textVAlignment, &quot;Bottom&quot; );</span></a>
+<a name="1016"><span class="lineNum">    1016 </span>            : </a>
+<a name="1017"><span class="lineNum">    1017 </span><span class="lineCov">        116 :             auto hFlag = isCenter ? Qt::AlignCenter : isRight ? Qt::AlignRight : Qt::AlignLeft;</span></a>
+<a name="1018"><span class="lineNum">    1018 </span><span class="lineCov">        116 :             auto vFlag = isVTop ? Qt::AlignTop : isVBottom ? Qt::AlignBottom : Qt::AlignVCenter;</span></a>
+<a name="1019"><span class="lineNum">    1019 </span>            : </a>
+<a name="1020"><span class="lineNum">    1020 </span><span class="lineCov">        116 :             widget-&gt;setAlignment( hFlag | vFlag );</span></a>
+<a name="1021"><span class="lineNum">    1021 </span>            : </a>
+<a name="1022"><span class="lineNum">    1022 </span><span class="lineCov">        116 :             return !reader.hasError();</span></a>
+<a name="1023"><span class="lineNum">    1023 </span>            :         }</a>
+<a name="1024"><span class="lineNum">    1024 </span>            : </a>
+<a name="1025"><span class="lineNum">    1025 </span><span class="lineCov">        105 :         bool    ParserFromXML::parseFont( QXmlStreamReader &amp; reader, const WidgetPtr &amp; widget )</span></a>
+<a name="1026"><span class="lineNum">    1026 </span>            :         {</a>
+<a name="1027"><span class="lineNum">    1027 </span><span class="lineCov">        210 :             QString isBold;</span></a>
+<a name="1028"><span class="lineNum">    1028 </span><span class="lineCov">        105 :             if( !getOptionalAttribute( reader, &quot;isBold&quot;, isBold ) )</span></a>
+<a name="1029"><span class="lineNum">    1029 </span>            :             {</a>
+<a name="1030"><span class="lineNum">    1030 </span><span class="lineNoCov">          0 :                 return false;</span></a>
+<a name="1031"><span class="lineNum">    1031 </span>            :             }</a>
+<a name="1032"><span class="lineNum">    1032 </span>            : </a>
+<a name="1033"><span class="lineNum">    1033 </span><span class="lineCov">        105 :             if( !goToElementEnd( reader ) )</span></a>
+<a name="1034"><span class="lineNum">    1034 </span>            :             {</a>
+<a name="1035"><span class="lineNum">    1035 </span><span class="lineNoCov">          0 :                 return false;</span></a>
+<a name="1036"><span class="lineNum">    1036 </span>            :             }</a>
+<a name="1037"><span class="lineNum">    1037 </span>            : </a>
+<a name="1038"><span class="lineNum">    1038 </span><span class="lineCov">        105 :             if( !isBold.isEmpty() )</span></a>
+<a name="1039"><span class="lineNum">    1039 </span>            :             {</a>
+<a name="1040"><span class="lineNum">    1040 </span><span class="lineCov">        105 :                 widget-&gt;setBold( toBool( isBold ) );</span></a>
+<a name="1041"><span class="lineNum">    1041 </span>            :             }</a>
+<a name="1042"><span class="lineNum">    1042 </span>            : </a>
+<a name="1043"><span class="lineNum">    1043 </span><span class="lineCov">        105 :             return !reader.hasError();</span></a>
+<a name="1044"><span class="lineNum">    1044 </span>            :         }</a>
+<a name="1045"><span class="lineNum">    1045 </span>            : </a>
+<a name="1046"><span class="lineNum">    1046 </span><span class="lineCov">         45 :         bool    ParserFromXML::parseText( QXmlStreamReader &amp; reader, const StaticTextPtr &amp; staticText )</span></a>
+<a name="1047"><span class="lineNum">    1047 </span>            :         {</a>
+<a name="1048"><span class="lineNum">    1048 </span><span class="lineCov">         90 :             QString text;</span></a>
+<a name="1049"><span class="lineNum">    1049 </span><span class="lineCov">         45 :             if( !getValue( reader, text ) )</span></a>
+<a name="1050"><span class="lineNum">    1050 </span>            :             {</a>
+<a name="1051"><span class="lineNum">    1051 </span><span class="lineNoCov">          0 :                 return false;</span></a>
+<a name="1052"><span class="lineNum">    1052 </span>            :             }</a>
+<a name="1053"><span class="lineNum">    1053 </span>            : </a>
+<a name="1054"><span class="lineNum">    1054 </span><span class="lineCov">         45 :             staticText-&gt;setOriginalText( text );</span></a>
+<a name="1055"><span class="lineNum">    1055 </span>            : </a>
+<a name="1056"><span class="lineNum">    1056 </span><span class="lineCov">         45 :             return !reader.hasError();</span></a>
+<a name="1057"><span class="lineNum">    1057 </span>            :         }</a>
 <a name="1058"><span class="lineNum">    1058 </span>            : </a>
-<a name="1059"><span class="lineNum">    1059 </span><span class="lineCov">        108 :             textField-&gt;setOriginalText( text );</span></a>
-<a name="1060"><span class="lineNum">    1060 </span><span class="lineCov">        108 :             textField-&gt;setClassName( className );</span></a>
-<a name="1061"><span class="lineNum">    1061 </span>            : </a>
-<a name="1062"><span class="lineNum">    1062 </span><span class="lineCov">        108 :             return !reader.hasError();</span></a>
-<a name="1063"><span class="lineNum">    1063 </span>            :         }</a>
-<a name="1064"><span class="lineNum">    1064 </span>            : </a>
-<a name="1065"><span class="lineNum">    1065 </span><span class="lineCov">         10 :         bool    ParserFromXML::parseImageExpression( QXmlStreamReader &amp; reader, const ImagePtr &amp; image )</span></a>
-<a name="1066"><span class="lineNum">    1066 </span>            :         {</a>
-<a name="1067"><span class="lineNum">    1067 </span>            :             //QString className;</a>
-<a name="1068"><span class="lineNum">    1068 </span>            :             //if( !getRequiredAttribute( reader, &quot;class&quot;, className ) )</a>
-<a name="1069"><span class="lineNum">    1069 </span>            :             //{</a>
-<a name="1070"><span class="lineNum">    1070 </span>            :             //    return false;</a>
-<a name="1071"><span class="lineNum">    1071 </span>            :             //}</a>
+<a name="1059"><span class="lineNum">    1059 </span><span class="lineCov">        108 :         bool    ParserFromXML::parseTextFieldExpression( QXmlStreamReader &amp; reader, const TextFieldPtr &amp; textField )</span></a>
+<a name="1060"><span class="lineNum">    1060 </span>            :         {</a>
+<a name="1061"><span class="lineNum">    1061 </span><span class="lineCov">        216 :             QString className;</span></a>
+<a name="1062"><span class="lineNum">    1062 </span><span class="lineCov">        108 :             if( !getRequiredAttribute( reader, &quot;class&quot;, className ) )</span></a>
+<a name="1063"><span class="lineNum">    1063 </span>            :             {</a>
+<a name="1064"><span class="lineNum">    1064 </span><span class="lineNoCov">          0 :                 return false;</span></a>
+<a name="1065"><span class="lineNum">    1065 </span>            :             }</a>
+<a name="1066"><span class="lineNum">    1066 </span>            : </a>
+<a name="1067"><span class="lineNum">    1067 </span><span class="lineCov">        216 :             QString text;</span></a>
+<a name="1068"><span class="lineNum">    1068 </span><span class="lineCov">        108 :             if( !getValue( reader, text ) )</span></a>
+<a name="1069"><span class="lineNum">    1069 </span>            :             {</a>
+<a name="1070"><span class="lineNum">    1070 </span><span class="lineNoCov">          0 :                 return false;</span></a>
+<a name="1071"><span class="lineNum">    1071 </span>            :             }</a>
 <a name="1072"><span class="lineNum">    1072 </span>            : </a>
-<a name="1073"><span class="lineNum">    1073 </span><span class="lineCov">         20 :             QString text;</span></a>
-<a name="1074"><span class="lineNum">    1074 </span><span class="lineCov">         10 :             if( !getValue( reader, text ) )</span></a>
-<a name="1075"><span class="lineNum">    1075 </span>            :             {</a>
-<a name="1076"><span class="lineNum">    1076 </span><span class="lineNoCov">          0 :                 return false;</span></a>
-<a name="1077"><span class="lineNum">    1077 </span>            :             }</a>
+<a name="1073"><span class="lineNum">    1073 </span><span class="lineCov">        108 :             textField-&gt;setOriginalText( text );</span></a>
+<a name="1074"><span class="lineNum">    1074 </span><span class="lineCov">        108 :             textField-&gt;setClassName( className );</span></a>
+<a name="1075"><span class="lineNum">    1075 </span>            : </a>
+<a name="1076"><span class="lineNum">    1076 </span><span class="lineCov">        108 :             return !reader.hasError();</span></a>
+<a name="1077"><span class="lineNum">    1077 </span>            :         }</a>
 <a name="1078"><span class="lineNum">    1078 </span>            : </a>
-<a name="1079"><span class="lineNum">    1079 </span><span class="lineCov">         10 :             image-&gt;setOriginalText( text );</span></a>
-<a name="1080"><span class="lineNum">    1080 </span>            :             //image-&gt;setClassName( className );</a>
-<a name="1081"><span class="lineNum">    1081 </span>            : </a>
-<a name="1082"><span class="lineNum">    1082 </span><span class="lineCov">         10 :             return !reader.hasError();</span></a>
-<a name="1083"><span class="lineNum">    1083 </span>            :         }</a>
-<a name="1084"><span class="lineNum">    1084 </span>            : </a>
-<a name="1085"><span class="lineNum">    1085 </span><span class="lineNoCov">          0 :         bool ParserFromXML::parseVariable(QXmlStreamReader&amp; reader, const ReportPtr &amp;report)</span></a>
-<a name="1086"><span class="lineNum">    1086 </span>            :         {</a>
-<a name="1087"><span class="lineNum">    1087 </span><span class="lineNoCov">          0 :             QString variableName;</span></a>
-<a name="1088"><span class="lineNum">    1088 </span><span class="lineNoCov">          0 :             if( !getRequiredAttribute( reader, &quot;name&quot;, variableName ) )</span></a>
+<a name="1079"><span class="lineNum">    1079 </span><span class="lineCov">         10 :         bool    ParserFromXML::parseImageExpression( QXmlStreamReader &amp; reader, const ImagePtr &amp; image )</span></a>
+<a name="1080"><span class="lineNum">    1080 </span>            :         {</a>
+<a name="1081"><span class="lineNum">    1081 </span>            :             //QString className;</a>
+<a name="1082"><span class="lineNum">    1082 </span>            :             //if( !getRequiredAttribute( reader, &quot;class&quot;, className ) )</a>
+<a name="1083"><span class="lineNum">    1083 </span>            :             //{</a>
+<a name="1084"><span class="lineNum">    1084 </span>            :             //    return false;</a>
+<a name="1085"><span class="lineNum">    1085 </span>            :             //}</a>
+<a name="1086"><span class="lineNum">    1086 </span>            : </a>
+<a name="1087"><span class="lineNum">    1087 </span><span class="lineCov">         20 :             QString text;</span></a>
+<a name="1088"><span class="lineNum">    1088 </span><span class="lineCov">         10 :             if( !getValue( reader, text ) )</span></a>
 <a name="1089"><span class="lineNum">    1089 </span>            :             {</a>
 <a name="1090"><span class="lineNum">    1090 </span><span class="lineNoCov">          0 :                 return false;</span></a>
 <a name="1091"><span class="lineNum">    1091 </span>            :             }</a>
 <a name="1092"><span class="lineNum">    1092 </span>            : </a>
-<a name="1093"><span class="lineNum">    1093 </span><span class="lineNoCov">          0 :             QString className;</span></a>
-<a name="1094"><span class="lineNum">    1094 </span><span class="lineNoCov">          0 :             if( !getRequiredAttribute( reader, &quot;class&quot;, className ) )</span></a>
-<a name="1095"><span class="lineNum">    1095 </span>            :             {</a>
-<a name="1096"><span class="lineNum">    1096 </span><span class="lineNoCov">          0 :                 className = &quot;QString&quot;;</span></a>
-<a name="1097"><span class="lineNum">    1097 </span>            :             }</a>
+<a name="1093"><span class="lineNum">    1093 </span><span class="lineCov">         10 :             image-&gt;setOriginalText( text );</span></a>
+<a name="1094"><span class="lineNum">    1094 </span>            :             //image-&gt;setClassName( className );</a>
+<a name="1095"><span class="lineNum">    1095 </span>            : </a>
+<a name="1096"><span class="lineNum">    1096 </span><span class="lineCov">         10 :             return !reader.hasError();</span></a>
+<a name="1097"><span class="lineNum">    1097 </span>            :         }</a>
 <a name="1098"><span class="lineNum">    1098 </span>            : </a>
-<a name="1099"><span class="lineNum">    1099 </span><span class="lineNoCov">          0 :             QString resetType;</span></a>
-<a name="1100"><span class="lineNum">    1100 </span><span class="lineNoCov">          0 :             if( !getRequiredAttribute( reader, &quot;resetType&quot;, resetType ) )</span></a>
-<a name="1101"><span class="lineNum">    1101 </span>            :             {</a>
-<a name="1102"><span class="lineNum">    1102 </span><span class="lineNoCov">          0 :                 resetType = &quot;Report&quot;;</span></a>
-<a name="1103"><span class="lineNum">    1103 </span>            :             }</a>
-<a name="1104"><span class="lineNum">    1104 </span>            : </a>
-<a name="1105"><span class="lineNum">    1105 </span><span class="lineNoCov">          0 :             QString incrementType;</span></a>
-<a name="1106"><span class="lineNum">    1106 </span><span class="lineNoCov">          0 :             if( !getRequiredAttribute( reader, &quot;incrementType&quot;, incrementType ) )</span></a>
-<a name="1107"><span class="lineNum">    1107 </span>            :             {</a>
-<a name="1108"><span class="lineNum">    1108 </span><span class="lineNoCov">          0 :                 incrementType = &quot;None&quot;;</span></a>
-<a name="1109"><span class="lineNum">    1109 </span>            :             }</a>
-<a name="1110"><span class="lineNum">    1110 </span>            : </a>
-<a name="1111"><span class="lineNum">    1111 </span><span class="lineNoCov">          0 :             QString resetGroup;</span></a>
-<a name="1112"><span class="lineNum">    1112 </span><span class="lineNoCov">          0 :             if( !getRequiredAttribute( reader, &quot;resetGroup&quot;, resetGroup ) )</span></a>
-<a name="1113"><span class="lineNum">    1113 </span>            :             {</a>
-<a name="1114"><span class="lineNum">    1114 </span><span class="lineNoCov">          0 :                 resetGroup = QString();</span></a>
-<a name="1115"><span class="lineNum">    1115 </span>            :             }</a>
-<a name="1116"><span class="lineNum">    1116 </span>            : </a>
-<a name="1117"><span class="lineNum">    1117 </span><span class="lineNoCov">          0 :             QString incrementGroup;</span></a>
-<a name="1118"><span class="lineNum">    1118 </span><span class="lineNoCov">          0 :             if( !getRequiredAttribute( reader, &quot;incrementGroup&quot;, incrementGroup ) )</span></a>
-<a name="1119"><span class="lineNum">    1119 </span>            :             {</a>
-<a name="1120"><span class="lineNum">    1120 </span><span class="lineNoCov">          0 :                 incrementGroup = QString();</span></a>
-<a name="1121"><span class="lineNum">    1121 </span>            :             }</a>
-<a name="1122"><span class="lineNum">    1122 </span>            : </a>
-<a name="1123"><span class="lineNum">    1123 </span><span class="lineNoCov">          0 :             QString calculation;</span></a>
-<a name="1124"><span class="lineNum">    1124 </span><span class="lineNoCov">          0 :             if( !getRequiredAttribute( reader, &quot;calculation&quot;, calculation ) )</span></a>
-<a name="1125"><span class="lineNum">    1125 </span>            :             {</a>
-<a name="1126"><span class="lineNum">    1126 </span><span class="lineNoCov">          0 :                 return false;</span></a>
-<a name="1127"><span class="lineNum">    1127 </span>            :             }</a>
-<a name="1128"><span class="lineNum">    1128 </span>            : </a>
-<a name="1129"><span class="lineNum">    1129 </span><span class="lineNoCov">          0 :             VariablePtr variable( new Variable() );</span></a>
-<a name="1130"><span class="lineNum">    1130 </span><span class="lineNoCov">          0 :             variable-&gt;setTagName( &quot;variable&quot; );</span></a>
-<a name="1131"><span class="lineNum">    1131 </span><span class="lineNoCov">          0 :             variable-&gt;setName( variableName );</span></a>
-<a name="1132"><span class="lineNum">    1132 </span><span class="lineNoCov">          0 :             variable-&gt;setClassName( className );</span></a>
-<a name="1133"><span class="lineNum">    1133 </span><span class="lineNoCov">          0 :             variable-&gt;setResetGroup( resetGroup );</span></a>
-<a name="1134"><span class="lineNum">    1134 </span><span class="lineNoCov">          0 :             variable-&gt;setIncrementGroup( incrementGroup );</span></a>
-<a name="1135"><span class="lineNum">    1135 </span>            : </a>
-<a name="1136"><span class="lineNum">    1136 </span><span class="lineNoCov">          0 :             if (resetType == &quot;None&quot;) {</span></a>
-<a name="1137"><span class="lineNum">    1137 </span><span class="lineNoCov">          0 :                 variable-&gt;setResetType(VariableResetType::None);</span></a>
-<a name="1138"><span class="lineNum">    1138 </span><span class="lineNoCov">          0 :             } else if (resetType == &quot;Report&quot;) {</span></a>
-<a name="1139"><span class="lineNum">    1139 </span><span class="lineNoCov">          0 :                 variable-&gt;setResetType(VariableResetType::Report);</span></a>
-<a name="1140"><span class="lineNum">    1140 </span><span class="lineNoCov">          0 :             } else if (resetType == &quot;Page&quot;) {</span></a>
-<a name="1141"><span class="lineNum">    1141 </span><span class="lineNoCov">          0 :                 variable-&gt;setResetType(VariableResetType::Page);</span></a>
-<a name="1142"><span class="lineNum">    1142 </span><span class="lineNoCov">          0 :             } else if (resetType == &quot;Column&quot;) {</span></a>
-<a name="1143"><span class="lineNum">    1143 </span><span class="lineNoCov">          0 :                 variable-&gt;setResetType(VariableResetType::Column);</span></a>
-<a name="1144"><span class="lineNum">    1144 </span><span class="lineNoCov">          0 :             } else if (resetType == &quot;Group&quot;) {</span></a>
-<a name="1145"><span class="lineNum">    1145 </span><span class="lineNoCov">          0 :                 variable-&gt;setResetType(VariableResetType::Group);</span></a>
-<a name="1146"><span class="lineNum">    1146 </span>            :             }</a>
-<a name="1147"><span class="lineNum">    1147 </span>            : </a>
-<a name="1148"><span class="lineNum">    1148 </span><span class="lineNoCov">          0 :             if (incrementType == &quot;None&quot;) {</span></a>
-<a name="1149"><span class="lineNum">    1149 </span><span class="lineNoCov">          0 :                 variable-&gt;setIncrementType(VariableIncrementType::None);</span></a>
-<a name="1150"><span class="lineNum">    1150 </span><span class="lineNoCov">          0 :             } else if (incrementType == &quot;Report&quot;) {</span></a>
-<a name="1151"><span class="lineNum">    1151 </span><span class="lineNoCov">          0 :                 variable-&gt;setIncrementType(VariableIncrementType::Report);</span></a>
-<a name="1152"><span class="lineNum">    1152 </span><span class="lineNoCov">          0 :             } else if (incrementType == &quot;Page&quot;) {</span></a>
-<a name="1153"><span class="lineNum">    1153 </span><span class="lineNoCov">          0 :                 variable-&gt;setIncrementType(VariableIncrementType::Page);</span></a>
-<a name="1154"><span class="lineNum">    1154 </span><span class="lineNoCov">          0 :             } else if (incrementType == &quot;Column&quot;) {</span></a>
-<a name="1155"><span class="lineNum">    1155 </span><span class="lineNoCov">          0 :                 variable-&gt;setIncrementType(VariableIncrementType::Column);</span></a>
-<a name="1156"><span class="lineNum">    1156 </span><span class="lineNoCov">          0 :             } else if (incrementType == &quot;Group&quot;) {</span></a>
-<a name="1157"><span class="lineNum">    1157 </span><span class="lineNoCov">          0 :                 variable-&gt;setIncrementType(VariableIncrementType::Group);</span></a>
-<a name="1158"><span class="lineNum">    1158 </span>            :             }</a>
-<a name="1159"><span class="lineNum">    1159 </span>            : </a>
-<a name="1160"><span class="lineNum">    1160 </span><span class="lineNoCov">          0 :             if (calculation == &quot;Count&quot;) {</span></a>
-<a name="1161"><span class="lineNum">    1161 </span><span class="lineNoCov">          0 :                 variable-&gt;setCalculation(VariableCalculation::Count);</span></a>
-<a name="1162"><span class="lineNum">    1162 </span><span class="lineNoCov">          0 :             } else if (calculation == &quot;Sum&quot;) {</span></a>
-<a name="1163"><span class="lineNum">    1163 </span><span class="lineNoCov">          0 :                 variable-&gt;setCalculation(VariableCalculation::Sum);</span></a>
-<a name="1164"><span class="lineNum">    1164 </span><span class="lineNoCov">          0 :             } else if (calculation == &quot;Average&quot;) {</span></a>
-<a name="1165"><span class="lineNum">    1165 </span><span class="lineNoCov">          0 :                 variable-&gt;setCalculation(VariableCalculation::Average);</span></a>
-<a name="1166"><span class="lineNum">    1166 </span><span class="lineNoCov">          0 :             } else if (calculation == &quot;Lowest&quot;) {</span></a>
-<a name="1167"><span class="lineNum">    1167 </span><span class="lineNoCov">          0 :                 variable-&gt;setCalculation(VariableCalculation::Lowest);</span></a>
-<a name="1168"><span class="lineNum">    1168 </span><span class="lineNoCov">          0 :             } else if (calculation == &quot;Highest&quot;) {</span></a>
-<a name="1169"><span class="lineNum">    1169 </span><span class="lineNoCov">          0 :                 variable-&gt;setCalculation(VariableCalculation::Highest);</span></a>
-<a name="1170"><span class="lineNum">    1170 </span>            :             }</a>
-<a name="1171"><span class="lineNum">    1171 </span><span class="lineNoCov">          0 :             report-&gt;addVaraible(variable);</span></a>
-<a name="1172"><span class="lineNum">    1172 </span><span class="lineNoCov">          0 :             if( !parseChilds( reader, variable ) )</span></a>
-<a name="1173"><span class="lineNum">    1173 </span>            :             {</a>
-<a name="1174"><span class="lineNum">    1174 </span><span class="lineNoCov">          0 :                 return false;</span></a>
-<a name="1175"><span class="lineNum">    1175 </span>            :             }</a>
-<a name="1176"><span class="lineNum">    1176 </span><span class="lineNoCov">          0 :             return !reader.hasError();</span></a>
-<a name="1177"><span class="lineNum">    1177 </span>            :         }</a>
-<a name="1178"><span class="lineNum">    1178 </span>            : </a>
-<a name="1179"><span class="lineNum">    1179 </span><span class="lineNoCov">          0 :         bool ParserFromXML::parseVariableExpression(QXmlStreamReader &amp;reader, const VariablePtr &amp;variable)</span></a>
-<a name="1180"><span class="lineNum">    1180 </span>            :         {</a>
-<a name="1181"><span class="lineNum">    1181 </span><span class="lineNoCov">          0 :             QString text;</span></a>
-<a name="1182"><span class="lineNum">    1182 </span><span class="lineNoCov">          0 :             if (!getValue(reader, text)) {</span></a>
-<a name="1183"><span class="lineNum">    1183 </span><span class="lineNoCov">          0 :                 return false;</span></a>
+<a name="1099"><span class="lineNum">    1099 </span><span class="lineNoCov">          0 :         bool ParserFromXML::parseVariable(QXmlStreamReader&amp; reader, const ReportPtr &amp;report)</span></a>
+<a name="1100"><span class="lineNum">    1100 </span>            :         {</a>
+<a name="1101"><span class="lineNum">    1101 </span><span class="lineNoCov">          0 :             QString variableName;</span></a>
+<a name="1102"><span class="lineNum">    1102 </span><span class="lineNoCov">          0 :             if( !getRequiredAttribute( reader, &quot;name&quot;, variableName ) )</span></a>
+<a name="1103"><span class="lineNum">    1103 </span>            :             {</a>
+<a name="1104"><span class="lineNum">    1104 </span><span class="lineNoCov">          0 :                 return false;</span></a>
+<a name="1105"><span class="lineNum">    1105 </span>            :             }</a>
+<a name="1106"><span class="lineNum">    1106 </span>            : </a>
+<a name="1107"><span class="lineNum">    1107 </span><span class="lineNoCov">          0 :             QString className;</span></a>
+<a name="1108"><span class="lineNum">    1108 </span><span class="lineNoCov">          0 :             if( !getRequiredAttribute( reader, &quot;class&quot;, className ) )</span></a>
+<a name="1109"><span class="lineNum">    1109 </span>            :             {</a>
+<a name="1110"><span class="lineNum">    1110 </span><span class="lineNoCov">          0 :                 className = &quot;QString&quot;;</span></a>
+<a name="1111"><span class="lineNum">    1111 </span>            :             }</a>
+<a name="1112"><span class="lineNum">    1112 </span>            : </a>
+<a name="1113"><span class="lineNum">    1113 </span><span class="lineNoCov">          0 :             QString resetType;</span></a>
+<a name="1114"><span class="lineNum">    1114 </span><span class="lineNoCov">          0 :             if( !getRequiredAttribute( reader, &quot;resetType&quot;, resetType ) )</span></a>
+<a name="1115"><span class="lineNum">    1115 </span>            :             {</a>
+<a name="1116"><span class="lineNum">    1116 </span><span class="lineNoCov">          0 :                 resetType = &quot;Report&quot;;</span></a>
+<a name="1117"><span class="lineNum">    1117 </span>            :             }</a>
+<a name="1118"><span class="lineNum">    1118 </span>            : </a>
+<a name="1119"><span class="lineNum">    1119 </span><span class="lineNoCov">          0 :             QString incrementType;</span></a>
+<a name="1120"><span class="lineNum">    1120 </span><span class="lineNoCov">          0 :             if( !getRequiredAttribute( reader, &quot;incrementType&quot;, incrementType ) )</span></a>
+<a name="1121"><span class="lineNum">    1121 </span>            :             {</a>
+<a name="1122"><span class="lineNum">    1122 </span><span class="lineNoCov">          0 :                 incrementType = &quot;None&quot;;</span></a>
+<a name="1123"><span class="lineNum">    1123 </span>            :             }</a>
+<a name="1124"><span class="lineNum">    1124 </span>            : </a>
+<a name="1125"><span class="lineNum">    1125 </span><span class="lineNoCov">          0 :             QString resetGroup;</span></a>
+<a name="1126"><span class="lineNum">    1126 </span><span class="lineNoCov">          0 :             if( !getRequiredAttribute( reader, &quot;resetGroup&quot;, resetGroup ) )</span></a>
+<a name="1127"><span class="lineNum">    1127 </span>            :             {</a>
+<a name="1128"><span class="lineNum">    1128 </span><span class="lineNoCov">          0 :                 resetGroup = QString();</span></a>
+<a name="1129"><span class="lineNum">    1129 </span>            :             }</a>
+<a name="1130"><span class="lineNum">    1130 </span>            : </a>
+<a name="1131"><span class="lineNum">    1131 </span><span class="lineNoCov">          0 :             QString incrementGroup;</span></a>
+<a name="1132"><span class="lineNum">    1132 </span><span class="lineNoCov">          0 :             if( !getRequiredAttribute( reader, &quot;incrementGroup&quot;, incrementGroup ) )</span></a>
+<a name="1133"><span class="lineNum">    1133 </span>            :             {</a>
+<a name="1134"><span class="lineNum">    1134 </span><span class="lineNoCov">          0 :                 incrementGroup = QString();</span></a>
+<a name="1135"><span class="lineNum">    1135 </span>            :             }</a>
+<a name="1136"><span class="lineNum">    1136 </span>            : </a>
+<a name="1137"><span class="lineNum">    1137 </span><span class="lineNoCov">          0 :             QString calculation;</span></a>
+<a name="1138"><span class="lineNum">    1138 </span><span class="lineNoCov">          0 :             if( !getRequiredAttribute( reader, &quot;calculation&quot;, calculation ) )</span></a>
+<a name="1139"><span class="lineNum">    1139 </span>            :             {</a>
+<a name="1140"><span class="lineNum">    1140 </span><span class="lineNoCov">          0 :                 return false;</span></a>
+<a name="1141"><span class="lineNum">    1141 </span>            :             }</a>
+<a name="1142"><span class="lineNum">    1142 </span>            : </a>
+<a name="1143"><span class="lineNum">    1143 </span><span class="lineNoCov">          0 :             VariablePtr variable( new Variable() );</span></a>
+<a name="1144"><span class="lineNum">    1144 </span><span class="lineNoCov">          0 :             variable-&gt;setTagName( &quot;variable&quot; );</span></a>
+<a name="1145"><span class="lineNum">    1145 </span><span class="lineNoCov">          0 :             variable-&gt;setName( variableName );</span></a>
+<a name="1146"><span class="lineNum">    1146 </span><span class="lineNoCov">          0 :             variable-&gt;setClassName( className );</span></a>
+<a name="1147"><span class="lineNum">    1147 </span><span class="lineNoCov">          0 :             variable-&gt;setResetGroup( resetGroup );</span></a>
+<a name="1148"><span class="lineNum">    1148 </span><span class="lineNoCov">          0 :             variable-&gt;setIncrementGroup( incrementGroup );</span></a>
+<a name="1149"><span class="lineNum">    1149 </span>            : </a>
+<a name="1150"><span class="lineNum">    1150 </span><span class="lineNoCov">          0 :             if (resetType == &quot;None&quot;) {</span></a>
+<a name="1151"><span class="lineNum">    1151 </span><span class="lineNoCov">          0 :                 variable-&gt;setResetType(VariableResetType::None);</span></a>
+<a name="1152"><span class="lineNum">    1152 </span><span class="lineNoCov">          0 :             } else if (resetType == &quot;Report&quot;) {</span></a>
+<a name="1153"><span class="lineNum">    1153 </span><span class="lineNoCov">          0 :                 variable-&gt;setResetType(VariableResetType::Report);</span></a>
+<a name="1154"><span class="lineNum">    1154 </span><span class="lineNoCov">          0 :             } else if (resetType == &quot;Page&quot;) {</span></a>
+<a name="1155"><span class="lineNum">    1155 </span><span class="lineNoCov">          0 :                 variable-&gt;setResetType(VariableResetType::Page);</span></a>
+<a name="1156"><span class="lineNum">    1156 </span><span class="lineNoCov">          0 :             } else if (resetType == &quot;Column&quot;) {</span></a>
+<a name="1157"><span class="lineNum">    1157 </span><span class="lineNoCov">          0 :                 variable-&gt;setResetType(VariableResetType::Column);</span></a>
+<a name="1158"><span class="lineNum">    1158 </span><span class="lineNoCov">          0 :             } else if (resetType == &quot;Group&quot;) {</span></a>
+<a name="1159"><span class="lineNum">    1159 </span><span class="lineNoCov">          0 :                 variable-&gt;setResetType(VariableResetType::Group);</span></a>
+<a name="1160"><span class="lineNum">    1160 </span>            :             }</a>
+<a name="1161"><span class="lineNum">    1161 </span>            : </a>
+<a name="1162"><span class="lineNum">    1162 </span><span class="lineNoCov">          0 :             if (incrementType == &quot;None&quot;) {</span></a>
+<a name="1163"><span class="lineNum">    1163 </span><span class="lineNoCov">          0 :                 variable-&gt;setIncrementType(VariableIncrementType::None);</span></a>
+<a name="1164"><span class="lineNum">    1164 </span><span class="lineNoCov">          0 :             } else if (incrementType == &quot;Report&quot;) {</span></a>
+<a name="1165"><span class="lineNum">    1165 </span><span class="lineNoCov">          0 :                 variable-&gt;setIncrementType(VariableIncrementType::Report);</span></a>
+<a name="1166"><span class="lineNum">    1166 </span><span class="lineNoCov">          0 :             } else if (incrementType == &quot;Page&quot;) {</span></a>
+<a name="1167"><span class="lineNum">    1167 </span><span class="lineNoCov">          0 :                 variable-&gt;setIncrementType(VariableIncrementType::Page);</span></a>
+<a name="1168"><span class="lineNum">    1168 </span><span class="lineNoCov">          0 :             } else if (incrementType == &quot;Column&quot;) {</span></a>
+<a name="1169"><span class="lineNum">    1169 </span><span class="lineNoCov">          0 :                 variable-&gt;setIncrementType(VariableIncrementType::Column);</span></a>
+<a name="1170"><span class="lineNum">    1170 </span><span class="lineNoCov">          0 :             } else if (incrementType == &quot;Group&quot;) {</span></a>
+<a name="1171"><span class="lineNum">    1171 </span><span class="lineNoCov">          0 :                 variable-&gt;setIncrementType(VariableIncrementType::Group);</span></a>
+<a name="1172"><span class="lineNum">    1172 </span>            :             }</a>
+<a name="1173"><span class="lineNum">    1173 </span>            : </a>
+<a name="1174"><span class="lineNum">    1174 </span><span class="lineNoCov">          0 :             if (calculation == &quot;Count&quot;) {</span></a>
+<a name="1175"><span class="lineNum">    1175 </span><span class="lineNoCov">          0 :                 variable-&gt;setCalculation(VariableCalculation::Count);</span></a>
+<a name="1176"><span class="lineNum">    1176 </span><span class="lineNoCov">          0 :             } else if (calculation == &quot;Sum&quot;) {</span></a>
+<a name="1177"><span class="lineNum">    1177 </span><span class="lineNoCov">          0 :                 variable-&gt;setCalculation(VariableCalculation::Sum);</span></a>
+<a name="1178"><span class="lineNum">    1178 </span><span class="lineNoCov">          0 :             } else if (calculation == &quot;Average&quot;) {</span></a>
+<a name="1179"><span class="lineNum">    1179 </span><span class="lineNoCov">          0 :                 variable-&gt;setCalculation(VariableCalculation::Average);</span></a>
+<a name="1180"><span class="lineNum">    1180 </span><span class="lineNoCov">          0 :             } else if (calculation == &quot;Lowest&quot;) {</span></a>
+<a name="1181"><span class="lineNum">    1181 </span><span class="lineNoCov">          0 :                 variable-&gt;setCalculation(VariableCalculation::Lowest);</span></a>
+<a name="1182"><span class="lineNum">    1182 </span><span class="lineNoCov">          0 :             } else if (calculation == &quot;Highest&quot;) {</span></a>
+<a name="1183"><span class="lineNum">    1183 </span><span class="lineNoCov">          0 :                 variable-&gt;setCalculation(VariableCalculation::Highest);</span></a>
 <a name="1184"><span class="lineNum">    1184 </span>            :             }</a>
-<a name="1185"><span class="lineNum">    1185 </span><span class="lineNoCov">          0 :             variable-&gt;setExpression(text);</span></a>
-<a name="1186"><span class="lineNum">    1186 </span><span class="lineNoCov">          0 :             return !reader.hasError();</span></a>
-<a name="1187"><span class="lineNum">    1187 </span>            :         }</a>
-<a name="1188"><span class="lineNum">    1188 </span>            : </a>
-<a name="1189"><span class="lineNum">    1189 </span><span class="lineNoCov">          0 :         bool ParserFromXML::parseInitialValueExpression(QXmlStreamReader &amp;reader, const VariablePtr &amp;variable)</span></a>
-<a name="1190"><span class="lineNum">    1190 </span>            :         {</a>
-<a name="1191"><span class="lineNum">    1191 </span><span class="lineNoCov">          0 :             QString text;</span></a>
-<a name="1192"><span class="lineNum">    1192 </span><span class="lineNoCov">          0 :             if (!getValue(reader, text)) {</span></a>
-<a name="1193"><span class="lineNum">    1193 </span><span class="lineNoCov">          0 :                 return false;</span></a>
-<a name="1194"><span class="lineNum">    1194 </span>            :             }</a>
-<a name="1195"><span class="lineNum">    1195 </span><span class="lineNoCov">          0 :             variable-&gt;setValue(text);</span></a>
-<a name="1196"><span class="lineNum">    1196 </span><span class="lineNoCov">          0 :             return !reader.hasError();</span></a>
-<a name="1197"><span class="lineNum">    1197 </span>            :         }</a>
-<a name="1198"><span class="lineNum">    1198 </span>            : </a>
-<a name="1199"><span class="lineNum">    1199 </span>            : </a>
-<a name="1200"><span class="lineNum">    1200 </span><span class="lineCov">         26 :         bool    ParserFromXML::parseQueryString( QXmlStreamReader &amp; reader, const ReportPtr &amp; report )</span></a>
-<a name="1201"><span class="lineNum">    1201 </span>            :         {</a>
-<a name="1202"><span class="lineNum">    1202 </span><span class="lineCov">         52 :             QString text;</span></a>
-<a name="1203"><span class="lineNum">    1203 </span><span class="lineCov">         26 :             if( !getValue( reader, text ) )</span></a>
-<a name="1204"><span class="lineNum">    1204 </span>            :             {</a>
-<a name="1205"><span class="lineNum">    1205 </span><span class="lineNoCov">          0 :                 return false;</span></a>
-<a name="1206"><span class="lineNum">    1206 </span>            :             }</a>
-<a name="1207"><span class="lineNum">    1207 </span>            : </a>
-<a name="1208"><span class="lineNum">    1208 </span><span class="lineCov">         26 :             report-&gt;setQuery( text );</span></a>
-<a name="1209"><span class="lineNum">    1209 </span><span class="lineCov">         26 :             report-&gt;setTagName( &quot;queryString&quot; );</span></a>
-<a name="1210"><span class="lineNum">    1210 </span>            : </a>
-<a name="1211"><span class="lineNum">    1211 </span><span class="lineCov">         26 :             return !reader.hasError();</span></a>
-<a name="1212"><span class="lineNum">    1212 </span>            :         }</a>
+<a name="1185"><span class="lineNum">    1185 </span><span class="lineNoCov">          0 :             report-&gt;addVaraible(variable);</span></a>
+<a name="1186"><span class="lineNum">    1186 </span><span class="lineNoCov">          0 :             if( !parseChilds( reader, variable ) )</span></a>
+<a name="1187"><span class="lineNum">    1187 </span>            :             {</a>
+<a name="1188"><span class="lineNum">    1188 </span><span class="lineNoCov">          0 :                 return false;</span></a>
+<a name="1189"><span class="lineNum">    1189 </span>            :             }</a>
+<a name="1190"><span class="lineNum">    1190 </span><span class="lineNoCov">          0 :             return !reader.hasError();</span></a>
+<a name="1191"><span class="lineNum">    1191 </span>            :         }</a>
+<a name="1192"><span class="lineNum">    1192 </span>            : </a>
+<a name="1193"><span class="lineNum">    1193 </span><span class="lineNoCov">          0 :         bool ParserFromXML::parseVariableExpression(QXmlStreamReader &amp;reader, const VariablePtr &amp;variable)</span></a>
+<a name="1194"><span class="lineNum">    1194 </span>            :         {</a>
+<a name="1195"><span class="lineNum">    1195 </span><span class="lineNoCov">          0 :             QString text;</span></a>
+<a name="1196"><span class="lineNum">    1196 </span><span class="lineNoCov">          0 :             if (!getValue(reader, text)) {</span></a>
+<a name="1197"><span class="lineNum">    1197 </span><span class="lineNoCov">          0 :                 return false;</span></a>
+<a name="1198"><span class="lineNum">    1198 </span>            :             }</a>
+<a name="1199"><span class="lineNum">    1199 </span><span class="lineNoCov">          0 :             variable-&gt;setExpression(text);</span></a>
+<a name="1200"><span class="lineNum">    1200 </span><span class="lineNoCov">          0 :             return !reader.hasError();</span></a>
+<a name="1201"><span class="lineNum">    1201 </span>            :         }</a>
+<a name="1202"><span class="lineNum">    1202 </span>            : </a>
+<a name="1203"><span class="lineNum">    1203 </span><span class="lineNoCov">          0 :         bool ParserFromXML::parseInitialValueExpression(QXmlStreamReader &amp;reader, const VariablePtr &amp;variable)</span></a>
+<a name="1204"><span class="lineNum">    1204 </span>            :         {</a>
+<a name="1205"><span class="lineNum">    1205 </span><span class="lineNoCov">          0 :             QString text;</span></a>
+<a name="1206"><span class="lineNum">    1206 </span><span class="lineNoCov">          0 :             if (!getValue(reader, text)) {</span></a>
+<a name="1207"><span class="lineNum">    1207 </span><span class="lineNoCov">          0 :                 return false;</span></a>
+<a name="1208"><span class="lineNum">    1208 </span>            :             }</a>
+<a name="1209"><span class="lineNum">    1209 </span><span class="lineNoCov">          0 :             variable-&gt;setValue(text);</span></a>
+<a name="1210"><span class="lineNum">    1210 </span><span class="lineNoCov">          0 :             return !reader.hasError();</span></a>
+<a name="1211"><span class="lineNum">    1211 </span>            :         }</a>
+<a name="1212"><span class="lineNum">    1212 </span>            : </a>
 <a name="1213"><span class="lineNum">    1213 </span>            : </a>
-<a name="1214"><span class="lineNum">    1214 </span><span class="lineCov">         31 :         const ReportPtr     ParserFromXML::getReport() const</span></a>
+<a name="1214"><span class="lineNum">    1214 </span><span class="lineCov">         26 :         bool    ParserFromXML::parseQueryString( QXmlStreamReader &amp; reader, const ReportPtr &amp; report )</span></a>
 <a name="1215"><span class="lineNum">    1215 </span>            :         {</a>
-<a name="1216"><span class="lineNum">    1216 </span><span class="lineCov">         31 :             return m_report;</span></a>
-<a name="1217"><span class="lineNum">    1217 </span>            :         }</a>
-<a name="1218"><span class="lineNum">    1218 </span>            : </a>
-<a name="1219"><span class="lineNum">    1219 </span><span class="lineCov">         15 :         const QString       ParserFromXML::getLastError() const</span></a>
-<a name="1220"><span class="lineNum">    1220 </span>            :         {</a>
-<a name="1221"><span class="lineNum">    1221 </span><span class="lineCov">         15 :             return m_lastError;</span></a>
-<a name="1222"><span class="lineNum">    1222 </span>            :         }</a>
-<a name="1223"><span class="lineNum">    1223 </span>            : </a>
-<a name="1224"><span class="lineNum">    1224 </span><span class="lineCov">          3 :         const QString       ParserFromXML::getLog() const</span></a>
-<a name="1225"><span class="lineNum">    1225 </span>            :         {</a>
-<a name="1226"><span class="lineNum">    1226 </span><span class="lineCov">          3 :             return *m_log.string();</span></a>
-<a name="1227"><span class="lineNum">    1227 </span>            :         }</a>
-<a name="1228"><span class="lineNum">    1228 </span>            : </a>
-<a name="1229"><span class="lineNum">    1229 </span>            :     }</a>
-<a name="1230"><span class="lineNum">    1230 </span>            : }</a>
+<a name="1216"><span class="lineNum">    1216 </span><span class="lineCov">         52 :             QString text;</span></a>
+<a name="1217"><span class="lineNum">    1217 </span><span class="lineCov">         26 :             if( !getValue( reader, text ) )</span></a>
+<a name="1218"><span class="lineNum">    1218 </span>            :             {</a>
+<a name="1219"><span class="lineNum">    1219 </span><span class="lineNoCov">          0 :                 return false;</span></a>
+<a name="1220"><span class="lineNum">    1220 </span>            :             }</a>
+<a name="1221"><span class="lineNum">    1221 </span>            : </a>
+<a name="1222"><span class="lineNum">    1222 </span><span class="lineCov">         26 :             report-&gt;setQuery( text );</span></a>
+<a name="1223"><span class="lineNum">    1223 </span><span class="lineCov">         26 :             report-&gt;setTagName( &quot;queryString&quot; );</span></a>
+<a name="1224"><span class="lineNum">    1224 </span>            : </a>
+<a name="1225"><span class="lineNum">    1225 </span><span class="lineCov">         26 :             return !reader.hasError();</span></a>
+<a name="1226"><span class="lineNum">    1226 </span>            :         }</a>
+<a name="1227"><span class="lineNum">    1227 </span>            : </a>
+<a name="1228"><span class="lineNum">    1228 </span><span class="lineCov">         31 :         const ReportPtr     ParserFromXML::getReport() const</span></a>
+<a name="1229"><span class="lineNum">    1229 </span>            :         {</a>
+<a name="1230"><span class="lineNum">    1230 </span><span class="lineCov">         31 :             return m_report;</span></a>
+<a name="1231"><span class="lineNum">    1231 </span>            :         }</a>
+<a name="1232"><span class="lineNum">    1232 </span>            : </a>
+<a name="1233"><span class="lineNum">    1233 </span><span class="lineCov">         15 :         const QString       ParserFromXML::getLastError() const</span></a>
+<a name="1234"><span class="lineNum">    1234 </span>            :         {</a>
+<a name="1235"><span class="lineNum">    1235 </span><span class="lineCov">         15 :             return m_lastError;</span></a>
+<a name="1236"><span class="lineNum">    1236 </span>            :         }</a>
+<a name="1237"><span class="lineNum">    1237 </span>            : </a>
+<a name="1238"><span class="lineNum">    1238 </span><span class="lineCov">          3 :         const QString       ParserFromXML::getLog() const</span></a>
+<a name="1239"><span class="lineNum">    1239 </span>            :         {</a>
+<a name="1240"><span class="lineNum">    1240 </span><span class="lineCov">          3 :             return *m_log.string();</span></a>
+<a name="1241"><span class="lineNum">    1241 </span>            :         }</a>
+<a name="1242"><span class="lineNum">    1242 </span>            : </a>
+<a name="1243"><span class="lineNum">    1243 </span>            :     }</a>
+<a name="1244"><span class="lineNum">    1244 </span>            : }</a>
 </pre>
       </td>
     </tr>
