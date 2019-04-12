@@ -316,7 +316,7 @@ namespace qtreports {
             /*! @~russian
             Заполняет таблицу соответствия групп и строк.
             */
-            void fillGroupsData();
+            void fillGroupsData(const QSharedPointer< Report > &reportPtr);
 
             /*! @~russian
             Возвращает таблицу соответствия групп и строк.
@@ -344,8 +344,6 @@ namespace qtreports {
             QMap< QString, VariablePtr >    m_variables;
             QMap< QString, QVector<int>>    m_groupsData;
             QVector<bool>                   m_group_vec;
-
-            QSharedPointer< Report >        m_thisPtr;
 
         };
         typedef QSharedPointer< Report > ReportPtr;
