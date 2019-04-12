@@ -339,7 +339,7 @@ namespace qtreports
             field->setData( iterator.value() );
         }
 
-        m_report->fillGroupsData(getReport());
+        m_report->fillGroupsData();
 
         return true;
     }

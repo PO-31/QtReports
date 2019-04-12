@@ -9,7 +9,8 @@ namespace qtreports
         Report::Report() :
             m_orientation( QPrinter::Orientation::Portrait ),
             m_size( 595, 842 ),
-            m_margins( 30, 30, 30, 30 )
+            m_margins( 30, 30, 30, 30 ),
+            m_thisPtr(this)
         {}
 
         Report::~Report() {}
@@ -292,7 +293,7 @@ namespace qtreports
             return m_variables;
         }
 
-        void Report::fillGroupsData(const QSharedPointer<Report> &reportPtr)
+        void Report::fillGroupsData()
         {
             detail::Replacer replacer;
 
@@ -307,13 +308,13 @@ namespace qtreports
                 expression = expression.replace('\n', "", Qt::CaseInsensitive);
                 expression = expression.replace('\t', "", Qt::CaseInsensitive);
 
-                m_groupsData[expression].append(0);
-                auto value = replacer.replaceField(expression, reportPtr, 0);
+                m_groupsData[group->getName()].append(0);
+                auto value = replacer.replaceField(expression, m_thisPtr, 0);
                 for (int i = 1; i < rowCount; i++) {
-                    auto newValue = replacer.replaceField(expression, reportPtr, i);
+                    auto newValue = replacer.replaceField(expression, m_thisPtr, i);
                     if (value != newValue) {
                         value = newValue;
-                        m_groupsData[expression].append(i);
+                        m_groupsData[group->getName()].append(i);
                     }
                 }
             }
