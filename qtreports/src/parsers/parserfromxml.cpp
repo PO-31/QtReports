@@ -664,6 +664,20 @@ namespace qtreports
         bool    ParserFromXML::parseCrosstab( QXmlStreamReader & reader, const BandPtr & band )
         {
             CrosstabPtr crosstab(new Crosstab());
+            QString attribute;
+            getOptionalAttribute( reader, "isRepeatColumnHeaders", attribute );
+                crosstab->setColumnHeadersRepeating(static_cast<QVariant>(attribute).toBool() );//Исправь, если можешь сделать каст лучше
+            getOptionalAttribute( reader, "isRepeatRowHeaders", attribute );
+                crosstab->setRowHeadersRepeating(static_cast<QVariant>(attribute).toBool() );//Исправь, если можешь сделать каст лучше
+            getOptionalAttribute( reader, "ignoreWigth", attribute );
+                crosstab->setWidthIgnoring(static_cast<QVariant>(attribute).toBool() );//Исправь, если можешь сделать каст лучше
+            getOptionalAttribute( reader, "runDirection", attribute );
+            if(attribute.toLower() == ("rtl"))
+                crosstab->setRunDirectionLeftToRight(false);
+            else
+                crosstab->setRunDirectionLeftToRight(true);
+            getOptionalAttribute( reader, "columnBreakOffset", attribute );
+                crosstab->setColumnBreakOffset(attribute.toInt());
             if(!parseChilds(reader, crosstab))
             {
                 return false;
