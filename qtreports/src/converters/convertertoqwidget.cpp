@@ -228,26 +228,6 @@ namespace qtreports
                 {
                     return false;
                 }
-
-                // Обрезать лишние символы в полученном значении expression
-                // т.к. оно в формате \n\t\t\tEXPRESSION\n\t\t
-                for(int j=0; j<groupExpression.size(); j++)
-                {
-                    if(groupExpression[j] != '\n' && groupExpression[j] != '\t')
-                    {
-                        groupExpression.remove(0, j);
-                        break;
-                    }
-                }
-                for(int j=groupExpression.size(); j>=0; j--)
-                {
-                    if(groupExpression[j] != '\n' && groupExpression[j] != '\t')
-                    {
-                        groupExpression.remove(j + 1, groupExpression.size() - j - 1);
-                        break;
-                    }
-                }
-
                 groupNames.append(groupExpression);
                 particularNames.append(replacer.replaceField(groupNames[i], report, 0));
             }
