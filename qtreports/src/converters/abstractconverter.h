@@ -9,13 +9,29 @@
 namespace qtreports {
     namespace detail {
 
+        /*! @~russian
+        @brief Абстрактный класс, используемый для конвертации отчета в какой-либо формат.
+        Конкретный формат определяется в классе-наследнике.
+        */
         class AbstractConverter
         {
         public:
+            /*!
+            * @brief Конструктор по умолчанию.
+            * @param report ссылка на объект ReportPtr.
+            */
             AbstractConverter(const ReportPtr& report);
 
+            /*!
+            * @brief Виртуальный деструктор.
+            */
             virtual ~AbstractConverter() = default;
 
+            /*! @~russian
+            Запускает процесс конвертации.
+            @param[in] path Путь, по которому будет создан документ.
+            @return @code{.cpp} true @endcode, если конвертация отчета прошла успешно, иначе @code{.cpp} false @endcode.
+            */
             virtual bool convert(const QString & path) = 0;
 
             /*! @~russian
