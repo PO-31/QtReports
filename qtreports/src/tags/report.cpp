@@ -319,5 +319,10 @@ namespace qtreports
                 }
             }
         }
+
+        const QMap<QString, QVector<int> > Report::GetGroupsData() const
+        {
+            return m_groupsData;
+        }
     }
 }

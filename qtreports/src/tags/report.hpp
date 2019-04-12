@@ -314,9 +314,19 @@ namespace qtreports {
             const QMap<QString, VariablePtr>& getVariables() const;
 
             /*! @~russian
-            Сформировать таблицу соответствия групп и строк.
+            Заполняет таблицу соответствия групп и строк.
             */
             void fillGroupsData();
+
+            /*! @~russian
+            Возвращает таблицу соответствия групп и строк.
+            @detail В таблице хранится информация о соответствии
+                    групп и номеров строк, в которых меняется значение поля,
+                    по которому происходит группировка.
+                    Имени группы соответствует массив (QVector) из индексов строк,
+                    в которых группируемое поле приобретает новое значение.
+            */
+            const QMap<QString, QVector<int>> GetGroupsData() const;
 
         private:
             QPrinter::Orientation	        m_orientation;
