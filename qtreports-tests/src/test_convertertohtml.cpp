@@ -18,7 +18,25 @@ Test_ConverterToHTML::~Test_ConverterToHTML() {}
 
 void    Test_ConverterToHTML::convert()
 {
-    QString reportPath = QFINDTESTDATA( "../samples/reports/tests-images/test.full.qrxml" );
+    QString reportPath;
+
+    {
+        qtreports::Engine engine;
+        reportPath = QFINDTESTDATA("../samples/reports/test/test.empty.qreport");
+        QVERIFY2( engine.open(reportPath) , engine.getLastError().toStdString().c_str());
+        qtreports::detail::ConverterToHTML *converterToHTML = new qtreports::detail::ConverterToHTML( engine.getReport() );
+        QCOMPARE(converterToHTML->convert(), false);
+        delete converterToHTML;
+
+        reportPath = QFINDTESTDATA("../samples/reports/test/test.empty2.qreport");
+        QVERIFY2( engine.open(reportPath) , engine.getLastError().toStdString().c_str());
+        converterToHTML = new qtreports::detail::ConverterToHTML( engine.getReport() );
+        QCOMPARE(converterToHTML->convert("some_path"), false);
+        delete converterToHTML;
+    }
+
+    reportPath = QFINDTESTDATA( "../samples/reports/tests-images/test.full.qrxml" );
+
     qDebug() << endl << "Used report: " << reportPath;
 
     qtreports::Engine engine;
@@ -49,10 +67,11 @@ void    Test_ConverterToHTML::convert()
 
     {
         qtreports::detail::ConverterToHTML converterToErrorPath( report );
+        auto outPath = "";
     #ifdef Q_OS_WIN
-        auto outPath = "%.?";
+        outPath = "%.?";
     #else
-        auto outPath = "testfile";
+        outPath = "testfile";
         QVERIFY(!QFile::exists(outPath));
         QFile file(outPath);
         QVERIFY(file.open(QFile::WriteOnly));

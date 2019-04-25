@@ -153,6 +153,13 @@ void    Test_Engine::setDataModel()
 
 void    Test_Engine::createPDF()
 {
+    {
+        qtreports::Engine engine;
+        QString reportPath = QFINDTESTDATA("../samples/reports/test/test.empty2.qreport");
+        QVERIFY2( engine.open(reportPath) , engine.getLastError().toStdString().c_str());
+        QCOMPARE(engine.createPDF("some_path.pdf"), false);
+    }
+
     qtreports::Engine engine;
 
     QCOMPARE( engine.createPDF( "test.pdf" ), false );
@@ -180,6 +187,13 @@ void    Test_Engine::createPDF()
 
 void Test_Engine::createHTML()
 {
+    {
+        qtreports::Engine engine;
+        QString reportPath = QFINDTESTDATA("../samples/reports/test/test.empty2.qreport");
+        QVERIFY2( engine.open(reportPath) , engine.getLastError().toStdString().c_str());
+        QCOMPARE(engine.createHTML("some_path.html"), false);
+    }
+
     qtreports::Engine engine;
     QString outPath = "test.html";
 

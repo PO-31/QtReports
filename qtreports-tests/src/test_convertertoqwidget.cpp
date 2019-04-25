@@ -15,7 +15,23 @@ Test_ConverterToQWidget::Test_ConverterToQWidget( QObject * parent ) :
 Test_ConverterToQWidget::~Test_ConverterToQWidget() {}
 
 void    Test_ConverterToQWidget::convert() {
-    QString reportPath = QFINDTESTDATA( "../samples/reports/tests-images/test.full.qrxml" );
+    QString reportPath;
+    {
+        qtreports::Engine engine;
+        reportPath = QFINDTESTDATA("../samples/reports/test/test.empty.qreport");
+        QVERIFY2( engine.open(reportPath) , engine.getLastError().toStdString().c_str());
+        qtreports::detail::ConverterToQWidget *converterToWidget = new qtreports::detail::ConverterToQWidget( engine.getReport() );
+        QCOMPARE(converterToWidget->convert(), false);
+        delete converterToWidget;
+
+        reportPath = QFINDTESTDATA("../samples/reports/test/test.empty2.qreport");
+        QVERIFY2( engine.open(reportPath) , engine.getLastError().toStdString().c_str());
+        converterToWidget = new qtreports::detail::ConverterToQWidget( engine.getReport() );
+        QCOMPARE(converterToWidget->convert(), false);
+        delete converterToWidget;
+    }
+
+    reportPath = QFINDTESTDATA( "../samples/reports/tests-images/test.full.qrxml" );
     qDebug() << endl << "Used report: " << reportPath;
 
     qtreports::Engine engine;

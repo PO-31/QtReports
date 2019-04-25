@@ -18,7 +18,17 @@ Test_ConverterToPDF::~Test_ConverterToPDF() {}
 
 void    Test_ConverterToPDF::convert()
 {
-    QString reportPath = QFINDTESTDATA( "../samples/reports/test/sample.crosstab.qreport" );
+    QString reportPath;
+    {
+        reportPath = "../samples/reports/test/test.empty2.qreport";
+        qtreports::Engine engine;
+        engine.open(reportPath);
+        QVERIFY2( engine.open(reportPath) , engine.getLastError().toStdString().c_str());
+        qtreports::detail::ConverterToPDF converter(engine.getReport());
+        QCOMPARE(converter.convert("some_path2.pdf"), false);
+    }
+
+    reportPath = QFINDTESTDATA( "../samples/reports/test/sample.crosstab.qreport" );
 
     qtreports::Engine engine;
 
