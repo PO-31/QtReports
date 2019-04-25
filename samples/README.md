@@ -1,24 +1,30 @@
- # Структура
- ### samples/database
-В этой папке находятся базы данных.
-### samples/reports 
-В этой папке находятся примеры отчетов. Логика структуры папки reports следующая: отчеты располагаются в папках с названием базы данных, для которых они написаны.
+# Samples
+[English](README.md) | [Русский](README_RU.md)
 
-# Описание работы примеров
-### samples/reports/image
-+ sample.imagefromdb.qreport - демонстрация загрузки изображений из базы данных в отчет.
-### samples/reports/main
-+ sample.graphics.qreport - демонстрация графических элементов;
-+ sample.groupfooter.qreport - демонстрация работы тегов group и groupfooter;
-+ sample.groupheader.qreport - демонстрация работы тегов group и groupheader;
-+ sample.image.qreport - демонстрация загрузки изображений из ЛФС;
-+ sample.list.qreport - простой вывод списка данных;
-+ sample.listleftjoin.qreport - вывод списка данных с запросом, содержащим leftjoin;
-+ sample.manual.qreport - вывод списка данных в табличном формате;
-+ sample.multigroup.qreport - демонстрация вложенной группировки;
-+ sample.summary.qreport - вывод списка данных с подведением итогов;
-+ sample.variable.qreport - демонстрация работы тега variable.
-+ sample.added_plus_row.qreport - для вычисления выражений в теге CDATA;
-+ sample.students_onlyPM.qreport - запрос с оператором like;
-### samples/reports/test, samples/reports/test-images
-+ файлы, расположенные в этих директориях, нужны для coverage.
+## Directory structure
+		database	Databases that are required by reports
+		reports		Reports files
+
+## Reports folders' structure note
+The parent folder's name of the report file means the name of the database that it needs.
+
+## Samples description
+### image
+		sample.imagefromdb.qreport		demonstration of images loading from the database to the report
+
+### main
+		sample.graphics.qreport			demonstration of graphics elements
+		sample.groupfooter.qreport		demonstration of using "group" and "groupfooter" tags
+		sample.groupheader.qreport		demonstration of using "group" and "groupheader" tags
+		sample.image.qreport			demonstration of images loading from LFS
+		sample.list.qreport			simple output of data list
+		sample.listleftjoin.qreport		output of datalist with query that constains left outer join
+		sample.manual.qreport			output of datalist in tabular form
+		sample.multigroup.qreport		demonstration of nested grouping
+		sample.summary.qreport			demonstration of using "summary" tag
+		sample.variable.qreport			demonstration of using "variable" tag
+		sample.added_plus_row.qreport		calculations in "CDATA" tag
+		sample.students_onlyPM.qreport		query with "like" operator
+
+### test, test-images
+This reports are required for coverage tests.
