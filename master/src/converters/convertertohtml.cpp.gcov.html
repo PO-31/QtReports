@@ -31,13 +31,13 @@
             <td class="headerValue">coverage.info</td>
             <td></td>
             <td class="headerItem">Lines:</td>
-            <td class="headerCovTableEntry">231</td>
+            <td class="headerCovTableEntry">230</td>
             <td class="headerCovTableEntry">286</td>
-            <td class="headerCovTableEntryMed">80.8 %</td>
+            <td class="headerCovTableEntryMed">80.4 %</td>
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2019-04-25 07:08:45</td>
+            <td class="headerValue">2019-04-25 09:03:48</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntry">11</td>
@@ -80,9 +80,9 @@
 <a name="18"><span class="lineNum">      18 </span><span class="lineCov">          7 :             return createHTML();</span></a>
 <a name="19"><span class="lineNum">      19 </span>            :         }</a>
 <a name="20"><span class="lineNum">      20 </span>            : </a>
-<a name="21"><span class="lineNum">      21 </span><span class="lineCov">          5 :         bool    ConverterToHTML::convert(const QString &amp; path) {</span></a>
-<a name="22"><span class="lineNum">      22 </span><span class="lineCov">          5 :             if(!convert()) {</span></a>
-<a name="23"><span class="lineNum">      23 </span><span class="lineCov">          2 :                 return false;</span></a>
+<a name="21"><span class="lineNum">      21 </span><span class="lineCov">          6 :         bool    ConverterToHTML::convert(const QString &amp; path) {</span></a>
+<a name="22"><span class="lineNum">      22 </span><span class="lineCov">          6 :             if(!convert()) {</span></a>
+<a name="23"><span class="lineNum">      23 </span><span class="lineCov">          3 :                 return false;</span></a>
 <a name="24"><span class="lineNum">      24 </span>            :             }</a>
 <a name="25"><span class="lineNum">      25 </span>            : </a>
 <a name="26"><span class="lineNum">      26 </span><span class="lineCov">          6 :             QFile file(path);</span></a>
@@ -107,16 +107,16 @@
 <a name="45"><span class="lineNum">      45 </span><span class="lineCov">          7 :         bool    ConverterToHTML::createHTML() {</span></a>
 <a name="46"><span class="lineNum">      46 </span><span class="lineCov">          7 :             if(m_report.isNull())</span></a>
 <a name="47"><span class="lineNum">      47 </span>            :             {</a>
-<a name="48"><span class="lineNum">      48 </span><span class="lineNoCov">          0 :                 m_lastError = &quot;Report is empty&quot;;</span></a>
-<a name="49"><span class="lineNum">      49 </span><span class="lineNoCov">          0 :                 return false;</span></a>
+<a name="48"><span class="lineNum">      48 </span><span class="lineCov">          1 :                 m_lastError = &quot;Report is empty&quot;;</span></a>
+<a name="49"><span class="lineNum">      49 </span><span class="lineCov">          1 :                 return false;</span></a>
 <a name="50"><span class="lineNum">      50 </span>            :             }</a>
 <a name="51"><span class="lineNum">      51 </span>            : </a>
-<a name="52"><span class="lineNum">      52 </span><span class="lineCov">          7 :             int pageHeight = m_report-&gt;getHeight();</span></a>
-<a name="53"><span class="lineNum">      53 </span><span class="lineCov">          7 :             int pageWidth = m_report-&gt;getWidth();</span></a>
+<a name="52"><span class="lineNum">      52 </span><span class="lineCov">          6 :             int pageHeight = m_report-&gt;getHeight();</span></a>
+<a name="53"><span class="lineNum">      53 </span><span class="lineCov">          6 :             int pageWidth = m_report-&gt;getWidth();</span></a>
 <a name="54"><span class="lineNum">      54 </span>            : </a>
-<a name="55"><span class="lineNum">      55 </span><span class="lineCov">          7 :             auto&amp; styles = m_report-&gt;getStyles();</span></a>
+<a name="55"><span class="lineNum">      55 </span><span class="lineCov">          6 :             auto&amp; styles = m_report-&gt;getStyles();</span></a>
 <a name="56"><span class="lineNum">      56 </span>            : </a>
-<a name="57"><span class="lineNum">      57 </span><span class="lineCov">          7 :             m_html += QString(&quot;&lt;!DOCTYPE html&gt;\n&quot;</span></a>
+<a name="57"><span class="lineNum">      57 </span><span class="lineCov">          6 :             m_html += QString(&quot;&lt;!DOCTYPE html&gt;\n&quot;</span></a>
 <a name="58"><span class="lineNum">      58 </span>            :                       &quot;&lt;html&gt;\n&quot;</a>
 <a name="59"><span class="lineNum">      59 </span>            :                       &quot; &lt;head&gt;\n&quot;</a>
 <a name="60"><span class="lineNum">      60 </span>            :                       &quot;  &lt;meta http-equiv='Content-Type' content='text/html; charset=utf-8'&gt;\n&quot;</a>
@@ -146,10 +146,10 @@
 <a name="84"><span class="lineNum">      84 </span>            :                       &quot;   position: absolute;\n&quot;</a>
 <a name="85"><span class="lineNum">      85 </span>            :                       &quot;   background-color: transparent;\n&quot;</a>
 <a name="86"><span class="lineNum">      86 </span>            :                       &quot;   }\n&quot;)</a>
-<a name="87"><span class="lineNum">      87 </span><span class="lineCov">         14 :                     .arg(pageWidth).arg(pageHeight);</span></a>
+<a name="87"><span class="lineNum">      87 </span><span class="lineCov">         12 :                     .arg(pageWidth).arg(pageHeight);</span></a>
 <a name="88"><span class="lineNum">      88 </span>            : </a>
-<a name="89"><span class="lineNum">      89 </span><span class="lineCov">          7 :                         Style *mainStyle = nullptr;</span></a>
-<a name="90"><span class="lineNum">      90 </span><span class="lineCov">         13 :             for (auto i = styles.begin(); i != styles.end(); ++i) {</span></a>
+<a name="89"><span class="lineNum">      89 </span><span class="lineCov">          6 :                         Style *mainStyle = nullptr;</span></a>
+<a name="90"><span class="lineNum">      90 </span><span class="lineCov">         12 :             for (auto i = styles.begin(); i != styles.end(); ++i) {</span></a>
 <a name="91"><span class="lineNum">      91 </span><span class="lineCov">          6 :                 auto* style = (*i).data();</span></a>
 <a name="92"><span class="lineNum">      92 </span><span class="lineCov">          6 :                                 mainStyle = style;</span></a>
 <a name="93"><span class="lineNum">      93 </span><span class="lineCov">          6 :                 m_html += QString(</span></a>
@@ -171,10 +171,10 @@
 <a name="109"><span class="lineNum">     109 </span><span class="lineCov">         24 :                 .arg(style-&gt;isUnderline() ? &quot;underline&quot; : &quot;&quot;)           // 7 text-docration</span></a>
 <a name="110"><span class="lineNum">     110 </span><span class="lineCov">         24 :                 .arg(style-&gt;isStrikeThrough() ? &quot;line-through&quot; : &quot;&quot;);   // 8 text-decoration</span></a>
 <a name="111"><span class="lineNum">     111 </span>            :             }</a>
-<a name="112"><span class="lineNum">     112 </span><span class="lineCov">          7 :             m_defaultStyleName = m_report-&gt;getDefaultStyle().isNull() ? &quot;&quot; : &quot;style-&quot; + m_report-&gt;getDefaultStyle()-&gt;getName();</span></a>
+<a name="112"><span class="lineNum">     112 </span><span class="lineCov">          6 :             m_defaultStyleName = m_report-&gt;getDefaultStyle().isNull() ? &quot;&quot; : &quot;style-&quot; + m_report-&gt;getDefaultStyle()-&gt;getName();</span></a>
 <a name="113"><span class="lineNum">     113 </span>            : </a>
-<a name="114"><span class="lineNum">     114 </span><span class="lineCov">          7 :             if(mainStyle == nullptr) {</span></a>
-<a name="115"><span class="lineNum">     115 </span><span class="lineCov">          1 :                 m_html += QString(&quot;   .statictext {\n&quot;</span></a>
+<a name="114"><span class="lineNum">     114 </span><span class="lineCov">          6 :             if(mainStyle == nullptr) {</span></a>
+<a name="115"><span class="lineNum">     115 </span><span class="lineNoCov">          0 :                 m_html += QString(&quot;   .statictext {\n&quot;</span></a>
 <a name="116"><span class="lineNum">     116 </span>            :                           &quot;   font-family: %3;\n&quot;</a>
 <a name="117"><span class="lineNum">     117 </span>            :                           &quot;   font-size: %4pt;\n&quot;</a>
 <a name="118"><span class="lineNum">     118 </span>            :                           &quot;   color: %5;\n&quot;</a>
@@ -193,8 +193,8 @@
 <a name="131"><span class="lineNum">     131 </span>            :                           &quot;  &lt;/style&gt;\n&quot;</a>
 <a name="132"><span class="lineNum">     132 </span>            :                           &quot; &lt;/head&gt;\n&quot;</a>
 <a name="133"><span class="lineNum">     133 </span>            :                           &quot; &lt;body&gt;\n&quot;)</a>
-<a name="134"><span class="lineNum">     134 </span><span class="lineCov">          2 :                         .arg(&quot;Verdana&quot;).arg(&quot;12&quot;).arg(&quot;black&quot;).arg(&quot;normal&quot;).arg(&quot;normal&quot;)</span></a>
-<a name="135"><span class="lineNum">     135 </span><span class="lineCov">          4 :                         .arg(&quot;Verdana&quot;).arg(&quot;12&quot;).arg(&quot;black&quot;).arg(&quot;normal&quot;).arg(&quot;normal&quot;);</span></a>
+<a name="134"><span class="lineNum">     134 </span><span class="lineNoCov">          0 :                         .arg(&quot;Verdana&quot;).arg(&quot;12&quot;).arg(&quot;black&quot;).arg(&quot;normal&quot;).arg(&quot;normal&quot;)</span></a>
+<a name="135"><span class="lineNum">     135 </span><span class="lineNoCov">          0 :                         .arg(&quot;Verdana&quot;).arg(&quot;12&quot;).arg(&quot;black&quot;).arg(&quot;normal&quot;).arg(&quot;normal&quot;);</span></a>
 <a name="136"><span class="lineNum">     136 </span>            :             }</a>
 <a name="137"><span class="lineNum">     137 </span>            :             else {</a>
 <a name="138"><span class="lineNum">     138 </span><span class="lineCov">          6 :                 m_html += QString(&quot;   .statictext {\n&quot;</span></a>
@@ -222,21 +222,21 @@
 <a name="160"><span class="lineNum">     160 </span><span class="lineCov">         24 :                         .arg(mainStyle-&gt;isItalic() ? &quot;italic&quot; : &quot;normal&quot;).arg(mainStyle-&gt;isBold() ? &quot;800&quot; : &quot;300&quot;);</span></a>
 <a name="161"><span class="lineNum">     161 </span>            :             }</a>
 <a name="162"><span class="lineNum">     162 </span>            : </a>
-<a name="163"><span class="lineNum">     163 </span><span class="lineCov">          7 :             m_html += &quot;  &lt;div class='page'&gt;\n&quot;;             // Start of &lt;div class='page'&gt;</span></a>
+<a name="163"><span class="lineNum">     163 </span><span class="lineCov">          6 :             m_html += &quot;  &lt;div class='page'&gt;\n&quot;;             // Start of &lt;div class='page'&gt;</span></a>
 <a name="164"><span class="lineNum">     164 </span>            : </a>
-<a name="165"><span class="lineNum">     165 </span><span class="lineCov">         14 :             auto title = m_report-&gt;getTitle();</span></a>
-<a name="166"><span class="lineNum">     166 </span><span class="lineCov">          7 :             if(!title.isNull())</span></a>
+<a name="165"><span class="lineNum">     165 </span><span class="lineCov">         12 :             auto title = m_report-&gt;getTitle();</span></a>
+<a name="166"><span class="lineNum">     166 </span><span class="lineCov">          6 :             if(!title.isNull())</span></a>
 <a name="167"><span class="lineNum">     167 </span>            :             {</a>
 <a name="168"><span class="lineNum">     168 </span><span class="lineCov">          3 :                 m_html += &quot;   &lt;div class='title'&gt;\n&quot;;       // Start of &lt;div class='title'&gt;</span></a>
 <a name="169"><span class="lineNum">     169 </span><span class="lineCov">          3 :                 addBand(title, 0);</span></a>
 <a name="170"><span class="lineNum">     170 </span><span class="lineCov">          3 :                 m_html += &quot;   &lt;/div&gt;\n&quot;;                    // End of &lt;div class = 'title'&gt;</span></a>
 <a name="171"><span class="lineNum">     171 </span>            :             }</a>
 <a name="172"><span class="lineNum">     172 </span>            : </a>
-<a name="173"><span class="lineNum">     173 </span><span class="lineCov">         14 :             auto detail = m_report-&gt;getDetail();</span></a>
-<a name="174"><span class="lineNum">     174 </span><span class="lineCov">          7 :             if(detail.isNull())</span></a>
+<a name="173"><span class="lineNum">     173 </span><span class="lineCov">         12 :             auto detail = m_report-&gt;getDetail();</span></a>
+<a name="174"><span class="lineNum">     174 </span><span class="lineCov">          6 :             if(detail.isNull())</span></a>
 <a name="175"><span class="lineNum">     175 </span>            :             {</a>
-<a name="176"><span class="lineNum">     176 </span><span class="lineCov">          3 :                 m_lastError = &quot;Report-&gt;Detail is empty&quot;;</span></a>
-<a name="177"><span class="lineNum">     177 </span><span class="lineCov">          3 :                 return false;</span></a>
+<a name="176"><span class="lineNum">     176 </span><span class="lineCov">          2 :                 m_lastError = &quot;Report-&gt;Detail is empty&quot;;</span></a>
+<a name="177"><span class="lineNum">     177 </span><span class="lineCov">          2 :                 return false;</span></a>
 <a name="178"><span class="lineNum">     178 </span>            :             }</a>
 <a name="179"><span class="lineNum">     179 </span>            : </a>
 <a name="180"><span class="lineNum">     180 </span><span class="lineCov">          4 :             m_html += QString(&quot;   &lt;div class='detail'&gt;\n&quot;); // Start of &lt;div class='detail'&gt;</span></a>
