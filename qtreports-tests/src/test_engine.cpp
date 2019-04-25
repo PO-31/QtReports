@@ -221,6 +221,12 @@ void Test_Engine::createHTML()
 
 void    Test_Engine::createWidget()
 {
+    {
+        qtreports::Engine engine;
+        QString reportPath = QFINDTESTDATA("../samples/reports/test/test.empty2.qreport");
+        QVERIFY2( engine.open(reportPath) , engine.getLastError().toStdString().c_str());
+        QCOMPARE(engine.createWidget().isNull(), true);
+    }
     qtreports::Engine engine;
 
     QCOMPARE( engine.createWidget(), qtreports::QWidgetPtr() );
@@ -240,6 +246,12 @@ void    Test_Engine::createWidget()
 
 void    Test_Engine::createLayout()
 {
+    {
+        qtreports::Engine engine;
+        QString reportPath = QFINDTESTDATA("../samples/reports/test/test.empty2.qreport");
+        QVERIFY2( engine.open(reportPath) , engine.getLastError().toStdString().c_str());
+        QCOMPARE(engine.createLayout().isNull(), true);
+    }
     qtreports::Engine engine;
 
     QCOMPARE( engine.createLayout(), qtreports::QWidgetPtr() );

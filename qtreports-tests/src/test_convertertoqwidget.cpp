@@ -18,8 +18,6 @@ void    Test_ConverterToQWidget::convert() {
     QString reportPath;
     {
         qtreports::Engine engine;
-        reportPath = QFINDTESTDATA("../samples/reports/test/test.empty.qreport");
-        QVERIFY2( engine.open(reportPath) , engine.getLastError().toStdString().c_str());
         qtreports::detail::ConverterToQWidget *converterToWidget = new qtreports::detail::ConverterToQWidget( engine.getReport() );
         QCOMPARE(converterToWidget->convert(), false);
         delete converterToWidget;
