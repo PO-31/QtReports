@@ -96,6 +96,17 @@ void    Test_ConverterToHTML::convert()
     QVERIFY( file.size() != 0 );
     file.close();
     QCOMPARE( QFile::remove( outPath ), true );
+    db.close();
+
+    dbPath = QFINDTESTDATA( "../samples/databases/test.db" );
+    reportPath = QFINDTESTDATA( "../samples/reports/test/sample.crosstab.qreport" );
+    db.setDatabaseName(dbPath);
+    QVERIFY2(db.open(), db.lastError().text().toStdString().c_str());
+    QVERIFY2( engine.open( reportPath ), engine.getLastError().toStdString().c_str() );
+    QVERIFY2( engine.setConnection( db ), engine.getLastError().toStdString().c_str() );
+    qtreports::detail::ConverterToHTML converter(engine.getReport());
+    QVERIFY2( converter.convert(), converter.getLastError().toStdString().c_str() );
+    db.close();
 }
 
 void    Test_ConverterToHTML::getHTML()

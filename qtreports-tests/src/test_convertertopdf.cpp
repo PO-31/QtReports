@@ -75,6 +75,7 @@ void    Test_ConverterToPDF::convert()
     QVERIFY2( engine.setConnection( db ), engine.getLastError().toStdString().c_str() );
     converter = qtreports::detail::ConverterToPDF( engine.getReport() );
     QVERIFY2( converter.convert( outPath ), converter.getLastError().toStdString().c_str() );
+    db.close();
 }
 
 void    Test_ConverterToPDF::setDPI()

@@ -69,6 +69,17 @@ void    Test_ConverterToQWidget::convert() {
     QVERIFY( converterToLayout.getPage( 0 ) != qtreports::QWidgetPtr() );
     QVERIFY( converterToLayout.getPages() != QVector< qtreports::QWidgetPtr >() );
     QCOMPARE( converterToLayout.getLastError(), QString() );
+    db.close();
+
+    dbPath = QFINDTESTDATA( "../samples/databases/test.db" );
+    reportPath = QFINDTESTDATA( "../samples/reports/test/sample.crosstab.qreport" );
+    db.setDatabaseName(dbPath);
+    QVERIFY2(db.open(), db.lastError().text().toStdString().c_str());
+    QVERIFY2( engine.open( reportPath ), engine.getLastError().toStdString().c_str() );
+    QVERIFY2( engine.setConnection( db ), engine.getLastError().toStdString().c_str() );
+    converterToWidget = qtreports::detail::ConverterToQWidget(engine.getReport());
+    QVERIFY2( converterToWidget.convert(), converterToWidget.getLastError().toStdString().c_str() );
+    db.close();
 }
 
 void    Test_ConverterToQWidget::isReport()
