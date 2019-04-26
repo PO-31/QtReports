@@ -65,6 +65,16 @@ void    Test_ConverterToPDF::convert()
     QVERIFY( file.size() != 0 );
     file.close();
     QCOMPARE( QFile::remove( outPath ), true );
+
+    reportPath = QFINDTESTDATA( "../samples/reports/tests-images/test.full.qrxml" );
+    dbPath = QFINDTESTDATA( "../samples/databases/tests-images.db" );
+    db.close();
+    db.setDatabaseName(dbPath);
+    QVERIFY2(db.open(), db.lastError().text().toStdString().c_str());
+    QVERIFY2( engine.open( reportPath ), engine.getLastError().toStdString().c_str() );
+    QVERIFY2( engine.setConnection( db ), engine.getLastError().toStdString().c_str() );
+    converter = qtreports::detail::ConverterToPDF( engine.getReport() );
+    QVERIFY2( converter.convert( outPath ), converter.getLastError().toStdString().c_str() );
 }
 
 void    Test_ConverterToPDF::setDPI()

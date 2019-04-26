@@ -26,7 +26,7 @@ void    Test_ConverterToHTML::convert()
         QCOMPARE(converterToHTML->convert("some_path"), false);
         delete converterToHTML;
 
-        reportPath = QFINDTESTDATA("../samples/reports/test/test.empty2.qreport");
+        reportPath = QFINDTESTDATA("../samples/reports/test/test.empty.qreport");
         QVERIFY2( engine.open(reportPath) , engine.getLastError().toStdString().c_str());
         converterToHTML = new qtreports::detail::ConverterToHTML( engine.getReport() );
         QCOMPARE(converterToHTML->convert("some_path"), false);
