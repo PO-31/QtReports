@@ -37,7 +37,7 @@
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2019-04-25 09:03:48</td>
+            <td class="headerValue">2019-04-26 04:32:03</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntry">8</td>
@@ -64,24 +64,24 @@
 <a name="2"><span class="lineNum">       2 </span>            : </a>
 <a name="3"><span class="lineNum">       3 </span>            : namespace qtreports {</a>
 <a name="4"><span class="lineNum">       4 </span>            :     namespace detail {</a>
-<a name="5"><span class="lineNum">       5 </span><span class="lineCov">        701 :         bool    isEquals( const QString &amp; string1, const QString &amp; string2 ) {</span></a>
-<a name="6"><span class="lineNum">       6 </span><span class="lineCov">        701 :             return string1.compare( string2, Qt::CaseInsensitive ) == 0;</span></a>
+<a name="5"><span class="lineNum">       5 </span><span class="lineCov">        819 :         bool    isEquals( const QString &amp; string1, const QString &amp; string2 ) {</span></a>
+<a name="6"><span class="lineNum">       6 </span><span class="lineCov">        819 :             return string1.compare( string2, Qt::CaseInsensitive ) == 0;</span></a>
 <a name="7"><span class="lineNum">       7 </span>            :         }</a>
 <a name="8"><span class="lineNum">       8 </span>            : </a>
-<a name="9"><span class="lineNum">       9 </span><span class="lineCov">        549 :         Object::Object() {}</span></a>
+<a name="9"><span class="lineNum">       9 </span><span class="lineCov">        594 :         Object::Object() {}</span></a>
 <a name="10"><span class="lineNum">      10 </span>            : </a>
 <a name="11"><span class="lineNum">      11 </span><span class="lineNoCov">          0 :         Object::Object( const QString &amp; name ) :</span></a>
 <a name="12"><span class="lineNum">      12 </span><span class="lineNoCov">          0 :             m_name( name ) {}</span></a>
 <a name="13"><span class="lineNum">      13 </span>            : </a>
-<a name="14"><span class="lineNum">      14 </span><span class="lineCov">        549 :         Object::~Object() {}</span></a>
+<a name="14"><span class="lineNum">      14 </span><span class="lineCov">        594 :         Object::~Object() {}</span></a>
 <a name="15"><span class="lineNum">      15 </span>            : </a>
-<a name="16"><span class="lineNum">      16 </span><span class="lineCov">        194 :         void    Object::setName( const QString &amp; name ) {</span></a>
-<a name="17"><span class="lineNum">      17 </span><span class="lineCov">        194 :             m_name = name;</span></a>
-<a name="18"><span class="lineNum">      18 </span><span class="lineCov">        194 :         }</span></a>
+<a name="16"><span class="lineNum">      16 </span><span class="lineCov">        199 :         void    Object::setName( const QString &amp; name ) {</span></a>
+<a name="17"><span class="lineNum">      17 </span><span class="lineCov">        199 :             m_name = name;</span></a>
+<a name="18"><span class="lineNum">      18 </span><span class="lineCov">        199 :         }</span></a>
 <a name="19"><span class="lineNum">      19 </span>            : </a>
-<a name="20"><span class="lineNum">      20 </span><span class="lineCov">        571 :         void    Object::setTagName( const QString &amp; name ) {</span></a>
-<a name="21"><span class="lineNum">      21 </span><span class="lineCov">        571 :             m_tagName = name;</span></a>
-<a name="22"><span class="lineNum">      22 </span><span class="lineCov">        571 :         }</span></a>
+<a name="20"><span class="lineNum">      20 </span><span class="lineCov">        617 :         void    Object::setTagName( const QString &amp; name ) {</span></a>
+<a name="21"><span class="lineNum">      21 </span><span class="lineCov">        617 :             m_tagName = name;</span></a>
+<a name="22"><span class="lineNum">      22 </span><span class="lineCov">        617 :         }</span></a>
 <a name="23"><span class="lineNum">      23 </span>            :         /*</a>
 <a name="24"><span class="lineNum">      24 </span>            :         bool    Object::setParameter( const QString &amp; name, const QVariant &amp; value ) {</a>
 <a name="25"><span class="lineNum">      25 </span>            :             QString _name( &quot;name&quot; );</a>
@@ -105,8 +105,8 @@
 <a name="43"><span class="lineNum">      43 </span>            :             return false;</a>
 <a name="44"><span class="lineNum">      44 </span>            :         }</a>
 <a name="45"><span class="lineNum">      45 </span>            :         */</a>
-<a name="46"><span class="lineNum">      46 </span><span class="lineCov">         45 :         const QString   Object::getName() const {</span></a>
-<a name="47"><span class="lineNum">      47 </span><span class="lineCov">         45 :             return m_name;</span></a>
+<a name="46"><span class="lineNum">      46 </span><span class="lineCov">         44 :         const QString   Object::getName() const {</span></a>
+<a name="47"><span class="lineNum">      47 </span><span class="lineCov">         44 :             return m_name;</span></a>
 <a name="48"><span class="lineNum">      48 </span>            :         }</a>
 <a name="49"><span class="lineNum">      49 </span>            : </a>
 <a name="50"><span class="lineNum">      50 </span><span class="lineCov">         25 :         const QString   Object::getTagName() const {</span></a>
