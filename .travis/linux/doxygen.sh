@@ -8,6 +8,7 @@ cd ..
 git clone https://github.com/PO-31/PO-31.github.io 
 cd PO-31.github.io
 rm -d -f -r html
+rm -d -f -r xml
 doxygen Doxyfile
 	
 echo
