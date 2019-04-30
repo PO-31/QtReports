@@ -14,7 +14,11 @@
 
 #include <QDebug>
 
-/*! @~russian
+/*!
+@~english
+@mainpage QtReports
+Test of english doxygen
+@~russian
 @mainpage QtReports
 Добро пожаловать в документацию проекта QtReports.
 
