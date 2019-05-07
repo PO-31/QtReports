@@ -12,27 +12,7 @@ LIBS += -lqtreports
 DESTDIR = $$PWD
 
 DISTFILES += \
-    DB/images.db \
-    DB/testDB.db \
-    reports/detail.qreport \
-    reports/errored.qrxml \
-    reports/field test.qreport \
-    reports/full.qrxml \
-    reports/group.qreport \
-    reports/multy_group.qreport \
-    reports/style test.qreport \
-    reports/default.qreport \
-    reports/html.qreport \
-    reports/images.qrxml \
-    reports/optional.qreport \
-    reports/report test.qreport \
-    reports/simple.qreport \
-    reports/students.qreport \
-    reports/text test.qreport \
-    default.txt \
-    query \
-    script \
-    sql script
+    default.txt
 
 HEADERS += \
     src/test_convertertohtml.hpp \
