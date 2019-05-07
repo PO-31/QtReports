@@ -7,9 +7,9 @@ echo "Clone repository and update doc"
 cd ..
 git clone https://github.com/PO-31/PO-31.github.io 
 cd PO-31.github.io
-export OUT_LANG='ENGLISH' && rm -d -f -r en && cd en && doxygen ../Doxyfile
+export OUT_LANG='ENGLISH' && rm -d -f -r en && mkdir en && cd en && doxygen ../Doxyfile
 cd ..
-export OUT_LANG='RUSSIAN' && rm -d -f -r ru && cd ru && doxygen ../Doxyfile
+export OUT_LANG='RUSSIAN' && rm -d -f -r ru && mkdir ru && cd ru && doxygen ../Doxyfile
 	
 echo
 echo "Push changes to remote repository"
