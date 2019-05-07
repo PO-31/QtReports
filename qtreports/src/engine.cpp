@@ -111,7 +111,7 @@ namespace qtreports
 
     bool    Engine::setDataSource( const QMap< QString, QVector< QVariant > > & source )
     {
-        //Need check parameters
+        // TODO check parameters
         //m_dataSource = columnsSet;
 
         //detail::ProcessedDB db;
@@ -135,7 +135,7 @@ namespace qtreports
 
     bool    Engine::setQuery( const QString & query )
     {
-        //Need check parameters
+        // TODO check parameters
 		
         QStringList queries = query.split( ";", QString::SkipEmptyParts );
 		QMap< QString, QVariant > param = m_report->getParameters();
@@ -155,7 +155,7 @@ namespace qtreports
 
     bool    Engine::addScript( const QString & script )
     {
-        //Need check parameters
+        // TODO check parameters
         m_scripts.append( script );
 
         return true;
@@ -163,7 +163,7 @@ namespace qtreports
 
     bool    Engine::setDataModel( const QAbstractItemModel & model )
     {
-        //Need check parameters
+        // TODO check parameters
         Q_UNUSED( model );
         return true;
     }
@@ -252,8 +252,9 @@ namespace qtreports
             return QPrintPreviewDialogPtr();
         }
 
-		if (!prepareDB())
+        if (!prepareDB()) {
             return QPrintPreviewDialogPtr();
+        }
 
         QSharedPointer<QPrinter> printer;
         QPrintPreviewDialogPtr preview(new QPrintPreviewDialog( printer.get() ));

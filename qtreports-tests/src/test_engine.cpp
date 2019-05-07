@@ -275,16 +275,23 @@ void    Test_Engine::getPrintPreviewDialog()
     qtreports::QPrintPreviewDialogPtr dialog;
     QCOMPARE((dialog = engine.getPrintPreviewDialog()).isNull(), true);
 
-    QString input = QFINDTESTDATA( "../samples/reports/test/test.default.qreport" );
-    QVERIFY2( engine.open( input ), engine.getLastError().toStdString().c_str() );
-
+    QString input = QFINDTESTDATA("../samples/reports/test/test.empty.qreport");
+    QVERIFY2(engine.open( input ), engine.getLastError().toStdString().c_str() );
     QSqlDatabase::removeDatabase( QSqlDatabase::defaultConnection );
     QSqlDatabase db = QSqlDatabase::addDatabase( "QSQLITE" );
     db.setDatabaseName( "../samples/databases/test.db" );
+    QVERIFY2(db.open(), ( "Can't open database. Error: " + db.lastError().text() ).toStdString().c_str() );
+    QCOMPARE(engine.setConnection( db ), false );
+    QCOMPARE((dialog = engine.getPrintPreviewDialog()).isNull(), true);
 
-    QVERIFY2( db.open(), "Can't open test database 'testDB'" );
-    QVERIFY2( engine.setConnection( db ), engine.getLastError().toStdString().c_str() );
-    QCOMPARE((dialog = engine.getPrintPreviewDialog()).isNull(), false);
+    input = QFINDTESTDATA("../samples/reports/test/test.default.qreport");
+    QVERIFY2(engine.open( input ), engine.getLastError().toStdString().c_str() );
+    QVERIFY2(engine.setConnection( db ), engine.getLastError().toStdString().c_str() );
+    QVERIFY2(!(dialog = engine.getPrintPreviewDialog()).isNull(), engine.getLastError().toStdString().c_str());
+
+    dialog->open();
+    QVERIFY2(dialog->close(), "Dialog has not been closed");
+    db.close();
 }
 
 void    Test_Engine::isOpened()

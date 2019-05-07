@@ -26,7 +26,7 @@ namespace qtreports
                 auto match = iterator.next();
                 auto name = match.captured(1).remove(0, 3).remove(-1, 1);
                 auto parameter = report->getParameter(name);
-                newText.replace(match.captured(1), parameter.toString()); //need fix for classname
+                newText.replace(match.captured(1), parameter.toString()); // TODO fix for classname
             }
 
             return newText;
