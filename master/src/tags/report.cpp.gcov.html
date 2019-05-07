@@ -37,7 +37,7 @@
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2019-04-30 02:03:33</td>
+            <td class="headerValue">2019-05-07 02:27:33</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntry">44</td>
@@ -111,9 +111,9 @@
 <a name="49"><span class="lineNum">      49 </span><span class="lineNoCov">          0 :             return m_groups.value( name );</span></a>
 <a name="50"><span class="lineNum">      50 </span>            :         }</a>
 <a name="51"><span class="lineNum">      51 </span>            : </a>
-<a name="52"><span class="lineNum">      52 </span><span class="lineCov">         29 :         const QMap&lt; QString, GroupPtr &gt;     Report::getGroups() const</span></a>
+<a name="52"><span class="lineNum">      52 </span><span class="lineCov">         30 :         const QMap&lt; QString, GroupPtr &gt;     Report::getGroups() const</span></a>
 <a name="53"><span class="lineNum">      53 </span>            :         {</a>
-<a name="54"><span class="lineNum">      54 </span><span class="lineCov">         29 :             return m_groups;</span></a>
+<a name="54"><span class="lineNum">      54 </span><span class="lineCov">         30 :             return m_groups;</span></a>
 <a name="55"><span class="lineNum">      55 </span>            :         }</a>
 <a name="56"><span class="lineNum">      56 </span>            : </a>
 <a name="57"><span class="lineNum">      57 </span><span class="lineCov">         29 :         void    Report::setQuery( const QString &amp; query )</span></a>
@@ -121,9 +121,9 @@
 <a name="59"><span class="lineNum">      59 </span><span class="lineCov">         29 :             m_query = query;</span></a>
 <a name="60"><span class="lineNum">      60 </span><span class="lineCov">         29 :         }</span></a>
 <a name="61"><span class="lineNum">      61 </span>            : </a>
-<a name="62"><span class="lineNum">      62 </span><span class="lineCov">         17 :         const QString   Report::getQuery() const</span></a>
+<a name="62"><span class="lineNum">      62 </span><span class="lineCov">         18 :         const QString   Report::getQuery() const</span></a>
 <a name="63"><span class="lineNum">      63 </span>            :         {</a>
-<a name="64"><span class="lineNum">      64 </span><span class="lineCov">         17 :             return m_query;</span></a>
+<a name="64"><span class="lineNum">      64 </span><span class="lineCov">         18 :             return m_query;</span></a>
 <a name="65"><span class="lineNum">      65 </span>            :         }</a>
 <a name="66"><span class="lineNum">      66 </span>            : </a>
 <a name="67"><span class="lineNum">      67 </span><span class="lineCov">        120 :         void    Report::setField( const QString &amp; name, const FieldPtr &amp; field )</span></a>
@@ -131,14 +131,14 @@
 <a name="69"><span class="lineNum">      69 </span><span class="lineCov">        120 :             m_fields[ name ] = field;</span></a>
 <a name="70"><span class="lineNum">      70 </span><span class="lineCov">        120 :         }</span></a>
 <a name="71"><span class="lineNum">      71 </span>            : </a>
-<a name="72"><span class="lineNum">      72 </span><span class="lineCov">        753 :         const FieldPtr  Report::getField( const QString &amp; name ) const</span></a>
+<a name="72"><span class="lineNum">      72 </span><span class="lineCov">        756 :         const FieldPtr  Report::getField( const QString &amp; name ) const</span></a>
 <a name="73"><span class="lineNum">      73 </span>            :         {</a>
-<a name="74"><span class="lineNum">      74 </span><span class="lineCov">        753 :             return m_fields.value( name );</span></a>
+<a name="74"><span class="lineNum">      74 </span><span class="lineCov">        756 :             return m_fields.value( name );</span></a>
 <a name="75"><span class="lineNum">      75 </span>            :         }</a>
 <a name="76"><span class="lineNum">      76 </span>            : </a>
-<a name="77"><span class="lineNum">      77 </span><span class="lineCov">        207 :         const QMap&lt; QString, FieldPtr &gt;   Report::getFields() const</span></a>
+<a name="77"><span class="lineNum">      77 </span><span class="lineCov">        208 :         const QMap&lt; QString, FieldPtr &gt;   Report::getFields() const</span></a>
 <a name="78"><span class="lineNum">      78 </span>            :         {</a>
-<a name="79"><span class="lineNum">      79 </span><span class="lineCov">        207 :             return m_fields;</span></a>
+<a name="79"><span class="lineNum">      79 </span><span class="lineCov">        208 :             return m_fields;</span></a>
 <a name="80"><span class="lineNum">      80 </span>            :         }</a>
 <a name="81"><span class="lineNum">      81 </span>            : </a>
 <a name="82"><span class="lineNum">      82 </span><span class="lineCov">        165 :         int Report::getFieldsDataCount() const</span></a>
@@ -204,20 +204,20 @@
 <a name="142"><span class="lineNum">     142 </span><span class="lineCov">        335 :             return m_parameters.value( name );</span></a>
 <a name="143"><span class="lineNum">     143 </span>            :         }</a>
 <a name="144"><span class="lineNum">     144 </span>            : </a>
-<a name="145"><span class="lineNum">     145 </span><span class="lineCov">         16 :         const QMap&lt; QString, QVariant &gt;   Report::getParameters() const</span></a>
+<a name="145"><span class="lineNum">     145 </span><span class="lineCov">         17 :         const QMap&lt; QString, QVariant &gt;   Report::getParameters() const</span></a>
 <a name="146"><span class="lineNum">     146 </span>            :         {</a>
-<a name="147"><span class="lineNum">     147 </span><span class="lineCov">         16 :             return m_parameters;</span></a>
+<a name="147"><span class="lineNum">     147 </span><span class="lineCov">         17 :             return m_parameters;</span></a>
 <a name="148"><span class="lineNum">     148 </span>            :         }</a>
 <a name="149"><span class="lineNum">     149 </span>            : </a>
-<a name="150"><span class="lineNum">     150 </span><span class="lineCov">         28 :         int     Report::getRowCount() const</span></a>
+<a name="150"><span class="lineNum">     150 </span><span class="lineCov">         29 :         int     Report::getRowCount() const</span></a>
 <a name="151"><span class="lineNum">     151 </span>            :         {</a>
-<a name="152"><span class="lineNum">     152 </span><span class="lineCov">         28 :             int max = 0;</span></a>
-<a name="153"><span class="lineNum">     153 </span><span class="lineCov">        134 :             for( auto &amp;&amp; field : getFields() )</span></a>
+<a name="152"><span class="lineNum">     152 </span><span class="lineCov">         29 :             int max = 0;</span></a>
+<a name="153"><span class="lineNum">     153 </span><span class="lineCov">        140 :             for( auto &amp;&amp; field : getFields() )</span></a>
 <a name="154"><span class="lineNum">     154 </span>            :             {</a>
-<a name="155"><span class="lineNum">     155 </span><span class="lineCov">        106 :                 max = std::max( max, field-&gt;getRowCount() );</span></a>
+<a name="155"><span class="lineNum">     155 </span><span class="lineCov">        111 :                 max = std::max( max, field-&gt;getRowCount() );</span></a>
 <a name="156"><span class="lineNum">     156 </span>            :             }</a>
 <a name="157"><span class="lineNum">     157 </span>            : </a>
-<a name="158"><span class="lineNum">     158 </span><span class="lineCov">         28 :             return max;</span></a>
+<a name="158"><span class="lineNum">     158 </span><span class="lineCov">         29 :             return max;</span></a>
 <a name="159"><span class="lineNum">     159 </span>            :             //return m_rowCount;</a>
 <a name="160"><span class="lineNum">     160 </span>            :         }</a>
 <a name="161"><span class="lineNum">     161 </span>            : </a>
@@ -354,14 +354,14 @@
 <a name="292"><span class="lineNum">     292 </span><span class="lineNoCov">          0 :             return m_variables;</span></a>
 <a name="293"><span class="lineNum">     293 </span>            :         }</a>
 <a name="294"><span class="lineNum">     294 </span>            : </a>
-<a name="295"><span class="lineNum">     295 </span><span class="lineCov">         16 :         void Report::fillGroupsData(const QSharedPointer&lt;Report&gt; &amp;reportPtr)</span></a>
+<a name="295"><span class="lineNum">     295 </span><span class="lineCov">         17 :         void Report::fillGroupsData(const QSharedPointer&lt;Report&gt; &amp;reportPtr)</span></a>
 <a name="296"><span class="lineNum">     296 </span>            :         {</a>
-<a name="297"><span class="lineNum">     297 </span><span class="lineCov">         32 :             detail::Replacer replacer;</span></a>
+<a name="297"><span class="lineNum">     297 </span><span class="lineCov">         34 :             detail::Replacer replacer;</span></a>
 <a name="298"><span class="lineNum">     298 </span>            : </a>
-<a name="299"><span class="lineNum">     299 </span><span class="lineCov">         32 :             QList&lt;GroupPtr&gt; groups = getGroups().values();</span></a>
+<a name="299"><span class="lineNum">     299 </span><span class="lineCov">         34 :             QList&lt;GroupPtr&gt; groups = getGroups().values();</span></a>
 <a name="300"><span class="lineNum">     300 </span>            : </a>
-<a name="301"><span class="lineNum">     301 </span><span class="lineCov">         16 :             int rowCount = getRowCount();</span></a>
-<a name="302"><span class="lineNum">     302 </span><span class="lineCov">         19 :             for (auto group : groups) {</span></a>
+<a name="301"><span class="lineNum">     301 </span><span class="lineCov">         17 :             int rowCount = getRowCount();</span></a>
+<a name="302"><span class="lineNum">     302 </span><span class="lineCov">         20 :             for (auto group : groups) {</span></a>
 <a name="303"><span class="lineNum">     303 </span><span class="lineCov">          6 :                 auto expression = group-&gt;getExpression();</span></a>
 <a name="304"><span class="lineNum">     304 </span><span class="lineCov">          3 :                 if (expression.isEmpty()) {</span></a>
 <a name="305"><span class="lineNum">     305 </span><span class="lineNoCov">          0 :                     continue;</span></a>
@@ -379,7 +379,7 @@
 <a name="317"><span class="lineNum">     317 </span>            :                     }</a>
 <a name="318"><span class="lineNum">     318 </span>            :                 }</a>
 <a name="319"><span class="lineNum">     319 </span>            :             }</a>
-<a name="320"><span class="lineNum">     320 </span><span class="lineCov">         16 :         }</span></a>
+<a name="320"><span class="lineNum">     320 </span><span class="lineCov">         17 :         }</span></a>
 <a name="321"><span class="lineNum">     321 </span>            : </a>
 <a name="322"><span class="lineNum">     322 </span><span class="lineNoCov">          0 :         const QMap&lt;QString, QVector&lt;int&gt; &gt; Report::GetGroupsData() const</span></a>
 <a name="323"><span class="lineNum">     323 </span>            :         {</a>
