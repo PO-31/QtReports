@@ -11,7 +11,7 @@
 #include <qtreports/engine.hpp>
 
 #ifdef WIN32
-#include <Windows.h>
+#include <windows.h>
 #endif
 
 static QMainWindow* mainWindow = nullptr;
@@ -156,8 +156,12 @@ int main(int argc, char *argv[]) {
     printAction->setShortcuts(QKeySequence::Print);
     printAction->setStatusTip(QObject::tr("Print current report"));
     QObject::connect(printAction, &QAction::triggered, [&]() {
-        if (!engine->print()) {
+        qtreports::QPrintPreviewDialogPtr printDialog = engine->getPrintPreviewDialog();
+        if (printDialog.isNull()) {
             showError(engine->getLastError());
+        }
+        else {
+            printDialog->exec();
         }
     });
 

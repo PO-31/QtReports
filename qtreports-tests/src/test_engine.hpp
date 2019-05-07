@@ -27,7 +27,7 @@ private slots:
     void    createHTML();
     void    createWidget();
     void    createLayout();
-    void    print();
+    void    getPrintPreviewDialog();
 
     void    isOpened();
     void    getReport();

@@ -244,26 +244,25 @@ namespace qtreports
         return converter.getQWidget();
     }
 
-    bool	Engine::print()
+    QPrintPreviewDialogPtr Engine::getPrintPreviewDialog()
     {
         if( m_report.isNull() )
         {
             m_lastError = "Report is empty. Please open report file";
-            return false;
+            return QPrintPreviewDialogPtr();
         }
 
 		if (!prepareDB())
-			return false;
+            return QPrintPreviewDialogPtr();
 
-        QPrinter printer;
-        QPrintPreviewDialog preview( &printer );
+        QSharedPointer<QPrinter> printer;
+        QPrintPreviewDialogPtr preview(new QPrintPreviewDialog( printer.get() ));
         connect(
-            &preview, &QPrintPreviewDialog::paintRequested,
+            preview.get(), &QPrintPreviewDialog::paintRequested,
             this, &Engine::drawPreview
         );
-        preview.exec();
 
-        return true;
+        return preview;
     }
 
     void	Engine::drawPreview( QPrinter * printer )

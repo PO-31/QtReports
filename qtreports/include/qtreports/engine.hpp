@@ -11,13 +11,11 @@
 #include <QSqlField>
 #include <QPrinter>
 #include <QAbstractItemModel>
+#include <QPrintPreviewDialog>
 
 #include <QDebug>
 
 /*!
-@~english
-@mainpage QtReports
-Test of english doxygen
 @~russian
 @mainpage QtReports
 Добро пожаловать в документацию проекта QtReports.
@@ -69,7 +67,7 @@ make [-jКоличествоПотоков]
 namespace qtreports {
 
     typedef QSharedPointer< QWidget > QWidgetPtr;
-
+    typedef QSharedPointer< QPrintPreviewDialog> QPrintPreviewDialogPtr;
     namespace detail {
         class Report;
         typedef QSharedPointer< Report > ReportPtr;
@@ -142,7 +140,7 @@ namespace qtreports {
         */
         QWidgetPtr          createWidget();
         QWidgetPtr          createLayout();
-        bool                print();
+        QPrintPreviewDialogPtr getPrintPreviewDialog();
 
         /*! @~russian
         Возвращает true в случае учпешной загрузки отчета, иначе - false

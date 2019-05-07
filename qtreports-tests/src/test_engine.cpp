@@ -269,11 +269,11 @@ void    Test_Engine::createLayout()
     QVERIFY2( engine.createLayout() != qtreports::QWidgetPtr(), engine.getLastError().toStdString().c_str() );
 }
 
-void    Test_Engine::print()
+void    Test_Engine::getPrintPreviewDialog()
 {
     qtreports::Engine engine;
-
-    QCOMPARE( engine.print(), false );
+    qtreports::QPrintPreviewDialogPtr dialog;
+    QCOMPARE((dialog = engine.getPrintPreviewDialog()).isNull(), true);
 
     QString input = QFINDTESTDATA( "../samples/reports/test/test.default.qreport" );
     QVERIFY2( engine.open( input ), engine.getLastError().toStdString().c_str() );
@@ -284,7 +284,7 @@ void    Test_Engine::print()
 
     QVERIFY2( db.open(), "Can't open test database 'testDB'" );
     QVERIFY2( engine.setConnection( db ), engine.getLastError().toStdString().c_str() );
-    //QTRY_VERIFY2_WITH_TIMEOUT( engine.print(), engine.getLastError().toStdString().c_str(), 5 );
+    QCOMPARE((dialog = engine.getPrintPreviewDialog()).isNull(), false);
 }
 
 void    Test_Engine::isOpened()
