@@ -79,6 +79,12 @@ void    Test_ConverterToQWidget::convert() {
     QVERIFY2( engine.setConnection( db ), engine.getLastError().toStdString().c_str() );
     converterToWidget = qtreports::detail::ConverterToQWidget(engine.getReport());
     QVERIFY2( converterToWidget.convert(), converterToWidget.getLastError().toStdString().c_str() );
+    // TODO add values check
+
+    QVERIFY2( converterToWidget.convert(qtreports::detail::ConverterToQWidget::WidgetType::Layout),
+              converterToWidget.getLastError().toStdString().c_str());
+    // TODO add values check
+
     db.close();
 }
 
