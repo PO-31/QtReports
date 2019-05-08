@@ -11,7 +11,7 @@ Reimplementation of JasperReports in Qt
   + gcc-5+/clang-3.4+/msvc14+
 
 ## Building
-Take a look into the doxygen's [main page](http://po-31.github.io/html/). Our build system is Qmake, so it wouldn't be a problem if you worked with Qt before.
+The building process is described in [BUILD.md](BUILD.md).
 
 ## Other tools
 [QtReports-View](./qtreports-viewer/) is a viewer of reports created for QtReports.

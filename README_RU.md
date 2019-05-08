@@ -11,7 +11,7 @@
   + gcc-5+/clang-3.4+/msvc14+
 
 ## Сборка
-Процесс сборки описан на [главной странице](http://po-31.github.io/html/) doxygen. Используемая система сборки - Qmake, поэтому у вас не возникнет проблем, если вы уже работали с Qt.
+Процесс сборки описан в файле [BUILD_RU.md](BUILD_RU.md).
 
 ## Другие средства
 [QtReports-View](./qtreports-viewer/) - средство для просмотра отчетов QtReports.
@@ -26,5 +26,5 @@
 		docs/				Документы, связанные с QtReports
 
 ## Документация
-  + [Doxygen](http://po-31.github.io/)
+  + [Doxygen](http://po-31.github.io/ru/html/)
   + [Wiki](https://github.com/PO-31/QtReports/wiki)

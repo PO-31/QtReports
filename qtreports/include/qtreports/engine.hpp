@@ -16,6 +16,17 @@
 #include <QDebug>
 
 /*!
+@~english
+@mainpage QtReports
+Welcome to QtReports documentation page.
+@section intro_sec Introduction
+The documentation helps you with using QtReports.
+
+The project repo is located on <a href="https://github.com/PO-31/QtReports">Github</a>. There you can find instructions of building and using QtReports with your project.
+
+@section warning_sec Warning
+The translation is in progress.
+
 @~russian
 @mainpage QtReports
 Добро пожаловать в документацию проекта QtReports.
@@ -23,45 +34,7 @@
 @section intro_sec Введение
 Эта документация предназначена для того, чтобы помочь в использовании проекта.
 
-@section install_sec Инструкция по сборке проекта
-
-@subsection step1 Шаг 1: Распаковка.
-
-Клонировать проект или скачать релиз из репозитория https://github.com/PO-31/QtReports/.
-
-Распаковать архив в папку QtReports. 
-
-(Рекомендуется, чтобы полный путь к папке QtReports содержал только латиницу)
-
-@subsection step2 Шаг 2: Сборка.
-
-Собрать проект можно несколькими способами, но если необходимо указать версию собираемой библиотеки, то необходимо задать переменную среды QTREPORTS_VERSION
-
-@subsubsection step2_1 Способ 1. При помощи QtCreator:
-
-Используя программу, в корневой папке QtReports необходимо открыть файл проекта "QtReports.pro".
-
-Для сборки со статистикой для Coverage установить значение переменной среды BUILD_COVERAGE на "TRUE".
-
-Далее нажать кнопку "Собрать" (кнопка Молоток) для сборки всего проекта.
-
-Если необходимо собрать только определенный компонент, то нужно нажать ПКМ по проекту компонента в обозревателе проектов и выбрать "Собрать Название_Модуля"
-
-@subsubsection step2_2 Способ 2. При помощи Qmake:
-
-Запускаем консоль/терминал и переходим в каталог необходимого нам модуля
-
-Набираем
-qmake [-spec "Используемый_Компилятор"] "CONFIG += Необходимые_Типы_Сборки_(release,debug,coverage,etc.)" Имя_Проекта_Модуля.pro
-
-После генерации Makefile вызываем
-make [-jКоличествоПотоков]
-
-@section use_sec Использование
-
-После сборки файл библиотеки можно будет найти в папке "build/lib", а заголовочные файлы - "qtreports/include"
-
-Для подключения собранной библиотеки к Qmake проекту необходимо в файле проекта указать "LIB += -lqtreports" и, если необходимо, "LIB += Путь_До_Библиотеки", "INCLUDEPATH += Путь_До_Заголовочных_Файлов"
+Репозиторий проекта располагается на <a href="https://github.com/PO-31/QtReports">Github</a>. Описание сборки и подключения QtReports к вашему проекту вы можете найти там.
 */
 
 namespace qtreports {
