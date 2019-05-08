@@ -18,8 +18,9 @@
 /*!
 @~english
 @mainpage QtReports
-Welcome to QtReports documentation page.
 @section intro_sec Introduction
+Welcome to QtReports documentation page.
+
 The documentation helps you with using QtReports.
 
 The project repo is located on <a href="https://github.com/PO-31/QtReports">Github</a>. There you can find instructions of building and using QtReports with your project.
@@ -29,9 +30,9 @@ The translation is in progress.
 
 @~russian
 @mainpage QtReports
+@section intro_sec Введение
 Добро пожаловать в документацию проекта QtReports.
 
-@section intro_sec Введение
 Эта документация предназначена для того, чтобы помочь в использовании проекта.
 
 Репозиторий проекта располагается на <a href="https://github.com/PO-31/QtReports">Github</a>. Описание сборки и подключения QtReports к вашему проекту вы можете найти там.
