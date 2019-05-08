@@ -1,4 +1,6 @@
 # Building instruction
+[English](BUILD.md) | [Русский](BUILD_RU.md)
+
 ## Step 1: Unpackaging.
 
 + Clone the project or download release from repo.
@@ -18,7 +20,7 @@ There are 2 ways to build the project, and if it's needed to set version, then s
 + Input qmake [-spec "<i>Using_compiler</i>"] "CONFIG += <i>Building_type_(release,debug,coverage,etc.)</i>" <i>Module_Project_File</i>.pro.
 + After generation of Makefile call make [-j<i>ThreadsNum</i>].
 
-# Usage
+## Usage
 Built library will be in "build/lib" directory, public headers - "qtreports/include".
 
 For using library with Qmake project string "LIB += -lqtreports" must be set in project file, and set "LIB += <i>Library_Path</i>" and "INCLUDEPATH += <i>Headers_Path</i>" if necessary.
