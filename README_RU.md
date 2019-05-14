@@ -13,9 +13,6 @@
 ## Сборка
 Процесс сборки описан в файле [BUILD_RU.md](BUILD_RU.md).
 
-## Другие средства
-[QtReports-View](./qtreports-viewer/) - средство для просмотра отчетов QtReports.
-
 ## Структура репозитория
 		.travis/			Скрипты для Travis CI
 		qtreports/			Исходные файлы библиотеки QtReports
@@ -25,6 +22,7 @@
 		samples/			Образцы отчетов и базы данных к ним
 		docs/				Документы, связанные с QtReports
 
-## Документация
-  + [Doxygen](http://po-31.github.io/ru/html/)
+## Дополнительные ссылки
+  + [Документация](http://po-31.github.io/ru/html/)
+  + [QtReports-View](./qtreports-viewer/) - средство для просмотра отчетов QtReports.
   + [Wiki](https://github.com/PO-31/QtReports/wiki)

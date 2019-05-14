@@ -13,9 +13,6 @@ Reimplementation of JasperReports in Qt
 ## Building
 The building process is described in [BUILD.md](BUILD.md).
 
-## Other tools
-[QtReports-View](./qtreports-viewer/) is a viewer of reports created for QtReports.
-
 ## Repository structure
 		.travis/			Scripts for Travis CI
 		qtreports/			QtReports Library sources
@@ -25,6 +22,7 @@ The building process is described in [BUILD.md](BUILD.md).
 		samples/			Reports' samples and databases for them
 		docs/				Documents related to QtReports
 
-## Documentation
-  + [Doxygen](http://po-31.github.io/)
+## Additional links
+  + [Documentation](http://po-31.github.io/)
+  + [QtReports-View](./qtreports-viewer/) is a viewer of reports created for QtReports.
   + [Wiki](https://github.com/PO-31/QtReports/wiki)
